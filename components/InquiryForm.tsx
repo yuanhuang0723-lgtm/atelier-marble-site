@@ -17,6 +17,9 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   const [budgetRange, setBudgetRange] = useState("");
   const [timeline, setTimeline] = useState("");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitState, setSubmitState] = useState<"idle" | "success" | "error">("idle");
+  const [submitError, setSubmitError] = useState("");
 
   const hydratedContext = useMemo(
     () => ({
@@ -42,17 +45,61 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     });
   }
 
-  function submitToWhatsApp(event: FormEvent<HTMLFormElement>) {
+  async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    track("whatsapp");
-    window.location.href = whatsappUrl;
+
+    if (submitting) {
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitState("idle");
+    setSubmitError("");
+    track("email");
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          contact,
+          budgetRange,
+          timeline,
+          message,
+          projectType: hydratedContext.projectType,
+          intent: hydratedContext.intent,
+          sourcePage: hydratedContext.sourcePage
+        })
+      });
+
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; message?: string };
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Unable to send inquiry right now.");
+      }
+
+      setSubmitState("success");
+      setName("");
+      setContact("");
+      setBudgetRange("");
+      setTimeline("");
+      setMessage("");
+    } catch (error) {
+      setSubmitState("error");
+      setSubmitError(error instanceof Error ? error.message : "Unable to send inquiry right now.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
     <form
       className="card-luxury mx-auto grid w-full max-w-[44rem] gap-4 p-5 md:max-w-[48rem] md:gap-4 md:p-6"
       data-qualified-inquiry-form="true"
-      onSubmit={submitToWhatsApp}
+      onSubmit={submitInquiry}
     >
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
@@ -137,13 +184,25 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         />
       </label>
       <div className="flex flex-wrap gap-3 pt-1">
-        <button className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" type="submit">
-          Start Project Consultation
+        <button
+          className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]"
+          type="submit"
+          disabled={submitting}
+        >
+          {submitting ? "Sending Inquiry..." : "Send Inquiry"}
         </button>
         <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={() => track("email")}>
           Discuss by Email
         </a>
       </div>
+      {submitState === "success" ? (
+        <p className="text-sm leading-6 text-emerald-700">
+          Your inquiry was sent. We will reply by email and WhatsApp if you included contact details.
+        </p>
+      ) : null}
+      {submitState === "error" ? (
+        <p className="text-sm leading-6 text-rose-700">{submitError}</p>
+      ) : null}
     </form>
   );
 }
