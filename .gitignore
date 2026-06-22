@@ -1,0 +1,18 @@
+.next
+node_modules
+out
+*.log
+*.tsbuildinfo
+.env*
+.playwright-mcp/
+work/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+!.env.example

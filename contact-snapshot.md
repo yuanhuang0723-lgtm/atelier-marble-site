@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]
+  - main [ref=e13]:
+    - generic [ref=e14]
+    - generic [ref=e25]
+    - generic [ref=e45]
+    - generic [ref=e201]
+    - generic [ref=e227]
+  - link "Discuss your project on WhatsApp" [ref=e234] [cursor=pointer]:
+    - /url: https://wa.me/8613288726333?text=Hello%20Atelier%20Marble%2C%20I%20would%20like%20to%20discuss%20a%20stone%20project.%0AInquiry%20intent%3A%20Persistent%20WhatsApp%20inquiry%0APlease%20advise%20material%20options%2C%20fabrication%20approach%2C%20and%20pricing%20steps.
+    - img [ref=e235]
+    - generic [ref=e237]: WhatsApp
+  - contentinfo [ref=e238]:
+    - generic [ref=e239]
+  - alert [ref=e252]

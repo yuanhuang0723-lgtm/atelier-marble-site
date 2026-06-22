@@ -1,0 +1,93 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import InquiryForm from "../../components/InquiryForm";
+import PageHero from "../../components/PageHero";
+import PageShell from "../../components/PageShell";
+import { contact, inquiryProjectTypes } from "../../lib/assets";
+import { buildWhatsAppUrl } from "../../lib/conversion";
+import { absoluteUrl, siteName } from "../../lib/seo";
+
+export const metadata: Metadata = {
+  title: "Project Consultation",
+  description:
+    "Request project consultation from Atelier Marble for hotel projects, kitchens, architectural interiors, furniture, or carved stone decor.",
+  alternates: { canonical: absoluteUrl("/contact") },
+  openGraph: {
+    title: "Project Consultation",
+    description:
+      "Discuss project pricing, material suggestions, and export production with a luxury stone partner and design studio.",
+    url: absoluteUrl("/contact"),
+    siteName
+  }
+};
+
+export default function ContactPage() {
+  const inquiryContext = {
+    sourcePage: "/contact",
+    intent: "Direct project consultation",
+    projectType: "Luxury Vanity Tops & Cabinet Panels"
+  };
+
+  return (
+    <PageShell>
+      <main>
+        <PageHero
+          eyebrow="Project inquiry system"
+          title="Qualify your stone project with the right details."
+          description="Atelier Marble uses a structured consultation flow for hotel projects, kitchens, interiors, and custom stone work so buyers can move toward accurate pricing faster."
+        />
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury grid gap-12 lg:grid-cols-[1.1fr_0.72fr] lg:items-start">
+            <InquiryForm
+              context={inquiryContext}
+              defaultProjectType={inquiryProjectTypes[1]}
+              projectOptions={[...inquiryProjectTypes]}
+            />
+            <aside className="space-y-7">
+              <div className="space-y-4 rounded-[28px] border border-ink/10 bg-stone p-8 md:p-10">
+                <p className="eyebrow-luxury">Before you submit</p>
+                <h2 className="heading-lg">Help us qualify the right solution.</h2>
+                <p className="body-luxury">
+                  The more clearly you describe scope, timeline, budget, and drawings, the faster we can return a
+                  practical project path and pricing range.
+                </p>
+                <div className="grid gap-4 pt-2 text-sm leading-7 text-ink/70">
+                  <p>• Project type: hotel, kitchen, commercial interior, or sculpture</p>
+                  <p>• Budget range: helps us match fabrication scale</p>
+                  <p>• Timeline: keeps procurement and production aligned</p>
+                  <p>• Drawings: useful for technical review and quote preparation</p>
+                </div>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <a className="btn-luxury" href={buildWhatsAppUrl(inquiryContext)}>
+                    Discuss Project Requirements
+                  </a>
+                </div>
+              </div>
+              <div className="rounded-[28px] border border-ink/10 bg-paper p-8 text-sm font-light leading-8 text-ink/60">
+                <p>{contact.location}</p>
+                <p>{contact.whatsapp}</p>
+                {contact.emails.map((email) => (
+                  <p key={email}>{email}</p>
+                ))}
+              </div>
+              <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
+                <p className="eyebrow-luxury mb-4">Review before inquiry</p>
+                <div className="flex flex-col gap-4">
+                  <Link className="text-cta-luxury" href="/projects">
+                    Review Project References
+                  </Link>
+                  <Link className="text-cta-luxury" href="/materials">
+                    Compare Material Options
+                  </Link>
+                  <Link className="text-cta-luxury" href="/hotel-projects">
+                    Check Hotel Project Fit
+                  </Link>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </PageShell>
+  );
+}

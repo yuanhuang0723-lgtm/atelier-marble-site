@@ -1,0 +1,38 @@
+{
+  "name": "atelier-marble",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "clean": "node -e \"require('fs').rmSync('.next', { recursive: true, force: true })\"",
+    "dev:fresh": "npm run clean && next dev",
+    "prebuild": "npm run audit:assets",
+    "start": "next start",
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "audit:assets": "node scripts/audit-assets.mjs",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "^1.19.11",
+    "lucide-react": "^0.468.0",
+    "next": "^15.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "@types/react": "^19.2.17",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "^15.0.4",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.103.0"
+  }
+}
