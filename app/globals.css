@@ -860,12 +860,17 @@ video {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0;
     aspect-ratio: auto;
     min-height: clamp(24rem, 34vw, 44rem);
-    background:
-      center / contain no-repeat url("/assets/why-choose-us/why-choose-us.png"),
-      #f3ede4;
+    background: #f3ede4;
+  }
+
+  .why-choose-us__media > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: center center;
   }
 
   .why-choose-us__title {
