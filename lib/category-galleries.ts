@@ -174,6 +174,8 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
       "A curated gallery of luxury stone countertops, coffee tables, and custom tabletop references for export buyers.",
     intro:
       "The gallery highlights full-size countertop proportion, natural stone texture, edge thickness, structural support, and premium furniture-grade finishing.",
+    heroImage: "/assets/stone-table-coffee/hero-local-cover.png",
+    heroAlt: "Stone countertop and coffee table local material cover",
     items: [
       {
         src: "/assets/stone-table-coffee/10604b55-3279-43c1-8119-b9c37a2124b9.png",

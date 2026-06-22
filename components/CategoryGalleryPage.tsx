@@ -25,7 +25,7 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
             <div className="hero-architectural__content hero-architectural__content--center container-luxury min-h-[78vh] pb-24 pt-40">
               <div className="mx-auto max-w-4xl text-center">
                 <p className="hero-architectural__eyebrow">{page.eyebrow}</p>
-                <h1 className="hero-architectural__title hero-architectural__title--wide hero-architectural__title--singleline">
+                <h1 className="hero-architectural__title hero-architectural__title--wide">
                   {page.title}
                 </h1>
                 <p className="hero-architectural__copy mx-auto max-w-2xl">{page.description}</p>
