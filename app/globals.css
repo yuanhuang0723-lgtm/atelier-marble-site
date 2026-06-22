@@ -87,7 +87,7 @@ video {
   }
 
   .site-nav__inner {
-    @apply flex items-center justify-between gap-12 px-5 py-7 md:px-12 md:py-8;
+    @apply flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:py-8;
   }
 
   .site-nav__logo {
@@ -107,6 +107,34 @@ video {
 
   .site-nav__link:hover {
     @apply text-[var(--color-ink)];
+  }
+
+  .site-nav__bar {
+    @apply w-full;
+  }
+
+  .site-nav__mobile {
+    @apply relative md:hidden;
+  }
+
+  .site-nav__toggle {
+    @apply inline-flex h-10 w-10 items-center justify-center border border-[rgba(31,27,24,0.14)] bg-[rgba(255,255,255,0.4)] text-[var(--color-ink)];
+    border-radius: 999px;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .site-nav__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .site-nav__mobile-menu {
+    @apply absolute right-0 top-[calc(100%+0.75rem)] z-50 grid w-[min(18rem,calc(100vw-2rem))] gap-1 border border-[rgba(31,27,24,0.12)] bg-[var(--color-surface)] p-2 shadow-[0_20px_50px_rgba(31,27,24,0.12)];
+    border-radius: 16px;
+  }
+
+  .site-nav__mobile-link {
+    @apply rounded-[12px] px-4 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-[var(--color-ink)] transition hover:bg-[rgba(31,27,24,0.04)];
   }
 }
 
@@ -708,15 +736,142 @@ video {
   }
 
   @media (max-width: 767px) {
+    .site-nav__inner {
+      gap: 0.5rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+
+    .site-nav__logo {
+      max-width: calc(100vw - 5rem);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 0.86rem;
+      letter-spacing: 0.22em;
+    }
+
+    .hero-architectural__content {
+      min-height: calc(100svh - 3.75rem);
+      padding: 5rem 1rem 2.25rem;
+    }
+
     .hero-architectural__title {
-      font-size: clamp(24px, 7vw, 36px);
-      letter-spacing: 0.04em;
+      font-size: clamp(24px, 11vw, 34px);
+      letter-spacing: 0.035em;
     }
 
     .hero-architectural__title--home {
-      font-size: clamp(24px, 7vw, 36px);
-      line-height: 1;
-      letter-spacing: 0.04em;
+      max-width: 12ch;
+      font-size: clamp(25px, 10.4vw, 34px);
+      line-height: 0.98;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-architectural__copy {
+      max-width: 28ch;
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .hero-architectural__actions {
+      width: 100%;
+      max-width: 18rem;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hero-architectural__actions .btn-luxury-inverse,
+    .hero-architectural__actions .btn-luxury,
+    .hero-architectural__actions .btn-luxury-fill {
+      width: 100%;
+    }
+
+    .section-luxury {
+      padding: 3rem 1rem;
+    }
+
+    .section-luxury-compact {
+      padding: 2.5rem 1rem;
+    }
+
+    .section-intro {
+      margin-bottom: 1.8rem;
+      gap: 0.75rem;
+    }
+
+    .section-intro__title,
+    .buyer-intent-heading,
+    .why-choose-us__title,
+    .project-proof-heading {
+      max-width: 14ch;
+      font-size: clamp(1.8rem, 8.5vw, 2.6rem);
+      line-height: 0.96;
+      letter-spacing: 0.02em;
+    }
+
+    .buyer-intent-top,
+    .reference-card {
+      grid-template-columns: 1fr;
+    }
+
+    .buyer-intent-card,
+    .reference-card {
+      border-radius: 16px;
+    }
+
+    .buyer-intent-card .project-card__body,
+    .reference-card__body {
+      padding: 1rem;
+    }
+
+    .buyer-intent-feature {
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+
+    .buyer-intent-feature__overlay {
+      position: static;
+      padding: 1rem;
+      max-width: none;
+      background: var(--color-ink);
+    }
+
+    .buyer-intent-feature__title {
+      max-width: 10ch;
+      font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .buyer-intent-feature__copy {
+      max-width: none;
+    }
+
+    .reference-card__media,
+    .buyer-intent-card .project-card__media {
+      aspect-ratio: 16 / 11;
+    }
+
+    .why-choose-us__media {
+      min-height: 0;
+      aspect-ratio: 4 / 5;
+    }
+
+    .why-choose-us__media > img {
+      object-fit: cover !important;
+    }
+
+    .why-choose-us__title {
+      max-width: 12ch;
+    }
+
+    .btn-luxury,
+    .btn-luxury-inverse,
+    .btn-luxury-fill {
+      min-height: 3rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      font-size: 10px;
+      letter-spacing: 0.22em;
     }
   }
 
