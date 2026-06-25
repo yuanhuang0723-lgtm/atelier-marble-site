@@ -81,6 +81,8 @@ NEXT_PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXXX
 NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL=XXXXXXXXXXXXXXX
 ```
 
+The GA4 measurement ID enables pageview tracking for every route change in the app, so you can see live visits and traffic sources in Google Analytics Realtime and Reports.
+
 Tracked inquiry events:
 
 - `whatsapp_inquiry_click`

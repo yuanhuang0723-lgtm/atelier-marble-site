@@ -18,7 +18,7 @@ export default function GoogleTag() {
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag('js', new Date());
-          ${gaMeasurementId ? `gtag('config', '${gaMeasurementId}', { anonymize_ip: true });` : ""}
+          ${gaMeasurementId ? `gtag('config', '${gaMeasurementId}', { anonymize_ip: true, send_page_view: false });` : ""}
           ${googleAdsId ? `gtag('config', '${googleAdsId}');` : ""}
         `}
       </Script>

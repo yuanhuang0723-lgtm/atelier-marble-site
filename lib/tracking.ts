@@ -71,6 +71,21 @@ export function getOrCreateVisitorId(storageKey: string) {
   }
 }
 
+export function getOrCreateSessionId(storageKey: string) {
+  try {
+    const stored = window.sessionStorage.getItem(storageKey);
+    if (stored) {
+      return stored;
+    }
+
+    const created = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    window.sessionStorage.setItem(storageKey, created);
+    return created;
+  } catch {
+    return `session-${Date.now()}`;
+  }
+}
+
 function postVisitorEvent(payload: VisitorEventPayload) {
   if (typeof window === "undefined") {
     return;
@@ -96,6 +111,17 @@ function postVisitorEvent(payload: VisitorEventPayload) {
 }
 
 export function trackPageviewEvent(payload: Omit<VisitorEventPayload, "eventType">) {
+  const pageViewPayload = {
+    page_location: window.location.href,
+    page_path: payload.page_path || window.location.pathname + window.location.search,
+    page_title: payload.page_title || document.title,
+    page_referrer: payload.referrer || document.referrer || undefined
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: "page_view", ...pageViewPayload });
+  window.gtag?.("event", "page_view", pageViewPayload);
+
   postVisitorEvent({
     eventType: "pageview",
     ...payload
