@@ -59,6 +59,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${titleFont.variable} ${bodyFont.variable}`}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="8BO31iXWEtl67gdjrg6e6dWcN2uT8A3A4cOzoA-lCqY"
+        />
+      </head>
       <body>
         <GoogleTag />
         <JsonLd data={organizationJsonLd()} />
