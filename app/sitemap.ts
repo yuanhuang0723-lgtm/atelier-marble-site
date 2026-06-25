@@ -17,7 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/stone-slabs",
     "/materials",
     "/factory",
-    "/contact"
+    "/contact",
+    "/about",
+    "/privacy-policy"
   ];
   const now = new Date();
 

@@ -64,6 +64,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="rounded-[28px] border border-ink/10 bg-paper p-8 text-sm font-light leading-8 text-ink/60">
+                <p>{contact.companyName}</p>
+                <p>{contact.address}</p>
                 <p>{contact.location}</p>
                 <p>{contact.whatsapp}</p>
                 {contact.emails.map((email) => (
