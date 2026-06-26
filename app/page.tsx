@@ -393,6 +393,15 @@ export default function HomePage() {
                   your site faster.
                 </p>
               </Link>
+              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/hotel-stone-pricing">
+                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                  Hotel stone pricing guide
+                </p>
+                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
+                  A pricing-focused guide that helps buyers understand scope, budget, and quotation logic before they
+                  ask for a quote.
+                </p>
+              </Link>
             </div>
           </div>
         </section>

@@ -31,6 +31,9 @@ export default function Footer() {
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/guides/export-packing-standards">
               Packing Guide
             </Link>
+            <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/guides/hotel-stone-pricing">
+              Pricing Guide
+            </Link>
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/privacy-policy">
               Privacy Policy
             </Link>
