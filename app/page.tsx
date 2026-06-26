@@ -418,6 +418,14 @@ export default function HomePage() {
                   A trust-building guide that shows how you protect projects before shipment.
                 </p>
               </Link>
+              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/hotel-lobby-case-study">
+                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                  Hotel lobby case study
+                </p>
+                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
+                  A project reference page that helps buyers judge process maturity and delivery confidence.
+                </p>
+              </Link>
             </div>
           </div>
         </section>

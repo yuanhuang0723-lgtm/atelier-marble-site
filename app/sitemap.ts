@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/hotel-stone-pricing",
     "/guides/stone-project-checklist",
     "/guides/quality-control-delivery",
+    "/guides/hotel-lobby-case-study",
     "/about",
     "/privacy-policy"
   ];
