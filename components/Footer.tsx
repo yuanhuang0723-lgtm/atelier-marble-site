@@ -22,6 +22,9 @@ export default function Footer() {
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/about">
               About Us
             </Link>
+            <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/how-we-work">
+              How We Work
+            </Link>
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/privacy-policy">
               Privacy Policy
             </Link>

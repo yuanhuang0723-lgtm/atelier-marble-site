@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/materials",
     "/factory",
     "/contact",
+    "/how-we-work",
     "/about",
     "/privacy-policy"
   ];

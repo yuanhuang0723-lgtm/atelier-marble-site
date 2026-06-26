@@ -98,6 +98,9 @@ export default function ContactPage() {
                   <Link className="text-cta-luxury" href="/projects">
                     Review Project References
                   </Link>
+                  <Link className="text-cta-luxury" href="/how-we-work">
+                    See How We Work
+                  </Link>
                   <Link className="text-cta-luxury" href="/materials">
                     Compare Material Options
                   </Link>
