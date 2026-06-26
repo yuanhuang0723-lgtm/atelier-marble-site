@@ -267,6 +267,46 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Export project support</p>
+              <h2 className="heading-lg section-intro__title">What buyers get when they request pricing.</h2>
+              <p className="body-luxury section-intro__copy">
+                The site is built to help overseas buyers move from browsing to a qualified quotation with fewer
+                back-and-forth messages.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {[
+                {
+                  title: "Material Matching",
+                  copy: "We help buyers compare stone tone, veining, slab selection, and product suitability before quotation."
+                },
+                {
+                  title: "Technical Review",
+                  copy: "Drawings, dimensions, and project scope are reviewed so pricing reflects the actual fabrication work."
+                },
+                {
+                  title: "Export Packing",
+                  copy: "Project goods are prepared with export packing logic for safer long-distance delivery."
+                },
+                {
+                  title: "Project Coordination",
+                  copy: "We keep communication focused on scope, timing, and destination market so procurement stays clear."
+                }
+              ].map((item) => (
+                <div key={item.title} className="card-luxury px-5 py-5">
+                  <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">{item.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section-luxury bg-stone">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
