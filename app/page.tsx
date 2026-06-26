@@ -142,6 +142,9 @@ export default function HomePage() {
                 <Link className="btn-luxury-inverse" href="/projects">
                   Request Project Pricing
                 </Link>
+                <Link className="btn-luxury-inverse" href="/how-we-work">
+                  How We Work
+                </Link>
               </div>
             </div>
           </div>
@@ -448,9 +451,14 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-8">
-              <Link className="text-cta-luxury" href="/contact">
-                Request Similar Project Pricing
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <Link className="text-cta-luxury" href="/contact">
+                  Request Similar Project Pricing
+                </Link>
+                <Link className="text-cta-luxury" href="/how-we-work">
+                  See How We Work
+                </Link>
+              </div>
             </div>
           </div>
         </section>
