@@ -103,6 +103,7 @@ export default function StoneSupplierGuidePage() {
           eyebrow="Buyer guide"
           title="How to Choose a Stone Supplier in China for Hotel Projects"
           description="Use this checklist to compare suppliers for hotel stone, marble slabs, countertops, interiors, and custom fabrication before you request pricing."
+          backgroundImage="/generated/guides/buyer-guide-hero.png"
         />
 
         <section className="section-luxury bg-paper">

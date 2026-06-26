@@ -121,6 +121,11 @@ export default function HomePage() {
         <details className="home-side-drawer group">
           <summary className="home-side-drawer__summary">Buyer notes</summary>
           <div className="home-side-drawer__panel">
+            <img
+              className="h-36 w-full rounded-xl object-cover"
+              src="/generated/guides/buyer-notes-panel.png"
+              alt="Stone samples, notes, and project references arranged on a luxury desk"
+            />
             <p className="eyebrow-luxury">Quick links</p>
             <p className="mt-2 text-[0.92rem] leading-6 text-ink/72">
               Keep these references off the main page. Open only when you need buyer guides or project notes.

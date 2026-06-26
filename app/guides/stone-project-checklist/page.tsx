@@ -98,6 +98,7 @@ export default function StoneProjectChecklistPage() {
           eyebrow="Buyer checklist"
           title="Stone Project Checklist Before You Order"
           description="Use this checklist before requesting quotations for slabs, hotel projects, countertops, furniture, or sculptural stone work."
+          backgroundImage="/generated/guides/project-checklist-hero.png"
         />
 
         <section className="section-luxury bg-paper">

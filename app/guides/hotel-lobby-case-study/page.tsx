@@ -96,6 +96,7 @@ export default function HotelLobbyCaseStudyPage() {
           eyebrow="Project case study"
           title="Hotel Lobby Stone Project Case Study"
           description="See how a hotel lobby stone project can move from inquiry to material matching, QC, packing, and delivery."
+          backgroundImage="/generated/guides/case-study-hero.png"
         />
 
         <section className="section-luxury bg-paper">

@@ -96,6 +96,7 @@ export default function QualityControlDeliveryPage() {
           eyebrow="Quality control"
           title="Quality Control and Delivery Standards for Stone Projects"
           description="See how inspection, packing, and delivery standards protect overseas stone buyers before shipment leaves China."
+          backgroundImage="/generated/guides/qc-delivery-hero.png"
         />
 
         <section className="section-luxury bg-paper">

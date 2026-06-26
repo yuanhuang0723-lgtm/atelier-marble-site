@@ -96,6 +96,7 @@ export default function HotelStonePricingPage() {
           eyebrow="Pricing guide"
           title="Hotel Stone Pricing Guide for Overseas Buyers"
           description="Know what affects hotel stone project pricing before you request a quotation from a supplier in China."
+          backgroundImage="/generated/guides/pricing-guide-hero.png"
         />
 
         <section className="section-luxury bg-paper">
