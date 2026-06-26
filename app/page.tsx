@@ -51,37 +51,6 @@ const buyerIntentCards = [
   }
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Do you supply stone slabs from China?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Atelier Marble supports stone slab selection, matching, and export supply for overseas buyers who need a reliable stone slab supplier China."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can you fabricate hotel stone projects?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We support hotel stone fabrication for lobbies, reception areas, bathrooms, corridors, and other hospitality spaces."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Do you make custom stone countertops and sculptures?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We produce custom stone countertops, coffee tables, and carved stone sculptures with export-ready project support."
-      }
-    }
-  ]
-};
-
 export default function HomePage() {
   const [kitchen] = getAssets("kitchen-countertop");
   const [coffee] = getAssets("coffee-table");
@@ -114,7 +83,6 @@ export default function HomePage() {
         }}
       />
       <main>
-        <JsonLd data={faqSchema} />
         <section className="hero-architectural min-h-screen">
           <img
             className="absolute inset-0 h-full w-full object-cover"
@@ -149,6 +117,33 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <details className="home-side-drawer group">
+          <summary className="home-side-drawer__summary">Buyer notes</summary>
+          <div className="home-side-drawer__panel">
+            <p className="eyebrow-luxury">Quick links</p>
+            <p className="mt-2 text-[0.92rem] leading-6 text-ink/72">
+              Keep these references off the main page. Open only when you need buyer guides or project notes.
+            </p>
+            <div className="mt-4 grid gap-2">
+              <Link className="home-side-drawer__link" href="/guides/stone-supplier-china">
+                Buyer guide
+              </Link>
+              <Link className="home-side-drawer__link" href="/guides/hotel-stone-pricing">
+                Pricing guide
+              </Link>
+              <Link className="home-side-drawer__link" href="/guides/stone-project-checklist">
+                Project checklist
+              </Link>
+              <Link className="home-side-drawer__link" href="/guides/quality-control-delivery">
+                QC & delivery
+              </Link>
+              <Link className="home-side-drawer__link" href="/guides/hotel-lobby-case-study">
+                Case study
+              </Link>
+            </div>
+          </div>
+        </details>
 
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
@@ -266,198 +261,6 @@ export default function HomePage() {
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-luxury bg-paper">
-          <div className="container-luxury">
-            <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">Export project support</p>
-              <h2 className="heading-lg section-intro__title">What buyers get when they request pricing.</h2>
-              <p className="body-luxury section-intro__copy">
-                The site is built to help overseas buyers move from browsing to a qualified quotation with fewer
-                back-and-forth messages.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {[
-                {
-                  title: "Material Matching",
-                  copy: "We help buyers compare stone tone, veining, slab selection, and product suitability before quotation."
-                },
-                {
-                  title: "Technical Review",
-                  copy: "Drawings, dimensions, and project scope are reviewed so pricing reflects the actual fabrication work."
-                },
-                {
-                  title: "Export Packing",
-                  copy: "Project goods are prepared with export packing logic for safer long-distance delivery."
-                },
-                {
-                  title: "Project Coordination",
-                  copy: "We keep communication focused on scope, timing, and destination market so procurement stays clear."
-                }
-              ].map((item) => (
-                <div key={item.title} className="card-luxury px-5 py-5">
-                  <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">{item.copy}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Link className="text-cta-luxury" href="/guides/export-packing-standards">
-                Read export packing standards
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-luxury bg-stone">
-          <div className="container-luxury">
-            <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">Quotation process</p>
-              <h2 className="heading-lg section-intro__title">How project pricing moves from inquiry to quote.</h2>
-              <p className="body-luxury section-intro__copy">
-                Clear structure helps overseas buyers get faster and more accurate pricing for stone slabs, hotel
-                projects, countertops, and custom fabrication.
-              </p>
-            </div>
-            <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  step: "01",
-                  title: "Share scope",
-                  copy: "Send project type, drawings, dimensions, budget range, and destination market so we can qualify the request."
-                },
-                {
-                  step: "02",
-                  title: "Review material fit",
-                  copy: "We compare stone options, fabrication scale, and project timing to suggest a practical production path."
-                },
-                {
-                  step: "03",
-                  title: "Receive quotation",
-                  copy: "You get a project-oriented quotation path with material direction, packing approach, and next steps."
-                }
-              ].map((item) => (
-                <div key={item.step} className="card-luxury px-6 py-6">
-                  <p className="font-title text-[12px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
-                    {item.step}
-                  </p>
-                  <h3 className="mt-3 font-title text-[1.05rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-[0.93rem] leading-7 text-ink/68">{item.copy}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-luxury bg-paper">
-          <div className="container-luxury">
-            <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">Search terms we support</p>
-              <h2 className="heading-lg section-intro__title">Keywords buyers actually search for.</h2>
-              <p className="body-luxury section-intro__copy">
-                This site is structured around practical search phrases that overseas buyers use when looking for a
-                stone supplier in China, hotel stone fabrication, marble slabs, custom countertops, and sculptural
-                stone work.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {[
-                "stone supplier China",
-                "stone slab supplier China",
-                "hotel stone fabrication supplier",
-                "custom stone countertops and coffee tables"
-              ].map((item) => (
-                <div key={item} className="card-luxury px-5 py-4">
-                  <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                    {item}
-                  </p>
-                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                    Buyers can use these phrases to find the product and project pages that match their intent.
-                  </p>
-                </div>
-              ))}
-              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/stone-supplier-china">
-                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                  How to choose a stone supplier in China
-                </p>
-                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                  A practical buyer guide that supports higher-intent search traffic and helps overseas buyers qualify
-                  your site faster.
-                </p>
-              </Link>
-              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/hotel-stone-pricing">
-                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                  Hotel stone pricing guide
-                </p>
-                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                  A pricing-focused guide that helps buyers understand scope, budget, and quotation logic before they
-                  ask for a quote.
-                </p>
-              </Link>
-              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/stone-project-checklist">
-                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                  Stone project checklist
-                </p>
-                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                  A buyer checklist for overseas projects that pushes visitors closer to inquiry and quotation.
-                </p>
-              </Link>
-              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/quality-control-delivery">
-                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                  QC and delivery standards
-                </p>
-                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                  A trust-building guide that shows how you protect projects before shipment.
-                </p>
-              </Link>
-              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/hotel-lobby-case-study">
-                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                  Hotel lobby case study
-                </p>
-                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
-                  A project reference page that helps buyers judge process maturity and delivery confidence.
-                </p>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-luxury bg-stone">
-          <div className="container-luxury">
-            <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">FAQ</p>
-              <h2 className="heading-lg section-intro__title">Questions buyers ask before they contact us.</h2>
-            </div>
-            <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Do you supply stone slabs from China?",
-                  a: "Yes. We help with slab selection, matching, and export supply for overseas projects."
-                },
-                {
-                  q: "Can you handle hotel stone fabrication?",
-                  a: "Yes. We support hotel lobbies, reception desks, bathrooms, corridors, and hospitality stone details."
-                },
-                {
-                  q: "Do you make custom stone countertops and sculptures?",
-                  a: "Yes. We produce custom countertops, coffee tables, and carved stone sculptures for project buyers."
-                }
-              ].map((item) => (
-                <div key={item.q} className="card-luxury px-5 py-4">
-                  <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
-                    {item.q}
-                  </h3>
-                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">{item.a}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
