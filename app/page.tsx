@@ -267,6 +267,48 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="section-luxury bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Quotation process</p>
+              <h2 className="heading-lg section-intro__title">How project pricing moves from inquiry to quote.</h2>
+              <p className="body-luxury section-intro__copy">
+                Clear structure helps overseas buyers get faster and more accurate pricing for stone slabs, hotel
+                projects, countertops, and custom fabrication.
+              </p>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-3">
+              {[
+                {
+                  step: "01",
+                  title: "Share scope",
+                  copy: "Send project type, drawings, dimensions, budget range, and destination market so we can qualify the request."
+                },
+                {
+                  step: "02",
+                  title: "Review material fit",
+                  copy: "We compare stone options, fabrication scale, and project timing to suggest a practical production path."
+                },
+                {
+                  step: "03",
+                  title: "Receive quotation",
+                  copy: "You get a project-oriented quotation path with material direction, packing approach, and next steps."
+                }
+              ].map((item) => (
+                <div key={item.step} className="card-luxury px-6 py-6">
+                  <p className="font-title text-[12px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
+                    {item.step}
+                  </p>
+                  <h3 className="mt-3 font-title text-[1.05rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[0.93rem] leading-7 text-ink/68">{item.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">

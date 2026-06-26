@@ -55,6 +55,13 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       data-qualified-inquiry-form="true"
       onSubmit={submitInquiry}
     >
+      <div className="rounded-[18px] border border-ink/10 bg-stone/40 px-5 py-4">
+        <p className="eyebrow-luxury mb-2">Request a quotation</p>
+        <p className="text-sm leading-7 text-ink/68">
+          Share project scope, drawings, budget, destination market, and timing. We use these details to match
+          material selection, fabrication scale, and packing requirements.
+        </p>
+      </div>
       <input type="hidden" name="_subject" value={`${hydratedContext.projectType || "Atelier Marble"} Project Consultation`} />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
@@ -67,6 +74,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
             className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
             name="name"
             type="text"
+            placeholder="Your name"
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
@@ -77,6 +85,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
             className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
             name="contact"
             type="text"
+            placeholder="Email or WhatsApp number"
             value={contact}
             onChange={(event) => setContact(event.target.value)}
           />
@@ -138,18 +147,22 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         <textarea
           className="min-h-[160px] w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 py-3 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
           name="message"
+          placeholder="Material preference, quantities, drawings, destination market, and any special requirements."
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
       </label>
       <div className="flex flex-wrap gap-3 pt-1">
         <button className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" type="submit">
-          Send Inquiry
+          Request Project Pricing
         </button>
         <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={() => track("email")}>
-          Discuss by Email
+          Email Project Details
         </a>
       </div>
+      <p className="text-[11px] leading-6 tracking-[0.08em] text-ink/52">
+        Best for architects, procurement teams, importers, and buyers comparing stone options for export projects.
+      </p>
     </form>
   );
 }
