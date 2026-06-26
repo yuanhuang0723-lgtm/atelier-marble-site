@@ -1,6 +1,7 @@
 import { Asset, slugFromAsset, contact } from "./assets";
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarble.com";
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app";
 export const siteName = "Atelier Marble";
 
 export function absoluteUrl(path = "/") {
