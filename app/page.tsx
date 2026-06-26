@@ -379,6 +379,15 @@ export default function HomePage() {
                   </p>
                 </div>
               ))}
+              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/stone-supplier-china">
+                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                  How to choose a stone supplier in China
+                </p>
+                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
+                  A practical buyer guide that supports higher-intent search traffic and helps overseas buyers qualify
+                  your site faster.
+                </p>
+              </Link>
             </div>
           </div>
         </section>
