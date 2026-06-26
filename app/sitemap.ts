@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/how-we-work",
     "/guides/stone-supplier-china",
+    "/guides/export-packing-standards",
     "/about",
     "/privacy-policy"
   ];

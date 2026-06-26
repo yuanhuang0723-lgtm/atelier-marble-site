@@ -307,6 +307,11 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <Link className="text-cta-luxury" href="/guides/export-packing-standards">
+                Read export packing standards
+              </Link>
+            </div>
           </div>
         </section>
 
