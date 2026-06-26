@@ -26,11 +26,14 @@ export const metadata: Metadata = {
   description:
     "Luxury marble supplier and architectural stone design studio for bespoke natural stone projects worldwide.",
   keywords: [
+    "stone supplier China",
+    "stone slab supplier China",
+    "hotel stone fabrication supplier",
     "luxury marble supplier",
     "custom stone countertops China",
-    "hotel stone fabrication",
     "architectural stone design studio",
-    "bespoke natural stone manufacturer"
+    "bespoke natural stone manufacturer",
+    "custom stone sculptures"
   ],
   alternates: {
     canonical: absoluteUrl("/")

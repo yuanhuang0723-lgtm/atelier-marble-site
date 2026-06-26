@@ -6,14 +6,14 @@ import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/ass
 import { absoluteUrl, siteName } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Luxury Stone Partner for Architecture & Hotel Projects",
+  title: "Luxury Stone Supplier China for Hotel Projects",
   description:
-    "Atelier Marble is a luxury stone partner for architecture and hotel projects, with premium natural stone supply, fabrication, and export support.",
+    "Atelier Marble is a luxury stone supplier in China for hotel projects, stone slab supply, custom fabrication, marble countertops, coffee tables, and sculptures.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Atelier Marble | Luxury Stone Partner",
+    title: "Atelier Marble | Luxury Stone Supplier China",
     description:
-      "Architectural stone design studio and bespoke natural stone manufacturer for international hotel, kitchen, and project supply.",
+      "Architectural stone supplier in China for hotel projects, stone slabs, countertops, coffee tables, and custom stone fabrication.",
     url: absoluteUrl("/"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.png"), width: 1536, height: 1024 }]
@@ -51,6 +51,37 @@ const buyerIntentCards = [
   }
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Do you supply stone slabs from China?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Atelier Marble supports stone slab selection, matching, and export supply for overseas buyers who need a reliable stone slab supplier China."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Can you fabricate hotel stone projects?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We support hotel stone fabrication for lobbies, reception areas, bathrooms, corridors, and other hospitality spaces."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Do you make custom stone countertops and sculptures?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We produce custom stone countertops, coffee tables, and carved stone sculptures with export-ready project support."
+      }
+    }
+  ]
+};
+
 export default function HomePage() {
   const [kitchen] = getAssets("kitchen-countertop");
   const [coffee] = getAssets("coffee-table");
@@ -83,6 +114,7 @@ export default function HomePage() {
         }}
       />
       <main>
+        <JsonLd data={faqSchema} />
         <section className="hero-architectural min-h-screen">
           <img
             className="absolute inset-0 h-full w-full object-cover"
@@ -96,11 +128,12 @@ export default function HomePage() {
                 Atelier Marble
               </p>
               <h1 className="hero-architectural__title hero-architectural__title--home">
-                Luxury Stone Partner for Architecture &amp; Hotel Projects
+                Luxury Stone Supplier China for Architecture &amp; Hotel Projects
               </h1>
               <p className="hero-architectural__copy mx-auto max-w-2xl">
                 A project-focused marble partner for developers, architects, designers, and contractors who need
-                premium stone supply, fabrication accuracy, and export-ready execution.
+                premium stone slab supply, hotel stone fabrication, custom stone countertops, coffee tables, and
+                export-ready execution.
               </p>
               <div className="hero-architectural__actions hero-architectural__actions--center">
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href="/contact">
@@ -230,6 +263,69 @@ export default function HomePage() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Search terms we support</p>
+              <h2 className="heading-lg section-intro__title">Keywords buyers actually search for.</h2>
+              <p className="body-luxury section-intro__copy">
+                This site is structured around practical search phrases that overseas buyers use when looking for a
+                stone supplier in China, hotel stone fabrication, marble slabs, custom countertops, and sculptural
+                stone work.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {[
+                "stone supplier China",
+                "stone slab supplier China",
+                "hotel stone fabrication supplier",
+                "custom stone countertops and coffee tables"
+              ].map((item) => (
+                <div key={item} className="card-luxury px-5 py-4">
+                  <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                    {item}
+                  </p>
+                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
+                    Buyers can use these phrases to find the product and project pages that match their intent.
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section-luxury bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">FAQ</p>
+              <h2 className="heading-lg section-intro__title">Questions buyers ask before they contact us.</h2>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-3">
+              {[
+                {
+                  q: "Do you supply stone slabs from China?",
+                  a: "Yes. We help with slab selection, matching, and export supply for overseas projects."
+                },
+                {
+                  q: "Can you handle hotel stone fabrication?",
+                  a: "Yes. We support hotel lobbies, reception desks, bathrooms, corridors, and hospitality stone details."
+                },
+                {
+                  q: "Do you make custom stone countertops and sculptures?",
+                  a: "Yes. We produce custom countertops, coffee tables, and carved stone sculptures for project buyers."
+                }
+              ].map((item) => (
+                <div key={item.q} className="card-luxury px-5 py-4">
+                  <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                    {item.q}
+                  </h3>
+                  <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">{item.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
