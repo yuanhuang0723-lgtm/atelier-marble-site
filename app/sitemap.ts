@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/stone-supplier-china",
     "/guides/export-packing-standards",
     "/guides/hotel-stone-pricing",
+    "/guides/stone-project-checklist",
     "/about",
     "/privacy-policy"
   ];

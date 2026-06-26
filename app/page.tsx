@@ -402,6 +402,14 @@ export default function HomePage() {
                   ask for a quote.
                 </p>
               </Link>
+              <Link className="card-luxury px-5 py-4 transition hover:-translate-y-0.5" href="/guides/stone-project-checklist">
+                <p className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                  Stone project checklist
+                </p>
+                <p className="mt-2 text-[0.93rem] leading-7 text-ink/68">
+                  A buyer checklist for overseas projects that pushes visitors closer to inquiry and quotation.
+                </p>
+              </Link>
             </div>
           </div>
         </section>
