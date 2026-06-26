@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/export-packing-standards",
     "/guides/hotel-stone-pricing",
     "/guides/stone-project-checklist",
+    "/guides/quality-control-delivery",
     "/about",
     "/privacy-policy"
   ];

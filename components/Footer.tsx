@@ -37,6 +37,9 @@ export default function Footer() {
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/guides/stone-project-checklist">
               Project Checklist
             </Link>
+            <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/guides/quality-control-delivery">
+              QC & Delivery
+            </Link>
             <Link className="text-white/70 underline-offset-4 hover:text-white hover:underline" href="/privacy-policy">
               Privacy Policy
             </Link>
