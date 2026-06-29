@@ -193,12 +193,12 @@ video {
   }
 
   .home-side-drawer {
-    @apply fixed right-0 top-1/2 z-50 hidden -translate-y-1/2 lg:block;
+    @apply fixed bottom-24 right-5 z-40 hidden lg:block;
   }
 
   .home-side-drawer__summary {
-    @apply list-none cursor-pointer select-none rounded-l-full border border-r-0 border-[rgba(31,27,24,0.14)] bg-[rgba(250,245,236,0.98)] px-4 py-3 font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-ink)] shadow-[0_14px_30px_rgba(31,27,24,0.12)] transition hover:bg-[var(--color-paper)];
-    min-width: 10rem;
+    @apply list-none cursor-pointer select-none rounded-full border border-[rgba(31,27,24,0.12)] bg-[rgba(250,245,236,0.98)] px-4 py-3 font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-ink)] shadow-[0_14px_30px_rgba(31,27,24,0.12)] transition hover:bg-[var(--color-paper)];
+    min-width: 9.5rem;
   }
 
   .home-side-drawer__summary::-webkit-details-marker {
@@ -206,7 +206,7 @@ video {
   }
 
   .home-side-drawer__panel {
-    @apply pointer-events-none absolute right-[calc(100%+0.75rem)] top-1/2 w-[20rem] -translate-y-1/2 rounded-2xl border border-[rgba(31,27,24,0.12)] bg-[var(--color-paper)] p-4 opacity-0 shadow-[0_20px_50px_rgba(31,27,24,0.14)] transition duration-300;
+    @apply pointer-events-none absolute bottom-[calc(100%+0.85rem)] right-0 w-[21rem] rounded-2xl border border-[rgba(31,27,24,0.12)] bg-[var(--color-paper)] p-4 opacity-0 shadow-[0_20px_50px_rgba(31,27,24,0.14)] transition duration-300;
   }
 
   .home-side-drawer[open] .home-side-drawer__panel {
