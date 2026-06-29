@@ -217,6 +217,13 @@ video {
     @apply inline-flex items-center justify-between rounded-full border border-[rgba(31,27,24,0.1)] bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-ink)] transition hover:border-[rgba(31,27,24,0.18)] hover:bg-[var(--color-surface)];
   }
 
+  html[data-footer-visible="true"] .home-side-drawer,
+  html[data-footer-visible="true"] .whatsapp-floating-button {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1rem);
+  }
+
   .media-luxury {
     @apply overflow-hidden bg-stone;
     border-radius: 12px;

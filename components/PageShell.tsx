@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import FooterVisibilityTracker from "./FooterVisibilityTracker";
 import PageviewTracker from "./PageviewTracker";
 import ConversionTracker from "./ConversionTracker";
 import Footer from "./Footer";
@@ -12,6 +13,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
         <PageviewTracker />
       </Suspense>
       <ConversionTracker />
+      <FooterVisibilityTracker />
       <Nav />
       {children}
       <WhatsAppButton />
