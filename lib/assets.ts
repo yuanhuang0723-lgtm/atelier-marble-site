@@ -46,8 +46,10 @@ export const assets = manifest as Asset[];
 
 const rawTitlePatterns = [
   /\s*-\s*(?:No\.?\s*)?\d+$/,
-  /\s*-\s*[A-Z0-9]{6,}$/,
-  /\s*-\s*\d{6,}_[A-Za-z0-9_-]+$/
+  /\s*-\s*[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i,
+  /\s*-\s*[A-Z0-9]{6,}$/i,
+  /\s*-\s*\d{6,}(?:_[A-Za-z0-9_-]+)?$/,
+  /\s*-\s*(?:ChatGPT Image|IG|IMG|No\.?\s*\d+)\b.*$/i
 ];
 
 export function cleanDisplayTitle(title: string, fallback?: string) {
@@ -56,6 +58,12 @@ export function cleanDisplayTitle(title: string, fallback?: string) {
   for (const pattern of rawTitlePatterns) {
     clean = clean.replace(pattern, "").trim();
   }
+
+  clean = clean
+    .replace(/\s*-\s*[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}(?:-[A-Za-z0-9]+)?$/i, "")
+    .replace(/\s*-\s*[A-Z0-9]{6,}(?:-[A-Za-z0-9]+)?$/i, "")
+    .replace(/\s*-\s*\d{6,}(?:_[A-Za-z0-9_-]+)?(?:-[A-Za-z0-9]+)?$/i, "")
+    .trim();
 
   return clean || fallback || title;
 }
