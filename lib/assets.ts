@@ -382,7 +382,8 @@ export const contact = {
   companyName: "Atelier Marble",
   whatsapp: "+86 13288726333",
   whatsappUrl: "https://wa.me/8613288726333",
-  emails: ["aba702121@outlook.com", "huangding0802@outlook.com"],
+  inquiryRecipient: "ding@atelier-marble.ltd",
+  emails: ["ding@atelier-marble.ltd"],
   address: "中国广东省云浮市云城区格木桥石材转移基地",
   location: "Yunfu, Guangdong, China"
 };

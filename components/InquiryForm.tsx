@@ -49,7 +49,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
 
   return (
     <form
-      action="https://formsubmit.co/huangding0802@outlook.com"
+      action={`https://formsubmit.co/${contactInfo.inquiryRecipient}`}
       method="POST"
       className="card-luxury mx-auto grid w-full max-w-[44rem] gap-4 p-5 md:max-w-[48rem] md:gap-4 md:p-6"
       data-qualified-inquiry-form="true"
@@ -65,7 +65,6 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       <input type="hidden" name="_subject" value={`${hydratedContext.projectType || "Atelier Marble"} Project Consultation`} />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_cc" value={contactInfo.emails[1]} />
       <input type="hidden" name="_replyto" value={contact.includes("@") ? contact : ""} />
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
@@ -80,12 +79,13 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           />
         </label>
         <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Email or WhatsApp
+          Email
           <input
             className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
             name="contact"
-            type="text"
-            placeholder="Email or WhatsApp number"
+            type="email"
+            placeholder="Your email address"
+            required
             value={contact}
             onChange={(event) => setContact(event.target.value)}
           />

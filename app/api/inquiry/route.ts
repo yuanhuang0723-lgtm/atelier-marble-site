@@ -41,8 +41,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: "Invalid request body." }, { status: 400 });
   }
 
-  const recipient = contact.emails[0];
-  const cc = contact.emails.slice(1).join(",");
+  const recipient = contact.inquiryRecipient;
   const subject = body.projectType
     ? `${body.projectType} Project Consultation`
     : "Atelier Marble Project Consultation";
@@ -51,9 +50,6 @@ export async function POST(request: Request) {
   payload.set("_subject", subject);
   payload.set("_template", "table");
   payload.set("_captcha", "false");
-  if (cc) {
-    payload.set("_cc", cc);
-  }
   if (body.contact && body.contact.includes("@")) {
     payload.set("_replyto", body.contact);
   }
