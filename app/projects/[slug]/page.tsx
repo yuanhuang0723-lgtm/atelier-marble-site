@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import { getAssetBySlug, getProjectAssets, slugFromAsset } from "../../../lib/assets";
 import { projectPath } from "../../../lib/seo";
 
@@ -14,5 +14,5 @@ export default async function LegacyProjectDetailPage({ params }: LegacyProjectD
   const { slug } = await params;
   const asset = getAssetBySlug(slug);
 
-  redirect(asset ? projectPath(asset) : "/projects");
+  permanentRedirect(asset ? projectPath(asset) : "/projects");
 }
