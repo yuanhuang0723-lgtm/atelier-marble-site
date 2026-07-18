@@ -229,6 +229,17 @@ video {
     border-radius: 12px;
   }
 
+  .category-gallery__media {
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .category-gallery__media > img {
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center center;
+  }
+
   :where(
       .project-card__media,
       .reference-card__media,

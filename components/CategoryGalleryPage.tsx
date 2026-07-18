@@ -41,15 +41,15 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
             <div className="section-intro section-intro--center">
               <p className="body-luxury section-intro__copy">{page.intro}</p>
             </div>
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
               {page.items.map((item) => (
                 <figure
                   key={item.src}
                   className="card-luxury group overflow-hidden p-3"
                 >
-                  <div className="media-luxury aspect-[4/3] overflow-hidden">
+                  <div className="media-luxury category-gallery__media overflow-hidden">
                     <img
-                      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.02]"
+                      className="block h-auto w-full object-contain object-center transition duration-500 group-hover:scale-[1.02]"
                       src={item.src}
                       alt={item.alt}
                       loading="lazy"
