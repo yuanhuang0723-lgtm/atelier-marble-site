@@ -159,6 +159,41 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
         src: "/assets/vanity-cabinet/f04f01e1-b135-494e-8efa-18077c97bbbd.png",
         alt: "Luxury vanity top and cabinet panel stone reference with premium finish",
         caption: "Premium Finish Reference"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/straight-grained-white-jade-1227q971.jpg",
+        alt: "Straight-Grained White Jade stone kitchen island countertop with integrated sink and cabinet panels",
+        caption: "Straight-Grained White Jade"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/original-bulgari-stone-1227q975.jpg",
+        alt: "Original Bulgari Stone kitchen and dining interior with bookmatched stone flooring and island",
+        caption: "Original Bulgari Stone"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/new-monet-garden-1227q957.jpg",
+        alt: "New Monet Garden stone kitchen island and cabinet panel application with warm veining",
+        caption: "New Monet Garden"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/striped-white-crystal-1227q967.jpg",
+        alt: "Striped White Crystal stone flooring and wall panel application in a luxury interior",
+        caption: "Striped White Crystal"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/crystal-bulgari-black-1227q985h.jpg",
+        alt: "Crystal Bulgari Black stone bathroom with freestanding tub and dark marble wall panels",
+        caption: "Crystal Bulgari Black"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/black-ink-golden-1227q981h.jpg",
+        alt: "Black Ink stone with golden veining used across a luxury living and kitchen interior",
+        caption: "Black Ink Blending with Golden"
+      },
+      {
+        src: "/assets/vanity-cabinet/new/rose-ice-jade-1227q963.jpg",
+        alt: "Rose Ice Jade stone bathroom with bathtub, vanity, and matching wall panels",
+        caption: "Rose Ice Jade"
       }
     ],
     metaTitle: "Luxury Vanity Tops & Cabinet Panels",
