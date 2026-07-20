@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
 import { trackConversionEvent } from "../lib/tracking";
 import { contact as contactInfo } from "../lib/assets";
+import { absoluteUrl } from "../lib/seo";
 
 type InquiryFormProps = {
   context: InquiryContext;
@@ -44,7 +45,15 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   }
 
   function submitInquiry() {
-    track("email");
+    trackConversionEvent("qualified_inquiry_form_started", {
+      method: "formsubmit",
+      sourcePage: hydratedContext.sourcePage,
+      projectType: hydratedContext.projectType,
+      hasContact: Boolean(contact),
+      hasMessage: Boolean(message),
+      hasBudget: Boolean(budgetRange),
+      hasTimeline: Boolean(timeline)
+    });
   }
 
   return (
@@ -65,6 +74,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       <input type="hidden" name="_subject" value={`${hydratedContext.projectType || "Atelier Marble"} Project Consultation`} />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value={absoluteUrl("/contact/thank-you")} />
       <input type="hidden" name="_replyto" value={contact.includes("@") ? contact : ""} />
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
