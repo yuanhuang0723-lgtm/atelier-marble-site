@@ -21,6 +21,11 @@ export const metadata: Metadata = {
 
 export default function MaterialsPage() {
   const materials = getAssets("materials");
+  const applicationRoutes = [
+    { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.png", alt: "Natural stone countertop reference for kitchen and vanity applications" },
+    { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.png", alt: "Architectural stone reference for hotel and hospitality projects" },
+    { title: "Custom Stone", href: "/custom-stone-fabrication-china", image: "/materials/featured-covers/carving-decor.png", alt: "Custom stone carving reference for design-led interior applications" }
+  ];
 
   return (
     <PageShell>
@@ -38,6 +43,14 @@ export default function MaterialsPage() {
                 The archive is a visual starting point, not a promise of stock or a substitute for a current slab
                 check. Ask us to confirm availability, thickness, finish, matching, and fabrication suitability.
               </p>
+            </div>
+            <div className="mb-12 grid gap-5 md:grid-cols-3">
+              {applicationRoutes.map((route) => (
+                <Link key={route.href} href={route.href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-2">
+                  <img className="aspect-[16/9] w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.02]" src={route.image} alt={route.alt} loading="lazy" />
+                  <span className="flex items-center justify-between px-3 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink/75"><span>{route.title}</span><span aria-hidden="true">-&gt;</span></span>
+                </Link>
+              ))}
             </div>
             <div className="grid gap-7 md:grid-cols-3">
               {materials.map((asset, index) => (
