@@ -103,7 +103,11 @@ export function cleanCardCopy(text: string, fallback = "") {
 
 export const inquiryProjectTypes = [
   "Hotel & Hospitality Projects",
+  "Commercial Stone Projects",
+  "Kitchen Countertops",
   "Luxury Vanity Tops & Cabinet Panels",
+  "Integrated Stone Sinks & Vanity Basins",
+  "Architectural Stone Interiors",
   "Stone Table & Coffee Table",
   "Custom Furniture & Sculptures"
 ] as const;
