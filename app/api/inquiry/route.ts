@@ -26,9 +26,13 @@ type InquiryRequestBody = {
   phone?: string;
   files?: Array<{ key?: string; name?: string; size?: number }>;
   website?: string;
+  campaign?: Record<string, string>;
 };
 
 function buildMessage(body: InquiryRequestBody) {
+  const campaign = body.campaign && typeof body.campaign === "object"
+    ? Object.entries(body.campaign).filter(([key, value]) => /^(utm_source|utm_medium|utm_campaign|utm_term|utm_content|gclid)$/.test(key) && typeof value === "string").map(([key, value]) => `${key}: ${value.slice(0, 300)}`)
+    : [];
   return [
     "Hello Atelier Marble,",
     "",
@@ -44,6 +48,7 @@ function buildMessage(body: InquiryRequestBody) {
     body.deliveryDate ? `Required delivery date: ${body.deliveryDate}` : "",
     body.materialPreference ? `Material preference: ${body.materialPreference}` : "",
     body.phone ? `WhatsApp / phone: ${body.phone}` : "",
+    campaign.length ? `Campaign: ${campaign.join(" | ")}` : "",
     body.name ? `Name: ${body.name}` : "",
     body.contact ? `Contact: ${body.contact}` : "",
     body.budgetRange ? `Budget range: ${body.budgetRange}` : "",

@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
-import { trackConversionEvent } from "../lib/tracking";
+import { readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
 type InquiryFormProps = {
   context: InquiryContext;
@@ -126,6 +126,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           name, company, contact, country, destinationPort, stoneScope, quantity, deliveryDate,
           materialPreference, phone, budgetRange, timeline, message, projectType,
           intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, files: uploadedFiles
+          , campaign: readStoredCampaign()
         })
       });
       const result = (await response.json()) as { ok?: boolean; message?: string };
