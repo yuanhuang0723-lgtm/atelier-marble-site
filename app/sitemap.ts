@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/countertops/integrated-stone-sinks",
     "/projects/hotel-stone-supply",
     "/projects/commercial-stone",
+    "/projects/canada-shower-niches-2025",
     "/custom-stone-fabrication-china",
     "/resources",
     "/how-we-work",

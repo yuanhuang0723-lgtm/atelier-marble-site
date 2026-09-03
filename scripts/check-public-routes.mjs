@@ -3,7 +3,7 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app").replace(/\/$/, "");
-const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
+const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 
 async function fetchRoute(route) {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
@@ -36,6 +36,9 @@ if (!robots.includes(`${baseUrl}/sitemap.xml`) || !robots.includes(`${baseUrl}/i
 }
 if (!contents.get("/project-brief-template.txt").includes("ATELIER MARBLE PROJECT BRIEF")) {
   throw new Error("project brief template is missing or incomplete");
+}
+if (!contents.get("/projects/canada-shower-niches-2025").includes("Several thousand custom stone shower niches")) {
+  throw new Error("Canada project reference is missing or incomplete");
 }
 for (const header of ["x-content-type-options: nosniff", "x-frame-options: sameorigin", "referrer-policy: strict-origin-when-cross-origin"]) {
   if (!pageHeaders.get("/").includes(header)) throw new Error(`homepage is missing ${header}`);
