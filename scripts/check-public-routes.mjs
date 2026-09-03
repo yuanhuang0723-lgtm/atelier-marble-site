@@ -8,8 +8,11 @@ const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects"
 async function fetchRoute(route) {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
   try {
-    const { stdout } = await execFileAsync(curlCommand, ["--fail", "--silent", "--show-error", "--location", "--max-time", "30", `${baseUrl}${route}`], { maxBuffer: 8 * 1024 * 1024 });
-    return { route, body: stdout };
+    const [{ stdout: body }, { stdout: headerText }] = await Promise.all([
+      execFileAsync(curlCommand, ["--fail", "--silent", "--show-error", "--location", "--max-time", "30", `${baseUrl}${route}`], { maxBuffer: 8 * 1024 * 1024 }),
+      execFileAsync(curlCommand, ["--fail", "--silent", "--show-error", "--location", "--max-time", "30", "--head", `${baseUrl}${route}`], { maxBuffer: 128 * 1024 })
+    ]);
+    return { route, body, headers: headerText.toLowerCase() };
   } catch (error) {
     throw new Error(`${route} could not be fetched: ${error instanceof Error ? error.message : String(error)}`);
   }
@@ -17,6 +20,7 @@ async function fetchRoute(route) {
 
 const pages = await Promise.all(routes.map(fetchRoute));
 const contents = new Map(pages.map(({ route, body }) => [route, body]));
+const pageHeaders = new Map(pages.map(({ route, headers }) => [route, headers]));
 const sitemap = contents.get("/sitemap.xml");
 const imageSitemap = contents.get("/image-sitemap.xml");
 const robots = contents.get("/robots.txt");
@@ -32,6 +36,12 @@ if (!robots.includes(`${baseUrl}/sitemap.xml`) || !robots.includes(`${baseUrl}/i
 }
 if (!contents.get("/project-brief-template.txt").includes("ATELIER MARBLE PROJECT BRIEF")) {
   throw new Error("project brief template is missing or incomplete");
+}
+for (const header of ["x-content-type-options: nosniff", "x-frame-options: sameorigin", "referrer-policy: strict-origin-when-cross-origin"]) {
+  if (!pageHeaders.get("/").includes(header)) throw new Error(`homepage is missing ${header}`);
+}
+if (!pageHeaders.get("/project-brief-template.txt").includes("content-disposition: attachment")) {
+  throw new Error("project brief template is not served as an attachment");
 }
 
 console.log(`Public route check passed for ${pages.length} routes at ${baseUrl}`);
