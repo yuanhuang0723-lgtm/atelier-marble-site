@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import AssetCard from "../../components/AssetCard";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
@@ -40,6 +41,7 @@ export default async function ProjectsPage({
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project References", path: "/projects" }]} />
         <PageHero
           eyebrow="Project references"
           title="Project references that qualify fit before pricing."

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
@@ -30,6 +31,7 @@ export default function MaterialsPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Materials", path: "/materials" }]} />
         <PageHero
           eyebrow="Material reference library"
           title="Review stone character before specifying a project."

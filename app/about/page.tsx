@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact, getAssets } from "../../lib/assets";
@@ -25,6 +26,7 @@ export default function AboutPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }]} />
         <PageHero
           eyebrow="Company profile"
           title="Built for export buyers who need dependable stone supply."

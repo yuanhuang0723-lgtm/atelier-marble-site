@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
@@ -52,6 +53,7 @@ export default function FactoryPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <PageHero
           eyebrow="Capability proof"
           title="Factory direct supply, presented with restraint."
