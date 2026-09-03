@@ -104,7 +104,7 @@ export default function ContactPage() {
                   <Link className="text-cta-luxury" href="/materials">
                     Compare Material Options
                   </Link>
-                  <Link className="text-cta-luxury" href="/hotel-projects">
+                  <Link className="text-cta-luxury" href="/projects/hotel-stone-supply">
                     Check Hotel Project Fit
                   </Link>
                 </div>

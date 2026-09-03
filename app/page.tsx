@@ -24,28 +24,28 @@ export const metadata: Metadata = {
 const buyerIntentCards = [
   {
     title: "Stone Countertop & Coffee Table",
-    href: "/architectural-stone-interiors",
+    href: "/countertops",
     image: "/assets/home-top-cover.png",
     alt: "Ultra realistic luxury stone dining table and stone countertop in a premium modern interior",
     question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
   },
   {
     title: "Cabinet Panels + Vanity Tops",
-    href: "/luxury-residential-kitchens",
+    href: "/countertops/vanity-tops",
     image: "/assets/vanity-cabinet/cover.png",
     alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",
     question: "STONE VANITY TOP AND CABINET PANEL REFERENCE."
   },
   {
     title: "Custom Stone Sculptures",
-    href: "/custom-furniture-sculptures",
+    href: "/custom-stone-fabrication-china",
     image: "/assets/carving-decor/cover.png",
     alt: "Ultra realistic luxury stone carving sculpture in a premium showroom setting",
     question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
   },
   {
     title: "Hotel & Hospitality Projects",
-    href: "/hotel-hospitality-projects",
+    href: "/projects/hotel-stone-supply",
     image: "/materials/categories/hotel-projects.png",
     alt: "Luxury hotel stone project with marble flooring and wall cladding",
     question: "HOTEL PROJECT SUPPLY FOR DEVELOPERS, CONTRACTORS, AND PROCUREMENT TEAMS."
@@ -80,7 +80,7 @@ export default function HomePage() {
           name: siteName,
           url: absoluteUrl("/"),
           description:
-            "Luxury marble supplier and architectural stone design studio for bespoke natural stone manufacturing and export projects."
+            "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers."
         }}
       />
       <main>
@@ -185,7 +185,7 @@ export default function HomePage() {
                   </Link>
                 ))}
               </div>
-              <Link className="buyer-intent-feature group" href="/hotel-hospitality-projects">
+              <Link className="buyer-intent-feature group" href="/projects/hotel-stone-supply">
                 <div className="buyer-intent-feature__media">
                   <img
                     className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.02]"
@@ -289,7 +289,7 @@ export default function HomePage() {
                 <Link
                   key={`${item.asset.category}-${item.asset.filename}`}
                   className="reference-card group"
-                  href={item.asset.category === "factory" ? "/factory" : item.asset.category === "coffee-table" ? "/marble-coffee-tables" : item.asset.category === "carving-decor" ? "/stone-sculptures" : "/kitchen-countertops"}
+                  href={item.asset.category === "factory" ? "/factory" : item.asset.category === "coffee-table" ? "/marble-coffee-tables" : item.asset.category === "carving-decor" ? "/custom-stone-fabrication-china" : "/countertops"}
                 >
                   <div className="reference-card__media">
                     <img
