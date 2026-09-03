@@ -2,6 +2,9 @@
   "name": "atelier-marble",
   "version": "1.0.0",
   "private": true,
+  "overrides": {
+    "brace-expansion": "5.0.9"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -21,22 +24,22 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1125.0",
     "@aws-sdk/s3-request-presigner": "^3.1125.0",
-    "@opennextjs/cloudflare": "^1.19.11",
+    "@opennextjs/cloudflare": "^1.20.6",
     "lucide-react": "^0.468.0",
-    "next": "^15.0.4",
+    "next": "^16.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@types/node": "^25.9.3",
     "@types/react": "^19.2.17",
     "autoprefixer": "^10.5.0",
     "eslint": "^9.15.0",
-    "eslint-config-next": "^15.0.4",
-    "postcss": "^8.5.15",
+    "eslint-config-next": "^16.3.4",
+    "postcss": "^8.5.28",
     "tailwindcss": "^3.4.17",
     "typescript": "^6.0.3",
-    "wrangler": "^4.103.0"
+    "wrangler": "^4.129.0"
   }
 }
