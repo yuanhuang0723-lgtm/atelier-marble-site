@@ -3,11 +3,13 @@ import { Menu } from "lucide-react";
 
 const navItems = [
   ["Home", "/"],
-  ["Hotel", "/hotel-hospitality-projects"],
-  ["Kitchen & Bathroom", "/luxury-residential-kitchens"],
-  ["Stone Furniture", "/materials"],
-  ["Sculptures", "/custom-furniture-sculptures"],
-  ["Inquiry", "/contact"]
+  ["Projects", "/projects"],
+  ["Countertops & Vanity", "/countertops"],
+  ["Architectural Stone", "/architectural-stone-interiors"],
+  ["Materials", "/materials"],
+  ["Custom Stone", "/custom-stone-fabrication-china"],
+  ["Resources", "/resources"],
+  ["Get a Quote", "/contact"]
 ] as const;
 
 export default function Nav() {

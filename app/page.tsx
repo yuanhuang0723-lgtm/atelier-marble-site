@@ -6,9 +6,9 @@ import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/ass
 import { absoluteUrl, siteName } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Luxury Stone Supplier China for Hotel Projects",
+  title: "Custom Stone Fabrication & Project Supply from Yunfu",
   description:
-    "Atelier Marble is a luxury stone supplier in China for hotel projects, stone slab supply, custom fabrication, marble countertops, coffee tables, and sculptures.",
+    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: "Atelier Marble | Luxury Stone Supplier China",
@@ -96,19 +96,18 @@ export default function HomePage() {
                 Atelier Marble
               </p>
               <h1 className="hero-architectural__title hero-architectural__title--home">
-                Luxury Stone Supplier China for Architecture &amp; Hotel Projects
+                Custom Stone Fabrication &amp; Project Supply from Yunfu, China
               </h1>
               <p className="hero-architectural__copy mx-auto max-w-2xl">
-                A project-focused marble partner for developers, architects, designers, and contractors who need
-                premium stone slab supply, hotel stone fabrication, custom stone countertops, coffee tables, and
-                export-ready execution.
+                For hotel contractors, architects, developers, and importers. Send your CAD, BOQ, or dimensions for
+                material review, fabrication planning, and export quotation.
               </p>
               <div className="hero-architectural__actions hero-architectural__actions--center">
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href="/contact">
-                  Discuss Your Project
+                  Upload CAD / BOQ for Quote
                 </Link>
                 <Link className="btn-luxury-inverse" href="/projects">
-                  Request Project Pricing
+                  View Real Projects
                 </Link>
                 <Link className="btn-luxury-inverse" href="/how-we-work">
                   How We Work

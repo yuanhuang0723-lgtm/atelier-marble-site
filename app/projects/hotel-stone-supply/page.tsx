@@ -1,0 +1,7 @@
+import type { Metadata } from "next";
+import CommercialLandingPage from "../../../components/CommercialLandingPage";
+import { absoluteUrl } from "../../../lib/seo";
+
+export const metadata: Metadata = { title: "Hotel Stone Supply & Fabrication", description: "Hotel and hospitality stone supply from Yunfu, China, including vanity tops, lobby stone, countertops, wall cladding, and export packing.", alternates: { canonical: absoluteUrl("/projects/hotel-stone-supply") } };
+
+export default function HotelStoneSupplyPage() { return <CommercialLandingPage eyebrow="Hotel project supply" title="Stone fabrication support for hospitality projects." description="For developers, procurement teams, contractors, and designers who need coordinated material review, fabrication, QC, packing, and delivery planning." image="/materials/categories/hotel-projects.png" imageAlt="Hotel interior with architectural stone surfaces and hospitality project detailing" bullets={["Review project scope, drawings, quantities, and destination before pricing", "Coordinate vanity tops, countertops, lobby surfaces, and custom stone elements", "Keep material, fabrication, QC, and packing decisions connected", "Use a structured inquiry to reduce avoidable quotation gaps"]} details={["Hotel bathroom and vanity packages", "Lobby, reception, and public-area stone", "Commercial countertops and wall applications", "Custom stone elements for hospitality interiors"]} metadata={metadata} />; }

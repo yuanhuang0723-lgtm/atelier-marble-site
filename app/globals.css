@@ -90,18 +90,26 @@ video {
     @apply flex flex-col gap-3 px-5 py-4 md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:py-8;
   }
 
+  .site-nav__bar {
+    min-width: 0;
+  }
+
   .site-nav__logo {
     @apply font-title text-[1rem] font-medium uppercase leading-none tracking-[0.34em] text-[var(--color-ink)] md:text-[1.12rem];
     white-space: nowrap;
   }
 
   .site-nav__menu {
-    @apply flex items-center gap-5 lg:gap-7;
+    @apply flex min-w-0 items-center gap-4 lg:gap-5;
     white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
+  .site-nav__menu::-webkit-scrollbar { display: none; }
+
   .site-nav__link {
-    @apply font-body text-[0.9rem] font-medium uppercase leading-none tracking-[0.16em] text-[rgba(31,27,24,0.74)] transition duration-300;
+    @apply shrink-0 font-body text-[0.78rem] font-medium uppercase leading-none tracking-[0.12em] text-[rgba(31,27,24,0.74)] transition duration-300;
     white-space: nowrap;
   }
 

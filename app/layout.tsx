@@ -19,12 +19,12 @@ const bodyFont = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "Atelier Marble | Luxury Marble Supplier",
+    title: {
+    default: "Atelier Marble | Custom Stone Fabrication & Project Supply",
     template: "%s | Atelier Marble"
   },
   description:
-    "Luxury marble supplier and architectural stone design studio for bespoke natural stone projects worldwide.",
+    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
   keywords: [
     "stone supplier China",
     "stone slab supplier China",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName,
-    title: "Atelier Marble | Luxury Marble Supplier",
+    title: "Atelier Marble | Custom Stone Fabrication & Project Supply",
     description:
-      "Premium architectural stone design studio for custom countertops, hotel stone fabrication, marble furniture, and bespoke natural stone.",
+      "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
     url: siteUrl,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.png"), width: 1536, height: 1024 }]
   }

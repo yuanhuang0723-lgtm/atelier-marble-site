@@ -10,6 +10,13 @@ export type ConversionEventPayload = {
   hasBudget?: boolean;
   hasTimeline?: boolean;
   hasDrawings?: boolean;
+  hasFiles?: boolean;
+  fileCount?: number;
+  country?: string;
+  hasCompany?: boolean;
+  hasDestination?: boolean;
+  hasQuantity?: boolean;
+  landingPage?: string;
 };
 
 export type VisitorEventPayload = {

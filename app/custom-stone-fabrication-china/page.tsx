@@ -1,0 +1,7 @@
+import type { Metadata } from "next";
+import CommercialLandingPage from "../../components/CommercialLandingPage";
+import { absoluteUrl } from "../../lib/seo";
+
+export const metadata: Metadata = { title: "Custom Stone Fabrication China", description: "Bespoke stone fabrication in Yunfu, China for furniture, sculptures, architectural accents, and export projects.", alternates: { canonical: absoluteUrl("/custom-stone-fabrication-china") } };
+
+export default function CustomStoneFabricationPage() { return <CommercialLandingPage eyebrow="Custom stone" title="Bespoke stone fabrication for considered interior details." description="Furniture, sculptural forms, and architectural stone elements developed from drawings, reference images, or a clear design direction." image="/materials/featured-covers/carving-decor.png" imageAlt="Custom carved stone form prepared for an interior design project" bullets={["Develop scope from drawings, dimensions, or reference imagery", "Coordinate material character with the intended form and finish", "Review practical fabrication and packing requirements before pricing", "Suitable for furniture, sculpture, and architectural accents"]} details={["Stone furniture and tabletop forms", "Carved stone sculptures and decor", "Architectural accents and feature pieces", "Custom fabrication with export preparation"]} metadata={metadata} />; }
