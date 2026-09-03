@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import CommercialLandingPage from "../../../components/CommercialLandingPage";
-import { absoluteUrl } from "../../../lib/seo";
+import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Integrated Stone Sinks & Vanity Basins",
   description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, and export packing.",
-  alternates: { canonical: absoluteUrl("/countertops/integrated-stone-sinks") }
+  alternates: { canonical: absoluteUrl("/countertops/integrated-stone-sinks") },
+  openGraph: { title: "Integrated Stone Sinks & Vanity Basins", description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, and export packing.", url: absoluteUrl("/countertops/integrated-stone-sinks"), siteName, images: [{ url: absoluteUrl("/assets/vanity-cabinet/hero.png") }] }
 };
 
 export default function IntegratedStoneSinksPage() {
