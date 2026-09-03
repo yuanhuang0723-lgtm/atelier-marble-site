@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stone Projects for Hotels & High-Value Interiors",
     description:
-      "Explore real enhanced project references from an architectural stone design studio and bespoke natural stone manufacturer.",
+      "Explore visual project references from an architectural stone design studio and bespoke natural stone manufacturer.",
     url: absoluteUrl("/projects"),
     siteName
   }
@@ -43,12 +43,12 @@ export default async function ProjectsPage({
         <PageHero
           eyebrow="Project references"
           title="Project references that qualify fit before pricing."
-          description="Browse real references across hospitality stone work, luxury kitchens, architectural interiors, furniture, and carved stone decor."
+          description="Browse visual references across hospitality stone work, luxury kitchens, architectural interiors, furniture, and carved stone decor."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
-              <h2 className="heading-lg section-intro__title">Browse real stone project references.</h2>
+              <h2 className="heading-lg section-intro__title">Browse stone project references.</h2>
             </div>
             <div className="mb-12 flex flex-wrap gap-3">
               {filters.map((filter) => (

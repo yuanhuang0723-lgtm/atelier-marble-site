@@ -19,7 +19,8 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
             <img
               className="absolute inset-0 h-full w-full object-cover object-center"
               src={page.heroImage}
-              alt={page.heroAlt || page.title}
+              alt={`${page.heroAlt || page.title} for ${page.eyebrow}`}
+              fetchPriority="high"
             />
             <div className="hero-overlay absolute inset-0" />
             <div className="hero-architectural__content hero-architectural__content--center container-luxury min-h-[78vh] pb-24 pt-40">
@@ -51,7 +52,7 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
                     <img
                       className="block h-auto w-full object-contain object-center transition duration-500 group-hover:scale-[1.02]"
                       src={item.src}
-                      alt={item.alt}
+                      alt={`${item.alt}. ${item.caption}`}
                       loading="lazy"
                     />
                   </div>
