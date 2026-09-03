@@ -2,9 +2,6 @@
   "name": "atelier-marble",
   "version": "1.0.0",
   "private": true,
-  "overrides": {
-    "brace-expansion": "5.0.9"
-  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -34,8 +31,8 @@
   "devDependencies": {
     "@types/node": "^25.9.3",
     "@types/react": "^19.2.17",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^9.15.0",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.4",
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.17",
