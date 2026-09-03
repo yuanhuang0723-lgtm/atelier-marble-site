@@ -86,6 +86,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     trackConversionEvent("file_upload_started", { sourcePage: hydratedContext.sourcePage, projectType, hasDrawings: true });
     const uploaded: Array<{ key: string; name: string; size: number }> = [];
     for (const file of files) {
+      setStatus(`Uploading ${file.name}...`);
       const response = await fetch("/api/inquiry/upload-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -101,6 +102,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       if (!upload.ok) throw new Error(`Could not upload ${file.name}.`);
       uploaded.push({ key: signed.key, name: file.name, size: file.size });
     }
+    setStatus("Files uploaded. Sending your inquiry...");
     trackConversionEvent("file_upload_completed", { sourcePage: hydratedContext.sourcePage, projectType, hasDrawings: true });
     return uploaded;
   }
@@ -109,7 +111,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     event.preventDefault();
     if (submitting) return;
     setSubmitting(true);
-    setStatus("");
+    setStatus("Preparing your inquiry...");
     try {
       const uploadedFiles = await uploadFiles();
       const response = await fetch("/api/inquiry", {
