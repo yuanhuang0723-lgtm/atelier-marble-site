@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import { ClipboardList, FileText, PackageCheck, ShieldCheck, MessageSquareQuote, Layers3 } from "lucide-react";
 import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
@@ -18,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "A clear export-buyer workflow for stone quotation, material selection, fabrication review, and packing coordination.",
     url: absoluteUrl("/how-we-work"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.png") }]
   }
 };
 
@@ -106,6 +108,7 @@ export default function HowWeWorkPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "How We Work", path: "/how-we-work" }]} />
         <JsonLd data={faqSchema} />
         <PageHero
           eyebrow="Export buyer workflow"
