@@ -91,7 +91,7 @@ export default function AdsLandingPage({
                 <h2 className="heading-lg project-proof-heading section-intro__title md:mx-0">{proofTitle}</h2>
                 <p className="body-luxury section-intro__copy md:mx-0">{proofCopy}</p>
                 <Link className="text-cta-luxury mt-8" href="/projects">
-                  Review Real Project References
+                Review Project References
                 </Link>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">

@@ -25,19 +25,19 @@ function getKitchenCountertopAssets(): Asset[] {
       alt: "natural stone countertop and coffee table reference",
       categoryLabel: "STONE COUNTERTOP & COFFEE TABLE",
       description:
-        "Real local stone countertop and coffee table reference showing natural veining, table shapes, and finished fabrication quality."
+        "Visual stone countertop and coffee table reference showing natural veining, table shapes, and finished fabrication details."
     }));
 }
 
 export const metadata: Metadata = {
   title: "Stone Countertop & Coffee Table",
   description:
-    "Natural stone countertop and coffee table references with real local fabrication images for residential, hospitality, and commercial projects.",
+    "Natural stone countertop and coffee table references with fabrication images for residential, hospitality, and commercial projects.",
   alternates: { canonical: absoluteUrl("/kitchen-countertops") },
   openGraph: {
     title: "Stone Countertop & Coffee Table",
     description:
-      "Real local stone countertop and coffee table references with export-ready fabrication details and finished surface quality.",
+      "Visual countertop and coffee table references with export-ready fabrication details and finished surface quality.",
     url: absoluteUrl("/kitchen-countertops"),
     siteName,
     images: [
@@ -64,8 +64,8 @@ export default function KitchenCountertopsPage() {
         "custom natural stone tables",
         "export-ready countertop production"
       ]}
-      proofTitle="Real countertop and coffee table references."
-      proofCopy="Use this page to review local countertop and coffee table material references, shape variations, edge finishing, and real production quality before requesting pricing."
+      proofTitle="Countertop and coffee table references."
+      proofCopy="Use this page to review countertop and coffee table material references, shape variations, edge finishing, and fabrication details before requesting pricing."
       gallery={getKitchenCountertopAssets()}
       projectType="Stone Countertop & Coffee Table"
       sourcePath="/kitchen-countertops"

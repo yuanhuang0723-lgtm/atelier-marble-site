@@ -111,7 +111,7 @@ export default function HomePage() {
                   Upload CAD / BOQ for Quote
                 </Link>
                 <Link className="btn-luxury-inverse" href="/projects">
-                  View Real Projects
+                  View Project References
                 </Link>
                 <Link className="btn-luxury-inverse" href="/how-we-work">
                   How We Work
