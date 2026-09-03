@@ -46,6 +46,15 @@ export default function MaterialsPage() {
                 check. Ask us to confirm availability, thickness, finish, matching, and fabrication suitability.
               </p>
             </div>
+            <div className="mb-12 grid gap-4 md:grid-cols-3">
+              {["Marble", "Granite", "Quartzite"].map((family) => (
+                <article key={family} className="rounded-[14px] border border-ink/10 bg-stone px-6 py-5">
+                  <p className="eyebrow-luxury">Material family</p>
+                  <h2 className="mt-3 text-left font-title text-[1.45rem] font-medium uppercase tracking-[0.04em] text-ink">{family}</h2>
+                  <p className="mt-2 text-sm leading-6 text-ink/62">Available options and current lots should be confirmed against the project specification before quotation.</p>
+                </article>
+              ))}
+            </div>
             <div className="mb-12 grid gap-5 md:grid-cols-3">
               {applicationRoutes.map((route) => (
                 <Link key={route.href} href={route.href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-2">

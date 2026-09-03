@@ -9,7 +9,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Atelier Marble, a Yunfu-based luxury stone design studio focused on export-ready natural stone projects.",
+    "Learn about Atelier Marble, a Yunfu-based project stone supplier coordinating marble, granite, quartzite, fabrication, and export delivery.",
   alternates: { canonical: absoluteUrl("/about") },
   openGraph: {
     title: "About Us",
@@ -39,8 +39,9 @@ export default function AboutPage() {
                 <p className="eyebrow-luxury">Yunfu-based project supply</p>
                 <h2 className="heading-lg text-left">A practical stone partner for international projects.</h2>
                 <p className="body-luxury max-w-2xl">
-                  Atelier Marble supports overseas buyers with project references, material guidance, quotation
-                  preparation, and practical production coordination. The working brief can begin with a drawing, BOQ,
+                  Atelier Marble coordinates a directly managed factory supply chain in Yunfu for overseas buyers. We
+                  support project references, material guidance, quotation preparation, and practical production
+                  coordination. The working brief can begin with a drawing, BOQ,
                   dimensions, or a clear material direction.
                 </p>
                 <p className="body-luxury max-w-2xl">

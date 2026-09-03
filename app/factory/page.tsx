@@ -83,6 +83,18 @@ export default function FactoryPage() {
                 </article>
               ))}
             </div>
+            <article className="mb-10 grid gap-6 rounded-[14px] border border-ink/10 bg-stone p-7 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+              <div>
+                <p className="eyebrow-luxury">Selected project reference</p>
+                <h2 className="mt-3 text-left font-title text-[1.8rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">Canada · 2025</h2>
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-ink/55">Several thousand custom stone shower niches</p>
+              </div>
+              <div className="grid gap-3 text-sm leading-7 text-ink/68 md:grid-cols-3">
+                <p><strong className="block text-ink">Drawing work</strong>CAD detailing, drawing breakdown, shop drawings, and cut lists.</p>
+                <p><strong className="block text-ink">Production</strong>Repeat-unit coordination across a multi-batch fabrication program.</p>
+                <p><strong className="block text-ink">Status</strong>Presented as a project reference from the Atelier Marble capability catalogue.</p>
+              </div>
+            </article>
             <div className="factory-gallery grid gap-7 md:grid-cols-4">
               {images.map((asset, index) => (
                 <article
