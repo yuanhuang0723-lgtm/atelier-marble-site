@@ -319,6 +319,38 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">From drawing to delivery</p>
+              <h2 className="heading-lg section-intro__title">A clearer route for project stone.</h2>
+              <p className="body-luxury section-intro__copy">
+                Share the information you already have. Each step keeps the material, fabrication, quality, and export
+                discussion connected.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-5">
+              {[
+                ["01", "Review", "CAD, BOQ, dimensions, quantity, and destination."],
+                ["02", "Match", "Material direction, tone, finish, and application."],
+                ["03", "Plan", "Fabrication details, edges, cut-outs, and scope."],
+                ["04", "Inspect", "Dimensions, surface details, and finished work."],
+                ["05", "Prepare", "Protective packing and delivery coordination."]
+              ].map(([number, title, copy]) => (
+                <article key={number} className="border-t border-ink/15 pt-4 text-left">
+                  <p className="eyebrow-luxury">{number}</p>
+                  <h3 className="mt-4 text-left font-title text-[1.15rem] font-medium uppercase leading-tight tracking-[0.04em] text-ink">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-ink/62">{copy}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
+              <Link className="text-cta-luxury self-center" href="/how-we-work">See How We Work</Link>
+            </div>
+          </div>
+        </section>
+
         <section className="section-luxury-compact bg-paper text-center">
           <h2 className="heading-lg mx-auto max-w-3xl">Discuss your project requirements.</h2>
           <p className="body-luxury mx-auto mt-4 max-w-2xl">
