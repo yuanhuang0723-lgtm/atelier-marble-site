@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
 import { readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
@@ -140,6 +141,11 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     setStatus("");
   }
 
+  function removeFile(index: number) {
+    setFiles((current) => current.filter((_, fileIndex) => fileIndex !== index));
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
   return (
     <form
       className="card-luxury mx-auto grid w-full max-w-[44rem] gap-4 p-5 md:max-w-[48rem] md:gap-4 md:p-6"
@@ -233,6 +239,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         <input ref={fileInputRef} className="sr-only" type="file" multiple accept=".pdf,.dwg,.dxf,.xlsx,.xls,.jpg,.jpeg,.png,.zip" onChange={handleFiles} />
         <button type="button" className="flex min-h-12 items-center justify-between rounded-[12px] border border-dashed border-ink/25 bg-[var(--color-paper)] px-4 text-left text-[14px] font-normal normal-case tracking-normal text-ink/65 hover:border-ink/50" onClick={() => fileInputRef.current?.click()}><span>{files.length ? `${files.length} file${files.length > 1 ? "s" : ""} selected` : "Choose up to 5 files"}</span><span className="text-xs uppercase tracking-[0.12em]">Browse</span></button>
         <span className="text-xs font-normal normal-case tracking-normal text-ink/50">PDF, DWG, DXF, XLSX, JPG, PNG or ZIP. 25 MB per file.</span>
+        {files.length ? <ul className="grid gap-2" aria-label="Selected files">{files.map((file, index) => <li key={`${file.name}-${file.lastModified}`} className="flex min-w-0 items-center justify-between gap-3 rounded-[10px] border border-ink/10 bg-stone/50 px-3 py-2 text-xs text-ink/70"><span className="min-w-0 truncate">{file.name} <span className="text-ink/45">({(file.size / 1024 / 1024).toFixed(1)} MB)</span></span><button type="button" className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/55 hover:border-ink/30 hover:text-ink" aria-label={`Remove ${file.name}`} title={`Remove ${file.name}`} onClick={() => removeFile(index)}><X className="h-3.5 w-3.5" aria-hidden="true" /></button></li>)}</ul> : null}
       </label>
       <div className="grid gap-3 md:grid-cols-1">
         <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
