@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Atelier Marble | Luxury Stone Supplier China",
+    title: "Atelier Marble | Custom Stone Fabrication & Project Supply",
     description:
       "Architectural stone supplier in China for hotel projects, stone slabs, countertops, coffee tables, and custom stone fabrication.",
     url: absoluteUrl("/"),
@@ -273,11 +273,11 @@ export default function HomePage() {
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
               <h2 className="heading-lg section-intro__title project-proof-heading">
-                Project proof that supports pricing decisions.
+                Project references that support pricing decisions.
               </h2>
               <p className="body-luxury section-intro__copy">
-                Enhanced from local source images, these references preserve real stone texture, fabrication evidence,
-                and the context buyers need before requesting similar project pricing.
+                These visual references help buyers compare material character, scale, and intended application before
+                requesting a quotation. Confirm current material, dimensions, and production details with the team.
               </p>
             </div>
             <div className="grid gap-5 lg:grid-cols-2">

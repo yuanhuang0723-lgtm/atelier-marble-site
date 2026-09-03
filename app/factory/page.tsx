@@ -67,6 +67,20 @@ export default function FactoryPage() {
                 design studio with export manufacturing capability, not a thin catalog site.
               </p>
             </div>
+            <div className="mb-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["01", "Scope review", "Drawings, quantities, material direction, and destination are checked before a quotation path is proposed."],
+                ["02", "Fabrication", "Cutting, shaping, edge finishing, and surface work are coordinated around the approved scope."],
+                ["03", "Quality review", "Dimensions, finish, visible surface character, and project details are reviewed before packing."],
+                ["04", "Export preparation", "Finished pieces are protected, grouped, and prepared for the agreed delivery plan."]
+              ].map(([number, title, copy]) => (
+                <article key={number} className="card-luxury bg-stone p-6">
+                  <p className="eyebrow-luxury">{number}</p>
+                  <h2 className="mt-4 text-left font-title text-[1.28rem] font-medium uppercase leading-tight tracking-[0.04em] text-ink">{title}</h2>
+                  <p className="mt-3 text-sm leading-7 text-ink/65">{copy}</p>
+                </article>
+              ))}
+            </div>
             <div className="factory-gallery grid gap-7 md:grid-cols-4">
               {images.map((asset, index) => (
                 <article
