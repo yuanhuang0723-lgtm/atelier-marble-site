@@ -3,7 +3,7 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app").replace(/\/$/, "");
-const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/architectural-stone", "/custom-stone-fabrication-china", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
+const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 
 async function fetchRoute(route) {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
@@ -42,6 +42,11 @@ for (const header of ["x-content-type-options: nosniff", "x-frame-options: sameo
 }
 if (!pageHeaders.get("/project-brief-template.txt").includes("content-disposition: attachment")) {
   throw new Error("project brief template is not served as an attachment");
+}
+for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/countertops", "/countertops/vanity-tops", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
+  if (!/<link[^>]+rel="canonical"[^>]+href="https:\/\/atelier-marble-site\.vercel\.app(?:\/|"|\?)/i.test(contents.get(route))) {
+    throw new Error(`${route} is missing a canonical URL`);
+  }
 }
 
 console.log(`Public route check passed for ${pages.length} routes at ${baseUrl}`);
