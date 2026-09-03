@@ -3,7 +3,7 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app").replace(/\/$/, "");
-const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/architectural-stone", "/custom-stone-fabrication-china", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
+const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/architectural-stone", "/custom-stone-fabrication-china", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 
 async function fetchRoute(route) {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
@@ -29,6 +29,9 @@ if (!imageSitemap.includes("<image:loc>") || !imageSitemap.includes(`${baseUrl}/
 }
 if (!robots.includes(`${baseUrl}/sitemap.xml`) || !robots.includes(`${baseUrl}/image-sitemap.xml`)) {
   throw new Error("robots.txt does not reference both sitemaps");
+}
+if (!contents.get("/project-brief-template.txt").includes("ATELIER MARBLE PROJECT BRIEF")) {
+  throw new Error("project brief template is missing or incomplete");
 }
 
 console.log(`Public route check passed for ${pages.length} routes at ${baseUrl}`);
