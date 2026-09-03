@@ -155,13 +155,18 @@ export async function POST(request: Request) {
   payload.set("files", fileLinks.join("\n"));
   payload.set("body", `${buildMessage(body)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`);
 
-  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json"
-    },
-    body: payload
-  });
+  let response: Response;
+  try {
+    response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: payload,
+      signal: AbortSignal.timeout(15000)
+    });
+  } catch (error) {
+    console.error("Inquiry email delivery failed", error instanceof Error ? error.message : "unknown error");
+    return NextResponse.json({ ok: false, message: "The inquiry service is temporarily unavailable. Please try again or use WhatsApp." }, { status: 502 });
+  }
 
   const text = await response.text();
 

@@ -69,8 +69,13 @@ export async function POST(request: Request) {
     ContentLength: size,
     Metadata: { originalName: name.slice(0, 180) }
   });
-  const uploadUrl = await getSignedUrl(client, command, { expiresIn: 900 });
+  let uploadUrl: string;
+  try {
+    uploadUrl = await getSignedUrl(client, command, { expiresIn: 900 });
+  } catch (error) {
+    console.error("R2 upload URL generation failed", error instanceof Error ? error.message : "unknown error");
+    return NextResponse.json({ ok: false, message: "File upload is temporarily unavailable. Please try again." }, { status: 502 });
+  }
 
   return NextResponse.json({ ok: true, key, uploadUrl, expiresAt: new Date(Date.now() + 900000).toISOString() });
 }
-
