@@ -32,7 +32,8 @@ export default function PrivacyPolicyPage() {
               <h2 className="heading-lg">Information we collect</h2>
               <p className="body-luxury">
                 When you submit an inquiry, we may collect your name, email address, phone number, project details,
-                drawings, budget range, and timeline so we can respond accurately.
+                drawings, BOQ files, budget range, and timeline so we can respond accurately. Uploaded project files
+                are stored privately for quotation review and are not published as website content.
               </p>
               <p className="body-luxury">
                 We also use Google Analytics 4 to measure page views and traffic sources. This helps us understand
@@ -40,7 +41,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p className="body-luxury">
                 We do not sell personal information. Inquiry data is used only for project communication, quotation,
-                and service follow-up.
+                and service follow-up. Private file links sent for review expire after seven days; stored inquiry files
+                are retained only as long as needed for project communication and operational record keeping.
               </p>
               <p className="body-luxury">
                 For privacy questions, contact us through the inquiry page or the email addresses listed in the footer.
