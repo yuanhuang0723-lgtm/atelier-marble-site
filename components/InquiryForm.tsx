@@ -81,20 +81,35 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     });
   }
 
+  async function requestWithRetry(input: RequestInfo | URL, init: RequestInit, attempts = 2) {
+    let lastError: unknown;
+    for (let attempt = 0; attempt < attempts; attempt += 1) {
+      try {
+        const response = await fetch(input, init);
+        if (response.ok || attempt === attempts - 1) return response;
+      } catch (error) {
+        lastError = error;
+        if (attempt === attempts - 1) throw error;
+      }
+      await new Promise((resolve) => window.setTimeout(resolve, 500 * (attempt + 1)));
+    }
+    throw lastError instanceof Error ? lastError : new Error("Request failed.");
+  }
+
   async function uploadFiles() {
     if (!files.length) return [];
     trackConversionEvent("file_upload_started", { sourcePage: hydratedContext.sourcePage, projectType, hasDrawings: true });
     const uploaded: Array<{ key: string; name: string; size: number }> = [];
     for (const file of files) {
       setStatus(`Uploading ${file.name}...`);
-      const response = await fetch("/api/inquiry/upload-url", {
+      const response = await requestWithRetry("/api/inquiry/upload-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: file.name, type: file.type, size: file.size })
       });
       const signed = (await response.json()) as { ok?: boolean; message?: string; key?: string; uploadUrl?: string };
       if (!response.ok || !signed.ok || !signed.key || !signed.uploadUrl) throw new Error(signed.message || "File upload failed.");
-      const upload = await fetch(signed.uploadUrl, {
+      const upload = await requestWithRetry(signed.uploadUrl, {
         method: "PUT",
         headers: { "Content-Type": file.type },
         body: file
