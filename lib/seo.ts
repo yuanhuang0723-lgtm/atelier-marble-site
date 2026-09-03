@@ -20,7 +20,7 @@ export function organizationJsonLd() {
     url: siteUrl,
     logo: absoluteUrl("/icon.svg"),
     description:
-      "Luxury architectural stone design studio and bespoke natural stone manufacturer for kitchens, hotels, furniture, and export projects.",
+      "Custom stone fabrication and project supply from Yunfu, China for hotel, commercial, countertop, vanity, and architectural stone projects.",
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.address,

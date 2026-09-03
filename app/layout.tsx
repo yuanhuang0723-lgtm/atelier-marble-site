@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     "hotel stone fabrication supplier",
     "luxury marble supplier",
     "custom stone countertops China",
+    "marble vanity tops manufacturer",
+    "integrated stone sinks supplier",
+    "commercial stone fabrication China",
     "architectural stone design studio",
     "bespoke natural stone manufacturer",
     "custom stone sculptures"
