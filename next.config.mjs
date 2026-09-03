@@ -7,6 +7,13 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/project-brief-template.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Content-Disposition", value: "attachment; filename=atelier-marble-project-brief.txt" }
+        ]
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
