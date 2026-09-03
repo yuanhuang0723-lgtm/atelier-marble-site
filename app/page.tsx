@@ -88,6 +88,8 @@ export default function HomePage() {
             className="absolute inset-0 h-full w-full object-cover"
             src="/materials/hero/atelier-marble-luxury-hero.png"
             alt="Ultra realistic luxury marble architectural interior for Atelier Marble"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="hero-overlay absolute inset-0" />
           <div className="hero-architectural__content hero-architectural__content--center container-luxury">

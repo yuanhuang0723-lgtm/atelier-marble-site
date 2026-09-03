@@ -45,7 +45,7 @@ export default function FactoryPage() {
       ...fallback,
       filename: `workshop-local-${index + 1}`,
       src: sources[index] ?? fallback.src,
-      alt: fallback.alt
+      alt: `Workshop production reference ${String(index + 1).padStart(2, "0")} for stone fabrication and export preparation`
     };
   });
 
@@ -91,8 +91,8 @@ export default function FactoryPage() {
                     <img className="block h-full w-full object-cover object-center" src={asset.src} alt={asset.alt} loading="lazy" />
                   </div>
                   <div className="px-4 py-5">
-                    <p className="eyebrow-luxury mb-2">{asset.label}</p>
-                    <h3 className="heading-md factory-gallery__title card-title">{cleanDisplayTitle(asset.title, asset.label)}</h3>
+                    <p className="eyebrow-luxury mb-2">Workshop reference {String(index + 1).padStart(2, "0")}</p>
+                    <h3 className="heading-md factory-gallery__title card-title">{cleanDisplayTitle(asset.title, "Stone Workshop Reference")}</h3>
                   </div>
                 </article>
               ))}
