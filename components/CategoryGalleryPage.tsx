@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "./PageHero";
 import PageShell from "./PageShell";
 import TrustStrip from "./TrustStrip";
@@ -16,11 +17,13 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
       <main>
         {page.heroImage ? (
           <section className="hero-architectural min-h-[78vh]">
-            <img
-              className="absolute inset-0 h-full w-full object-cover object-center"
+            <Image
+              className="object-cover object-center"
               src={page.heroImage}
               alt={`${page.heroAlt || page.title} for ${page.eyebrow}`}
-              fetchPriority="high"
+              fill
+              priority
+              sizes="100vw"
             />
             <div className="hero-overlay absolute inset-0" />
             <div className="hero-architectural__content hero-architectural__content--center container-luxury min-h-[78vh] pb-24 pt-40">

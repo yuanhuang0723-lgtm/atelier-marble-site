@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
@@ -84,12 +85,13 @@ export default function HomePage() {
       />
       <main>
         <section className="hero-architectural min-h-screen">
-          <img
-            className="absolute inset-0 h-full w-full object-cover"
+          <Image
+            className="object-cover"
             src="/materials/hero/atelier-marble-luxury-hero.png"
             alt="Ultra realistic luxury marble architectural interior for Atelier Marble"
-            fetchPriority="high"
-            decoding="async"
+            fill
+            priority
+            sizes="100vw"
           />
           <div className="hero-overlay absolute inset-0" />
           <div className="hero-architectural__content hero-architectural__content--center container-luxury">
