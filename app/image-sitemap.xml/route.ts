@@ -8,19 +8,18 @@ function escapeXml(value: string) {
 }
 
 export function GET() {
-  const images = [
-    "/materials/hero/atelier-marble-luxury-hero.png",
-    "/assets/factory/factory-hero-workshop.png",
-    "/assets/vanity-cabinet/cover.png",
-    "/assets/carving-decor/cover.png",
-    "/materials/categories/hotel-projects.png",
-    ...getAssets("factory").map((asset) => asset.src),
-    ...getAssets("materials").map((asset) => asset.src),
-    ...getProjectAssets("all").map((asset) => asset.src)
+  const imageGroups = [
+    { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.png", "/assets/vanity-cabinet/cover.png", "/assets/carving-decor/cover.png", "/materials/categories/hotel-projects.png"] },
+    { page: "/factory", images: ["/assets/factory/factory-hero-workshop.png", ...getAssets("factory").map((asset) => asset.src)] },
+    { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
+    { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) }
   ];
-  const uniqueImages = [...new Set(images)];
-  const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${uniqueImages
-    .map((image) => `\n  <url><loc>${escapeXml(absoluteUrl("/"))}</loc><image:image><image:loc>${escapeXml(absoluteUrl(image))}</image:loc></image:image></url>`)
+  const entries = [...new Set(imageGroups.flatMap((group) => group.images.map((image) => `${group.page}|${image}`)))].map((entry) => {
+    const [page, image] = entry.split("|");
+    return { page, image };
+  });
+  const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${entries
+    .map((entry) => `\n  <url><loc>${escapeXml(absoluteUrl(entry.page))}</loc><image:image><image:loc>${escapeXml(absoluteUrl(entry.image))}</image:loc></image:image></url>`)
     .join("")}\n</urlset>`;
 
   return new Response(body, {
