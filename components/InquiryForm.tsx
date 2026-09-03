@@ -29,6 +29,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   const [status, setStatus] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const startedRef = useRef(false);
 
   const hydratedContext = useMemo(
     () => ({
@@ -68,21 +69,13 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     });
   }
 
-  function submitInquiry() {
-    trackConversionEvent("qualified_inquiry_form_started", {
+  function handleFormStart() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackConversionEvent("inquiry_form_started", {
       method: "api",
       sourcePage: hydratedContext.sourcePage,
       projectType: hydratedContext.projectType,
-      hasContact: Boolean(contact),
-      hasMessage: Boolean(message),
-      hasBudget: Boolean(budgetRange),
-      hasTimeline: Boolean(timeline),
-      hasFiles: files.length > 0,
-      fileCount: files.length,
-      country,
-      hasCompany: Boolean(company),
-      hasDestination: Boolean(destinationPort),
-      hasQuantity: Boolean(quantity),
       landingPage: window.location.pathname
     });
   }
@@ -116,7 +109,6 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     if (submitting) return;
     setSubmitting(true);
     setStatus("");
-    submitInquiry();
     try {
       const uploadedFiles = await uploadFiles();
       const response = await fetch("/api/inquiry", {
@@ -153,6 +145,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       className="card-luxury mx-auto grid w-full max-w-[44rem] gap-4 p-5 md:max-w-[48rem] md:gap-4 md:p-6"
       data-qualified-inquiry-form="true"
       onSubmit={handleSubmit}
+      onFocusCapture={handleFormStart}
     >
       <div className="rounded-[18px] border border-ink/10 bg-stone/40 px-5 py-4">
         <p className="eyebrow-luxury mb-2">Request a quotation</p>
@@ -265,6 +258,8 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           className="min-h-[160px] w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 py-3 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
           name="message"
           placeholder="Material preference, quantities, drawings, destination market, and any special requirements."
+          required
+          minLength={10}
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
