@@ -11,6 +11,7 @@
     "start": "next start",
     "prepare:assets": "node scripts/prepare-assets.mjs",
     "audit:assets": "node scripts/audit-assets.mjs",
+    "check:public": "node scripts/check-public-routes.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
