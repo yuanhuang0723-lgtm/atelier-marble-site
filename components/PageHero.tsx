@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type PageHeroProps = {
   eyebrow: string;
   title: string;
@@ -8,7 +10,7 @@ type PageHeroProps = {
 export default function PageHero({ eyebrow, title, description, backgroundImage }: PageHeroProps) {
   return (
     <section className="hero-architectural">
-      {backgroundImage ? <><img className="absolute inset-0 h-full w-full object-cover object-center" src={backgroundImage} alt={`${title} visual reference`} fetchPriority="high" decoding="async" /><div className="hero-overlay absolute inset-0" /></> : null}
+      {backgroundImage ? <><Image className="object-cover object-center" src={backgroundImage} alt={`${title} visual reference`} fill priority sizes="100vw" /><div className="hero-overlay absolute inset-0" /></> : null}
       <div className="hero-architectural__content hero-architectural__content--center">
         <div className="container-luxury text-center">
           <p className="hero-architectural__eyebrow">{eyebrow}</p>
