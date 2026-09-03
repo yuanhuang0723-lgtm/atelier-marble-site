@@ -43,6 +43,20 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   const mailtoUrl = buildMailtoUrl(hydratedContext, details);
 
   function track(method: "whatsapp" | "email") {
+    trackConversionEvent(method === "whatsapp" ? "whatsapp_inquiry_click" : "email_inquiry_click", {
+      method,
+      sourcePage: hydratedContext.sourcePage,
+      projectType: hydratedContext.projectType,
+      hasContact: Boolean(contact),
+      hasMessage: Boolean(message),
+      hasFiles: files.length > 0,
+      fileCount: files.length,
+      country,
+      hasCompany: Boolean(company),
+      hasDestination: Boolean(destinationPort),
+      hasQuantity: Boolean(quantity),
+      landingPage: window.location.pathname
+    });
     trackConversionEvent("qualified_inquiry_form_submit", {
       method,
       sourcePage: hydratedContext.sourcePage,
@@ -260,6 +274,9 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         </button>
         <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={() => track("email")}>
           Email Project Details
+        </a>
+        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => track("whatsapp")}>
+          Discuss on WhatsApp
         </a>
       </div>
       <input aria-label="Website" className="absolute -left-[9999px] h-px w-px opacity-0" tabIndex={-1} autoComplete="off" name="website" />
