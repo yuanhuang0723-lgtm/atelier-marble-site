@@ -11,9 +11,14 @@ export default function InquirySuccessTracker() {
       return;
     }
 
+    if (window.sessionStorage.getItem("atelierInquirySubmitted") !== "1") {
+      return;
+    }
+
     tracked.current = true;
+    window.sessionStorage.removeItem("atelierInquirySubmitted");
     trackConversionEvent("generate_lead", {
-      method: "formsubmit",
+      method: "api",
       sourcePage: "/contact",
       page_path: "/contact/thank-you"
     });

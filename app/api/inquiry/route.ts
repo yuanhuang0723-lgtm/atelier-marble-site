@@ -119,7 +119,7 @@ export async function POST(request: Request) {
 
   const fileLinks = await buildFileLinks(body.files);
 
-  const recipient = contact.inquiryRecipient;
+  const recipient = process.env.INQUIRY_RECIPIENT || contact.inquiryRecipient;
   const subject = body.projectType
     ? `${body.projectType} Project Consultation`
     : "Atelier Marble Project Consultation";

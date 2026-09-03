@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getProjectAssets } from "../lib/assets";
-import { absoluteUrl, projectPath } from "../lib/seo";
+import { absoluteUrl } from "../lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -41,12 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: route === "/" ? 1 : 0.8
-    })),
-    ...getProjectAssets("all").map((asset) => ({
-      url: absoluteUrl(projectPath(asset)),
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.7
     }))
   ];
 }

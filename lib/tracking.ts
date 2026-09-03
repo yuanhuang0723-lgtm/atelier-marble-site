@@ -41,6 +41,13 @@ export type VisitorEventPayload = {
   hasBudget?: boolean;
   hasTimeline?: boolean;
   hasDrawings?: boolean;
+  hasFiles?: boolean;
+  fileCount?: number;
+  country?: string;
+  hasCompany?: boolean;
+  hasDestination?: boolean;
+  hasQuantity?: boolean;
+  landingPage?: string;
 };
 
 declare global {
