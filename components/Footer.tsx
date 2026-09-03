@@ -21,8 +21,9 @@ const footerGroups: FooterGroup[] = [
     ]
   },
   {
-    title: "Guides",
+    title: "Resources",
     links: [
+      { label: "Buyer Resources", href: "/resources" },
       { label: "Buyer Guide", href: "/guides/stone-supplier-china" },
       { label: "Packing Guide", href: "/guides/export-packing-standards" },
       { label: "Pricing Guide", href: "/guides/hotel-stone-pricing" },
@@ -30,21 +31,20 @@ const footerGroups: FooterGroup[] = [
     ]
   },
   {
-    title: "Projects",
+    title: "Applications",
     links: [
-      { label: "QC & Delivery", href: "/guides/quality-control-delivery" },
-      { label: "Case Study", href: "/guides/hotel-lobby-case-study" },
-      { label: "Kitchens", href: "/luxury-residential-kitchens" },
-      { label: "Hotel Projects", href: "/hotel-hospitality-projects" }
+      { label: "Hotel Projects", href: "/projects/hotel-stone-supply" },
+      { label: "Countertops & Vanity", href: "/countertops" },
+      { label: "Architectural Stone", href: "/architectural-stone-interiors" },
+      { label: "Custom Stone", href: "/custom-stone-fabrication-china" }
     ]
   },
   {
     title: "Contact",
     links: [
+      { label: "Get a Quote", href: "/contact" },
       { label: "WhatsApp", href: contact.whatsappUrl },
-      { label: "Email", href: `mailto:${contact.emails[0]}` },
-      { label: "Interiors", href: "/architectural-stone-interiors" },
-      { label: "Furniture & Sculptures", href: "/custom-furniture-sculptures" }
+      { label: "Email", href: `mailto:${contact.emails[0]}` }
     ]
   }
 ];
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="space-y-2">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/38">Navigation</p>
             <p className="max-w-[34ch] text-[0.92rem] leading-7 text-white/48">
-              Key pages for buyers, procurement checks, and project coordination.
+              Clear routes for project sourcing, material review, and quotation requests.
             </p>
           </div>
 
