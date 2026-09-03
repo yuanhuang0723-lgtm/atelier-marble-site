@@ -318,6 +318,18 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+            <Link href="/factory" className="mt-10 grid gap-6 rounded-[14px] border border-ink/10 bg-paper p-6 transition hover:border-ink/25 md:grid-cols-[0.72fr_1.28fr] md:items-center md:p-8">
+              <div>
+                <p className="eyebrow-luxury">Selected project reference</p>
+                <h3 className="mt-3 text-left font-title text-[1.65rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">Canada · 2025</h3>
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink/55">Several thousand custom stone shower niches</p>
+              </div>
+              <div className="grid gap-3 text-sm leading-7 text-ink/68 md:grid-cols-3">
+                <p><strong className="block text-ink">CAD detailing</strong>Drawing breakdown, shop drawings, and cut lists.</p>
+                <p><strong className="block text-ink">Repeat units</strong>Multi-batch coordination for a customer program.</p>
+                <p><strong className="block text-ink">Reference status</strong>See the factory page for the catalogue context.</p>
+              </div>
+            </Link>
           </div>
         </section>
 
