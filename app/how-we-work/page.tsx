@@ -31,23 +31,33 @@ const inquiryContext = {
 const steps = [
   {
     icon: ClipboardList,
-    title: "Request review",
-    copy: "You send scope, drawings, dimensions, destination market, and the target material direction."
-  },
-  {
-    icon: Layers3,
-    title: "Match material and scale",
-    copy: "We compare slab options, finished-product routes, and the fabrication scale that fits the project."
+    title: "Project brief",
+    copy: "Share material, application, location, estimated volume, and preferred delivery term."
   },
   {
     icon: FileText,
-    title: "Prepare quotation",
-    copy: "We reply with the pricing direction, packing logic, and the information needed for a clean procurement decision."
+    title: "Drawing review",
+    copy: "Dimensions, thickness, finish, edges, cut-outs, and quantities are reviewed together."
+  },
+  {
+    icon: Layers3,
+    title: "Material proposal",
+    copy: "Current slab or lot options are matched to the confirmed application and specification."
+  },
+  {
+    icon: MessageSquareQuote,
+    title: "Quotation",
+    copy: "Material, fabrication, packing, and the agreed delivery scope are brought into one quotation."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Production control",
+    copy: "Layout confirmation and production or QC photos support the agreed project checkpoints."
   },
   {
     icon: PackageCheck,
-    title: "Package for export",
-    copy: "When the order moves forward, packing and loading are coordinated for safer international shipment."
+    title: "Packing & coordination",
+    copy: "Export wooden crates and shipment documentation support are coordinated against the delivery term."
   }
 ];
 
@@ -55,7 +65,7 @@ const trustPoints = [
   "Clear scope review before pricing",
   "Factory-direct communication",
   "Export packing prepared for shipment",
-  "Support for hotel, kitchen, and custom stone projects"
+  "Support for hotel, commercial, kitchen, and custom stone projects"
 ];
 
 const faqSchema = {
@@ -100,7 +110,7 @@ export default function HowWeWorkPage() {
         <PageHero
           eyebrow="Export buyer workflow"
           title="How we turn a project inquiry into a quotation."
-          description="A direct workflow for overseas buyers comparing stone suppliers in China, hotel stone fabrication, and custom stone project pricing."
+          description="A six-step RFQ workflow for overseas buyers covering project briefs, drawing review, material proposal, quotation, production control, and export coordination."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-10 lg:grid-cols-[1fr_0.78fr] lg:items-start">
