@@ -126,6 +126,33 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
           </div>
         </section>
 
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Reference details</p>
+              <h2 className="heading-lg section-intro__title">Information to discuss before pricing.</h2>
+              <p className="body-luxury section-intro__copy">
+                These are reference-level considerations for this category. Confirm the actual material, dimensions,
+                quantities, finish, and delivery requirements for your project before production.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              {[
+                ["Scope", caseStudy.scope],
+                ["Material direction", caseStudy.materialType],
+                ["Typical application", caseStudy.application],
+                ["Finish direction", caseStudy.finishType],
+                ["Execution consideration", caseStudy.executionDifficulty]
+              ].map(([label, value]) => (
+                <article key={label} className="card-luxury bg-stone p-5">
+                  <p className="eyebrow-luxury">{label}</p>
+                  <p className="mt-3 text-sm leading-7 text-ink/68">{value}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section-luxury bg-ink text-center text-white">
           <div className="container-luxury">
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.24em] text-white/60">Inquiry</p>
