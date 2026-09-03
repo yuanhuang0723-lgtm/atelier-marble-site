@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: ProjectDetailProps): Promise<
   return {
     title,
     description,
+    robots: { index: false, follow: true },
     alternates: { canonical: absoluteUrl(path) },
     openGraph: {
       title,
