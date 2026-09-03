@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/hotel-hospitality-projects",
     "/luxury-residential-kitchens",
     "/architectural-stone-interiors",
+    "/architectural-stone",
     "/custom-furniture-sculptures",
     "/kitchen-countertops",
     "/hotel-projects",

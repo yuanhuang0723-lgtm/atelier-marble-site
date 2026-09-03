@@ -5,7 +5,7 @@ const navItems = [
   ["Home", "/"],
   ["Projects", "/projects"],
   ["Countertops & Vanity", "/countertops"],
-  ["Architectural Stone", "/architectural-stone-interiors"],
+  ["Architectural Stone", "/architectural-stone"],
   ["Materials", "/materials"],
   ["Custom Stone", "/custom-stone-fabrication-china"],
   ["Resources", "/resources"],
