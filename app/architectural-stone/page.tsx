@@ -6,7 +6,7 @@ import PageShell from "../../components/PageShell";
 import { absoluteUrl } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Architectural Stone Applications",
+  title: "Architectural Stone for Hotel & Commercial Interiors",
   description: "Architectural stone applications for hotel, commercial, residential, and design-led interiors, supported by fabrication and export project coordination.",
   alternates: { canonical: absoluteUrl("/architectural-stone") }
 };

@@ -25,19 +25,6 @@ export const metadata: Metadata = {
   },
   description:
     "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
-  keywords: [
-    "stone supplier China",
-    "stone slab supplier China",
-    "hotel stone fabrication supplier",
-    "luxury marble supplier",
-    "custom stone countertops China",
-    "marble vanity tops manufacturer",
-    "integrated stone sinks supplier",
-    "commercial stone fabrication China",
-    "architectural stone design studio",
-    "bespoke natural stone manufacturer",
-    "custom stone sculptures"
-  ],
   alternates: {
     canonical: absoluteUrl("/")
   },

@@ -7,12 +7,12 @@ import { cleanDisplayTitle, getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Bespoke Natural Stone Materials",
+  title: "Natural Stone Materials for Projects",
   description:
     "Natural stone materials for hotel, commercial, residential, and custom fabrication projects, with marble selection and export supply from China.",
   alternates: { canonical: absoluteUrl("/materials") },
   openGraph: {
-    title: "Bespoke Natural Stone Materials",
+    title: "Natural Stone Materials for Projects",
     description:
       "Review marble textures and stone surfaces for bespoke natural stone manufacturing and international architectural projects.",
     url: absoluteUrl("/materials"),

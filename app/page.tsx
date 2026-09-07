@@ -103,8 +103,9 @@ export default function HomePage() {
                 Custom Stone Fabrication &amp; Project Supply from Yunfu, China
               </h1>
               <p className="hero-architectural__copy mx-auto max-w-2xl">
-                For hotel contractors, architects, developers, and importers. Send your CAD, BOQ, or dimensions for
-                material review, fabrication planning, and export quotation.
+                Atelier Marble is a stone supplier in China for hotel contractors, architects, developers, and
+                importers. Send your CAD, BOQ, or dimensions for material review, fabrication planning, and export
+                quotation.
               </p>
               <div className="hero-architectural__actions hero-architectural__actions--center">
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href="/contact">
@@ -120,38 +121,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        <details className="home-side-drawer group">
-          <summary className="home-side-drawer__summary">Buyer notes</summary>
-          <div className="home-side-drawer__panel">
-            <img
-              className="h-36 w-full rounded-xl object-cover"
-              src="/generated/guides/buyer-notes-panel.png"
-              alt="Stone samples, notes, and project references arranged on a luxury desk"
-            />
-            <p className="eyebrow-luxury">Quick links</p>
-            <p className="mt-2 text-[0.92rem] leading-6 text-ink/72">
-              Keep these references off the main page. Open only when you need buyer guides or project notes.
-            </p>
-            <div className="mt-4 grid gap-2">
-              <Link className="home-side-drawer__link" href="/guides/stone-supplier-china">
-                Buyer guide
-              </Link>
-              <Link className="home-side-drawer__link" href="/guides/hotel-stone-pricing">
-                Pricing guide
-              </Link>
-              <Link className="home-side-drawer__link" href="/guides/stone-project-checklist">
-                Project checklist
-              </Link>
-              <Link className="home-side-drawer__link" href="/guides/quality-control-delivery">
-                QC & delivery
-              </Link>
-              <Link className="home-side-drawer__link" href="/guides/hotel-lobby-case-study">
-                Case study
-              </Link>
-            </div>
-          </div>
-        </details>
 
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
