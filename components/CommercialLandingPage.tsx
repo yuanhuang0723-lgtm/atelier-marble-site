@@ -15,11 +15,12 @@ type CommercialLandingPageProps = {
   bullets: string[];
   details: string[];
   faqs?: { question: string; answer: string }[];
+  faqTitle?: string;
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -72,7 +73,7 @@ export default function CommercialLandingPage({
             <div className="container-luxury">
               <div className="section-intro section-intro--center">
                 <p className="eyebrow-luxury">Buyer questions</p>
-                <h2 className="heading-lg section-intro__title">Bathroom vanity top details, answered clearly.</h2>
+                <h2 className="heading-lg section-intro__title">{faqTitle || "Project details, answered clearly."}</h2>
               </div>
               <div className="grid gap-4 md:grid-cols-3">
                 {faqs.map((faq) => (
