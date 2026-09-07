@@ -34,7 +34,7 @@ export default function MaterialsPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Materials", path: "/materials" }]} />
         <PageHero
           eyebrow="Material reference library"
-          title="Review stone character before specifying a project."
+          title="Natural stone materials for hotel and commercial projects."
           description="Browse the current material reference archive by slab character, visual tone, and intended application. Share a reference image with your project brief so the fabrication review starts from the same visual direction."
         />
         <section className="section-luxury bg-paper">
