@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
+const uploadRequestWindow = new Map<string, { count: number; startedAt: number }>();
 const ALLOWED_TYPES = new Set([
   "application/pdf",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -36,6 +37,19 @@ function getClient() {
 }
 
 export async function POST(request: Request) {
+  const sourceIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const now = Date.now();
+  const previous = uploadRequestWindow.get(sourceIp);
+  if (previous && now - previous.startedAt < 10 * 60 * 1000 && previous.count >= 10) {
+    return NextResponse.json({ ok: false, message: "Please wait before uploading more files." }, { status: 429 });
+  }
+  uploadRequestWindow.set(
+    sourceIp,
+    previous && now - previous.startedAt < 10 * 60 * 1000
+      ? { count: previous.count + 1, startedAt: previous.startedAt }
+      : { count: 1, startedAt: now }
+  );
+
   let body: { name?: string; type?: string; size?: number };
   try {
     body = (await request.json()) as typeof body;
