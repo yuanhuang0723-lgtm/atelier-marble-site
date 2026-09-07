@@ -7,7 +7,7 @@ import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/ass
 import { absoluteUrl, siteName } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Custom Stone Fabrication China",
+  title: "Custom Stone Fabrication China | Atelier Marble",
   description:
     "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
   alternates: { canonical: absoluteUrl("/") },
