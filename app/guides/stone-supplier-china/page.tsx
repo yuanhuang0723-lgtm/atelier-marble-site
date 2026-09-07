@@ -63,31 +63,31 @@ const quickLinks = [
   {
     label: "Buyer Guide",
     href: "/guides/stone-supplier-china",
-    image: "/generated/guides/buyer-guide-hero.png",
+    image: "/generated/guides/buyer-guide-hero.webp",
     alt: "Stone buyer guide hero image with project reference and materials on a premium desk"
   },
   {
     label: "Pricing Guide",
     href: "/guides/hotel-stone-pricing",
-    image: "/generated/guides/pricing-guide-hero.png",
+    image: "/generated/guides/pricing-guide-hero.webp",
     alt: "Premium pricing guide preview with marble samples and project pricing notes"
   },
   {
     label: "Project Checklist",
     href: "/guides/stone-project-checklist",
-    image: "/generated/guides/project-checklist-hero.png",
+    image: "/generated/guides/project-checklist-hero.webp",
     alt: "Stone project checklist preview with drawings, samples, and technical notes"
   },
   {
     label: "QC & Delivery",
     href: "/guides/quality-control-delivery",
-    image: "/generated/guides/qc-delivery-hero.png",
+    image: "/generated/guides/qc-delivery-hero.webp",
     alt: "Quality control and delivery preview with packing and inspection scene"
   },
   {
     label: "Case Study",
     href: "/guides/hotel-lobby-case-study",
-    image: "/generated/guides/case-study-hero.png",
+    image: "/generated/guides/case-study-hero.webp",
     alt: "High-end hotel lobby case study preview with stone interior application"
   }
 ] as const;
@@ -136,7 +136,7 @@ export default function StoneSupplierGuidePage() {
           eyebrow="Buyer guide"
           title="How to Choose a Stone Supplier in China for Hotel Projects"
           description="Use this checklist to compare suppliers for hotel stone, marble slabs, countertops, interiors, and custom fabrication before you request pricing."
-          backgroundImage="/generated/guides/buyer-guide-hero.png"
+          backgroundImage="/generated/guides/buyer-guide-hero.webp"
         />
 
         <section className="section-luxury bg-paper">
@@ -146,7 +146,7 @@ export default function StoneSupplierGuidePage() {
                 <div className="guide-hero-card__media">
                   <img
                     className="h-full w-full object-cover"
-                    src="/generated/guides/buyer-guide-hero.png"
+                    src="/generated/guides/buyer-guide-hero.webp"
                     alt="Luxury stone buyer guide preview with project notes and material references"
                   />
                 </div>
@@ -170,7 +170,7 @@ export default function StoneSupplierGuidePage() {
                   <div className="guide-card__media">
                     <img
                       className="h-full w-full object-cover"
-                      src="/generated/guides/project-checklist-hero.png"
+                      src="/generated/guides/project-checklist-hero.webp"
                       alt="Stone project checklist with samples, drawings, and project details"
                     />
                   </div>
@@ -192,7 +192,7 @@ export default function StoneSupplierGuidePage() {
                   <div className="guide-card__media">
                     <img
                       className="h-full w-full object-cover"
-                      src="/generated/guides/qc-delivery-hero.png"
+                      src="/generated/guides/qc-delivery-hero.webp"
                       alt="Stone quality control and delivery scene with packing and inspection references"
                     />
                   </div>
@@ -236,9 +236,9 @@ export default function StoneSupplierGuidePage() {
                   }
                 ].map((item, index) => {
                   const cardImages = [
-                    "/generated/guides/case-study-hero.png",
-                    "/generated/guides/project-checklist-hero.png",
-                    "/generated/guides/qc-delivery-hero.png",
+                    "/generated/guides/case-study-hero.webp",
+                    "/generated/guides/project-checklist-hero.webp",
+                    "/generated/guides/qc-delivery-hero.webp",
                     "/generated/guides/buyer-notes-panel.png"
                   ];
                   const cardAts = [
@@ -289,7 +289,7 @@ export default function StoneSupplierGuidePage() {
                   <div className="guide-card__media">
                     <img
                       className="h-full w-full object-cover"
-                      src="/generated/guides/pricing-guide-hero.png"
+                      src="/generated/guides/pricing-guide-hero.webp"
                       alt="Stone pricing discussion with samples, notes, and project quotation layout"
                     />
                   </div>
@@ -346,7 +346,7 @@ export default function StoneSupplierGuidePage() {
                 <div className="guide-side-card__media">
                   <img
                     className="h-full w-full object-cover"
-                    src="/generated/guides/case-study-hero.png"
+                    src="/generated/guides/case-study-hero.webp"
                     alt="Hotel project and stone interior reference for best fit guidance"
                   />
                 </div>
@@ -365,7 +365,7 @@ export default function StoneSupplierGuidePage() {
                 <div className="guide-side-card__media">
                   <img
                     className="h-full w-full object-cover"
-                    src="/generated/guides/pricing-guide-hero.png"
+                    src="/generated/guides/pricing-guide-hero.webp"
                     alt="Project pricing discussion and material comparison for buyers"
                   />
                 </div>

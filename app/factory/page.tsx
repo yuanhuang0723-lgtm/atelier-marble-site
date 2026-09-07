@@ -58,7 +58,7 @@ export default function FactoryPage() {
           eyebrow="Capability proof"
           title="Stone fabrication factory in China, presented with restraint."
           description="Real workshop, craftsmanship, production, and packing images support hotel stone fabrication and bespoke natural stone manufacturing while keeping authenticity and export credibility."
-          backgroundImage="/assets/factory/factory-hero-workshop.png"
+          backgroundImage="/assets/factory/factory-hero-workshop.webp"
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">

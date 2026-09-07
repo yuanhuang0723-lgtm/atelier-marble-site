@@ -50,7 +50,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="card-luxury overflow-hidden bg-stone p-3">
-                <img className="aspect-[4/3] w-full object-cover" src="/assets/factory/factory-hero-workshop.png" alt="Stone workshop environment used for fabrication and export preparation review" />
+                <img className="aspect-[4/3] w-full object-cover" src="/assets/factory/factory-hero-workshop.webp" alt="Stone workshop environment used for fabrication and export preparation review" />
               </div>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

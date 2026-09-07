@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 export default function MaterialsPage() {
   const materials = getAssets("materials");
   const applicationRoutes = [
-    { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.png", alt: "Natural stone countertop reference for kitchen and vanity applications" },
-    { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.png", alt: "Architectural stone reference for hotel and hospitality projects" },
-    { title: "Custom Stone", href: "/custom-stone-fabrication-china", image: "/materials/featured-covers/carving-decor.png", alt: "Custom stone carving reference for design-led interior applications" }
+    { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.webp", alt: "Natural stone countertop reference for kitchen and vanity applications" },
+    { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.webp", alt: "Architectural stone reference for hotel and hospitality projects" },
+    { title: "Custom Stone", href: "/custom-stone-fabrication-china", image: "/materials/featured-covers/carving-decor.webp", alt: "Custom stone carving reference for design-led interior applications" }
   ];
 
   return (

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "Luxury hotel marble interior supplier for commercial stone projects, hospitality interiors, and architectural spaces.",
     url: absoluteUrl("/hotel-projects"),
     siteName,
-    images: [{ url: absoluteUrl("/materials/categories/hotel-projects.png"), width: 1536, height: 1024 }]
+    images: [{ url: absoluteUrl("/materials/categories/hotel-projects.webp"), width: 1536, height: 1024 }]
   }
 };
 
@@ -26,7 +26,7 @@ export default function HotelProjectsPage() {
       eyebrow="Hotel stone fabrication supplier"
       title="Luxury Hotel Stone Project Partner"
       description="Atelier Marble supports hotel marble interiors, commercial stone project supply, lobby stone surfaces, and export fabrication for hospitality buyers."
-      heroImage="/materials/categories/hotel-projects.png"
+      heroImage="/materials/categories/hotel-projects.webp"
       heroAlt="hotel lobby stone flooring design project with marble wall cladding"
       keywords={[
         "hotel marble interior supplier",

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description:
       "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
     url: siteUrl,
-    images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.png"), width: 1536, height: 1024 }]
+    images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
   }
 };
 

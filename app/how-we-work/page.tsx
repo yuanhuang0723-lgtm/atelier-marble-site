@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "A clear export-buyer workflow for stone quotation, material selection, fabrication review, and packing coordination.",
     url: absoluteUrl("/how-we-work"),
     siteName,
-    images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.png") }]
+    images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.webp") }]
   }
 };
 

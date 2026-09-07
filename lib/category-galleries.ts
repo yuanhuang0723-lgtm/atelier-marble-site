@@ -87,7 +87,7 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
       "A curated gallery of luxury vanity tops, cabinet panels, and stone bathroom references for export buyers.",
     intro:
       "The gallery highlights real material texture, custom fabrication, vanity top applications, cabinet panel proportion, and export-ready finishing.",
-    heroImage: "/assets/vanity-cabinet/hero.png",
+    heroImage: "/assets/vanity-cabinet/hero.webp",
     heroAlt: "Ultra realistic luxury stone vanity top and cabinet panel showroom scene",
     items: [
       {
@@ -199,7 +199,7 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
     metaTitle: "Luxury Vanity Tops & Cabinet Panels",
     metaDescription:
       "A curated gallery of luxury vanity tops and cabinet panels with real material texture, custom fabrication detail, and export-ready presentation.",
-    openGraphImage: "/assets/vanity-cabinet/hero.png"
+    openGraphImage: "/assets/vanity-cabinet/hero.webp"
   },
   "architectural-stone-interiors": {
     slug: "/architectural-stone-interiors",

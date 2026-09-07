@@ -4,7 +4,7 @@ import { getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 const materialImages = getAssets("materials");
-const heroImage = materialImages[0]?.src || "/materials/hero/atelier-marble-luxury-hero.png";
+const heroImage = materialImages[0]?.src || "/materials/hero/atelier-marble-luxury-hero.webp";
 const heroAlt = materialImages[0]?.alt || "premium natural stone slab material selection for architectural projects";
 
 export const metadata: Metadata = {
