@@ -1,7 +1,7 @@
 export type ConversionEventPayload = {
   page_path?: string;
   link_text?: string;
-  href?: string;
+  link_type?: "whatsapp" | "email" | "other";
   method?: string;
   sourcePage?: string;
   projectType?: string;
@@ -32,7 +32,7 @@ export type VisitorEventPayload = {
   user_agent?: string;
   event_name?: string;
   link_text?: string;
-  href?: string;
+  link_type?: "whatsapp" | "email" | "other";
   method?: string;
   sourcePage?: string;
   projectType?: string;
@@ -64,9 +64,24 @@ const VISITOR_EVENTS_ENDPOINT = "/api/visitor-events";
 export function readStoredCampaign() {
   try {
     const stored = window.sessionStorage.getItem("atelierCampaign");
-    return stored ? JSON.parse(stored) : {};
+    const parsed = stored ? JSON.parse(stored) : {};
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    const campaign: Record<string, string> = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      if (/^(utm_source|utm_medium|utm_campaign|utm_term|utm_content|gclid)$/.test(key) && typeof value === "string") campaign[key] = value.slice(0, 300);
+    }
+    return campaign;
   } catch {
     return {};
+  }
+}
+
+export function getStoredLandingPage() {
+  try {
+    const stored = window.sessionStorage.getItem("atelierLandingPage");
+    return stored || window.location.pathname;
+  } catch {
+    return window.location.pathname;
   }
 }
 
@@ -145,7 +160,8 @@ export function trackPageviewEvent(payload: Omit<VisitorEventPayload, "eventType
 export function trackConversionEvent(eventName: string, payload: ConversionEventPayload = {}) {
   const enrichedPayload = {
     ...readStoredCampaign(),
-    ...payload
+    ...payload,
+    landingPage: payload.landingPage || getStoredLandingPage()
   };
 
   window.dataLayer = window.dataLayer || [];

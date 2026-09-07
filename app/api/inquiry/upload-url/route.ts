@@ -1,103 +1,102 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { NextResponse } from "next/server";
 
+import {
+  MAX_INQUIRY_FILE_SIZE,
+  isAllowedInquiryFile,
+  getInquiryContentType,
+  getInquiryFileExtension,
+  sanitizeInquiryFileName
+} from "../../../../lib/inquiry-files";
+import { createUploadReceipt, getUploadReceiptSecret } from "../../../../lib/inquiry-receipts";
+import { getInquiryBucket, getSupabaseAdmin } from "../../../../lib/supabase-server";
+
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-const MAX_FILE_SIZE = 25 * 1024 * 1024;
+const MAX_REQUEST_BYTES = 16 * 1024;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const uploadRequestWindow = new Map<string, { count: number; startedAt: number }>();
-const ALLOWED_TYPES = new Set([
-  "application/pdf",
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "application/vnd.ms-excel",
-  "image/jpeg",
-  "image/png",
-  "application/zip",
-  "application/x-zip-compressed",
-  "application/acad",
-  "application/dxf",
-  "application/octet-stream"
-]);
-const ALLOWED_EXTENSIONS = new Set(["pdf", "dwg", "dxf", "xlsx", "xls", "jpg", "jpeg", "png", "zip"]);
 
-function getClient() {
-  const accountId = process.env.R2_ACCOUNT_ID;
-  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
-
-  if (!accountId || !accessKeyId || !secretAccessKey) {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+async function readJson(request: Request) {
+  const declaredLength = Number(request.headers.get("content-length") || 0);
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_REQUEST_BYTES) return null;
+  const bytes = await request.arrayBuffer();
+  if (bytes.byteLength === 0 || bytes.byteLength > MAX_REQUEST_BYTES) return null;
+  try {
+    return JSON.parse(new TextDecoder().decode(bytes)) as unknown;
+  } catch {
     return null;
   }
-
-  return new S3Client({
-    region: "auto",
-    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
-    credentials: { accessKeyId, secretAccessKey }
-  });
 }
 
-function sanitizeOriginalName(name: string) {
-  return name.replace(/[\\/\u0000-\u001f\u007f]/g, "_").slice(0, 180);
+function getClientIp(request: Request) {
+  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
 
 export async function POST(request: Request) {
-  const contentLength = Number(request.headers.get("content-length") || 0);
-  if (contentLength > 16 * 1024) {
-    return NextResponse.json({ ok: false, message: "Invalid upload request." }, { status: 413 });
-  }
-  const sourceIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   const now = Date.now();
+  const sourceIp = getClientIp(request);
   const previous = uploadRequestWindow.get(sourceIp);
-  if (previous && now - previous.startedAt < 10 * 60 * 1000 && previous.count >= 10) {
+  if (previous && now - previous.startedAt < RATE_LIMIT_WINDOW_MS && previous.count >= 10) {
     return NextResponse.json({ ok: false, message: "Please wait before uploading more files." }, { status: 429 });
   }
   uploadRequestWindow.set(
     sourceIp,
-    previous && now - previous.startedAt < 10 * 60 * 1000
+    previous && now - previous.startedAt < RATE_LIMIT_WINDOW_MS
       ? { count: previous.count + 1, startedAt: previous.startedAt }
       : { count: 1, startedAt: now }
   );
 
-  let body: { name?: string; type?: string; size?: number };
-  try {
-    body = (await request.json()) as typeof body;
-  } catch {
+  const rawBody = await readJson(request);
+  if (!isRecord(rawBody)) return NextResponse.json({ ok: false, message: "Invalid upload request." }, { status: 400 });
+
+  const name = rawBody.name;
+  const type = rawBody.type;
+  const size = rawBody.size;
+  const sessionId = rawBody.sessionId;
+  if (
+    typeof name !== "string" || typeof type !== "string" || typeof size !== "number" ||
+    !Number.isInteger(size) || typeof sessionId !== "string" || sessionId.length < 16 || sessionId.length > 100
+  ) {
     return NextResponse.json({ ok: false, message: "Invalid upload request." }, { status: 400 });
   }
 
-  const name = typeof body.name === "string" ? body.name : "";
-  const type = typeof body.type === "string" ? body.type.toLowerCase() : "";
-  const size = Number(body.size || 0);
-  const extension = name.toLowerCase().split(".").pop() || "";
-
-  if (!name || !ALLOWED_EXTENSIONS.has(extension) || !ALLOWED_TYPES.has(type)) {
-    return NextResponse.json({ ok: false, message: "This file type is not supported." }, { status: 415 });
-  }
-  if (!Number.isFinite(size) || size <= 0 || size > MAX_FILE_SIZE) {
-    return NextResponse.json({ ok: false, message: "Each file must be smaller than 25 MB." }, { status: 413 });
+  if (!isAllowedInquiryFile({ name, type, size })) {
+    const sizeError = size <= 0 || size > MAX_INQUIRY_FILE_SIZE;
+    return NextResponse.json(
+      { ok: false, message: sizeError ? "Each file must be smaller than 25 MB." : "This file type is not supported." },
+      { status: sizeError ? 413 : 415 }
+    );
   }
 
-  const client = getClient();
-  const bucket = process.env.R2_BUCKET_NAME;
-  if (!client || !bucket) {
+  const supabase = getSupabaseAdmin();
+  const receiptSecret = getUploadReceiptSecret();
+  if (!supabase || !receiptSecret) {
     return NextResponse.json({ ok: false, message: "File upload is not configured yet." }, { status: 503 });
   }
 
+  const extension = getInquiryFileExtension(name);
+  const sanitizedName = sanitizeInquiryFileName(name);
+  const contentType = getInquiryContentType(name, type);
   const key = `inquiries/${crypto.randomUUID()}.${extension}`;
-  const command = new PutObjectCommand({
-    Bucket: bucket,
-    Key: key,
-    ContentType: type,
-    ContentLength: size,
-    Metadata: { originalName: sanitizeOriginalName(name) }
-  });
-  let uploadUrl: string;
-  try {
-    uploadUrl = await getSignedUrl(client, command, { expiresIn: 900 });
-  } catch (error) {
-    console.error("R2 upload URL generation failed", error instanceof Error ? error.message : "unknown error");
+  const bucket = getInquiryBucket();
+  const { data, error } = await supabase.storage.from(bucket).createSignedUploadUrl(key, { upsert: false });
+  if (error || !data?.signedUrl) {
+    console.error("Supabase upload URL generation failed", error?.message || "unknown error");
     return NextResponse.json({ ok: false, message: "File upload is temporarily unavailable. Please try again." }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true, key, uploadUrl, expiresAt: new Date(Date.now() + 900000).toISOString() });
+  const receipt = createUploadReceipt({ key, name: sanitizedName, type: contentType, size, sessionId }, receiptSecret, now);
+  return NextResponse.json({
+    ok: true,
+    key,
+    name: sanitizedName,
+    contentType,
+    uploadUrl: data.signedUrl,
+    receipt,
+    expiresAt: new Date(now + 2 * 60 * 60 * 1000).toISOString()
+  });
 }

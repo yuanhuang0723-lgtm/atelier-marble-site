@@ -13,16 +13,16 @@
     "audit:assets": "node scripts/audit-assets.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "check:public": "node scripts/check-public-routes.mjs",
-    "configure:r2": "node scripts/configure-r2.mjs",
+    "test:inquiry": "tsx --test tests/inquiry-*.test.ts",
+    "test:browser": "node scripts/browser-inquiry-smoke.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1125.0",
-    "@aws-sdk/s3-request-presigner": "^3.1125.0",
     "@opennextjs/cloudflare": "^1.20.6",
+    "@supabase/supabase-js": "^2.115.0",
     "lucide-react": "^0.468.0",
     "next": "^16.3.4",
     "react": "^19.0.0",
@@ -38,8 +38,10 @@
     "autoprefixer": "^10.5.4",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.4",
+    "playwright": "^1.63.0",
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "wrangler": "^4.129.0"
   }

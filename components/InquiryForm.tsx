@@ -3,27 +3,14 @@
 import { useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
-import { readStoredCampaign, trackConversionEvent } from "../lib/tracking";
+import { isAllowedInquiryFile } from "../lib/inquiry-files";
+import { getStoredLandingPage, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
 type InquiryFormProps = {
   context: InquiryContext;
   projectOptions?: string[];
   defaultProjectType?: string;
 };
-
-const allowedFileExtensions = new Set(["pdf", "dwg", "dxf", "xlsx", "xls", "jpg", "jpeg", "png", "zip"]);
-const allowedFileTypes = new Set([
-  "application/pdf",
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "application/vnd.ms-excel",
-  "image/jpeg",
-  "image/png",
-  "application/zip",
-  "application/x-zip-compressed",
-  "application/acad",
-  "application/dxf",
-  "application/octet-stream"
-]);
 
 export default function InquiryForm({ context, projectOptions, defaultProjectType }: InquiryFormProps) {
   const [projectType, setProjectType] = useState(defaultProjectType || context.projectType || "Stone project");
@@ -45,6 +32,9 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   const [submitting, setSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const startedRef = useRef(false);
+  const idempotencyKeyRef = useRef<string | null>(null);
+  const uploadedFilesRef = useRef<Array<{ key: string; name: string; type: string; size: number; receipt: string }> | null>(null);
+  const uploadedSignatureRef = useRef("");
 
   const hydratedContext = useMemo(
     () => ({
@@ -57,6 +47,30 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   const details = { name, contact, budgetRange, timeline, message };
   const whatsappUrl = buildWhatsAppUrl(hydratedContext, details);
   const mailtoUrl = buildMailtoUrl(hydratedContext, details);
+
+  function getSessionId() {
+    const key = "atelierInquirySessionId";
+    try {
+      const stored = window.sessionStorage.getItem(key);
+      if (stored) return stored;
+      const created = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      window.sessionStorage.setItem(key, created);
+      return created;
+    } catch {
+      return `session-${Date.now()}`;
+    }
+  }
+
+  function getIdempotencyKey() {
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current = window.crypto?.randomUUID?.() || `inquiry-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+    return idempotencyKeyRef.current;
+  }
+
+  function fileSignature() {
+    return files.map((file) => `${file.name}:${file.size}:${file.lastModified}:${file.type}`).join("|");
+  }
 
   function track(method: "whatsapp" | "email") {
     trackConversionEvent(method === "whatsapp" ? "whatsapp_inquiry_click" : "email_inquiry_click", {
@@ -71,16 +85,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       hasCompany: Boolean(company),
       hasDestination: Boolean(destinationPort),
       hasQuantity: Boolean(quantity),
-      landingPage: window.location.pathname
-    });
-    trackConversionEvent("qualified_inquiry_form_submit", {
-      method,
-      sourcePage: hydratedContext.sourcePage,
-      projectType: hydratedContext.projectType,
-      hasContact: Boolean(contact),
-      hasMessage: Boolean(message),
-      hasBudget: Boolean(budgetRange),
-      hasTimeline: Boolean(timeline)
+      landingPage: getStoredLandingPage()
     });
   }
 
@@ -91,7 +96,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       method: "api",
       sourcePage: hydratedContext.sourcePage,
       projectType: hydratedContext.projectType,
-      landingPage: window.location.pathname
+       landingPage: getStoredLandingPage()
     });
   }
 
@@ -122,27 +127,31 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       hasCompany: Boolean(company),
       hasDestination: Boolean(destinationPort),
       hasQuantity: Boolean(quantity),
-      landingPage: window.location.pathname
+       landingPage: getStoredLandingPage()
     };
     trackConversionEvent("file_upload_started", fileEventContext);
-    const uploaded: Array<{ key: string; name: string; size: number }> = [];
+    const currentSignature = fileSignature();
+    if (uploadedFilesRef.current && uploadedSignatureRef.current === currentSignature) return uploadedFilesRef.current;
+    const uploaded: Array<{ key: string; name: string; type: string; size: number; receipt: string }> = [];
+    const sessionId = getSessionId();
     for (const file of files) {
       setStatus(`Uploading ${file.name}...`);
       const response = await requestWithRetry("/api/inquiry/upload-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: file.name, type: file.type, size: file.size })
+        body: JSON.stringify({ name: file.name, type: file.type, size: file.size, sessionId })
       });
-      const signed = (await response.json()) as { ok?: boolean; message?: string; key?: string; uploadUrl?: string };
-      if (!response.ok || !signed.ok || !signed.key || !signed.uploadUrl) throw new Error(signed.message || "File upload failed.");
-      const upload = await requestWithRetry(signed.uploadUrl, {
-        method: "PUT",
-        headers: { "Content-Type": file.type },
-        body: file
-      });
+      const signed = (await response.json()) as { ok?: boolean; message?: string; key?: string; name?: string; contentType?: string; uploadUrl?: string; receipt?: string };
+      if (!response.ok || !signed.ok || !signed.key || !signed.name || !signed.contentType || !signed.uploadUrl || !signed.receipt) throw new Error(signed.message || "File upload failed.");
+      const uploadBody = new FormData();
+      uploadBody.append("cacheControl", "3600");
+      uploadBody.append("", file);
+      const upload = await fetch(signed.uploadUrl, { method: "POST", body: uploadBody });
       if (!upload.ok) throw new Error(`Could not upload ${file.name}.`);
-      uploaded.push({ key: signed.key, name: file.name, size: file.size });
+      uploaded.push({ key: signed.key, name: signed.name, type: signed.contentType, size: file.size, receipt: signed.receipt });
     }
+    uploadedFilesRef.current = uploaded;
+    uploadedSignatureRef.current = currentSignature;
     setStatus("Files uploaded. Sending your inquiry...");
     trackConversionEvent("file_upload_completed", fileEventContext);
     return uploaded;
@@ -151,23 +160,26 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting) return;
+    const form = event.currentTarget;
+    const website = (form.elements.namedItem("website") as HTMLInputElement | null)?.value || "";
     setSubmitting(true);
     setStatus("Preparing your inquiry...");
     try {
       const uploadedFiles = await uploadFiles();
+      const sessionId = getSessionId();
       const response = await fetch("/api/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name, company, contact, country, destinationPort, stoneScope, quantity, deliveryDate,
           materialPreference, phone, budgetRange, timeline, message, projectType,
-          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, files: uploadedFiles
-          , campaign: readStoredCampaign()
+          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, files: uploadedFiles,
+          campaign: readStoredCampaign(), idempotencyKey: getIdempotencyKey(), sessionId, website
         })
       });
       const result = (await response.json()) as { ok?: boolean; message?: string };
       if (!response.ok || !result.ok) throw new Error(result.message || "The inquiry could not be sent yet.");
-      trackConversionEvent("qualified_inquiry_submitted", { sourcePage: hydratedContext.sourcePage, projectType, hasContact: true, hasMessage: Boolean(message), hasBudget: Boolean(budgetRange), hasTimeline: Boolean(timeline), hasDrawings: uploadedFiles.length > 0, hasFiles: uploadedFiles.length > 0, fileCount: uploadedFiles.length, country, hasCompany: Boolean(company), hasDestination: Boolean(destinationPort), hasQuantity: Boolean(quantity), landingPage: window.location.pathname });
+      trackConversionEvent("qualified_inquiry_submitted", { sourcePage: hydratedContext.sourcePage, projectType, hasContact: true, hasMessage: Boolean(message), hasBudget: Boolean(budgetRange), hasTimeline: Boolean(timeline), hasDrawings: uploadedFiles.length > 0, hasFiles: uploadedFiles.length > 0, fileCount: uploadedFiles.length, country, hasCompany: Boolean(company), hasDestination: Boolean(destinationPort), hasQuantity: Boolean(quantity), landingPage: getStoredLandingPage() });
       window.sessionStorage.setItem("atelierInquirySubmitted", "1");
       window.location.assign("/contact/thank-you");
     } catch (error) {
@@ -182,12 +194,10 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
     if (selected.length > 5) { resetFileInput(); setStatus("Please select no more than 5 files."); return; }
-    if (selected.some((file) => {
-      const extension = file.name.toLowerCase().split(".").pop() || "";
-      return !allowedFileExtensions.has(extension) || !allowedFileTypes.has(file.type.toLowerCase());
-    })) { resetFileInput(); setStatus("Please choose PDF, DWG, DXF, XLS, XLSX, JPG, PNG, or ZIP files only."); return; }
-    if (selected.some((file) => file.size > 25 * 1024 * 1024)) { resetFileInput(); setStatus("Each file must be smaller than 25 MB."); return; }
+    if (selected.some((file) => !isAllowedInquiryFile({ name: file.name, type: file.type, size: file.size }))) { resetFileInput(); setStatus("Please choose PDF, DWG, DXF, XLS, XLSX, JPG, PNG, or ZIP files only. CAD files may have an empty browser MIME type."); return; }
     setFiles(selected);
+    uploadedFilesRef.current = null;
+    uploadedSignatureRef.current = "";
     setStatus("");
   }
 

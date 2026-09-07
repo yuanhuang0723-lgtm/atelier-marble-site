@@ -24,6 +24,9 @@ export default function ConversionTracker() {
     if (Object.keys(campaign).length > 0) {
       sessionStorage.setItem("atelierCampaign", JSON.stringify(campaign));
     }
+    if (!sessionStorage.getItem("atelierLandingPage")) {
+      sessionStorage.setItem("atelierLandingPage", `${window.location.pathname}${window.location.search}`.slice(0, 500));
+    }
 
     const handler = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest("a");
@@ -47,7 +50,7 @@ export default function ConversionTracker() {
       trackConversionEvent(eventName, {
         page_path: window.location.pathname,
         link_text: link.textContent?.trim() || "",
-        href
+        link_type: isWhatsApp ? "whatsapp" : "email"
       });
     };
 
