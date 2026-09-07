@@ -4,6 +4,17 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app").replace(/\/$/, "");
 const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
+const legacyRedirects = {
+  "/hotel-hospitality-projects": "/projects/hotel-stone-supply",
+  "/hotel-projects": "/projects/hotel-stone-supply",
+  "/kitchen-countertops": "/countertops",
+  "/luxury-residential-kitchens": "/countertops",
+  "/architectural-stone-interiors": "/architectural-stone",
+  "/custom-furniture-sculptures": "/custom-stone-fabrication-china",
+  "/stone-sculptures": "/custom-stone-fabrication-china",
+  "/marble-coffee-tables": "/custom-stone-fabrication-china",
+  "/stone-slabs": "/materials"
+};
 
 async function fetchRoute(route) {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
@@ -18,7 +29,16 @@ async function fetchRoute(route) {
   }
 }
 
+async function fetchRedirect(route) {
+  const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
+  const { stdout } = await execFileAsync(curlCommand, ["--silent", "--show-error", "--max-time", "30", "--head", `${baseUrl}${route}`], { maxBuffer: 128 * 1024 });
+  const statuses = [...stdout.matchAll(/HTTP\/\S+\s+(\d{3})/g)];
+  const location = stdout.match(/^location:\s*(.+)$/im)?.[1]?.trim() || "";
+  return { route, status: Number(statuses.at(-1)?.[1] || 0), location };
+}
+
 const pages = await Promise.all(routes.map(fetchRoute));
+const redirects = await Promise.all(Object.entries(legacyRedirects).map(([route, destination]) => fetchRedirect(route).then((result) => ({ ...result, destination }))));
 const contents = new Map(pages.map(({ route, body }) => [route, body]));
 const pageHeaders = new Map(pages.map(({ route, headers }) => [route, headers]));
 const sitemap = contents.get("/sitemap.xml");
@@ -51,5 +71,10 @@ for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/proj
     throw new Error(`${route} is missing a canonical URL`);
   }
 }
+for (const redirect of redirects) {
+  if (![301, 308].includes(redirect.status) || redirect.location !== redirect.destination) {
+    throw new Error(`${redirect.route} should redirect to ${redirect.destination}, received ${redirect.status} ${redirect.location}`);
+  }
+}
 
-console.log(`Public route check passed for ${pages.length} routes at ${baseUrl}`);
+console.log(`Public route check passed for ${pages.length} routes and ${redirects.length} redirects at ${baseUrl}`);
