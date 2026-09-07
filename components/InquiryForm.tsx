@@ -98,7 +98,19 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
 
   async function uploadFiles() {
     if (!files.length) return [];
-    trackConversionEvent("file_upload_started", { sourcePage: hydratedContext.sourcePage, projectType, hasDrawings: true });
+    const fileEventContext = {
+      sourcePage: hydratedContext.sourcePage,
+      projectType,
+      hasDrawings: true,
+      hasFiles: true,
+      fileCount: files.length,
+      country,
+      hasCompany: Boolean(company),
+      hasDestination: Boolean(destinationPort),
+      hasQuantity: Boolean(quantity),
+      landingPage: window.location.pathname
+    };
+    trackConversionEvent("file_upload_started", fileEventContext);
     const uploaded: Array<{ key: string; name: string; size: number }> = [];
     for (const file of files) {
       setStatus(`Uploading ${file.name}...`);
@@ -118,7 +130,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       uploaded.push({ key: signed.key, name: file.name, size: file.size });
     }
     setStatus("Files uploaded. Sending your inquiry...");
-    trackConversionEvent("file_upload_completed", { sourcePage: hydratedContext.sourcePage, projectType, hasDrawings: true });
+    trackConversionEvent("file_upload_completed", fileEventContext);
     return uploaded;
   }
 
