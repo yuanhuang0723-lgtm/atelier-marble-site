@@ -91,9 +91,9 @@ async function buildFileLinks(files: InquiryRequestBody["files"]) {
 }
 
 function validateBody(body: InquiryRequestBody) {
-  if (!body.contact || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.contact.trim())) return "Please provide a valid email address.";
-  if (!body.projectType?.trim()) return "Please select a project type.";
-  if (!body.message?.trim() || body.message.trim().length < 10) return "Please add at least 10 characters about your project.";
+  if (typeof body.contact !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.contact.trim())) return "Please provide a valid email address.";
+  if (typeof body.projectType !== "string" || !body.projectType.trim()) return "Please select a project type.";
+  if (typeof body.message !== "string" || body.message.trim().length < 10) return "Please add at least 10 characters about your project.";
   const fields = [body.name, body.company, body.contact, body.country, body.destinationPort, body.stoneScope, body.quantity, body.deliveryDate, body.materialPreference, body.phone, body.message];
   if (fields.some((value) => typeof value === "string" && value.length > 2000)) return "One or more fields are too long.";
   if (body.files && !Array.isArray(body.files)) return "Invalid file metadata.";
