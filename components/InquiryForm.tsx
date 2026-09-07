@@ -11,6 +11,20 @@ type InquiryFormProps = {
   defaultProjectType?: string;
 };
 
+const allowedFileExtensions = new Set(["pdf", "dwg", "dxf", "xlsx", "xls", "jpg", "jpeg", "png", "zip"]);
+const allowedFileTypes = new Set([
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/vnd.ms-excel",
+  "image/jpeg",
+  "image/png",
+  "application/zip",
+  "application/x-zip-compressed",
+  "application/acad",
+  "application/dxf",
+  "application/octet-stream"
+]);
+
 export default function InquiryForm({ context, projectOptions, defaultProjectType }: InquiryFormProps) {
   const [projectType, setProjectType] = useState(defaultProjectType || context.projectType || "Stone project");
   const [name, setName] = useState("");
@@ -165,6 +179,10 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   function handleFiles(event: React.ChangeEvent<HTMLInputElement>) {
     const selected = Array.from(event.target.files || []);
     if (selected.length > 5) { setStatus("Please select no more than 5 files."); return; }
+    if (selected.some((file) => {
+      const extension = file.name.toLowerCase().split(".").pop() || "";
+      return !allowedFileExtensions.has(extension) || !allowedFileTypes.has(file.type.toLowerCase());
+    })) { setStatus("Please choose PDF, DWG, DXF, XLS, XLSX, JPG, PNG, or ZIP files only."); return; }
     if (selected.some((file) => file.size > 25 * 1024 * 1024)) { setStatus("Each file must be smaller than 25 MB."); return; }
     setFiles(selected);
     setStatus("");
