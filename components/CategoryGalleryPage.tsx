@@ -1,14 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import BreadcrumbJsonLd from "./BreadcrumbJsonLd";
-import JsonLd from "./JsonLd";
 import PageHero from "./PageHero";
 import PageShell from "./PageShell";
 import TrustStrip from "./TrustStrip";
 import { contact } from "../lib/assets";
 import { buildWhatsAppUrl } from "../lib/conversion";
 import { CategoryGalleryPageData } from "../lib/category-galleries";
-import { absoluteUrl } from "../lib/seo";
 
 type CategoryGalleryPageProps = {
   page: CategoryGalleryPageData;
@@ -18,8 +15,6 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
   return (
     <PageShell>
       <main>
-        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: page.eyebrow, path: page.slug }]} />
-        <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: page.title, description: page.description, url: absoluteUrl(page.slug), image: absoluteUrl(page.openGraphImage), isPartOf: { "@type": "WebSite", name: "Atelier Marble", url: absoluteUrl("/") } }} />
         {page.heroImage ? (
           <section className="hero-architectural min-h-[78vh]">
             <Image
