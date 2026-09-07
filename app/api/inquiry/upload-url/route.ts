@@ -36,6 +36,10 @@ function getClient() {
   });
 }
 
+function sanitizeOriginalName(name: string) {
+  return name.replace(/[\\/\u0000-\u001f\u007f]/g, "_").slice(0, 180);
+}
+
 export async function POST(request: Request) {
   const sourceIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   const now = Date.now();
@@ -81,7 +85,7 @@ export async function POST(request: Request) {
     Key: key,
     ContentType: type,
     ContentLength: size,
-    Metadata: { originalName: name.slice(0, 180) }
+    Metadata: { originalName: sanitizeOriginalName(name) }
   });
   let uploadUrl: string;
   try {
