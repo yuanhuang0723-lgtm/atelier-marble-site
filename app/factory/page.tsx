@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Capability proof for hotel stone fabrication, custom CAD production, export packing, and bespoke natural stone manufacturing in Yunfu.",
   alternates: { canonical: absoluteUrl("/factory") },
   openGraph: {
-    title: "Stone Fabrication Capability",
+    title: "Stone Fabrication Factory in China",
     description:
       "Real fabrication, craftsmanship, packing, and export capability behind a premium architectural stone design studio.",
     url: absoluteUrl("/factory"),

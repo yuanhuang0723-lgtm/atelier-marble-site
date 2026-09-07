@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Visual project references for hotel stone fabrication, custom stone countertops China, architectural interiors, and carved stone decor.",
   alternates: { canonical: absoluteUrl("/projects") },
   openGraph: {
-    title: "Stone Projects for Hotels & High-Value Interiors",
+    title: "Hotel & Commercial Stone Projects",
     description:
       "Explore visual project references from an architectural stone design studio and bespoke natural stone manufacturer.",
     url: absoluteUrl("/projects"),
@@ -44,7 +44,7 @@ export default async function ProjectsPage({
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project References", path: "/projects" }]} />
         <PageHero
           eyebrow="Project references"
-          title="Project references that qualify fit before pricing."
+          title="Hotel and commercial stone project references."
           description="Browse visual references across hospitality stone work, luxury kitchens, architectural interiors, furniture, and carved stone decor."
         />
         <section className="section-luxury bg-paper">

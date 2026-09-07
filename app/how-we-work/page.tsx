@@ -112,7 +112,7 @@ export default function HowWeWorkPage() {
         <JsonLd data={faqSchema} />
         <PageHero
           eyebrow="Export buyer workflow"
-          title="How we turn a project inquiry into a quotation."
+          title="A clear stone project workflow for export buyers."
           description="A six-step RFQ workflow for overseas buyers covering project briefs, drawing review, material proposal, quotation, production control, and export coordination."
         />
         <section className="section-luxury bg-paper">
