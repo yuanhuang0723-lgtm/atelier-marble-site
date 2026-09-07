@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const applications = [
   ["Hotel & Commercial", "/projects/commercial-stone", "/materials/categories/hotel-projects.png", "Architectural stone surfaces for hotel lobbies, reception areas, retail, and public interiors.", "Hotel and commercial interior stone reference"],
   ["Countertops & Vanity", "/countertops", "/materials/featured-covers/kitchen-countertop.png", "Countertops, vanity tops, integrated basins, and cut-to-size stone packages.", "Natural stone countertop and vanity application reference"],
-  ["Interior Surfaces", "/architectural-stone-interiors", "/assets/stone-table-coffee/hero-local-cover.png", "Wall, floor, furniture, and feature-surface references for considered interiors.", "Architectural stone interior surface reference"],
+  ["Interior & Feature Stone", "/projects/commercial-stone", "/assets/stone-table-coffee/hero-local-cover.png", "Wall, floor, furniture, and feature-surface references for considered interiors.", "Architectural stone interior surface reference"],
   ["Custom Stone", "/custom-stone-fabrication-china", "/materials/featured-covers/carving-decor.png", "Sculptural forms, furniture, and architectural accents developed from a clear design direction.", "Custom carved stone form for an architectural interior"]
 ];
 
