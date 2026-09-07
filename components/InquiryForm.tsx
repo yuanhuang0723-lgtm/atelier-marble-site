@@ -178,12 +178,15 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
 
   function handleFiles(event: React.ChangeEvent<HTMLInputElement>) {
     const selected = Array.from(event.target.files || []);
-    if (selected.length > 5) { setStatus("Please select no more than 5 files."); return; }
+    const resetFileInput = () => {
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    };
+    if (selected.length > 5) { resetFileInput(); setStatus("Please select no more than 5 files."); return; }
     if (selected.some((file) => {
       const extension = file.name.toLowerCase().split(".").pop() || "";
       return !allowedFileExtensions.has(extension) || !allowedFileTypes.has(file.type.toLowerCase());
-    })) { setStatus("Please choose PDF, DWG, DXF, XLS, XLSX, JPG, PNG, or ZIP files only."); return; }
-    if (selected.some((file) => file.size > 25 * 1024 * 1024)) { setStatus("Each file must be smaller than 25 MB."); return; }
+    })) { resetFileInput(); setStatus("Please choose PDF, DWG, DXF, XLS, XLSX, JPG, PNG, or ZIP files only."); return; }
+    if (selected.some((file) => file.size > 25 * 1024 * 1024)) { resetFileInput(); setStatus("Each file must be smaller than 25 MB."); return; }
     setFiles(selected);
     setStatus("");
   }
