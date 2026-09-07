@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Learn about Atelier Marble, a Yunfu-based project stone supplier coordinating marble, granite, quartzite, fabrication, and export delivery.",
   alternates: { canonical: absoluteUrl("/about") },
   openGraph: {
-    title: "About Us",
+    title: "About Atelier Marble Stone Supply",
     description:
       "Atelier Marble develops bespoke stone solutions for hotels, kitchens, interiors, furniture, and sculptural projects.",
     url: absoluteUrl("/about"),

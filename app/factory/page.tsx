@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stone Fabrication Factory in China",
     description:
-      "Real fabrication, craftsmanship, packing, and export capability behind a premium architectural stone design studio.",
+      "Real fabrication, craftsmanship, packing, and export capability from a stone fabrication factory in Yunfu, China.",
     url: absoluteUrl("/factory"),
     siteName
   }
