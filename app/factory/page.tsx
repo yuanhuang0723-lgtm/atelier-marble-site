@@ -65,8 +65,8 @@ export default function FactoryPage() {
             <div className="section-intro section-intro--center">
               <h2 className="heading-lg section-intro__title">Export production with visible proof.</h2>
               <p className="body-luxury section-intro__copy">
-                The workshop imagery supports Google and buyers understanding Atelier Marble as a high-quality stone
-                design studio with export manufacturing capability, not a thin catalog site.
+                The workshop imagery shows how material review, fabrication, inspection, and packing connect across an
+                export stone project. It gives buyers practical context beyond a product catalogue.
               </p>
             </div>
             <div className="mb-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
