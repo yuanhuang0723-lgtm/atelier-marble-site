@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "../../../components/JsonLd";
 import PageHero from "../../../components/PageHero";
 import PageShell from "../../../components/PageShell";
+import RelatedProjectLinks from "../../../components/RelatedProjectLinks";
 import { contact } from "../../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
@@ -244,6 +245,7 @@ export default function QualityControlDeliveryPage() {
                 </div>
               ))}
             </div>
+            <RelatedProjectLinks links={[{ label: "Factory Capability", href: "/factory" }, { label: "Export Packing", href: "/guides/export-packing-standards" }, { label: "Request Pricing", href: "/contact" }]} />
           </div>
         </section>
       </main>

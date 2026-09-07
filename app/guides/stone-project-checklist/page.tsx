@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "../../../components/JsonLd";
 import PageHero from "../../../components/PageHero";
 import PageShell from "../../../components/PageShell";
+import RelatedProjectLinks from "../../../components/RelatedProjectLinks";
 import { contact } from "../../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
@@ -247,6 +248,7 @@ export default function StoneProjectChecklistPage() {
                 </div>
               ))}
             </div>
+            <RelatedProjectLinks links={[{ label: "Project References", href: "/projects" }, { label: "How We Work", href: "/how-we-work" }, { label: "Request Pricing", href: "/contact" }]} />
           </div>
         </section>
       </main>

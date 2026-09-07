@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "../../../components/JsonLd";
 import PageHero from "../../../components/PageHero";
 import PageShell from "../../../components/PageShell";
+import RelatedProjectLinks from "../../../components/RelatedProjectLinks";
 import { contact } from "../../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
@@ -244,6 +245,7 @@ export default function ExportPackingStandardsPage() {
                 </div>
               ))}
             </div>
+            <RelatedProjectLinks links={[{ label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" }, { label: "How We Work", href: "/how-we-work" }, { label: "Request Pricing", href: "/contact" }]} />
           </div>
         </section>
       </main>
