@@ -64,19 +64,22 @@ export default function MaterialsPage() {
               ))}
             </div>
             <div className="grid gap-7 md:grid-cols-3">
-              {materials.map((asset, index) => (
+              {materials.map((asset, index) => {
+                const displayTitle = cleanDisplayTitle(asset.title, "Natural Stone Reference");
+                return (
                 <article key={asset.filename} className="card-luxury p-3">
                   <div className="media-luxury aspect-[4/3]">
-                    <img className="h-full w-full object-cover" src={asset.src} alt={`Natural stone slab reference ${String(index + 1).padStart(2, "0")} for countertop, vanity, and interior project review`} loading="lazy" />
+                    <img className="h-full w-full object-cover" src={asset.src} alt={`${displayTitle} natural stone slab reference ${String(index + 1).padStart(2, "0")} for countertop, vanity, and interior project review`} loading="lazy" />
                   </div>
                   <div className="px-4 py-6">
                     <p className="eyebrow-luxury mb-3">Slab reference {String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="heading-md card-title">{cleanDisplayTitle(asset.title, "Natural Stone Reference")}</h3>
+                    <h3 className="heading-md card-title">{displayTitle}</h3>
                     <p className="mt-4 text-sm font-light leading-7 text-ink/60">Visual reference for tone, movement, and surface character. Confirm the current material name and technical details before production.</p>
                     <Link className="text-cta-luxury mt-5" href="/contact">Request material review</Link>
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="container-luxury mt-16">
