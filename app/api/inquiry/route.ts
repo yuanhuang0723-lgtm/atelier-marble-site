@@ -6,6 +6,7 @@ import { contact } from "../../../lib/assets";
 export const runtime = "nodejs";
 
 const requestWindow = new Map<string, { count: number; startedAt: number }>();
+const FILE_KEY_PATTERN = /^inquiries\/[a-f0-9-]+\.[a-z0-9]+$/i;
 
 type InquiryRequestBody = {
   name?: string;
@@ -82,7 +83,7 @@ async function buildFileLinks(files: InquiryRequestBody["files"]) {
 
   return Promise.all(
     files.slice(0, 5).flatMap(async (file) => {
-      if (!file.key || !/^inquiries\/[a-f0-9-]+\.[a-z0-9]+$/i.test(file.key)) return [];
+      if (!file.key || !FILE_KEY_PATTERN.test(file.key)) return [];
       const url = await getSignedUrl(client, new GetObjectCommand({ Bucket: bucket, Key: file.key }), { expiresIn: 604800 });
       return [`${file.name || file.key}: ${url}`];
     })
@@ -90,11 +91,14 @@ async function buildFileLinks(files: InquiryRequestBody["files"]) {
 }
 
 function validateBody(body: InquiryRequestBody) {
+  if (!body.contact || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.contact.trim())) return "Please provide a valid email address.";
+  if (!body.projectType?.trim()) return "Please select a project type.";
+  if (!body.message?.trim() || body.message.trim().length < 10) return "Please add at least 10 characters about your project.";
   const fields = [body.name, body.company, body.contact, body.country, body.destinationPort, body.stoneScope, body.quantity, body.deliveryDate, body.materialPreference, body.phone, body.message];
   if (fields.some((value) => typeof value === "string" && value.length > 2000)) return "One or more fields are too long.";
   if (body.files && !Array.isArray(body.files)) return "Invalid file metadata.";
   if (Array.isArray(body.files) && body.files.length > 5) return "Please attach no more than 5 files.";
-  if (Array.isArray(body.files) && body.files.some((file) => !file || typeof file.key !== "string" || typeof file.name !== "string" || !Number.isFinite(Number(file.size)) || Number(file.size) <= 0 || Number(file.size) > 25 * 1024 * 1024)) return "One or more files are invalid.";
+  if (Array.isArray(body.files) && body.files.some((file) => !file || typeof file.key !== "string" || !FILE_KEY_PATTERN.test(file.key) || typeof file.name !== "string" || !file.name.trim() || !Number.isFinite(Number(file.size)) || Number(file.size) <= 0 || Number(file.size) > 25 * 1024 * 1024)) return "One or more files are invalid.";
   return null;
 }
 
