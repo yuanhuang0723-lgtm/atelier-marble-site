@@ -6,7 +6,7 @@ import PageShell from "../../../components/PageShell";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Canada Custom Stone Shower Niches Project Reference",
+  title: "Canada Stone Shower Niches Project",
   description: "2025 Canada project reference for several thousand custom stone shower niches with CAD detailing, shop drawings, cut lists, and multi-batch coordination.",
   alternates: { canonical: absoluteUrl("/projects/canada-shower-niches-2025") },
   openGraph: {

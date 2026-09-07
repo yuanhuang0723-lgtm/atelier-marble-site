@@ -9,7 +9,7 @@ import { cleanDisplayTitle, getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Stone Fabrication Capability",
+  title: "Stone Fabrication Factory in China",
   description:
     "Capability proof for hotel stone fabrication, custom CAD production, export packing, and bespoke natural stone manufacturing in Yunfu.",
   alternates: { canonical: absoluteUrl("/factory") },

@@ -8,7 +8,7 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Quality Control and Delivery Standards for Stone Projects",
+  title: "Stone Quality Control & Delivery",
   description:
     "A practical quality control and delivery guide for overseas buyers sourcing stone slabs, hotel projects, countertops, and custom fabrication from China.",
   alternates: { canonical: absoluteUrl("/guides/quality-control-delivery") },

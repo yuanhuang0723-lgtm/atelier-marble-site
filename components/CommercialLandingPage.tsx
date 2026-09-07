@@ -4,6 +4,7 @@ import JsonLd from "./JsonLd";
 import PageHero from "./PageHero";
 import PageShell from "./PageShell";
 import { contact } from "../lib/assets";
+import { absoluteUrl } from "../lib/seo";
 
 type CommercialLandingPageProps = {
   eyebrow: string;
@@ -22,7 +23,7 @@ export default function CommercialLandingPage({
   return (
     <PageShell>
       <main>
-        <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://atelier-marble-site.vercel.app/" }, { "@type": "ListItem", position: 2, name: eyebrow, item: metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : "https://atelier-marble-site.vercel.app/" }] }} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: eyebrow, item: metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : absoluteUrl("/") }] }} />
         <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">

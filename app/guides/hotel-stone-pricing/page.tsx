@@ -8,7 +8,7 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hotel Stone Pricing Guide for Overseas Buyers",
+  title: "Hotel Stone Pricing Guide",
   description:
     "A practical pricing guide for overseas buyers comparing hotel stone projects, marble supply, fabrication scope, and export coordination.",
   alternates: { canonical: absoluteUrl("/guides/hotel-stone-pricing") },

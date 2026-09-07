@@ -2,7 +2,8 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
-const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://atelier-marble-site.vercel.app").replace(/\/$/, "");
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/$/, "");
+const escapedBaseUrl = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 const legacyRedirects = {
   "/hotel-hospitality-projects": "/projects/hotel-stone-supply",
@@ -67,7 +68,7 @@ if (!pageHeaders.get("/project-brief-template.txt").includes("content-dispositio
   throw new Error("project brief template is not served as an attachment");
 }
 for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/countertops", "/countertops/vanity-tops", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
-  if (!/<link[^>]+rel="canonical"[^>]+href="https:\/\/atelier-marble-site\.vercel\.app(?:\/|"|\?)/i.test(contents.get(route))) {
+  if (!new RegExp(`<link[^>]+rel="canonical"[^>]+href="${escapedBaseUrl}(?:/|"|\\?)`, "i").test(contents.get(route))) {
     throw new Error(`${route} is missing a canonical URL`);
   }
 }

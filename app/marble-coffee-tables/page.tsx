@@ -6,7 +6,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 const coffeeTableAssets = getAssets("coffee-table");
 
 export const metadata: Metadata = {
-  title: "Custom Marble Coffee Tables & Stone Furniture",
+  title: "Custom Marble Coffee Tables",
   description: "Custom marble coffee tables, side tables, console pieces, and furniture-grade stone fabrication for hospitality and residential interiors.",
   alternates: { canonical: absoluteUrl("/marble-coffee-tables") },
   openGraph: {

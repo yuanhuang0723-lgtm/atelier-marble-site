@@ -85,8 +85,17 @@ The GA4 measurement ID enables pageview tracking for every route change in the a
 
 Tracked inquiry events:
 
+- `page_view`
+- `inquiry_form_started`
 - `whatsapp_inquiry_click`
 - `email_inquiry_click`
-- `qualified_inquiry_form_submit`
+- `file_upload_started`
+- `file_upload_completed`
+- `qualified_inquiry_submitted`
+- `generate_lead`
 
 If `NEXT_PUBLIC_GOOGLE_ADS_ID` and `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` are both present, each inquiry event also sends a Google Ads `conversion` event. Campaign parameters such as `utm_source`, `utm_campaign`, `utm_term`, and `gclid` are stored in session storage and attached to inquiry events.
+
+## Private Inquiry Uploads
+
+Project files use Supabase private Storage with browser-direct signed uploads. Configure the existing Vercel project with the variables in `docs/production-inquiry-setup.md`, then apply `supabase/migrations/20260907220000_inquiry_storage.sql`. The server validates the signed upload receipt, object existence, stored size, and metadata before generating a seven-day private download link for the inquiry email. No R2 credentials or public object URLs are used.

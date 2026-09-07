@@ -2,7 +2,7 @@
 
 Use the verified URL-prefix property:
 
-`https://atelier-marble-site.vercel.app/`
+`https://ateliermarblestone.com/`
 
 ## Submit both sitemaps
 
@@ -16,8 +16,8 @@ image-sitemap.xml
 The full URLs are:
 
 ```text
-https://atelier-marble-site.vercel.app/sitemap.xml
-https://atelier-marble-site.vercel.app/image-sitemap.xml
+https://ateliermarblestone.com/sitemap.xml
+https://ateliermarblestone.com/image-sitemap.xml
 ```
 
 ## Request indexing for priority pages
@@ -25,15 +25,15 @@ https://atelier-marble-site.vercel.app/image-sitemap.xml
 Use **URL inspection** for these pages and choose **Request indexing** after the live URL test succeeds:
 
 ```text
-https://atelier-marble-site.vercel.app/
-https://atelier-marble-site.vercel.app/countertops
-https://atelier-marble-site.vercel.app/countertops/vanity-tops
-https://atelier-marble-site.vercel.app/countertops/integrated-stone-sinks
-https://atelier-marble-site.vercel.app/projects/hotel-stone-supply
-https://atelier-marble-site.vercel.app/projects/commercial-stone
-https://atelier-marble-site.vercel.app/projects/canada-shower-niches-2025
-https://atelier-marble-site.vercel.app/factory
-https://atelier-marble-site.vercel.app/resources
+https://ateliermarblestone.com/
+https://ateliermarblestone.com/countertops
+https://ateliermarblestone.com/countertops/vanity-tops
+https://ateliermarblestone.com/countertops/integrated-stone-sinks
+https://ateliermarblestone.com/projects/hotel-stone-supply
+https://ateliermarblestone.com/projects/commercial-stone
+https://ateliermarblestone.com/projects/canada-shower-niches-2025
+https://ateliermarblestone.com/factory
+https://ateliermarblestone.com/resources
 ```
 
 Do not request indexing for `/contact/thank-you` or the generated `/project/{uuid}` pages. The thank-you page is `noindex`, and unverified generated project pages are intentionally `noindex, follow`.
@@ -43,7 +43,7 @@ Do not request indexing for `/contact/thank-you` or the generated `/project/{uui
 Check that:
 
 - Both sitemap rows show a successful fetch.
-- The inspected URL is accessible and canonicalizes to the Vercel URL.
+- The inspected URL is accessible and canonicalizes to `https://ateliermarblestone.com`.
 - The page is not blocked by robots.txt.
 - The page has one clear H1 and a unique title.
 - Search performance data begins accumulating under **Pages**, **Queries**, and **Countries**.

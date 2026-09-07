@@ -8,7 +8,7 @@ const heroImage = materialImages[0]?.src || "/materials/hero/atelier-marble-luxu
 const heroAlt = materialImages[0]?.alt || "premium natural stone slab material selection for architectural projects";
 
 export const metadata: Metadata = {
-  title: "Stone Slab Supplier China",
+  title: "Stone Slab Supplier in China",
   description:
     "Stone slab supplier China for marble material selection, project specification, custom fabrication, and export supply.",
   alternates: { canonical: absoluteUrl("/stone-slabs") },

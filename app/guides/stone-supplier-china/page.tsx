@@ -8,7 +8,7 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "How to Choose a Stone Supplier in China for Hotel Projects",
+  title: "Stone Supplier in China for Hotels",
   description:
     "A practical buyer guide for overseas teams comparing a stone supplier in China for hotel projects, kitchens, interiors, and custom fabrication.",
   alternates: { canonical: absoluteUrl("/guides/stone-supplier-china") },

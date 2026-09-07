@@ -1,80 +1,55 @@
 # Production Inquiry Setup
 
-This checklist activates private CAD/BOQ uploads for the production site:
+This checklist configures the private CAD/BOQ upload flow for:
 
-`https://atelier-marble-site.vercel.app`
+`https://ateliermarblestone.com`
 
-## 1. Create the R2 bucket
+## 1. Supabase project and private bucket
 
-Use the Cloudflare account that owns the site and create a private bucket, for example:
+Use the intended Supabase account and an existing free project when one is available. Do not activate billing for this site without explicit approval.
 
-`atelier-marble-inquiries`
+Run the reviewed migration from the repository root with the Supabase CLI or SQL editor:
 
-Do not enable public `r2.dev` access. Uploaded project files must remain private.
+`supabase/migrations/20260907220000_inquiry_storage.sql`
 
-## 2. Create the least-privilege R2 credentials
+It creates or updates the private `inquiry-files` bucket with a 25 MiB object limit and creates the server-only `inquiry_idempotency` table. The migration enables RLS and grants no table access to `anon` or `authenticated`. Do not add public bucket access or anonymous object policies.
 
-Create an R2 API token limited to this bucket with object read and write access. Do not use an account-wide administrator token for the website runtime.
+## 2. Vercel Production variables
 
-The credentials are used only by the server-side signing routes:
-
-```text
-R2_ACCOUNT_ID
-R2_ACCESS_KEY_ID
-R2_SECRET_ACCESS_KEY
-R2_BUCKET_NAME
-```
-
-## 3. Configure CORS and lifecycle
-
-From the repository root, run the configuration helper with the variables set in the local shell. Do not commit the shell values or a `.env` file.
-
-```bash
-npm run configure:r2
-```
-
-The helper configures:
-
-- PUT, GET, and HEAD from the Vercel origin only.
-- `content-type` and `x-amz-*` request headers.
-- 90-day expiration for objects under `inquiries/`.
-
-## 4. Add Vercel Production variables
-
-In the Vercel project settings, add these variables to the **Production** environment:
+Add these to the existing Vercel project `atelier-marble-site`, Production environment only:
 
 ```text
-NEXT_PUBLIC_SITE_URL=https://atelier-marble-site.vercel.app
-R2_ACCOUNT_ID=...
-R2_ACCESS_KEY_ID=...
-R2_SECRET_ACCESS_KEY=...
-R2_BUCKET_NAME=atelier-marble-inquiries
+NEXT_PUBLIC_SITE_URL=https://ateliermarblestone.com
+SUPABASE_URL=https://<project-ref>.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=<server-only-secret>
+SUPABASE_INQUIRY_BUCKET=inquiry-files
+INQUIRY_UPLOAD_SECRET=<optional-independent-server-secret>
 INQUIRY_RECIPIENT=ding@atelier-marble.ltd
 ```
 
-Never add `R2_SECRET_ACCESS_KEY` to GitHub, browser code, or a `NEXT_PUBLIC_*` variable.
+`SUPABASE_SERVICE_ROLE_KEY` and `INQUIRY_UPLOAD_SECRET` must never be committed, sent to the browser, added to GitHub, or exposed as `NEXT_PUBLIC_*`. The browser receives only a short-lived signed upload URL and an opaque, signed receipt. File bytes go directly from the browser to Supabase Storage; they do not pass through a Vercel function.
 
-## 5. Redeploy and verify
+## 3. Application behavior and limits
 
-Push or redeploy the current `main` branch, then run:
+- Up to 5 files, 25 MiB per file.
+- PDF, DWG, DXF, XLS, XLSX, JPG/JPEG, PNG, and ZIP are accepted.
+- CAD files are accepted when the browser reports an empty MIME type; extension and the shared MIME policy are still checked.
+- Empty files, unsupported extensions/MIME combinations, forged receipts, mismatched sizes, duplicate keys, missing objects, and cross-session substitutions are rejected.
+- Download links are private signed URLs with a maximum 7-day expiry.
+- Submission idempotency is durable in Supabase. `processing`, `pending`, `failed`, and `sent` records prevent a retry from blindly sending a second email. The application also has an in-memory rate limit per instance; it is not presented as a cross-instance rate limiter.
 
-```bash
-npm run check:public
-```
+## 4. Verify without sending a customer inquiry
 
-On `/contact`, verify all of the following manually:
+Before any live test, run the local focused tests and build. Do not submit invalid data or real customer files to production. A real success test requires an explicitly approved test inquiry and checking the received message in the intended mailbox; until then email delivery is **unverified** even if the provider accepts an HTTP request.
 
-- A PDF uploads successfully.
-- A JPG uploads successfully.
-- An XLSX uploads successfully.
-- The selected file name and size are visible.
-- A selected file can be removed before submission.
-- EXE, HTML, and JS files are rejected.
-- Files over 25 MB are rejected.
-- More than 5 files are rejected.
-- The inquiry email contains the file names and temporary download links.
-- Opening the object without the signed link returns no public file.
-- The signed download link expires after its configured period.
-- GA4 receives `file_upload_completed`, `qualified_inquiry_submitted`, and `generate_lead`.
+For an approved live test, verify:
 
-The website can remain online while this setup is pending. Before the R2 variables exist, the form must show an upload configuration error rather than report a false success.
+- PDF, JPG, and XLSX upload successfully and display their names and sizes.
+- A file can be removed and selected again; more than 5 files and files over 25 MiB are rejected.
+- Direct unauthenticated access to the private bucket/object is denied.
+- The email contains project fields, file names, and temporary private links.
+- The final response is not successful for provider rejection, malformed provider response, upload failure, or uncertain delivery.
+- Reloading `/contact/thank-you` does not generate a second lead event.
+- GA4 receives only non-personal context; it must never receive email, phone, notes, file names, or signed URLs.
+
+If Supabase account/project access is unavailable, leave the website upload flow unconfigured and report that exact missing step. The temporary alternative is for a buyer to submit project details and send attachments separately by email; that is not fulfillment of direct website upload.

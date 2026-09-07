@@ -7,12 +7,12 @@ import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/ass
 import { absoluteUrl, siteName } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Custom Stone Fabrication & Project Supply from Yunfu",
+  title: "Custom Stone Fabrication China",
   description:
     "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Atelier Marble | Custom Stone Fabrication & Project Supply",
+    title: "Custom Stone Fabrication China | Atelier Marble",
     description:
       "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
     url: absoluteUrl("/"),

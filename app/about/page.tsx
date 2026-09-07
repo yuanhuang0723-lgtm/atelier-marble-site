@@ -7,7 +7,7 @@ import { contact, getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Atelier Marble Stone Supply",
   description:
     "Learn about Atelier Marble, a Yunfu-based project stone supplier coordinating marble, granite, quartzite, fabrication, and export delivery.",
   alternates: { canonical: absoluteUrl("/about") },

@@ -4,7 +4,7 @@ import { getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hotel Stone Fabrication Supplier",
+  title: "Hotel Stone Supplier in China",
   description:
     "Hotel stone fabrication supplier for marble interiors, lobby flooring, wall cladding, and commercial stone projects.",
   alternates: { canonical: absoluteUrl("/hotel-projects") },

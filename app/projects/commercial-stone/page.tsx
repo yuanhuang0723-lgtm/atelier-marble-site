@@ -3,7 +3,7 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Commercial Stone Fabrication & Project Supply",
+  title: "Commercial Stone Fabrication China",
   description: "Commercial stone fabrication and project supply for hospitality, retail, office, and public interior projects from Yunfu, China.",
   alternates: { canonical: absoluteUrl("/projects/commercial-stone") },
   openGraph: { title: "Commercial Stone Fabrication & Project Supply", description: "Commercial stone fabrication and project supply for hospitality, retail, office, and public interior projects from Yunfu, China.", url: absoluteUrl("/projects/commercial-stone"), siteName, images: [{ url: absoluteUrl("/materials/categories/hotel-projects.png") }] }
