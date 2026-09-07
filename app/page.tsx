@@ -289,7 +289,7 @@ export default function HomePage() {
                 <Link
                   key={`${item.asset.category}-${item.asset.filename}`}
                   className="reference-card group"
-                  href={item.asset.category === "factory" ? "/factory" : item.asset.category === "coffee-table" ? "/marble-coffee-tables" : item.asset.category === "carving-decor" ? "/custom-stone-fabrication-china" : "/countertops"}
+                  href={item.asset.category === "factory" ? "/factory" : item.asset.category === "coffee-table" ? "/custom-stone-fabrication-china" : item.asset.category === "carving-decor" ? "/custom-stone-fabrication-china" : "/countertops"}
                 >
                   <div className="reference-card__media">
                     <img
