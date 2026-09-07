@@ -27,12 +27,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/privacy-policy"
   ];
-  const now = new Date();
-
   return [
     ...staticRoutes.map((route) => ({
       url: absoluteUrl(route),
-      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: route === "/" ? 1 : 0.8
     }))
