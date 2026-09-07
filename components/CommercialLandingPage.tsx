@@ -14,18 +14,32 @@ type CommercialLandingPageProps = {
   imageAlt: string;
   bullets: string[];
   details: string[];
+  faqs?: { question: string; answer: string }[];
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, metadata
 }: CommercialLandingPageProps) {
+  const faqJsonLd = faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer }
+        }))
+      }
+    : null;
+
   return (
     <PageShell>
       <main>
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: eyebrow, item: metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : absoluteUrl("/") }] },
-          { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") }, areaServed: "Worldwide" }
+          { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") }, areaServed: "Worldwide" },
+          ...(faqJsonLd ? [faqJsonLd] : [])
         ]} />
         <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} />
         <section className="section-luxury bg-paper">
@@ -53,6 +67,26 @@ export default function CommercialLandingPage({
             </div>
           </div>
         </section>
+        {faqs?.length ? (
+          <section className="section-luxury bg-paper">
+            <div className="container-luxury">
+              <div className="section-intro section-intro--center">
+                <p className="eyebrow-luxury">Buyer questions</p>
+                <h2 className="heading-lg section-intro__title">Bathroom vanity top details, answered clearly.</h2>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {faqs.map((faq) => (
+                  <article key={faq.question} className="card-luxury px-5 py-5">
+                    <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-3 text-[0.93rem] leading-7 text-ink/68">{faq.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
         <section className="section-luxury-compact bg-stone text-center">
           <p className="eyebrow-luxury">Next step</p>
           <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a drawing, BOQ, or reference image?</h2>
