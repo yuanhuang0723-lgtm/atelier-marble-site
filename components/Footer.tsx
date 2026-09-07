@@ -35,7 +35,7 @@ const footerGroups: FooterGroup[] = [
     links: [
       { label: "Hotel Projects", href: "/projects/hotel-stone-supply" },
       { label: "Countertops & Vanity", href: "/countertops" },
-      { label: "Architectural Stone", href: "/architectural-stone-interiors" },
+      { label: "Architectural Stone", href: "/architectural-stone" },
       { label: "Custom Stone", href: "/custom-stone-fabrication-china" }
     ]
   },
