@@ -56,7 +56,7 @@ export default function FactoryPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <PageHero
           eyebrow="Capability proof"
-          title="Factory direct supply, presented with restraint."
+          title="Stone fabrication factory in China, presented with restraint."
           description="Real workshop, craftsmanship, production, and packing images support hotel stone fabrication and bespoke natural stone manufacturing while keeping authenticity and export credibility."
           backgroundImage="/assets/factory/factory-hero-workshop.png"
         />
