@@ -14,7 +14,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 
 | URL | Primary keyword | Supporting terms | Intent |
 |---|---|---|---|
-| `/` | custom stone fabrication China | stone supplier China, project stone supply, export stone fabrication | Brand and commercial discovery |
+| `/` | stone supplier China | custom stone fabrication, project stone supply, export stone fabrication | Brand and commercial discovery |
 | `/projects/hotel-stone-supply` | hotel stone supply China | hotel stone fabrication, hospitality stone supplier, vanity tops, lobby stone | Commercial |
 | `/projects/commercial-stone` | commercial stone fabrication China | retail stone, office interiors, hospitality project supply | Commercial |
 | `/materials` | natural stone materials for projects | marble slabs, material selection, export stone supply | Commercial |
