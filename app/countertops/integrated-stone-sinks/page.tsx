@@ -4,9 +4,9 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Integrated Stone Sinks & Vanity Basins",
-  description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, and export packing.",
+  description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, drainage details, finish, and export packing.",
   alternates: { canonical: absoluteUrl("/countertops/integrated-stone-sinks") },
-  openGraph: { title: "Integrated Stone Sinks & Vanity Basins", description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, and export packing.", url: absoluteUrl("/countertops/integrated-stone-sinks"), siteName, images: [{ url: absoluteUrl("/assets/vanity-cabinet/hero.webp") }] }
+  openGraph: { title: "Integrated Stone Sinks & Vanity Basins", description: "Custom integrated stone sinks and vanity basins coordinated with countertop dimensions, cut-outs, edges, drainage details, finish, and export packing.", url: absoluteUrl("/countertops/integrated-stone-sinks"), siteName, images: [{ url: absoluteUrl("/assets/vanity-cabinet/hero.webp") }] }
 };
 
 export default function IntegratedStoneSinksPage() {
