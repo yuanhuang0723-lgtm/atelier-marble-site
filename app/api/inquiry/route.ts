@@ -103,6 +103,10 @@ function validateBody(body: InquiryRequestBody) {
 }
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length") || 0);
+  if (contentLength > 512 * 1024) {
+    return NextResponse.json({ ok: false, message: "Inquiry request is too large." }, { status: 413 });
+  }
   const sourceIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   const now = Date.now();
   const previous = requestWindow.get(sourceIp);
