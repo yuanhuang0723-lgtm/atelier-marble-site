@@ -9,7 +9,7 @@ import { absoluteUrl, siteName } from "../lib/seo";
 export const metadata: Metadata = {
   title: "Stone Supplier in China | Atelier Marble",
   description:
-    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
+    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers. Send your CAD or BOQ for review.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: "Stone Supplier & Fabrication China | Atelier Marble",

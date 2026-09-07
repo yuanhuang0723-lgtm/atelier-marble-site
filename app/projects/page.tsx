@@ -10,7 +10,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "Hotel & Commercial Stone Projects",
   description:
-    "Visual project references for hotel stone fabrication, custom stone countertops from China, architectural interiors, and carved stone decor.",
+    "Visual hotel and commercial stone project references, including fabrication, countertops, architectural interiors, and carved stone work from China.",
   alternates: { canonical: absoluteUrl("/projects") },
   openGraph: {
     title: "Hotel & Commercial Stone Projects",

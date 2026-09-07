@@ -11,7 +11,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "Stone Fabrication Factory in China",
   description:
-    "Capability proof for hotel stone fabrication, custom CAD production, export packing, and bespoke natural stone manufacturing in Yunfu.",
+    "Capability proof for a stone fabrication factory in Yunfu, China, including hotel stone work, CAD production, export packing, and quality review.",
   alternates: { canonical: absoluteUrl("/factory") },
   openGraph: {
     title: "Stone Fabrication Factory in China",
