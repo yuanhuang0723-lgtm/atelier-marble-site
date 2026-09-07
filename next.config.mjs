@@ -20,6 +20,10 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/api/:path*",
+        headers: [{ key: "Cache-Control", value: "no-store" }]
+      },
+      {
         source: "/project-brief-template.txt",
         headers: [
           { key: "Content-Type", value: "text/plain; charset=utf-8" },
