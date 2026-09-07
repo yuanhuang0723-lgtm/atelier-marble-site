@@ -9,7 +9,7 @@ function escapeXml(value: string) {
 
 export function GET() {
   const imageGroups = [
-    { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.png", "/assets/vanity-cabinet/cover.png", "/assets/carving-decor/cover.png", "/materials/categories/hotel-projects.png"] },
+    { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.webp", "/assets/vanity-cabinet/cover.webp", "/assets/carving-decor/cover.webp", "/materials/categories/hotel-projects.webp"] },
     { page: "/factory", images: ["/assets/factory/factory-hero-workshop.png", ...getAssets("factory").map((asset) => asset.src)] },
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
     { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) }

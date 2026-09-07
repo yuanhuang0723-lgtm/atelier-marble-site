@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
     url: absoluteUrl("/"),
     siteName,
-    images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.png"), width: 1536, height: 1024 }]
+    images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
   }
 };
 
@@ -25,28 +25,28 @@ const buyerIntentCards = [
   {
     title: "Stone Countertop & Coffee Table",
     href: "/countertops",
-    image: "/assets/home-top-cover.png",
+    image: "/assets/home-top-cover.webp",
     alt: "Ultra realistic luxury stone dining table and stone countertop in a premium modern interior",
     question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
   },
   {
     title: "Cabinet Panels + Vanity Tops",
     href: "/countertops/vanity-tops",
-    image: "/assets/vanity-cabinet/cover.png",
+    image: "/assets/vanity-cabinet/cover.webp",
     alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",
     question: "STONE VANITY TOP AND CABINET PANEL REFERENCE."
   },
   {
     title: "Custom Stone Sculptures",
     href: "/custom-stone-fabrication-china",
-    image: "/assets/carving-decor/cover.png",
+    image: "/assets/carving-decor/cover.webp",
     alt: "Ultra realistic luxury stone carving sculpture in a premium showroom setting",
     question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
   },
   {
     title: "Hotel & Hospitality Projects",
     href: "/projects/hotel-stone-supply",
-    image: "/materials/categories/hotel-projects.png",
+    image: "/materials/categories/hotel-projects.webp",
     alt: "Luxury hotel stone project with marble flooring and wall cladding",
     question: "HOTEL PROJECT SUPPLY FOR DEVELOPERS, CONTRACTORS, AND PROCUREMENT TEAMS."
   }
@@ -62,12 +62,12 @@ export default function HomePage() {
     asset,
     coverSrc:
       asset.category === "kitchen-countertop"
-        ? "/materials/featured-covers/kitchen-countertop.png"
+        ? "/materials/featured-covers/kitchen-countertop.webp"
         : asset.category === "coffee-table"
-          ? "/materials/featured-covers/coffee-table.png"
+          ? "/materials/featured-covers/coffee-table.webp"
           : asset.category === "carving-decor"
-            ? "/materials/featured-covers/carving-decor.png"
-            : "/materials/featured-covers/project-support.png",
+            ? "/materials/featured-covers/carving-decor.webp"
+            : "/materials/featured-covers/project-support.webp",
     coverAlt: asset.alt
   }));
 
@@ -87,7 +87,7 @@ export default function HomePage() {
         <section className="hero-architectural min-h-screen">
           <Image
             className="object-cover"
-            src="/materials/hero/atelier-marble-luxury-hero.png"
+            src="/materials/hero/atelier-marble-luxury-hero.webp"
             alt="Ultra realistic luxury marble architectural interior for Atelier Marble"
             fill
             priority
@@ -218,7 +218,7 @@ export default function HomePage() {
               <div className="card-luxury why-choose-us__media overflow-hidden bg-[#f3ede4] p-0">
                 <img
                   className="block h-full w-full object-cover object-center"
-                  src="/assets/why-choose-us/why-choose-us.png"
+                  src="/assets/why-choose-us/why-choose-us.webp"
                   alt="Trusted stone supply hub overview with factory, warehouse, and material capacity details"
                   loading="lazy"
                 />
@@ -308,7 +308,7 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
-            <div className="mt-8">
+              <div className="mt-8">
               <div className="flex flex-wrap gap-4">
                 <Link className="text-cta-luxury" href="/contact">
                   Request Similar Project Pricing
