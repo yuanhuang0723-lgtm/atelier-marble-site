@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Commercial Stone Fabrication in China",
   description: "Commercial stone fabrication and project supply in China for hospitality, retail, office, and public interiors, with repeatable details and export coordination.",
   alternates: { canonical: absoluteUrl("/projects/commercial-stone") },
-  openGraph: { title: "Commercial Stone Fabrication in China", description: "Commercial stone fabrication and project supply for hospitality, retail, office, and public interior projects from Yunfu, China.", url: absoluteUrl("/projects/commercial-stone"), siteName, images: [{ url: absoluteUrl("/materials/categories/hotel-projects.webp") }] }
+  openGraph: { title: "Commercial Stone Fabrication in China", description: "Commercial stone fabrication and project supply in China for hospitality, retail, office, and public interiors, with repeatable details and export coordination.", url: absoluteUrl("/projects/commercial-stone"), siteName, images: [{ url: absoluteUrl("/materials/categories/hotel-projects.webp") }] }
 };
 
 export default function CommercialStonePage() {

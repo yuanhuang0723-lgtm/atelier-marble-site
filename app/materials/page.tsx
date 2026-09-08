@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Natural Stone Materials for Projects",
     description:
-      "Review marble textures and stone surfaces for bespoke natural stone manufacturing and international architectural projects.",
+      "Natural stone materials for hotel, commercial, residential, and custom fabrication projects, with marble selection and export supply from China.",
     url: absoluteUrl("/materials"),
     siteName
   }

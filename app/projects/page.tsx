@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hotel & Commercial Stone Projects",
     description:
-      "Explore visual project references from an architectural stone design studio and bespoke natural stone manufacturer.",
+      "Visual hotel and commercial stone project references, including fabrication, countertops, architectural interiors, and carved stone work from China.",
     url: absoluteUrl("/projects"),
     siteName
   }

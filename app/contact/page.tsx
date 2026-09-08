@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Project Consultation for Stone Buyers",
     description:
-      "Discuss project pricing, material suggestions, and export production with a luxury stone supplier in China.",
+      "Request consultation from Atelier Marble for hotel projects, stone slabs, kitchens, architectural interiors, furniture, or carved stone decor from China.",
     url: absoluteUrl("/contact"),
     siteName
   }

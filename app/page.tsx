@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stone Supplier & Fabrication China | Atelier Marble",
     description:
-      "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
+      "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers. Send your CAD or BOQ for review.",
     url: absoluteUrl("/"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
