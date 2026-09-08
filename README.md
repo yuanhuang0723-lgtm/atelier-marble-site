@@ -111,11 +111,13 @@ If `NEXT_PUBLIC_GOOGLE_ADS_ID` and `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` are
 Project files use Supabase private Storage with browser-direct signed uploads. Configure the existing Vercel project with the variables in `docs/production-inquiry-setup.md`, then apply `supabase/migrations/20260907220000_inquiry_storage.sql`. The server validates the signed upload receipt, object existence, stored size, and metadata before generating a seven-day private download link for the inquiry email. No R2 credentials or public object URLs are used.
 # Content management setup
 
-The first admin slice is available at `/admin/login` and manages Factory Journal records. It uses Supabase Auth, the `factory_journal_entries` table, and the public `factory-media` Storage bucket.
+The admin is available at `/admin/login`. It includes Factory Journal, Project References, Pages, and Media Library. It uses Supabase Auth, the content tables, and the public `factory-media` Storage bucket.
 
 1. Create a Supabase project and run `supabase/migrations/001_content_management.sql` in the SQL editor.
 2. Create an admin user in Supabase Authentication.
 3. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` to local and Vercel environments.
 4. Deploy, open `/admin/login`, and publish only verified field records.
+
+Use `draft` while reviewing content. Only `published` factory records, project references, and managed pages are read by the public site and included in the generated sitemap. `archived` records remain available to authenticated editors but are excluded from public reads. Managed Chinese pages use `/zh/pages/<slug>`; English pages use `/pages/<slug>`.
 
 Without those variables, the public `/factory` page safely falls back to the curated local references and the admin client cannot sign in.
