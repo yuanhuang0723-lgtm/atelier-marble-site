@@ -48,6 +48,27 @@ create table if not exists public.site_pages (
   unique (slug, locale)
 );
 
+create table if not exists public.media_assets (
+  id uuid primary key default gen_random_uuid(),
+  storage_path text not null unique,
+  public_url text not null,
+  title text not null,
+  alt_text text not null,
+  category text not null check (category in ('Product', 'Factory', 'Project', 'Packing', 'Material')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.content_audit_log (
+  id uuid primary key default gen_random_uuid(),
+  table_name text not null,
+  record_id uuid,
+  action text not null check (action in ('create', 'update', 'publish', 'archive', 'delete')),
+  changed_at timestamptz not null default now(),
+  changed_by uuid references auth.users(id) on delete set null,
+  details jsonb not null default '{}'::jsonb
+);
+
 alter table public.factory_journal_entries enable row level security;
 
 create policy "published factory journal is public"
@@ -69,6 +90,8 @@ create policy "authenticated users manage project cases"
   to authenticated using (true) with check (true);
 
 alter table public.site_pages enable row level security;
+alter table public.media_assets enable row level security;
+alter table public.content_audit_log enable row level security;
 
 create policy "published site pages are public"
   on public.site_pages for select
@@ -77,6 +100,21 @@ create policy "published site pages are public"
 create policy "authenticated users manage site pages"
   on public.site_pages for all
   to authenticated using (true) with check (true);
+
+create policy "public reads media metadata"
+  on public.media_assets for select using (true);
+
+create policy "authenticated users manage media metadata"
+  on public.media_assets for all
+  to authenticated using (true) with check (true);
+
+create policy "authenticated users read audit log"
+  on public.content_audit_log for select
+  to authenticated using (true);
+
+create policy "authenticated users write audit log"
+  on public.content_audit_log for insert
+  to authenticated with check (changed_by = auth.uid());
 
 insert into storage.buckets (id, name, public)
 values ('factory-media', 'factory-media', true)
@@ -97,3 +135,20 @@ create policy "authenticated updates factory media"
 create policy "authenticated deletes factory media"
   on storage.objects for delete
   to authenticated using (bucket_id = 'factory-media');
+
+create or replace function public.set_content_updated_at()
+returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists factory_journal_updated_at on public.factory_journal_entries;
+create trigger factory_journal_updated_at before update on public.factory_journal_entries for each row execute function public.set_content_updated_at();
+drop trigger if exists project_cases_updated_at on public.project_cases;
+create trigger project_cases_updated_at before update on public.project_cases for each row execute function public.set_content_updated_at();
+drop trigger if exists site_pages_updated_at on public.site_pages;
+create trigger site_pages_updated_at before update on public.site_pages for each row execute function public.set_content_updated_at();
+drop trigger if exists media_assets_updated_at on public.media_assets;
+create trigger media_assets_updated_at before update on public.media_assets for each row execute function public.set_content_updated_at();

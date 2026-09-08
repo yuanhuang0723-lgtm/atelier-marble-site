@@ -22,6 +22,11 @@ export default function AdminHomePage() {
             <h2 className="mt-3 font-title text-2xl text-ink">Create structured pages</h2>
             <p className="mt-3 text-sm leading-7 text-ink/65">Manage localized title, SEO fields, text modules, and publication status.</p>
           </Link>
+          <Link href="/admin/media" className="card-luxury bg-stone p-7 transition hover:-translate-y-0.5">
+            <p className="eyebrow-luxury">Media Library</p>
+            <h2 className="mt-3 font-title text-2xl text-ink">Manage image metadata</h2>
+            <p className="mt-3 text-sm leading-7 text-ink/65">Upload reusable images, assign a category, and keep titles and alt text together.</p>
+          </Link>
           <Link href="/admin/cases" className="card-luxury bg-stone p-7 transition hover:-translate-y-0.5">
             <p className="eyebrow-luxury">Project References</p>
             <h2 className="mt-3 font-title text-2xl text-ink">Manage project records</h2>
