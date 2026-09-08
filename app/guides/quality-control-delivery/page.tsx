@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "../../../components/JsonLd";
+import BreadcrumbJsonLd from "../../../components/BreadcrumbJsonLd";
 import PageHero from "../../../components/PageHero";
 import PageShell from "../../../components/PageShell";
 import RelatedProjectLinks from "../../../components/RelatedProjectLinks";
@@ -91,6 +92,7 @@ export default function QualityControlDeliveryPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Quality Control & Delivery", path: "/guides/quality-control-delivery" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
         <PageHero

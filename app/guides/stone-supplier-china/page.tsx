@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "../../../components/JsonLd";
+import BreadcrumbJsonLd from "../../../components/BreadcrumbJsonLd";
 import PageHero from "../../../components/PageHero";
 import PageShell from "../../../components/PageShell";
 import { contact } from "../../../lib/assets";
@@ -130,6 +131,7 @@ export default function StoneSupplierGuidePage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Stone Supplier in China", path: "/guides/stone-supplier-china" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
         <PageHero
