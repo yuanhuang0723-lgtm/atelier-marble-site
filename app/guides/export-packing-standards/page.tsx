@@ -54,35 +54,28 @@ const standards = [
   "Review destination market and shipping path before final packing decisions."
 ];
 
+const faqs = [
+                {
+                  q: "Do all stone products use the same packing method?",
+                  a: "No. Slabs, countertops, furniture, and sculptures usually need different support and protection."
+                },
+                {
+                  q: "Is packing included in the quotation process?",
+                  a: "It should be. Packing logic affects price, transport risk, and lead time."
+                },
+                {
+                  q: "Can you help overseas buyers review shipment risk?",
+                  a: "Yes. We can discuss product fit, packing path, and project delivery before you commit."
+                }
+              ];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Why does export packing matter for stone projects?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Stone is heavy, brittle, and easy to damage if the packing logic is weak. Good packing reduces breakage, claims, and project delays."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can you pack slabs and finished products differently?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Slabs, countertops, furniture, and sculptures usually need different protection, support, and labeling."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Do you review packing before quotation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Packing logic is part of the project review so the quotation path reflects real export requirements."
-      }
-    }
-  ]
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
 };
 
 export default function ExportPackingStandardsPage() {
@@ -225,20 +218,7 @@ export default function ExportPackingStandardsPage() {
               <h2 className="heading-lg section-intro__title">Common questions about export packing.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Do all stone products use the same packing method?",
-                  a: "No. Slabs, countertops, furniture, and sculptures usually need different support and protection."
-                },
-                {
-                  q: "Is packing included in the quotation process?",
-                  a: "It should be. Packing logic affects price, transport risk, and lead time."
-                },
-                {
-                  q: "Can you help overseas buyers review shipment risk?",
-                  a: "Yes. We can discuss product fit, packing path, and project delivery before you commit."
-                }
-              ].map((item) => (
+              {faqs.map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

@@ -54,35 +54,28 @@ const takeaways = [
   "Project coordination keeps hotel procurement aligned with timing."
 ];
 
+const faqs = [
+                {
+                  q: "Is this a finished project or a reference case?",
+                  a: "It is a practical reference showing how buyers can think about the process before ordering."
+                },
+                {
+                  q: "Can I use this page to compare suppliers?",
+                  a: "Yes. Case studies help compare process maturity, not just product photos."
+                },
+                {
+                  q: "Will this help me decide whether to inquire?",
+                  a: "Yes. It gives buyers a clearer view of the project path and the supplier's working style."
+                }
+              ];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Why show a case study on a stone website?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A case study helps buyers understand the supplier's real project process, not only the finished images."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "What should buyers learn from a hotel lobby project?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Buyers should look at scope, technical review, quality control, packing, and delivery coordination."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can case study pages help with inquiries?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. They reduce uncertainty and help buyers move toward a more serious quotation request."
-      }
-    }
-  ]
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
 };
 
 export default function HotelLobbyCaseStudyPage() {
@@ -226,20 +219,7 @@ export default function HotelLobbyCaseStudyPage() {
               <h2 className="heading-lg section-intro__title">Common case study questions from buyers.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Is this a finished project or a reference case?",
-                  a: "It is a practical reference showing how buyers can think about the process before ordering."
-                },
-                {
-                  q: "Can I use this page to compare suppliers?",
-                  a: "Yes. Case studies help compare process maturity, not just product photos."
-                },
-                {
-                  q: "Will this help me decide whether to inquire?",
-                  a: "Yes. It gives buyers a clearer view of the project path and the supplier's working style."
-                }
-              ].map((item) => (
+              {faqs.map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

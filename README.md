@@ -66,7 +66,7 @@ Run the read-only SEO regression audit against the production domain before and 
 npm run audit:seo
 ```
 
-The audit reads the XML sitemap and checks each listed page for an HTTP 200 response, a unique title, a usable description, one H1, a self-referencing canonical URL, and the absence of hidden keyword markers. To audit another deployment, set `SEO_AUDIT_URL` before running the command.
+The audit reads the XML sitemap and checks each listed page for an HTTP 200 response, a unique title, a usable description, exactly one H1, a canonical URL under `SEO_CANONICAL_ORIGIN`, valid JSON-LD, visible FAQ content, internal reachability, and the absence of explicit keyword meta tags. It also parses the image sitemap and checks a sample of image references. Title and description lengths are reported as warnings. Normal CSS used for menus is not treated as hidden keyword content. To audit another deployment, set `SEO_AUDIT_URL`; set `SEO_CANONICAL_ORIGIN` separately when the deployment uses the production canonical domain.
 
 ## Dynamic Project Case Studies
 

@@ -244,7 +244,7 @@ export default function StoneSupplierGuidePage() {
                     "/generated/guides/buyer-notes-panel.png"
                   ];
                   const cardAts = [
-                    "Hotel project reference scene with stone interiors and completed work",
+                    "Hotel project reference scene with stone interiors and production coordination",
                     "Technical review scene with drawings and stone sample confirmation",
                     "Export packing and quality control scene with protected stone pieces",
                     "Buyer notes and quotation scene with materials and project paperwork"
@@ -403,20 +403,7 @@ export default function StoneSupplierGuidePage() {
               <h2 className="heading-lg section-intro__title">Common questions from overseas stone buyers.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Do I need drawings before I ask for pricing?",
-                  a: "Drawings help a lot, but even rough dimensions, quantity, and project direction can start the conversation."
-                },
-                {
-                  q: "Can you help with hotel and residential projects?",
-                  a: "Yes. We support hotel, kitchen, interior, furniture, and custom stone work for export buyers."
-                },
-                {
-                  q: "Can I ask about multiple materials at once?",
-                  a: "Yes. It often helps to compare slab options, finish types, and fabrication routes in the same inquiry."
-                }
-              ].map((item) => (
+              {faqSchema.mainEntity.map((faq) => ({ q: faq.name, a: faq.acceptedAnswer.text })).map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

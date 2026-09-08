@@ -54,35 +54,28 @@ const factors = [
   "Project logistics: quantity, timeline, destination market, and export packing needs."
 ];
 
+const faqs = [
+                {
+                  q: "Can I get a price from a concept drawing?",
+                  a: "Yes. Concept drawings are enough to begin a discussion, but detailed drawings improve accuracy."
+                },
+                {
+                  q: "Do hotel projects need packing review?",
+                  a: "Yes. Packing affects risk, loading, and delivery. It should be discussed before the final price is confirmed."
+                },
+                {
+                  q: "Can you support multiple hotel zones at once?",
+                  a: "Yes. Many hotel projects combine lobby, room, bathroom, and public-area stone supply."
+                }
+              ];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What affects hotel stone project pricing the most?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Scope, material selection, fabrication detail, quantity, and export packing all affect the final project price."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Why does a clear scope help with pricing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Clear scope lets the supplier estimate real fabrication and packing work instead of giving a generic price range."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can you review hotel stone drawings before quoting?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Drawings help us estimate material fit, fabrication complexity, and packing needs before we prepare pricing."
-      }
-    }
-  ]
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
 };
 
 export default function HotelStonePricingPage() {
@@ -230,20 +223,7 @@ export default function HotelStonePricingPage() {
               <h2 className="heading-lg section-intro__title">Common pricing questions from hotel buyers.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Can I get a price from a concept drawing?",
-                  a: "Yes. Concept drawings are enough to begin a discussion, but detailed drawings improve accuracy."
-                },
-                {
-                  q: "Do hotel projects need packing review?",
-                  a: "Yes. Packing affects risk, loading, and delivery. It should be discussed before the final price is confirmed."
-                },
-                {
-                  q: "Can you support multiple hotel zones at once?",
-                  a: "Yes. Many hotel projects combine lobby, room, bathroom, and public-area stone supply."
-                }
-              ].map((item) => (
+              {faqs.map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

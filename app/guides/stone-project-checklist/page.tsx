@@ -56,35 +56,28 @@ const checklist = [
   "Have you confirmed how packing and shipment should be handled?"
 ];
 
+const faqs = [
+                {
+                  q: "Do I need all the details before I contact you?",
+                  a: "No. Start with what you have and we can help you shape the rest of the inquiry."
+                },
+                {
+                  q: "Should I send drawings or photos first?",
+                  a: "Either works. Drawings improve quotation accuracy, but photos are enough to begin a discussion."
+                },
+                {
+                  q: "Can you help me decide what to ask for?",
+                  a: "Yes. We can help clarify scope, material direction, and shipment logic."
+                }
+              ];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What should I prepare before asking for a stone quotation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Prepare project type, dimensions, quantities, drawings, budget range, timeline, and material direction."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Why does a checklist help with quotations?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A clear checklist reduces back-and-forth and helps the supplier understand the real scope before pricing."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can you review an incomplete project brief?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Even rough information can help us suggest the right material and quotation path."
-      }
-    }
-  ]
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
 };
 
 export default function StoneProjectChecklistPage() {
@@ -228,20 +221,7 @@ export default function StoneProjectChecklistPage() {
               <h2 className="heading-lg section-intro__title">Common checklist questions from buyers.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Do I need all the details before I contact you?",
-                  a: "No. Start with what you have and we can help you shape the rest of the inquiry."
-                },
-                {
-                  q: "Should I send drawings or photos first?",
-                  a: "Either works. Drawings improve quotation accuracy, but photos are enough to begin a discussion."
-                },
-                {
-                  q: "Can you help me decide what to ask for?",
-                  a: "Yes. We can help clarify scope, material direction, and shipment logic."
-                }
-              ].map((item) => (
+              {faqs.map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

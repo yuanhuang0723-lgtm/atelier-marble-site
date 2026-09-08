@@ -54,35 +54,28 @@ const checkpoints = [
   "Verify export packing, labels, and shipment sequence before loading."
 ];
 
+const faqs = [
+                {
+                  q: "Do you send progress photos?",
+                  a: "Yes. Buyers can request photo updates during production and packing."
+                },
+                {
+                  q: "Can you review packing before loading?",
+                  a: "Yes. Packing should be checked before shipment so damage risk is reduced."
+                },
+                {
+                  q: "Does QC affect quotation?",
+                  a: "Yes. Better QC and packing standards often improve accuracy and reduce later losses."
+                }
+              ];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Why does quality control matter for stone projects?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Stone projects are hard to correct after shipment. Good quality control reduces remakes, damage, and delays."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "What should be checked before delivery?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Check dimensions, finish quality, packing, labeling, and whether the shipment matches the approved scope."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Can buyers request inspection updates?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Buyers can request progress photos, inspection steps, and packing confirmation before shipment."
-      }
-    }
-  ]
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a }
+  }))
 };
 
 export default function QualityControlDeliveryPage() {
@@ -158,14 +151,14 @@ export default function QualityControlDeliveryPage() {
               <div className="grid gap-4 md:grid-cols-2">
                 {[
                   {
-                    title: "Why this builds trust",
+                    title: "What buyers can verify",
                     copy:
-                      "A visible QC process makes the site feel like a real export partner, not just a gallery of images."
+                      "The visible QC process shows inspection, packing, and shipment checkpoints for the agreed scope."
                   },
                   {
-                    title: "Why this improves conversion",
+                    title: "Why this helps project control",
                     copy:
-                      "Buyers who understand your QC and delivery process are more likely to submit a serious inquiry."
+                      "Clear QC and delivery information helps buyers assess scope, risk, and the next step."
                   }
                 ].map((item) => (
                   <div key={item.title} className="card-luxury px-6 py-6">
@@ -225,20 +218,7 @@ export default function QualityControlDeliveryPage() {
               <h2 className="heading-lg section-intro__title">Common questions about QC and delivery.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
-              {[
-                {
-                  q: "Do you send progress photos?",
-                  a: "Yes. Buyers can request photo updates during production and packing."
-                },
-                {
-                  q: "Can you review packing before loading?",
-                  a: "Yes. Packing should be checked before shipment so damage risk is reduced."
-                },
-                {
-                  q: "Does QC affect quotation?",
-                  a: "Yes. Better QC and packing standards often improve accuracy and reduce later losses."
-                }
-              ].map((item) => (
+              {faqs.map((item) => (
                 <div key={item.q} className="card-luxury px-5 py-4">
                   <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">
                     {item.q}

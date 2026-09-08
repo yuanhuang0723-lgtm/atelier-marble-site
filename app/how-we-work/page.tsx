@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import { ClipboardList, FileText, PackageCheck, ShieldCheck, MessageSquareQuote, Layers3 } from "lucide-react";
-import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact } from "../../lib/assets";
@@ -70,37 +69,6 @@ const trustPoints = [
   "Support for hotel, commercial, kitchen, and custom stone projects"
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How do you quote overseas stone projects?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We review scope, drawings, dimensions, material direction, and destination market before preparing a project-oriented quotation."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Do you support hotel and export buyers?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Atelier Marble supports hotel projects, stone slab supply, custom fabrication, and export packing for overseas buyers."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "What information helps you respond faster?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Project type, budget range, timeline, drawings, and destination market help us match the right material and prepare a quicker quotation."
-      }
-    }
-  ]
-};
-
 export default function HowWeWorkPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -109,7 +77,6 @@ export default function HowWeWorkPage() {
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "How We Work", path: "/how-we-work" }]} />
-        <JsonLd data={faqSchema} />
         <PageHero
           eyebrow="Export buyer workflow"
           title="A clear stone project workflow for export buyers."
@@ -189,16 +156,16 @@ export default function HowWeWorkPage() {
             <div className="grid gap-4 lg:grid-cols-3">
               {[
                 {
-                  title: "Less friction",
-                  copy: "Buyers get a direct path from inquiry to quotation without having to explain the project repeatedly."
+                  title: "Scope clarity",
+                  copy: "The brief keeps project type, dimensions, materials, and timing in one place."
                 },
                 {
-                  title: "More trust",
-                  copy: "The process reads like an export project team, not a generic contact form."
+                  title: "Process checkpoints",
+                  copy: "Drawing review, material confirmation, quotation, production, QC, and packing are addressed in sequence."
                 },
                 {
-                  title: "Better leads",
-                  copy: "People who submit after reading this page are usually closer to real purchasing decisions."
+                  title: "Usable project briefs",
+                  copy: "A structured brief gives the team the information needed to review fabrication and delivery."
                 }
               ].map((item) => (
                 <div key={item.title} className="card-luxury px-6 py-6">

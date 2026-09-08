@@ -1,11 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
+import { getWorkshopImageSources } from "../../lib/factory-images";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
@@ -21,20 +20,6 @@ export const metadata: Metadata = {
     siteName
   }
 };
-
-function getWorkshopImageSources() {
-  const assetDir = path.join(process.cwd(), "public", "assets", "factory", "local");
-
-  if (!fs.existsSync(assetDir)) {
-    return [];
-  }
-
-  return fs
-    .readdirSync(assetDir)
-    .filter((file) => /^workshop-\d+\.(jpg|jpeg|png|webp)$/i.test(file))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-    .map((file) => `/assets/factory/local/${file}`);
-}
 
 export default function FactoryPage() {
   const defaults = getAssets("factory");
@@ -56,7 +41,7 @@ export default function FactoryPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <PageHero
           eyebrow="Capability proof"
-          title="Stone fabrication factory in China, presented with restraint."
+          title="Stone fabrication factory in China with visible production proof."
           description="Real workshop, craftsmanship, production, and packing images support hotel stone fabrication and bespoke natural stone manufacturing while keeping authenticity and export credibility."
           backgroundImage="/assets/factory/factory-hero-workshop.webp"
         />
