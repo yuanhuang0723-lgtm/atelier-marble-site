@@ -89,7 +89,8 @@ async function fetchPage(path) {
   const url = `${auditOrigin}${path}${path.includes("?") ? "&" : "?"}seoAudit=1`;
   const resource = await fetchResource(url);
   const title = cleanText(resource.body.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "");
-  const description = getMetaTags(resource.body).find((meta) => meta.name === "description")?.content || "";
+  const metaTags = getMetaTags(resource.body);
+  const description = metaTags.find((meta) => meta.name === "description")?.content || "";
   const h1Values = [...resource.body.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((match) => cleanText(match[1])).filter(Boolean);
   const canonical = resource.body.match(/<link\b[^>]*rel\s*=\s*["']canonical["'][^>]*href\s*=\s*["']([^"']*)["']/i)?.[1] || "";
   const metaRobots = getMetaTags(resource.body)
@@ -103,7 +104,7 @@ async function fetchPage(path) {
     ? [`${path}: invalid JSON-LD`] : [];
   return {
     path, status: resource.status, location: resource.location, body: resource.body,
-    title, description, h1Values, canonical, metaRobots, visibleText, entities,
+    title, description, h1Values, canonical, metaRobots, hasKeywordMeta: metaTags.some((meta) => meta.name === "keywords"), visibleText, entities,
     jsonLdErrors, faqErrors: inspectFaqs(entities, visibleText, path)
   };
 }
@@ -144,6 +145,7 @@ async function main() {
     if (page.description.length < 80 || page.description.length > 180) warnings.push(`${page.path}: description length ${page.description.length}`);
     if (page.h1Values.length === 0) errors.push(`${page.path}: missing H1`);
     if (page.h1Values.length > 1) errors.push(`${page.path}: expected one H1, found ${page.h1Values.length}`);
+    if (page.hasKeywordMeta) errors.push(`${page.path}: explicit meta keywords found`);
     if (/\bnoindex\b/i.test(page.metaRobots)) errors.push(`${page.path}: sitemap page has noindex`);
     const canonical = page.canonical ? new URL(page.canonical, canonicalOrigin) : null;
     const expected = new URL(page.path, canonicalOrigin);
