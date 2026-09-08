@@ -11,7 +11,7 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 export const metadata: Metadata = {
   title: "Export Packing Standards for Stone Projects",
   description:
-    "A practical guide to export packing standards for stone slabs, countertops, furniture, and sculptural stone projects.",
+    "A practical guide to export packing standards for stone slabs, countertops, furniture, and sculptural stone projects, with inspection and loading preparation.",
   alternates: { canonical: absoluteUrl("/guides/export-packing-standards") },
   openGraph: {
     title: "Export Packing Standards for Stone Projects",

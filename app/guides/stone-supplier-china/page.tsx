@@ -10,7 +10,7 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 export const metadata: Metadata = {
   title: "Stone Supplier in China for Hotels",
   description:
-    "A practical buyer guide for overseas teams comparing a stone supplier in China for hotel projects, kitchens, interiors, and custom fabrication.",
+    "A practical buyer guide for overseas teams comparing a stone supplier in China for hotel projects, kitchens, interiors, custom fabrication, and export delivery.",
   alternates: { canonical: absoluteUrl("/guides/stone-supplier-china") },
   openGraph: {
     title: "How to Choose a Stone Supplier in China for Hotel Projects",

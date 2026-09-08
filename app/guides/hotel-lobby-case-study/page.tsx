@@ -11,7 +11,7 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 export const metadata: Metadata = {
   title: "Hotel Lobby Stone Project Case Study",
   description:
-    "A hotel lobby stone project case study showing how overseas buyers can review scope, quality, packing, and delivery before ordering.",
+    "A hotel lobby stone project case study showing how overseas buyers can review scope, material, quality, packing, and delivery before ordering.",
   alternates: { canonical: absoluteUrl("/guides/hotel-lobby-case-study") },
   openGraph: {
     title: "Hotel Lobby Stone Project Case Study",

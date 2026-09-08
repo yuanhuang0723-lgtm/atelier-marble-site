@@ -11,7 +11,7 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 export const metadata: Metadata = {
   title: "Stone Project Checklist Before You Order",
   description:
-    "A buyer checklist for overseas teams ordering stone slabs, hotel projects, countertops, furniture, or sculptural stone work from China.",
+    "A buyer checklist for overseas teams ordering stone from China, covering slabs, countertops, furniture, dimensions, quantities, timing, and delivery.",
   alternates: { canonical: absoluteUrl("/guides/stone-project-checklist") },
   openGraph: {
     title: "Stone Project Checklist Before You Order",

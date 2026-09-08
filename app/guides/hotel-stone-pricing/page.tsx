@@ -11,7 +11,7 @@ import { absoluteUrl, siteName } from "../../../lib/seo";
 export const metadata: Metadata = {
   title: "Hotel Stone Pricing Guide",
   description:
-    "A practical pricing guide for overseas buyers comparing hotel stone projects, marble supply, fabrication scope, and export coordination.",
+    "A practical pricing guide for overseas buyers comparing hotel stone projects, marble supply, fabrication scope, quantities, packing, and delivery coordination.",
   alternates: { canonical: absoluteUrl("/guides/hotel-stone-pricing") },
   openGraph: {
     title: "Hotel Stone Pricing Guide for Overseas Buyers",
