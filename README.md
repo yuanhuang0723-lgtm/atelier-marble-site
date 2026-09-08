@@ -58,6 +58,16 @@ Root-level video media are surfaced in the `Projects` page as documentary produc
 
 The `npm run build` command runs the asset audit first through `prebuild`. A GitHub Actions workflow in `.github/workflows/ci.yml` mirrors the same guarded build so naming regressions fail before deployment.
 
+## SEO Validation
+
+Run the read-only SEO regression audit against the production domain before and after SEO changes:
+
+```powershell
+npm run audit:seo
+```
+
+The audit reads the XML sitemap and checks each listed page for an HTTP 200 response, a unique title, a usable description, one H1, a self-referencing canonical URL, and the absence of hidden keyword markers. To audit another deployment, set `SEO_AUDIT_URL` before running the command.
+
 ## Dynamic Project Case Studies
 
 Project detail pages are generated from `data/assets.json`.
