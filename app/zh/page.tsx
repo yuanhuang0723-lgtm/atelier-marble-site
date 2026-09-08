@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function ChineseHomePage() {
   return (
-    <PageShell>
+    <PageShell locale="zh">
       <main>
         <section className="section-luxury bg-paper pt-40 md:pt-52">
           <div className="container-luxury grid gap-12 lg:grid-cols-[1.05fr_0.8fr] lg:items-end">

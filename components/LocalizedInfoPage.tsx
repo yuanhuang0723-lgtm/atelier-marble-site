@@ -17,7 +17,7 @@ export type LocalizedInfoPageProps = {
 
 export default function LocalizedInfoPage({ path, breadcrumb, eyebrow, title, description, heading, intro, points, cta = "提交项目资料" }: LocalizedInfoPageProps) {
   return (
-    <PageShell>
+    <PageShell locale="zh">
       <main>
         <BreadcrumbJsonLd items={[{ name: "首页", path: "/zh" }, { name: breadcrumb, path }]} />
         <PageHero eyebrow={eyebrow} title={title} description={description} />

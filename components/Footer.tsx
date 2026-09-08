@@ -50,7 +50,9 @@ const footerGroups: FooterGroup[] = [
   }
 ];
 
-export default function Footer() {
+export default function Footer({ locale = "en" }: { locale?: "en" | "zh" }) {
+  const localized = locale === "zh";
+  const localHref = (href: string) => localized && href.startsWith("/") && href !== "/factory" ? `/zh${href === "/" ? "" : href}` : href;
   return (
     <footer id="site-footer" className="bg-[#181410] px-5 py-14 text-white md:px-12 md:py-16 lg:py-14">
       <div className="mx-auto w-full max-w-[1180px]">
@@ -61,17 +63,16 @@ export default function Footer() {
                 {contact.companyName}
               </p>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/38">
-                Bespoke stone supply for international projects
+                {localized ? "面向国际项目的定制石材供应" : "Bespoke stone supply for international projects"}
               </p>
             </div>
             <p className="max-w-[42ch] text-[0.95rem] font-normal leading-7 text-white/60 md:text-[1rem]">
-              Atelier Marble is a luxury stone design studio for hotel projects, kitchens, interiors, furniture, and
-              architectural spaces worldwide.
+              {localized ? "Atelier Marble 为酒店、厨房、室内、家具和建筑空间提供石材项目沟通与供应支持。" : "Atelier Marble is a luxury stone design studio for hotel projects, kitchens, interiors, furniture, and architectural spaces worldwide."}
             </p>
           </div>
 
           <div className="grid gap-2 text-[0.94rem] font-normal leading-7 text-white/72 lg:justify-items-end lg:text-right">
-            <p className="text-white/88">{contact.location}</p>
+            <p className="text-white/88">{localized ? "中国广东云浮" : contact.location}</p>
             <p>{contact.whatsapp}</p>
             <p>{contact.emails.join(" / ")}</p>
             <Link
@@ -80,7 +81,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              Request Project Pricing
+              {localized ? "申请项目报价" : "Request Project Pricing"}
             </Link>
           </div>
         </div>
@@ -89,22 +90,22 @@ export default function Footer() {
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
           <div className="space-y-2">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/38">Navigation</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/38">{localized ? "网站导航" : "Navigation"}</p>
             <p className="max-w-[34ch] text-[0.92rem] leading-7 text-white/48">
-              Clear routes for project sourcing, material review, and quotation requests.
+              {localized ? "清晰连接项目采购、材料审核和报价沟通。" : "Clear routes for project sourcing, material review, and quotation requests."}
             </p>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
             {footerGroups.map((group) => (
               <div key={group.title} className="space-y-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/38">{group.title}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/38">{localized ? ({ Company: "公司", Resources: "资源", Applications: "应用", Contact: "联系" }[group.title] || group.title) : group.title}</p>
                 <div className="flex flex-col gap-1.5">
                   {group.links.map((link) => (
                     <Link
                       key={link.label}
                       className="w-fit text-[0.94rem] leading-6 text-white/72 underline-offset-4 transition hover:text-white hover:underline"
-                      href={link.href}
+                      href={localHref(link.href)}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                     >

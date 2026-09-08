@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import WhatsAppButton from "./WhatsAppButton";
 
-export default function PageShell({ children }: { children: React.ReactNode }) {
+export default function PageShell({ children, locale = "en" }: { children: React.ReactNode; locale?: "en" | "zh" }) {
   return (
     <>
       <Suspense fallback={null}>
@@ -14,10 +14,10 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       </Suspense>
       <ConversionTracker />
       <FooterVisibilityTracker />
-      <Nav />
+      <Nav locale={locale} />
       {children}
       <WhatsAppButton />
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }
