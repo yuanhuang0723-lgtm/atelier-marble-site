@@ -338,7 +338,7 @@ export function getCaseStudyForAsset(asset: Asset): ProjectCaseStudy {
     ? {
         ...asset,
         src: "/materials/projects/stone-cabinet-slabs-vanity-basins.webp",
-        alt: "Ultra realistic premium stone cabinet slabs and vanity basin composition with elegant marble surfaces and refined bathroom detailing"
+        alt: "Stone cabinet slabs and marble vanity basin with refined bathroom detailing"
       }
     : asset;
 
