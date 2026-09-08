@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "../../../lib/supabase/browser";
+import { recordContentAudit } from "../../../lib/admin-audit";
 
 type CaseRow = { id: string; title: string; project_type: string; material: string; scope: string; description: string; image_url: string; image_alt: string; is_reference: boolean; status: string };
 

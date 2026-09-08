@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "../../../lib/supabase/browser";
+import { recordContentAudit } from "../../../lib/admin-audit";
 import type { FactoryJournalCategory } from "../../../lib/factory-journal";
 
 const categories: FactoryJournalCategory[] = ["Workshop", "Material review", "Fabrication", "Quality review", "Packing"];
@@ -34,6 +35,7 @@ export default function AdminFactoryPage() {
       if (editingId) {
         const update = await client.from("factory_journal_entries").update({ title: form.title, category: form.category, observed_at: form.date, summary: form.summary, image_alt: form.alt, status: form.status, published_at: form.status === "published" ? new Date().toISOString() : null, updated_at: new Date().toISOString() }).eq("id", editingId);
         if (update.error) throw update.error;
+        await recordContentAudit(client, "factory_journal_entries", editingId, "update", { status: form.status });
         setMessage("Updated."); setEditingId(null); setForm({ title: "", category: "Workshop", date: new Date().toISOString().slice(0, 10), summary: "", alt: "", status: "draft" }); await loadRows(); return;
       }
       if (!file) throw new Error("Please choose an image.");
@@ -45,6 +47,7 @@ export default function AdminFactoryPage() {
       const slug = `${form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-${crypto.randomUUID().slice(0, 8)}`;
       const insert = await client.from("factory_journal_entries").insert({ slug, title: form.title, category: form.category, observed_at: form.date, summary: form.summary, image_url: imageUrl, image_alt: form.alt, status: form.status, published_at: form.status === "published" ? new Date().toISOString() : null });
       if (insert.error) throw insert.error;
+      await recordContentAudit(client, "factory_journal_entries", undefined, form.status === "published" ? "publish" : "create");
       setMessage("Saved."); setFile(null); setForm({ title: "", category: "Workshop", date: new Date().toISOString().slice(0, 10), summary: "", alt: "", status: "draft" });
       await loadRows(); router.refresh();
     } catch (error) { setMessage(error instanceof Error ? error.message : "Unable to save record."); }
