@@ -25,6 +25,7 @@ type InquiryRequestBody = {
   deliveryDate?: string;
   materialPreference?: string;
   phone?: string;
+  language?: string;
   files?: Array<{ key?: string; name?: string; size?: number }>;
   website?: string;
   campaign?: Record<string, string>;
@@ -49,6 +50,7 @@ function buildMessage(body: InquiryRequestBody) {
     body.deliveryDate ? `Required delivery date: ${body.deliveryDate}` : "",
     body.materialPreference ? `Material preference: ${body.materialPreference}` : "",
     body.phone ? `WhatsApp / phone: ${body.phone}` : "",
+    body.language ? `Site language: ${body.language}` : "",
     campaign.length ? `Campaign: ${campaign.join(" | ")}` : "",
     body.name ? `Name: ${body.name}` : "",
     body.contact ? `Contact: ${body.contact}` : "",
@@ -160,6 +162,7 @@ export async function POST(request: Request) {
   payload.set("deliveryDate", body.deliveryDate || "");
   payload.set("materialPreference", body.materialPreference || "");
   payload.set("phone", body.phone || "");
+  payload.set("language", body.language || "en");
   payload.set("files", fileLinks.join("\n"));
   payload.set("body", `${buildMessage(body)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`);
 

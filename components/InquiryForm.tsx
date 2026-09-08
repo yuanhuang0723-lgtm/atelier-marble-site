@@ -161,7 +161,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         body: JSON.stringify({
           name, company, contact, country, destinationPort, stoneScope, quantity, deliveryDate,
           materialPreference, phone, budgetRange, timeline, message, projectType,
-          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, files: uploadedFiles
+          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, language: window.location.pathname.startsWith("/zh") ? "zh" : "en", files: uploadedFiles
           , campaign: readStoredCampaign()
         })
       });

@@ -17,6 +17,7 @@ const footerGroups: FooterGroup[] = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "How We Work", href: "/how-we-work" },
+      { label: "Factory Journal", href: "/factory" },
       { label: "Privacy Policy", href: "/privacy-policy" }
     ]
   },

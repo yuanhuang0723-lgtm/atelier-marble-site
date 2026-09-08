@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import AssetCard from "../../components/AssetCard";
+import PublishedCaseCard from "../../components/PublishedCaseCard";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanCardCopy, cleanDisplayTitle, getMediaAssets, getProjectAssets, ProjectFilter } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
+import { getPublishedProjectCases } from "../../lib/content";
 
 export const metadata: Metadata = {
   title: "Hotel & Commercial Stone Projects",
@@ -37,6 +39,7 @@ export default async function ProjectsPage({
   const params = await searchParams;
   const active = filters.some((filter) => filter.value === params?.filter) ? (params?.filter as ProjectFilter) : "all";
   const projects = getProjectAssets(active);
+  const publishedCases = await getPublishedProjectCases();
 
   return (
     <PageShell>
@@ -66,6 +69,7 @@ export default async function ProjectsPage({
               ))}
             </div>
             <div className="grid auto-rows-fr gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {active === "all" ? publishedCases.map((item) => <PublishedCaseCard key={item.slug} item={item} />) : null}
               {projects.map((asset) => (
                 <AssetCard
                   key={`${asset.category}-${asset.filename}`}

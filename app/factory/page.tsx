@@ -4,7 +4,7 @@ import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
-import { getWorkshopImageSources } from "../../lib/factory-images";
+import { getPublishedFactoryJournalEntries } from "../../lib/factory-journal";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
@@ -21,17 +21,20 @@ export const metadata: Metadata = {
   }
 };
 
-export default function FactoryPage() {
+export default async function FactoryPage() {
+  const factoryJournalEntries = await getPublishedFactoryJournalEntries();
   const defaults = getAssets("factory");
-  const sources = getWorkshopImageSources();
-  const imageCount = Math.max(defaults.length, sources.length);
+  const sources = factoryJournalEntries.map((entry) => entry.image);
+  const imageCount = sources.length || defaults.length;
   const images = Array.from({ length: imageCount }, (_, index) => {
     const fallback = defaults[index % defaults.length];
+    const journal = factoryJournalEntries[index];
     return {
       ...fallback,
-      filename: `workshop-local-${index + 1}`,
+      filename: journal?.slug || `workshop-local-${index + 1}`,
+      title: journal?.title || fallback.title,
       src: sources[index] ?? fallback.src,
-      alt: `Workshop production reference ${String(index + 1).padStart(2, "0")} for stone fabrication and export preparation`
+      alt: journal?.alt || `Workshop production reference ${String(index + 1).padStart(2, "0")} for stone fabrication and export preparation`
     };
   });
 
@@ -68,20 +71,15 @@ export default function FactoryPage() {
                 </article>
               ))}
             </div>
-            <article className="mb-10 grid gap-6 rounded-[14px] border border-ink/10 bg-stone p-7 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-              <div>
-                <p className="eyebrow-luxury">Selected project reference</p>
-                <h2 className="mt-3 text-left font-title text-[1.8rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">Canada · 2025</h2>
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-ink/55">Several thousand custom stone shower niches</p>
-              </div>
-              <div className="grid gap-3 text-sm leading-7 text-ink/68 md:grid-cols-3">
-                <p><strong className="block text-ink">Drawing work</strong>CAD detailing, drawing breakdown, shop drawings, and cut lists.</p>
-                <p><strong className="block text-ink">Production</strong>Repeat-unit coordination across a multi-batch fabrication program.</p>
-                <p><strong className="block text-ink">Status</strong>Presented as a project reference from the Atelier Marble capability catalogue.</p>
-              </div>
-            </article>
+            <div className="mb-10 rounded-[14px] border border-ink/10 bg-stone p-7">
+              <p className="eyebrow-luxury">Factory journal</p>
+              <h2 className="mt-3 text-left font-title text-[1.8rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">Field notes, not customer case studies.</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink/68">These notes describe workshop references and production stages. They are separate from project case studies and do not identify a customer, order quantity, certification, or completed delivery unless that information is verified and published.</p>
+            </div>
             <div className="factory-gallery grid gap-7 md:grid-cols-4">
-              {images.map((asset, index) => (
+              {images.map((asset, index) => {
+                const journal = factoryJournalEntries[index];
+                return (
                 <article
                   key={asset.filename}
                   className={`card-luxury overflow-hidden p-3 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
@@ -90,11 +88,13 @@ export default function FactoryPage() {
                     <img className="block h-full w-full object-cover object-center" src={asset.src} alt={asset.alt} loading="lazy" />
                   </div>
                   <div className="px-4 py-5">
-                    <p className="eyebrow-luxury mb-2">Workshop reference {String(index + 1).padStart(2, "0")}</p>
+                    <p className="eyebrow-luxury mb-2">{journal?.category || "Workshop reference"} · {journal?.date || ""}</p>
                     <h3 className="heading-md factory-gallery__title card-title">{cleanDisplayTitle(asset.title, "Stone Workshop Reference")}</h3>
+                    {journal ? <p className="mt-3 text-sm leading-7 text-ink/65">{journal.summary}</p> : null}
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="container-luxury mt-16">

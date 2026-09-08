@@ -1,5 +1,6 @@
 import { getAssets, getProjectAssets } from "../../lib/assets";
 import { getWorkshopImageSources } from "../../lib/factory-images";
+import { getPublishedFactoryJournalEntries } from "../../lib/factory-journal";
 import { absoluteUrl } from "../../lib/seo";
 
 export const runtime = "nodejs";
@@ -8,14 +9,15 @@ function escapeXml(value: string) {
   return value.replace(/[<>&'\"]/g, (character) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", "\"": "&quot;" })[character] || character);
 }
 
-export function GET() {
+export async function GET() {
   const factoryDefaults = getAssets("factory");
   const factorySources = getWorkshopImageSources();
+  const journalEntries = await getPublishedFactoryJournalEntries();
   const factoryImageCount = Math.max(factoryDefaults.length, factorySources.length);
   const factoryImages = Array.from({ length: factoryImageCount }, (_, index) => factorySources[index] ?? factoryDefaults[index % factoryDefaults.length].src);
   const imageGroups = [
     { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.webp", "/assets/vanity-cabinet/cover.webp", "/assets/carving-decor/cover.webp", "/materials/categories/hotel-projects.webp"] },
-    { page: "/factory", images: ["/assets/factory/factory-hero-workshop.webp", ...factoryImages] },
+    { page: "/factory", images: ["/assets/factory/factory-hero-workshop.webp", ...factoryImages, ...journalEntries.map((entry) => entry.image)] },
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
     { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) }
   ];

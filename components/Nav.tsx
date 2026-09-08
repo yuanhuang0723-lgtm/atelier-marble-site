@@ -20,6 +20,7 @@ export default function Nav() {
           <Link className="site-nav__logo font-title text-[18px] font-medium uppercase tracking-[0.34em] text-[var(--color-ink)] md:text-[21px]" href="/">
             Atelier Marble
           </Link>
+          <Link className="ml-auto mr-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/60 underline-offset-4 hover:underline md:mr-6" href="/zh">中文</Link>
           <details className="site-nav__mobile md:hidden">
             <summary className="site-nav__toggle" aria-label="Open navigation menu">
               <Menu className="h-5 w-5" strokeWidth={1.9} />

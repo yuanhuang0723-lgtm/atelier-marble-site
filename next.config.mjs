@@ -6,6 +6,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      { source: "/en", destination: "/", permanent: true },
+      { source: "/en/:path*", destination: "/:path*", permanent: true },
       { source: "/hotel-hospitality-projects", destination: "/projects/hotel-stone-supply", permanent: true },
       { source: "/hotel-projects", destination: "/projects/hotel-stone-supply", permanent: true },
       { source: "/kitchen-countertops", destination: "/countertops", permanent: true },
