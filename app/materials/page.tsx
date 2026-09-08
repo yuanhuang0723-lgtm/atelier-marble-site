@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
@@ -20,6 +21,21 @@ export const metadata: Metadata = {
   }
 };
 
+const materialFaqs = [
+  {
+    question: "What natural stone materials can be reviewed?",
+    answer: "The reference library includes marble, granite, quartzite, and other natural stone options for hotel, commercial, residential, countertop, and custom projects."
+  },
+  {
+    question: "Can current slab availability be confirmed?",
+    answer: "Yes. The online archive is a visual starting point; current material name, lot, thickness, finish, matching, and availability should be confirmed before quotation."
+  },
+  {
+    question: "How should I choose stone for a project?",
+    answer: "Share the application, dimensions, lighting or surrounding finishes, preferred tone, quantity, and destination so material suitability and fabrication can be reviewed together."
+  }
+];
+
 export default function MaterialsPage() {
   const materials = getAssets("materials");
   const applicationRoutes = [
@@ -32,6 +48,7 @@ export default function MaterialsPage() {
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Materials", path: "/materials" }]} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: materialFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Material reference library"
           title="Natural stone materials for hotel and commercial projects."
@@ -89,6 +106,22 @@ export default function MaterialsPage() {
             <Link className="text-cta-luxury ml-8" href="/projects">
               See Stone Project Uses
             </Link>
+          </div>
+        </section>
+        <section className="section-luxury bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Material questions</p>
+              <h2 className="heading-lg section-intro__title">Choosing a natural stone material.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {materialFaqs.map((faq) => (
+                <article key={faq.question} className="card-luxury bg-paper px-5 py-5">
+                  <h3 className="font-title text-[1.02rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">{faq.question}</h3>
+                  <p className="mt-3 text-[0.93rem] leading-7 text-ink/68">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>
