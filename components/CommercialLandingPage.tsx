@@ -16,11 +16,12 @@ type CommercialLandingPageProps = {
   details: string[];
   faqs?: { question: string; answer: string }[];
   faqTitle?: string;
+  relatedLink?: { label: string; href: string };
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -65,6 +66,7 @@ export default function CommercialLandingPage({
                 <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
                 <a className="btn-luxury" href={contact.whatsappUrl}>Discuss on WhatsApp</a>
               </div>
+              {relatedLink ? <Link className="text-cta-luxury inline-flex" href={relatedLink.href}>{relatedLink.label}</Link> : null}
             </div>
           </div>
         </section>
