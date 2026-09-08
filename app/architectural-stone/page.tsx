@@ -7,7 +7,8 @@ import { absoluteUrl } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Architectural Stone Supplier in China",
-  description: "Architectural stone supply and fabrication for hotel and commercial interiors, with material review, project coordination, and export support from China.",
+  description:
+    "Architectural stone supply and fabrication for hotel and commercial interiors, with material review, project coordination, and export support from China.",
   alternates: { canonical: absoluteUrl("/architectural-stone") }
 };
 
@@ -18,6 +19,61 @@ const applications = [
   ["Custom Stone", "/custom-stone-fabrication-china", "/materials/featured-covers/carving-decor.webp", "Sculptural forms, furniture, and architectural accents developed from a clear design direction.", "Custom carved stone form for an architectural interior"]
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+    { "@type": "ListItem", position: 2, name: "Architectural Stone", item: absoluteUrl("/architectural-stone") }
+  ]
+};
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Architectural Stone Supplier in China",
+  url: absoluteUrl("/architectural-stone"),
+  description: metadata.description,
+  hasPart: applications.map(([name, href]) => ({ "@type": "WebPage", name, url: absoluteUrl(href) }))
+};
+
 export default function ArchitecturalStonePage() {
-  return <PageShell><main><JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: metadata.title, url: absoluteUrl("/architectural-stone"), description: metadata.description, hasPart: applications.map(([name, href]) => ({ "@type": "WebPage", name, url: absoluteUrl(href) })) }} /><PageHero eyebrow="Architectural stone" title="Architectural stone for hotel and commercial interiors." description="Explore architectural stone by project use, then send your drawings, BOQ, dimensions, or reference images for a practical fabrication and quotation review." backgroundImage="/materials/categories/hotel-projects.webp" /><section className="section-luxury bg-paper"><div className="container-luxury"><div className="grid gap-5 md:grid-cols-2">{applications.map(([title, href, image, copy, alt]) => <Link key={href} href={href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-3"><img className="aspect-[16/9] w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.02]" src={image} alt={alt} loading="lazy" /><div className="flex items-start justify-between gap-5 px-3 py-5"><div><p className="eyebrow-luxury">Application</p><h2 className="mt-2 text-left font-title text-[1.55rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">{title}</h2><p className="mt-3 max-w-[42ch] text-sm leading-7 text-ink/65">{copy}</p></div><span aria-hidden="true" className="pt-1 text-lg text-ink/55">-&gt;</span></div></Link>)}</div></div></section><section className="section-luxury-compact bg-stone text-center"><p className="eyebrow-luxury">Project review</p><h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a scope to coordinate?</h2><p className="body-luxury mx-auto mt-4 max-w-2xl">Share what you already have. We can begin with the application, approximate quantity, material direction, and destination.</p><Link className="btn-luxury-fill mt-7" href="/contact">Upload CAD / BOQ for Quote</Link></section></main></PageShell>;
+  return (
+    <PageShell>
+      <main>
+        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd]} />
+        <PageHero
+          eyebrow="Architectural stone"
+          title="Architectural stone supply for hotel and commercial interiors."
+          description="For buyers comparing architectural stone suppliers, review applications by project use, then send your drawings, BOQ, dimensions, or reference images for a practical fabrication and quotation review."
+          backgroundImage="/materials/categories/hotel-projects.webp"
+        />
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="grid gap-5 md:grid-cols-2">
+              {applications.map(([title, href, image, copy, alt]) => (
+                <Link key={title} href={href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-3">
+                  <img className="aspect-[16/9] w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.02]" src={image} alt={alt} loading="lazy" />
+                  <div className="flex items-start justify-between gap-5 px-3 py-5">
+                    <div>
+                      <p className="eyebrow-luxury">Application</p>
+                      <h2 className="mt-2 text-left font-title text-[1.55rem] font-medium uppercase leading-tight tracking-[0.03em] text-ink">{title}</h2>
+                      <p className="mt-3 max-w-[42ch] text-sm leading-7 text-ink/65">{copy}</p>
+                    </div>
+                    <span aria-hidden="true" className="pt-1 text-lg text-ink/55">-&gt;</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="section-luxury-compact bg-stone text-center">
+          <p className="eyebrow-luxury">Project review</p>
+          <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a scope to coordinate?</h2>
+          <p className="body-luxury mx-auto mt-4 max-w-2xl">Share what you already have. We can begin with the application, approximate quantity, material direction, and destination.</p>
+          <Link className="btn-luxury-fill mt-7" href="/contact">Upload CAD / BOQ for Quote</Link>
+        </section>
+      </main>
+    </PageShell>
+  );
 }
