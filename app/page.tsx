@@ -26,7 +26,7 @@ const buyerIntentCards = [
     title: "Stone Countertop & Coffee Table",
     href: "/countertops",
     image: "/assets/home-top-cover.webp",
-    alt: "Ultra realistic luxury stone dining table and stone countertop in a premium modern interior",
+    alt: "Marble dining table and stone countertop in a contemporary interior",
     question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
   },
   {
@@ -40,7 +40,7 @@ const buyerIntentCards = [
     title: "Custom Stone Sculptures",
     href: "/custom-stone-fabrication-china",
     image: "/assets/carving-decor/cover.webp",
-    alt: "Ultra realistic luxury stone carving sculpture in a premium showroom setting",
+    alt: "Carved stone sculpture displayed in a contemporary interior",
     question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
   },
   {
@@ -88,7 +88,7 @@ export default function HomePage() {
           <Image
             className="object-cover"
             src="/materials/hero/atelier-marble-luxury-hero.webp"
-            alt="Ultra realistic luxury marble architectural interior for Atelier Marble"
+            alt="Marble architectural interior with natural stone surfaces"
             fill
             priority
             sizes="100vw"
