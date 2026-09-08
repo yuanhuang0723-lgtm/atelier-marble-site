@@ -10,7 +10,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "Project Consultation for Stone Buyers",
   description:
-    "Request project consultation from Atelier Marble for hotel projects, stone slabs, kitchens, architectural interiors, furniture, or carved stone decor.",
+    "Request consultation from Atelier Marble for hotel projects, stone slabs, kitchens, architectural interiors, furniture, or carved stone decor from China.",
   alternates: { canonical: absoluteUrl("/contact") },
   openGraph: {
     title: "Project Consultation for Stone Buyers",
