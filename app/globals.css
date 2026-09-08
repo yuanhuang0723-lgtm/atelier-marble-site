@@ -398,15 +398,16 @@ video {
 
   .buyer-intent-top {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.96fr) minmax(0, 0.92fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .buyer-intent-card {
     @apply overflow-hidden border border-[rgba(31,27,24,0.08)] bg-[var(--color-surface)];
     border-radius: 20px;
     box-shadow: 0 14px 40px rgba(31, 27, 24, 0.05);
+    height: 100%;
   }
 
   .buyer-intent-card .project-card__media {
@@ -414,21 +415,17 @@ video {
     aspect-ratio: 16 / 10;
   }
 
-  .buyer-intent-card--featured .project-card__media {
-    aspect-ratio: 16 / 9;
-  }
-
   .buyer-intent-card .project-card__body {
     @apply gap-2 px-4 pb-4 pt-4 md:px-5 md:pb-5 md:pt-5;
   }
 
   .buyer-intent-card--small {
-    min-height: 100%;
-    transform: translateY(0.75rem);
+    min-height: 0;
+    transform: none;
   }
 
   .buyer-intent-card--medium {
-    transform: translateY(0.35rem);
+    transform: none;
   }
 
   .buyer-intent-card--featured {
