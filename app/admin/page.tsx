@@ -12,11 +12,6 @@ export default function AdminHomePage() {
             <h2 className="mt-3 font-title text-2xl text-ink">Manage workshop records</h2>
             <p className="mt-3 text-sm leading-7 text-ink/65">Upload a verified image, add its field note, and publish or save it as a draft.</p>
           </Link>
-          <Link href="/admin/cases" className="card-luxury bg-stone p-7 transition hover:-translate-y-0.5">
-            <p className="eyebrow-luxury">Project References</p>
-            <h2 className="mt-3 font-title text-2xl text-ink">Manage project records</h2>
-            <p className="mt-3 text-sm leading-7 text-ink/65">Add a verified reference with material, scope, image, and an explicit evidence label.</p>
-          </Link>
           <Link href="/admin/pages" className="card-luxury bg-stone p-7 transition hover:-translate-y-0.5">
             <p className="eyebrow-luxury">Pages</p>
             <h2 className="mt-3 font-title text-2xl text-ink">Create structured pages</h2>
