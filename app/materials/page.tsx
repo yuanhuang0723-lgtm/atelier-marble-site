@@ -65,12 +65,29 @@ export default function MaterialsPage() {
               </p>
             </div>
             <div className="mb-12 grid gap-4 md:grid-cols-3">
-              {["Marble", "Granite", "Quartzite"].map((family) => (
-                <article key={family} className="rounded-[14px] border border-ink/10 bg-stone px-6 py-5">
+              {[
+                {
+                  name: "Marble",
+                  href: "/materials/marble",
+                  copy: "Review veining, tone, finish, matching direction, and application suitability before fabrication."
+                },
+                {
+                  name: "Granite",
+                  href: "/materials/granite",
+                  copy: "Assess durability, finish, cut-outs, edge details, and project use before requesting a quote."
+                },
+                {
+                  name: "Quartzite",
+                  href: "/materials/quartzite",
+                  copy: "Compare character, surface direction, thickness, and countertop or hospitality suitability."
+                }
+              ].map((family) => (
+                <Link key={family.href} href={family.href} className="group rounded-[14px] border border-ink/10 bg-stone px-6 py-5 transition-colors hover:border-ink/25">
                   <p className="eyebrow-luxury">Material family</p>
-                  <h2 className="mt-3 text-left font-title text-[1.45rem] font-medium uppercase tracking-[0.04em] text-ink">{family}</h2>
-                  <p className="mt-2 text-sm leading-6 text-ink/62">Available options and current lots should be confirmed against the project specification before quotation.</p>
-                </article>
+                  <h2 className="mt-3 text-left font-title text-[1.45rem] font-medium uppercase tracking-[0.04em] text-ink">{family.name}</h2>
+                  <p className="mt-2 text-sm leading-6 text-ink/62">{family.copy}</p>
+                  <span className="mt-4 inline-flex text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70 group-hover:text-ink">Review material direction -&gt;</span>
+                </Link>
               ))}
             </div>
             <div className="mb-12 grid gap-5 md:grid-cols-3">
