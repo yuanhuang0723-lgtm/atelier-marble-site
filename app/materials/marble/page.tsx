@@ -3,12 +3,12 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Marble Materials for Hotel and Commercial Projects",
+  title: "Marble Materials for Projects in China",
   description:
     "Review marble material direction for hotel, commercial, countertop, vanity, and custom stone projects from China. Confirm lot, thickness, finish, and matching before production.",
   alternates: { canonical: absoluteUrl("/materials/marble") },
   openGraph: {
-    title: "Marble Materials for Hotel and Commercial Projects",
+    title: "Marble Materials for Projects in China",
     description:
       "Review marble character, application, finish, matching, and fabrication considerations before requesting a project quotation.",
     url: absoluteUrl("/materials/marble"),
