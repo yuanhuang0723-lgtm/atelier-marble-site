@@ -285,6 +285,14 @@ export default function StoneSupplierGuidePage() {
                       The more precise your inquiry, the more usable the quotation becomes. Share your project type,
                       rough dimensions, budget range, timeline, and target material direction.
                     </p>
+                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+                      <Link className="text-cta-luxury" href="/factory">
+                        Review fabrication capability
+                      </Link>
+                      <Link className="text-cta-luxury" href="/projects/hotel-stone-supply">
+                        See hotel project supply
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 <div className="guide-card guide-card--banner guide-card--soft">
