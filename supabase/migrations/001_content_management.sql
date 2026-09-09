@@ -1,5 +1,20 @@
 create extension if not exists pgcrypto;
 
+-- Make this hand-run migration safe to retry after a partial execution.
+do $$
+declare
+  policy_row record;
+begin
+  for policy_row in
+    select schemaname, tablename, policyname
+    from pg_policies
+    where (schemaname = 'public' and tablename in ('factory_journal_entries', 'project_cases', 'site_pages', 'media_assets', 'content_audit_log'))
+       or (schemaname = 'storage' and tablename = 'objects' and policyname like '%factory%')
+  loop
+    execute format('drop policy if exists %I on %I.%I', policy_row.policyname, policy_row.schemaname, policy_row.tablename);
+  end loop;
+end $$;
+
 create table if not exists public.factory_journal_entries (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
