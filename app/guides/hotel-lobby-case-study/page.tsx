@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "A practical case study for buyers comparing hotel stone suppliers in China, with scope, quality, and delivery takeaways.",
     url: absoluteUrl("/guides/hotel-lobby-case-study"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/case-study-hero.webp") }]
   }
 };
 

@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "The checklist overseas buyers should use before requesting quotations for stone projects in China.",
     url: absoluteUrl("/guides/stone-project-checklist"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/project-checklist-hero.webp") }]
   }
 };
 

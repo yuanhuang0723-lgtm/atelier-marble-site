@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "How inspection, approval, packing, and delivery standards reduce risk for overseas stone buyers.",
     url: absoluteUrl("/guides/quality-control-delivery"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/qc-delivery-hero.webp") }]
   }
 };
 

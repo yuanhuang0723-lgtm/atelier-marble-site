@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     description:
       "What overseas buyers should check before selecting a stone supplier in China for hotel stone, slabs, countertops, and export projects.",
     url: absoluteUrl("/guides/stone-supplier-china"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.webp") }]
   }
 };
 

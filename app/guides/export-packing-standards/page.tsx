@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "How export packing, crating, and shipment preparation reduce risk for overseas stone buyers.",
     url: absoluteUrl("/guides/export-packing-standards"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/qc-delivery-hero.webp") }]
   }
 };
 

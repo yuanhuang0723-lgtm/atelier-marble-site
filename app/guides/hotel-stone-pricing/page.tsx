@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     description:
       "Understand what affects hotel stone project pricing before requesting a quotation from a supplier in China.",
     url: absoluteUrl("/guides/hotel-stone-pricing"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/generated/guides/pricing-guide-hero.webp") }]
   }
 };
 
