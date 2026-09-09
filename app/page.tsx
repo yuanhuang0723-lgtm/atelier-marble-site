@@ -4,8 +4,10 @@ import Image from "next/image";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import RecoveryRedirect from "../components/RecoveryRedirect";
+import VisualPageRenderer from "../components/VisualPageRenderer";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
 import { absoluteUrl, siteName } from "../lib/seo";
+import { getPublishedVisualDocument } from "../lib/visual-editor";
 
 export const metadata: Metadata = {
   title: "Stone Supplier in China | Atelier Marble",
@@ -53,7 +55,9 @@ const buyerIntentCards = [
   }
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const visualDocument = await getPublishedVisualDocument("/", "en");
+  if (visualDocument?.blocks.length) return <PageShell><RecoveryRedirect /><VisualPageRenderer blocks={visualDocument.blocks} /></PageShell>;
   const [kitchen] = getAssets("kitchen-countertop");
   const [coffee] = getAssets("coffee-table");
   const [sculpture] = getAssets("carving-decor");

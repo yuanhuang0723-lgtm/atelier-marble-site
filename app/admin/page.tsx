@@ -7,6 +7,11 @@ export default function AdminHomePage() {
         <p className="eyebrow-luxury">Atelier Marble Admin</p>
         <h1 className="mt-3 font-title text-4xl text-ink">Content management</h1>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <Link href="/admin/editor" className="card-luxury bg-ink p-7 text-white transition hover:-translate-y-0.5">
+            <p className="eyebrow-luxury text-white/55">Visual Editor</p>
+            <h2 className="mt-3 font-title text-2xl">Edit the website visually</h2>
+            <p className="mt-3 text-sm leading-7 text-white/65">Click a section in the preview, edit its text, drag modules, preview mobile, save a draft, and publish when ready.</p>
+          </Link>
           <Link href="/admin/factory" className="card-luxury bg-stone p-7 transition hover:-translate-y-0.5">
             <p className="eyebrow-luxury">Factory Journal</p>
             <h2 className="mt-3 font-title text-2xl text-ink">Manage workshop records</h2>
