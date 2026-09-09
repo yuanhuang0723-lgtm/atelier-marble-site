@@ -5,7 +5,7 @@ const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/$/, "");
 const baseOrigin = new URL(baseUrl).origin;
 const escapedBaseUrl = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
+const routes = ["/", "/contact", "/about", "/factory", "/materials", "/materials/marble", "/materials/quartzite", "/materials/granite", "/projects", "/resources", "/countertops", "/countertops/marble-countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/architectural-stone/flooring", "/architectural-stone/wall-cladding", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 const legacyRedirects = {
   "/hotel-hospitality-projects": "/projects/hotel-stone-supply",
   "/hotel-projects": "/projects/hotel-stone-supply",
@@ -79,7 +79,7 @@ if (new URL(baseUrl).hostname === "ateliermarblestone.com") {
     throw new Error(`www host should redirect to ${baseOrigin}, received ${status} ${location}`);
   }
 }
-for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/countertops", "/countertops/vanity-tops", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
+for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/materials/marble", "/materials/quartzite", "/materials/granite", "/projects", "/countertops", "/countertops/marble-countertops", "/countertops/vanity-tops", "/architectural-stone/flooring", "/architectural-stone/wall-cladding", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
   if (!new RegExp(`<link[^>]+rel="canonical"[^>]+href="${escapedBaseUrl}(?:/|"|\\?)`, "i").test(contents.get(route))) {
     throw new Error(`${route} is missing a canonical URL`);
   }
