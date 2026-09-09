@@ -31,6 +31,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/countertops/integrated-stone-sinks` | integrated stone sinks supplier | vanity basins, custom stone sinks, countertop cut-outs | Commercial |
 | `/architectural-stone` | architectural stone supplier for hotel projects | architectural stone fabrication, commercial interiors, wall cladding | Commercial |
 | `/architectural-stone/wall-cladding` | architectural stone wall cladding from China | hotel feature walls, stone panels, elevations, cut-to-size fabrication | Commercial |
+| `/architectural-stone/flooring` | architectural stone flooring from China | hotel flooring, stone modules, floor plans, cut-to-size fabrication | Commercial |
 | `/custom-stone-fabrication-china` | custom stone fabrication China | stone furniture, sculptures, architectural accents | Commercial |
 | `/factory` | stone fabrication factory in China | Yunfu stone factory, CAD production, export packing | Trust and commercial |
 | `/how-we-work` | stone project workflow for export buyers | drawing review, material matching, QC, packing | Commercial investigation |

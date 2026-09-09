@@ -19,7 +19,8 @@ export function GET() {
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
     { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) },
     { page: "/countertops/marble-countertops", images: ["/materials/featured-covers/kitchen-countertop.webp"] },
-    { page: "/architectural-stone/wall-cladding", images: ["/materials/categories/hotel-projects.webp"] }
+    { page: "/architectural-stone/wall-cladding", images: ["/materials/categories/hotel-projects.webp"] },
+    { page: "/architectural-stone/flooring", images: ["/materials/categories/hotel-projects.webp"] }
   ];
   const entries = [...new Set(imageGroups.flatMap((group) => group.images.map((image) => `${group.page}|${image}`)))].map((entry) => {
     const [page, image] = entry.split("|");
