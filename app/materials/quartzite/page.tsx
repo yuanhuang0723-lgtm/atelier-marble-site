@@ -3,12 +3,12 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Quartzite Materials for Countertops and Projects in China",
+  title: "Quartzite Materials for Projects in China",
   description:
     "Review quartzite material direction for countertops, hotel interiors, and commercial projects from China. Confirm lot, thickness, finish, matching, and fabrication suitability.",
   alternates: { canonical: absoluteUrl("/materials/quartzite") },
   openGraph: {
-    title: "Quartzite Materials for Countertops and Projects in China",
+    title: "Quartzite Materials for Projects in China",
     description:
       "Review quartzite character, application, finish, matching, and fabrication considerations before requesting a project quotation.",
     url: absoluteUrl("/materials/quartzite"),
