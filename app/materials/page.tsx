@@ -107,6 +107,9 @@ export default function MaterialsPage() {
             <Link className="text-cta-luxury ml-8" href="/projects">
               See Stone Project Uses
             </Link>
+            <Link className="text-cta-luxury ml-8" href="/materials/marble">
+              Review Marble Materials
+            </Link>
           </div>
         </section>
         <section className="section-luxury bg-stone">

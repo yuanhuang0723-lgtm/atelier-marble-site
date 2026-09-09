@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/architectural-stone/wall-cladding",
     "/architectural-stone/flooring",
     "/materials",
+    "/materials/marble",
     "/factory",
     "/contact",
     "/countertops",

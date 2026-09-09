@@ -25,6 +25,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/projects/hotel-stone-supply` | hotel stone supply China | hotel stone fabrication, hospitality stone supplier, vanity tops, lobby stone | Commercial |
 | `/projects/commercial-stone` | commercial stone fabrication China | retail stone, office interiors, hospitality project supply | Commercial |
 | `/materials` | natural stone materials for projects | marble slabs, material selection, export stone supply | Commercial |
+| `/materials/marble` | marble materials for hotel and commercial projects | marble countertops, vanity tops, finish, matching, current lot review | Commercial |
 | `/countertops` | custom stone countertops China | marble countertops, quartzite, cut-to-size stone | Commercial |
 | `/countertops/marble-countertops` | marble countertops from China | kitchen countertops, hotel counters, cut-outs, edge profiles, export packing | Commercial |
 | `/countertops/vanity-tops` | marble vanity tops for hotels | hotel bathroom stone, cabinet panels, basin cut-outs | Commercial |
