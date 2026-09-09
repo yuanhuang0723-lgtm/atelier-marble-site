@@ -3,12 +3,12 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Granite Materials for Commercial and Hotel Projects",
+  title: "Granite Materials for Commercial Projects",
   description:
     "Review granite material direction for countertops, hotel interiors, and commercial projects from China. Confirm lot, thickness, finish, matching, and fabrication suitability.",
   alternates: { canonical: absoluteUrl("/materials/granite") },
   openGraph: {
-    title: "Granite Materials for Commercial and Hotel Projects",
+    title: "Granite Materials for Commercial Projects",
     description:
       "Review granite character, application, finish, matching, and fabrication considerations before requesting a project quotation.",
     url: absoluteUrl("/materials/granite"),
