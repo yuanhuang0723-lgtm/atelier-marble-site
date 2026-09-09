@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     description:
       "Visual hotel and commercial stone project references, including fabrication, countertops, architectural interiors, and carved stone work from China.",
     url: absoluteUrl("/projects"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/materials/categories/hotel-projects.webp") }]
   }
 };
 

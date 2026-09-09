@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     description:
       "Capability proof for a stone fabrication factory in Yunfu, China, including hotel stone work, CAD production, export packing, and quality review.",
     url: absoluteUrl("/factory"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/assets/factory/factory-hero-workshop.webp") }]
   }
 };
 
