@@ -1,9 +1,9 @@
 export type EditorBlock =
-  | { id: string; type: "hero"; eyebrow: string; title: string; body: string; image: string; buttonLabel: string; buttonHref: string }
-  | { id: string; type: "text"; eyebrow: string; title: string; body: string }
-  | { id: string; type: "card-grid"; eyebrow: string; title: string; columns: 2 | 3 | 4; cards: Array<{ id: string; title: string; body: string; image: string; href: string }> }
-  | { id: string; type: "process"; eyebrow: string; title: string; steps: Array<{ id: string; title: string; body: string }> }
-  | { id: string; type: "cta"; eyebrow: string; title: string; buttonLabel: string; buttonHref: string };
+  | ({ id: string; visible?: boolean; type: "hero"; eyebrow: string; title: string; body: string; image: string; buttonLabel: string; buttonHref: string })
+  | ({ id: string; visible?: boolean; type: "text"; eyebrow: string; title: string; body: string })
+  | ({ id: string; visible?: boolean; type: "card-grid"; eyebrow: string; title: string; columns: 2 | 3 | 4; cards: Array<{ id: string; title: string; body: string; image: string; href: string }> })
+  | ({ id: string; visible?: boolean; type: "process"; eyebrow: string; title: string; steps: Array<{ id: string; title: string; body: string }> })
+  | ({ id: string; visible?: boolean; type: "cta"; eyebrow: string; title: string; buttonLabel: string; buttonHref: string });
 
 export type EditorDocument = { path: string; locale: "en" | "zh"; template: "home" | "factory" | "project" | "article"; blocks: EditorBlock[]; revision: number; publishedRevision?: number | null };
 
