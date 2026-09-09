@@ -3,6 +3,7 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/$/, "");
+const baseOrigin = new URL(baseUrl).origin;
 const escapedBaseUrl = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const routes = ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/resources", "/countertops", "/countertops/vanity-tops", "/countertops/integrated-stone-sinks", "/projects/hotel-stone-supply", "/projects/commercial-stone", "/projects/canada-shower-niches-2025", "/architectural-stone", "/custom-stone-fabrication-china", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables", "/project-brief-template.txt", "/sitemap.xml", "/image-sitemap.xml", "/robots.txt"];
 const legacyRedirects = {
@@ -66,6 +67,17 @@ for (const header of ["x-content-type-options: nosniff", "x-frame-options: sameo
 }
 if (!pageHeaders.get("/project-brief-template.txt").includes("content-disposition: attachment")) {
   throw new Error("project brief template is not served as an attachment");
+}
+if (new URL(baseUrl).hostname === "ateliermarblestone.com") {
+  const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
+  const { stdout } = await execFileAsync(curlCommand, ["--silent", "--show-error", "--max-time", "30", "--head", "https://www.ateliermarblestone.com/"], { maxBuffer: 128 * 1024 });
+  const statuses = [...stdout.matchAll(/HTTP\/\S+\s+(\d{3})/g)];
+  const status = Number(statuses.at(-1)?.[1] || 0);
+  const location = stdout.match(/^location:\s*(.+)$/im)?.[1]?.trim() || "";
+  const target = location ? new URL(location, "https://www.ateliermarblestone.com").origin : "";
+  if (![301, 308].includes(status) || target !== baseOrigin) {
+    throw new Error(`www host should redirect to ${baseOrigin}, received ${status} ${location}`);
+  }
 }
 for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/projects", "/countertops", "/countertops/vanity-tops", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
   if (!new RegExp(`<link[^>]+rel="canonical"[^>]+href="${escapedBaseUrl}(?:/|"|\\?)`, "i").test(contents.get(route))) {
