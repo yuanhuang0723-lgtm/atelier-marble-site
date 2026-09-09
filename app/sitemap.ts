@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/projects",
     "/architectural-stone",
+    "/architectural-stone/wall-cladding",
     "/materials",
     "/factory",
     "/contact",

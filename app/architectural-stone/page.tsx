@@ -16,6 +16,7 @@ const applications = [
   ["Hotel & Commercial", "/projects/commercial-stone", "/materials/categories/hotel-projects.webp", "Architectural stone surfaces for hotel lobbies, reception areas, retail, and public interiors.", "Hotel and commercial interior stone reference"],
   ["Countertops & Vanity", "/countertops", "/materials/featured-covers/kitchen-countertop.webp", "Countertops, vanity tops, integrated basins, and cut-to-size stone packages.", "Natural stone countertop and vanity application reference"],
   ["Interior & Feature Stone", "/projects/commercial-stone", "/assets/stone-table-coffee/hero-local-cover.png", "Wall, floor, furniture, and feature-surface references for considered interiors.", "Architectural stone interior surface reference"],
+  ["Wall Cladding", "/architectural-stone/wall-cladding", "/materials/categories/hotel-projects.webp", "Panelized stone surfaces for hotel lobbies, commercial interiors, and feature walls.", "Architectural stone wall cladding reference for hotel and commercial interiors"],
   ["Custom Stone", "/custom-stone-fabrication-china", "/materials/featured-covers/carving-decor.webp", "Sculptural forms, furniture, and architectural accents developed from a clear design direction.", "Custom carved stone form for an architectural interior"]
 ];
 
