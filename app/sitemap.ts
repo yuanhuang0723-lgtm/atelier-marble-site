@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/materials",
     "/materials/marble",
     "/materials/quartzite",
+    "/materials/granite",
     "/factory",
     "/contact",
     "/countertops",

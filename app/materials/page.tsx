@@ -113,6 +113,9 @@ export default function MaterialsPage() {
             <Link className="text-cta-luxury ml-8" href="/materials/quartzite">
               Review Quartzite Materials
             </Link>
+            <Link className="text-cta-luxury ml-8" href="/materials/granite">
+              Review Granite Materials
+            </Link>
           </div>
         </section>
         <section className="section-luxury bg-stone">
