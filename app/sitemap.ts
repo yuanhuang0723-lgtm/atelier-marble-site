@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/factory",
     "/contact",
     "/countertops",
+    "/countertops/marble-countertops",
     "/countertops/vanity-tops",
     "/countertops/integrated-stone-sinks",
     "/projects/hotel-stone-supply",
