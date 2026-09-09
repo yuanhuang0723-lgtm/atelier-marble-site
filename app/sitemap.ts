@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/architectural-stone/flooring",
     "/materials",
     "/materials/marble",
+    "/materials/quartzite",
     "/factory",
     "/contact",
     "/countertops",
