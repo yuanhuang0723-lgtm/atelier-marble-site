@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
+import RecoveryRedirect from "../components/RecoveryRedirect";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
 import { absoluteUrl, siteName } from "../lib/seo";
 
@@ -73,6 +74,7 @@ export default function HomePage() {
 
   return (
     <PageShell>
+      <RecoveryRedirect />
       <JsonLd
         data={{
           "@context": "https://schema.org",
