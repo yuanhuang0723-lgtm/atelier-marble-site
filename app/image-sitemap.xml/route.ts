@@ -17,7 +17,8 @@ export function GET() {
     { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.webp", "/assets/vanity-cabinet/cover.webp", "/assets/carving-decor/cover.webp", "/materials/categories/hotel-projects.webp"] },
     { page: "/factory", images: ["/assets/factory/factory-hero-workshop.webp", ...factoryImages] },
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
-    { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) }
+    { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) },
+    { page: "/countertops/marble-countertops", images: ["/materials/featured-covers/kitchen-countertop.webp"] }
   ];
   const entries = [...new Set(imageGroups.flatMap((group) => group.images.map((image) => `${group.page}|${image}`)))].map((entry) => {
     const [page, image] = entry.split("|");
