@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     description:
       "Natural stone materials for hotel, commercial, residential, and custom fabrication projects, with marble selection and export supply from China.",
     url: absoluteUrl("/materials"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp") }]
   }
 };
 

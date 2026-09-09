@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     description:
       "Learn about Atelier Marble, a Yunfu-based project stone supplier coordinating marble, granite, quartzite, fabrication, and export delivery for overseas buyers.",
     url: absoluteUrl("/about"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/assets/factory/factory-hero-workshop.webp") }]
   }
 };
 

@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     description:
       "Request consultation from Atelier Marble for hotel projects, stone slabs, kitchens, architectural interiors, furniture, or carved stone decor from China.",
     url: absoluteUrl("/contact"),
-    siteName
+    siteName,
+    images: [{ url: absoluteUrl("/materials/featured-covers/kitchen-countertop.webp") }]
   }
 };
 
