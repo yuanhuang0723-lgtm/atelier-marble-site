@@ -27,7 +27,10 @@ const footerGroups: FooterGroup[] = [
       { label: "Buyer Guide", href: "/guides/stone-supplier-china" },
       { label: "Packing Guide", href: "/guides/export-packing-standards" },
       { label: "Pricing Guide", href: "/guides/hotel-stone-pricing" },
-      { label: "Project Checklist", href: "/guides/stone-project-checklist" }
+      { label: "Project Checklist", href: "/guides/stone-project-checklist" },
+      { label: "Marble Materials", href: "/materials/marble" },
+      { label: "Quartzite Materials", href: "/materials/quartzite" },
+      { label: "Granite Materials", href: "/materials/granite" }
     ]
   },
   {
