@@ -43,7 +43,7 @@ export default function CommercialLandingPage({
           { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") }, areaServed: "Worldwide" },
           ...(faqJsonLd ? [faqJsonLd] : [])
         ]} />
-        <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} />
+        <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} backgroundImageAlt={imageAlt} />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">

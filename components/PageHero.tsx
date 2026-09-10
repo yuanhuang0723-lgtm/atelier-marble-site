@@ -5,12 +5,13 @@ type PageHeroProps = {
   title: string;
   description: string;
   backgroundImage?: string;
+  backgroundImageAlt?: string;
 };
 
-export default function PageHero({ eyebrow, title, description, backgroundImage }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, description, backgroundImage, backgroundImageAlt }: PageHeroProps) {
   return (
     <section className="hero-architectural">
-      {backgroundImage ? <><Image className="object-cover object-center" src={backgroundImage} alt={`${title} visual reference`} fill priority sizes="100vw" /><div className="hero-overlay absolute inset-0" /></> : null}
+      {backgroundImage ? <><Image className="object-cover object-center" src={backgroundImage} alt={backgroundImageAlt || `${title} visual reference`} fill priority sizes="100vw" /><div className="hero-overlay absolute inset-0" /></> : null}
       <div className="hero-architectural__content hero-architectural__content--center">
         <div className="container-luxury text-center">
           <p className="hero-architectural__eyebrow">{eyebrow}</p>
