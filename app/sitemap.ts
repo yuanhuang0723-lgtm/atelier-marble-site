@@ -33,11 +33,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/privacy-policy"
   ];
+  const recentlyUpdated = new Set([
+    "/",
+    "/projects",
+    "/architectural-stone",
+    "/architectural-stone/wall-cladding",
+    "/architectural-stone/flooring",
+    "/materials",
+    "/materials/marble",
+    "/materials/quartzite",
+    "/materials/granite",
+    "/factory",
+    "/countertops",
+    "/countertops/marble-countertops",
+    "/projects/hotel-stone-supply",
+    "/projects/commercial-stone",
+    "/custom-stone-fabrication-china",
+    "/resources",
+    "/how-we-work"
+  ]);
   return [
     ...staticRoutes.map((route) => ({
       url: absoluteUrl(route),
       changeFrequency: "weekly" as const,
-      priority: route === "/" ? 1 : 0.8
+      priority: route === "/" ? 1 : 0.8,
+      ...(recentlyUpdated.has(route) ? { lastModified: new Date("2026-09-10T00:00:00.000Z") } : {})
     }))
   ];
 }
