@@ -285,6 +285,9 @@ export default function HomePage() {
                   <Link className="text-cta-luxury" href="/how-we-work">
                     See How We Work
                   </Link>
+                  <Link className="text-cta-luxury" href="/resources">
+                    Buyer Resources
+                  </Link>
                 </div>
                 <nav aria-label="Core project resources" className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/55">
                   <Link className="transition-colors hover:text-ink" href="/materials">Materials</Link>
