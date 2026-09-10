@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import AssetCard from "../../components/AssetCard";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
@@ -43,6 +44,12 @@ export default async function ProjectsPage({
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project References", path: "/projects" }]} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Hotel and Commercial Stone Project References", url: absoluteUrl("/projects"), description: String(metadata.description), hasPart: [
+          { "@type": "WebPage", name: "Hotel Stone Supply", url: absoluteUrl("/projects/hotel-stone-supply") },
+          { "@type": "WebPage", name: "Commercial Stone Fabrication", url: absoluteUrl("/projects/commercial-stone") },
+          { "@type": "WebPage", name: "Custom Stone Countertops", url: absoluteUrl("/countertops") },
+          { "@type": "WebPage", name: "Custom Stone Fabrication", url: absoluteUrl("/custom-stone-fabrication-china") }
+        ] }} />
         <PageHero
           eyebrow="Project references"
           title="Hotel and commercial stone project references."
