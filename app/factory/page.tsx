@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
@@ -22,6 +23,21 @@ export const metadata: Metadata = {
   }
 };
 
+const faqs = [
+  {
+    question: "What stone fabrication work can be reviewed?",
+    answer: "The workshop review can cover cutting, shaping, edge finishing, surface work, inspection, packing, and export preparation for countertop, hotel, architectural, furniture, and custom stone scopes."
+  },
+  {
+    question: "Can a factory quotation start from CAD or a BOQ?",
+    answer: "Yes. CAD drawings, BOQ files, dimensions, quantities, material direction, and destination information can be used to establish a practical review before pricing."
+  },
+  {
+    question: "How are quality and packing discussed before shipment?",
+    answer: "Dimensions, finish, visible surface character, component grouping, protective packing, and loading requirements should be aligned with the project scope before export preparation."
+  }
+];
+
 export default function FactoryPage() {
   const defaults = getAssets("factory");
   const sources = getWorkshopImageSources();
@@ -40,6 +56,7 @@ export default function FactoryPage() {
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Capability proof"
           title="Stone fabrication factory in China with visible production proof."
@@ -94,6 +111,20 @@ export default function FactoryPage() {
                     <p className="eyebrow-luxury mb-2">Workshop reference {String(index + 1).padStart(2, "0")}</p>
                     <h3 className="heading-md factory-gallery__title card-title">{cleanDisplayTitle(asset.title, "Stone Workshop Reference")}</h3>
                   </div>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="container-luxury mt-16">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Buyer questions</p>
+              <h2 className="heading-lg section-intro__title">Factory capability details, answered clearly.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {faqs.map((faq) => (
+                <article key={faq.question} className="card-luxury bg-stone p-6">
+                  <h2 className="font-title text-[1.05rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">{faq.question}</h2>
+                  <p className="mt-4 text-[0.94rem] leading-7 text-ink/68">{faq.answer}</p>
                 </article>
               ))}
             </div>
