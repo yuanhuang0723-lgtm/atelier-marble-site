@@ -47,7 +47,7 @@ export default function CommercialLandingPage({
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">
-              <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} />
+              <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} loading="lazy" decoding="async" />
               <div className="grid gap-4 p-7 md:p-9">
                 <p className="eyebrow-luxury">Project supply scope</p>
                 {details.map((detail) => <p key={detail} className="body-luxury border-b border-ink/10 pb-4 last:border-0 last:pb-0">{detail}</p>)}
