@@ -66,7 +66,11 @@ export default function CommercialLandingPage({
                 <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
                 <a className="btn-luxury" href={contact.whatsappUrl}>Discuss on WhatsApp</a>
               </div>
-              {relatedLink ? <Link className="text-cta-luxury inline-flex" href={relatedLink.href}>{relatedLink.label}</Link> : null}
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {relatedLink ? <Link className="text-cta-luxury inline-flex" href={relatedLink.href}>{relatedLink.label}</Link> : null}
+                <Link className="text-cta-luxury inline-flex" href="/materials">Review material library</Link>
+                <Link className="text-cta-luxury inline-flex" href="/resources">Open buyer resources</Link>
+              </div>
             </div>
           </div>
         </section>
