@@ -30,7 +30,7 @@ export default function QuartziteMaterialsPage() {
       title="Quartzite material direction for project-led selection."
       description="Review quartzite character, application, finish, matching, and fabrication considerations with a project-focused stone supply team in Yunfu, China."
       image="/materials/hero/atelier-marble-luxury-hero.webp"
-      imageAlt="Quartzite material surface reference for countertop, hotel, and commercial projects"
+      imageAlt="Natural stone material reference for countertop, hotel, and commercial project review"
       bullets={[
         "Start with material character, preferred tone, application, and reference images",
         "Review thickness, finish, matching direction, cut-outs, and edge requirements",

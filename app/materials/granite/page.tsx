@@ -30,7 +30,7 @@ export default function GraniteMaterialsPage() {
       title="Granite material direction for commercial project review."
       description="Review granite character, application, finish, matching, and fabrication considerations with a project-focused stone supply team in Yunfu, China."
       image="/materials/hero/atelier-marble-luxury-hero.webp"
-      imageAlt="Granite material surface reference for commercial, hotel, and countertop projects"
+      imageAlt="Natural stone material reference for commercial, hotel, and countertop project review"
       bullets={[
         "Start with material character, preferred tone, application, and reference images",
         "Review thickness, finish, matching direction, cut-outs, and edge requirements",
