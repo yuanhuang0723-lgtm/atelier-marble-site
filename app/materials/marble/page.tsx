@@ -40,7 +40,7 @@ export default function MarbleMaterialsPage() {
       details={["Marble countertops and islands", "Hotel vanity tops and bathroom packages", "Commercial interior wall and floor applications", "Custom cut-to-size stone components"]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
-      relatedLink={{ label: "Review all material references", href: "/materials" }}
+      relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
       metadata={metadata}
     />
   );

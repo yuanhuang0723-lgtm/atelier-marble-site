@@ -40,7 +40,7 @@ export default function QuartziteMaterialsPage() {
       details={["Quartzite kitchen countertops and islands", "Hotel and commercial surface packages", "Feature surfaces and cut-to-size components", "Finished edges, openings, and export packing coordination"]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying quartzite."
-      relatedLink={{ label: "Review all material references", href: "/materials" }}
+      relatedLink={{ label: "See countertop fabrication scope", href: "/countertops" }}
       metadata={metadata}
     />
   );

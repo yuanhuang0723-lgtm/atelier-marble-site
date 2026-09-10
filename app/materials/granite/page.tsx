@@ -40,7 +40,7 @@ export default function GraniteMaterialsPage() {
       details={["Granite kitchen countertops and islands", "Hotel and commercial surface packages", "Public-area counters and feature surfaces", "Cut-to-size components with finished edges and openings"]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying granite."
-      relatedLink={{ label: "Review all material references", href: "/materials" }}
+      relatedLink={{ label: "See commercial countertop scope", href: "/countertops" }}
       metadata={metadata}
     />
   );
