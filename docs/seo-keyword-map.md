@@ -1,6 +1,6 @@
 # Atelier Marble SEO Keyword Map
 
-Updated: 2026-09-08
+Updated: 2026-09-10
 
 ## Strategy
 
@@ -10,7 +10,7 @@ Search-volume and difficulty numbers are intentionally not fabricated. The avail
 
 ## Latest validation
 
-- 2026-09-08 online audit of all 23 sitemap URLs: no duplicate titles, missing H1 elements, hidden keyword markers, or redirected legacy URLs in the sitemap.
+- 2026-09-10 online audit of all 29 sitemap URLs: no duplicate titles, missing H1 elements, hidden keyword markers, or redirected legacy URLs in the sitemap.
 - Core commercial and guide-page descriptions are now written for the actual page intent and kept within a practical search-snippet length range where applicable.
 - Google autocomplete checks supplied no additional reliable phrases for the current product scope. Do not add speculative terms such as `sintered stone supplier China` until the site can substantiate that product scope.
 - The next keyword decision gate is Search Console data: query, impressions, clicks, CTR, landing page, and inquiry conversion. Do not infer rankings from sitemap presence or a successful build.
