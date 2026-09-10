@@ -278,15 +278,21 @@ export default function HomePage() {
               ))}
             </div>
               <div className="mt-8">
-              <div className="flex flex-wrap gap-4">
-                <Link className="text-cta-luxury" href="/contact">
-                  Request Similar Project Pricing
-                </Link>
-                <Link className="text-cta-luxury" href="/how-we-work">
-                  See How We Work
-                </Link>
+                <div className="flex flex-wrap gap-4">
+                  <Link className="text-cta-luxury" href="/contact">
+                    Request Similar Project Pricing
+                  </Link>
+                  <Link className="text-cta-luxury" href="/how-we-work">
+                    See How We Work
+                  </Link>
+                </div>
+                <nav aria-label="Core project resources" className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/55">
+                  <Link className="transition-colors hover:text-ink" href="/materials">Materials</Link>
+                  <Link className="transition-colors hover:text-ink" href="/countertops">Countertops &amp; Vanity</Link>
+                  <Link className="transition-colors hover:text-ink" href="/projects/hotel-stone-supply">Hotel Stone Supply</Link>
+                  <Link className="transition-colors hover:text-ink" href="/factory">Factory &amp; QC</Link>
+                </nav>
               </div>
-            </div>
           </div>
         </section>
 
