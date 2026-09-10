@@ -116,6 +116,12 @@ export default async function ProjectsPage({
               <Link className="text-cta-luxury ml-8" href="/materials">
                 Compare Stone Materials
               </Link>
+              <Link className="text-cta-luxury ml-8" href="/how-we-work">
+                See How We Work
+              </Link>
+              <Link className="text-cta-luxury ml-8" href="/resources">
+                Buyer Resources
+              </Link>
             </div>
           </div>
         </section>
