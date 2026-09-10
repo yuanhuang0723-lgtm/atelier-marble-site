@@ -177,6 +177,13 @@ export default function HowWeWorkPage() {
                 </div>
               ))}
             </div>
+            <nav aria-label="Project scope pages" className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 border-t border-ink/10 pt-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/55">
+              <Link className="transition-colors hover:text-ink" href="/countertops">Countertops &amp; Vanity</Link>
+              <Link className="transition-colors hover:text-ink" href="/projects/hotel-stone-supply">Hotel Stone Supply</Link>
+              <Link className="transition-colors hover:text-ink" href="/architectural-stone">Architectural Stone</Link>
+              <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone</Link>
+              <Link className="transition-colors hover:text-ink" href="/materials">Materials</Link>
+            </nav>
           </div>
         </section>
 
