@@ -44,10 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/materials/quartzite",
     "/materials/granite",
     "/factory",
+    "/contact",
     "/countertops",
     "/countertops/marble-countertops",
     "/projects/hotel-stone-supply",
     "/projects/commercial-stone",
+    "/projects/canada-shower-niches-2025",
     "/custom-stone-fabrication-china",
     "/resources",
     "/how-we-work"
