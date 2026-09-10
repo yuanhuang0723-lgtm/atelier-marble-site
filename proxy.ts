@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
-  if (request.nextUrl.hostname !== "www.ateliermarblestone.com") {
+  if (![
+    "www.ateliermarblestone.com",
+    "atelier-marble-site.vercel.app"
+  ].includes(request.nextUrl.hostname)) {
     return NextResponse.next();
   }
 

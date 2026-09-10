@@ -70,13 +70,15 @@ if (!pageHeaders.get("/project-brief-template.txt").includes("content-dispositio
 }
 if (new URL(baseUrl).hostname === "ateliermarblestone.com") {
   const curlCommand = process.platform === "win32" ? "curl.exe" : "curl";
-  const { stdout } = await execFileAsync(curlCommand, ["--silent", "--show-error", "--max-time", "30", "--head", "https://www.ateliermarblestone.com/"], { maxBuffer: 128 * 1024 });
-  const statuses = [...stdout.matchAll(/HTTP\/\S+\s+(\d{3})/g)];
-  const status = Number(statuses.at(-1)?.[1] || 0);
-  const location = stdout.match(/^location:\s*(.+)$/im)?.[1]?.trim() || "";
-  const target = location ? new URL(location, "https://www.ateliermarblestone.com").origin : "";
-  if (![301, 308].includes(status) || target !== baseOrigin) {
-    throw new Error(`www host should redirect to ${baseOrigin}, received ${status} ${location}`);
+  for (const host of ["www.ateliermarblestone.com", "atelier-marble-site.vercel.app"]) {
+    const { stdout } = await execFileAsync(curlCommand, ["--silent", "--show-error", "--max-time", "30", "--head", `https://${host}/`], { maxBuffer: 128 * 1024 });
+    const statuses = [...stdout.matchAll(/HTTP\/\S+\s+(\d{3})/g)];
+    const status = Number(statuses.at(-1)?.[1] || 0);
+    const location = stdout.match(/^location:\s*(.+)$/im)?.[1]?.trim() || "";
+    const target = location ? new URL(location, `https://${host}`).origin : "";
+    if (![301, 308].includes(status) || target !== baseOrigin) {
+      throw new Error(`${host} should redirect to ${baseOrigin}, received ${status} ${location}`);
+    }
   }
 }
 for (const route of ["/", "/contact", "/about", "/factory", "/materials", "/materials/marble", "/materials/quartzite", "/materials/granite", "/projects", "/countertops", "/countertops/marble-countertops", "/countertops/vanity-tops", "/architectural-stone/flooring", "/architectural-stone/wall-cladding", "/hotel-projects", "/kitchen-countertops", "/stone-slabs", "/stone-sculptures", "/marble-coffee-tables"]) {
