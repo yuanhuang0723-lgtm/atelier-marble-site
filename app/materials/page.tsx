@@ -49,6 +49,11 @@ export default function MaterialsPage() {
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Materials", path: "/materials" }]} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Natural Stone Materials for Projects", url: absoluteUrl("/materials"), description: String(metadata.description), hasPart: [
+          { "@type": "WebPage", name: "Marble Materials", url: absoluteUrl("/materials/marble") },
+          { "@type": "WebPage", name: "Quartzite Materials", url: absoluteUrl("/materials/quartzite") },
+          { "@type": "WebPage", name: "Granite Materials", url: absoluteUrl("/materials/granite") }
+        ] }} />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: materialFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Material reference library"
