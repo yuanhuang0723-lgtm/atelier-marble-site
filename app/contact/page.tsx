@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import InquiryForm from "../../components/InquiryForm";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact, inquiryProjectTypes } from "../../lib/assets";
@@ -34,6 +35,7 @@ export default function ContactPage() {
   return (
     <PageShell>
       <main>
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project Consultation", path: "/contact" }]} />
         <PageHero
           eyebrow="Project inquiry system"
           title="Request a quotation for hotel stone, slabs, and custom fabrication."
