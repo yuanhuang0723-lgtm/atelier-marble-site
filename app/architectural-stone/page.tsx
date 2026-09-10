@@ -39,11 +39,26 @@ const collectionJsonLd = {
   hasPart: applications.map(([name, href]) => ({ "@type": "WebPage", name, url: absoluteUrl(href) }))
 };
 
+const faqs = [
+  {
+    question: "What architectural stone applications can be reviewed?",
+    answer: "Architectural stone scopes can include hotel and commercial wall cladding, flooring, countertops, vanity packages, feature surfaces, and custom interior elements."
+  },
+  {
+    question: "Can architectural stone projects start from drawings or a BOQ?",
+    answer: "Yes. Drawings, BOQ files, dimensions, quantities, material direction, and destination information provide a practical starting point for fabrication and quotation review."
+  },
+  {
+    question: "What should be confirmed before architectural stone fabrication?",
+    answer: "Confirm the application, material, thickness, finish, module or panel dimensions, edge details, quantities, quality checkpoints, and export packing requirements before production."
+  }
+];
+
 export default function ArchitecturalStonePage() {
   return (
     <PageShell>
       <main>
-        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd]} />
+        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }]} />
         <PageHero
           eyebrow="Architectural stone"
           title="Architectural stone supply for hotel and commercial interiors."
@@ -65,6 +80,22 @@ export default function ArchitecturalStonePage() {
                     <span aria-hidden="true" className="pt-1 text-lg text-ink/55">-&gt;</span>
                   </div>
                 </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Buyer questions</p>
+              <h2 className="heading-lg section-intro__title">Architectural stone project details, answered clearly.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {faqs.map((faq) => (
+                <article key={faq.question} className="card-luxury px-6 py-6">
+                  <h3 className="font-title text-[1.05rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] text-ink">{faq.question}</h3>
+                  <p className="mt-4 text-[0.94rem] leading-7 text-ink/68">{faq.answer}</p>
+                </article>
               ))}
             </div>
           </div>
