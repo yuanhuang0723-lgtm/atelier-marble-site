@@ -70,6 +70,7 @@ export default function CommercialLandingPage({
                 {relatedLink ? <Link className="text-cta-luxury inline-flex" href={relatedLink.href}>{relatedLink.label}</Link> : null}
                 <Link className="text-cta-luxury inline-flex" href="/materials">Review material library</Link>
                 <Link className="text-cta-luxury inline-flex" href="/resources">Open buyer resources</Link>
+                <Link className="text-cta-luxury inline-flex" href="/projects/hotel-stone-supply">See hotel stone supply</Link>
               </div>
             </div>
           </div>
