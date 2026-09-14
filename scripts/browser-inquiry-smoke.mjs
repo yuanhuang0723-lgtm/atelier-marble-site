@@ -1,8 +1,17 @@
 import assert from "node:assert/strict";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { chromium } from "playwright";
 
-const baseUrl = "http://localhost:3100";
-const testFile = "C:/Users/86580/Documents/Codex/2026-06-13/019ebf0c-6d49-7f43-aca7-877cd87d39d9/work/browser-test-scope.pdf";
+const baseUrl = new URL(process.env.BASE_URL || "http://localhost:3100").origin;
+const testFile = {
+  name: "browser-test-scope.pdf",
+  mimeType: "application/pdf",
+  buffer: Buffer.from("synthetic browser smoke-test PDF")
+};
+const screenshotPath = process.env.BROWSER_SMOKE_SCREENSHOT || join(tmpdir(), "atelier-marble-browser-smoke-contact-390.png");
+let releaseSubmit;
+const submitGate = new Promise((resolve) => { releaseSubmit = resolve; });
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
 page.on("requestfailed", (request) => console.log(`request failed ${request.method()} ${request.url()}`));
@@ -22,13 +31,15 @@ await page.route(`${baseUrl}/api/inquiry/upload-url`, async (route) => {
   });
 });
 await page.route(`${baseUrl}/mock-upload`, async (route) => route.fulfill({ status: 200, body: "ok" }));
-await page.route(`${baseUrl}/api/inquiry`, async (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, message: "accepted" }) }));
+await page.route(`${baseUrl}/api/inquiry`, async (route) => {
+  await submitGate;
+  await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, message: "accepted" }) });
+});
 
 for (const width of [360, 390, 430, 1280, 1440]) {
   console.log(`checking viewport ${width}`);
   await page.setViewportSize({ width, height: 900 });
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
-  await page.waitForTimeout(200);
   const homeText = await page.locator("body").innerText();
   assert.equal(homeText.includes("A clearer route for project stone."), false, `homepage still contains the workflow block at ${width}px`);
   assert.equal(homeText.includes("Discuss your project requirements."), false, `homepage still contains the duplicate CTA at ${width}px`);
@@ -36,14 +47,13 @@ for (const width of [360, 390, 430, 1280, 1440]) {
   assert.ok(homeWidth.scroll <= homeWidth.client + 1, `homepage overflows horizontally at ${width}px`);
 
   await page.goto(`${baseUrl}/contact`, { waitUntil: "domcontentloaded" });
-  await page.waitForTimeout(200);
   const contactWidth = await page.evaluate(() => ({ client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
   assert.ok(contactWidth.scroll <= contactWidth.client + 1, `contact page overflows horizontally at ${width}px`);
 }
 
 await page.setViewportSize({ width: 390, height: 900 });
 await page.goto(`${baseUrl}/contact`, { waitUntil: "domcontentloaded" });
-await page.waitForTimeout(200);
+await page.getByRole("button", { name: /Browse$/ }).waitFor({ state: "visible" });
 console.log("checking file selection");
 const fileInput = page.locator('input[type="file"]');
 await fileInput.setInputFiles(testFile);
@@ -58,9 +68,11 @@ await page.getByLabel("Email").fill("browser-test@example.com");
 await page.getByLabel("Project Notes").fill("Synthetic local browser acceptance inquiry.");
 console.log("checking submit lock and success navigation");
 const submit = page.getByRole("button", { name: "Request Project Pricing" });
+const navigation = page.waitForURL((url) => url.pathname === "/contact/thank-you");
 await submit.click();
-assert.equal(await page.getByRole("button", { name: "Sending..." }).count(), 1, "submit was not locked while sending");
-await page.waitForTimeout(2000);
+await page.getByRole("button", { name: "Sending..." }).waitFor({ state: "visible" });
+releaseSubmit();
+await navigation;
 console.log(`after submit URL: ${page.url()}`);
 console.log(`after submit status: ${await page.locator('[role="alert"]').allTextContents()}`);
 assert.equal(new URL(page.url()).pathname, "/contact/thank-you", "successful local inquiry did not navigate to thank-you");
@@ -72,7 +84,7 @@ const submissionMarkerAfterRefresh = await page.evaluate(() => window.sessionSto
 assert.equal(leadCountAfterRefresh, 0, "refresh emitted a duplicate generate_lead event");
 assert.equal(submissionMarkerAfterRefresh, null, "submission marker was not consumed");
 
-await page.screenshot({ path: "work/browser-smoke-contact-390.png", fullPage: false });
+await page.screenshot({ path: screenshotPath, fullPage: false });
 await browser.close();
 console.log("Browser smoke passed for 360, 390, 430, 1280, and 1440px; file reselection, submit lock, success navigation, and refresh tracking verified.");
 

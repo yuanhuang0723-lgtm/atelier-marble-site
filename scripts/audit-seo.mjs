@@ -1,4 +1,5 @@
-const auditOrigin = new URL(process.env.SEO_AUDIT_URL || "https://ateliermarblestone.com").origin;
+const auditUrl = new URL(process.env.SEO_AUDIT_URL || "https://ateliermarblestone.com");
+const auditOrigin = auditUrl.origin;
 const canonicalOrigin = new URL(process.env.SEO_CANONICAL_ORIGIN || auditOrigin).origin;
 const requestTimeoutMs = Number(process.env.SEO_AUDIT_TIMEOUT_MS || 15000);
 
