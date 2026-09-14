@@ -34,7 +34,15 @@ export default function CommercialLandingPage({
           acceptedAnswer: { "@type": "Answer", text: faq.answer }
         }))
       }
-    : null;
+      : null;
+  const canonical = metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : absoluteUrl("/");
+  const sourcePage = new URL(canonical, absoluteUrl("/")).pathname || "/";
+  const contactProjectType = eyebrow.toLowerCase().includes("hotel")
+    ? "Hotel & Hospitality Projects"
+    : eyebrow.toLowerCase().includes("vanity")
+      ? "Luxury Vanity Tops & Cabinet Panels"
+      : "Commercial Stone Projects";
+  const contactHref = `/contact?sourcePage=${encodeURIComponent(sourcePage)}&projectType=${encodeURIComponent(contactProjectType)}`;
 
   return (
     <PageShell>
@@ -64,7 +72,7 @@ export default function CommercialLandingPage({
                 {bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-[0.98rem] leading-7 text-ink/75"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />{bullet}</li>)}
               </ul>
               <div className="flex flex-wrap gap-4">
-                <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
+                <Link className="btn-luxury-fill" href={contactHref}>Upload CAD / BOQ for Quote</Link>
                 <a className="btn-luxury" href={contact.whatsappUrl}>Discuss on WhatsApp</a>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-3">
@@ -120,7 +128,7 @@ export default function CommercialLandingPage({
           <p className="eyebrow-luxury">Next step</p>
           <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a drawing, BOQ, or reference image?</h2>
           <p className="body-luxury mx-auto mt-4 max-w-2xl">Send the information you already have. A complete project brief is helpful, but a practical first review can start with rough dimensions.</p>
-          <Link className="btn-luxury mt-7" href="/contact">Request Project Pricing</Link>
+          <Link className="btn-luxury mt-7" href={contactHref}>Request Project Pricing</Link>
         </section>
       </main>
     </PageShell>

@@ -29,8 +29,19 @@ const inquiryContext = {
   projectType: "Luxury Vanity Tops & Cabinet Panels"
 };
 
-export default function ContactPage() {
-  const emailUrl = buildMailtoUrl(inquiryContext);
+const allowedSourcePath = /^\/(?:[a-z0-9-]+\/?)+$/;
+
+function getInquiryContext(searchParams: { sourcePage?: string; projectType?: string }) {
+  const sourcePage = typeof searchParams.sourcePage === "string" && allowedSourcePath.test(searchParams.sourcePage) ? searchParams.sourcePage : "/contact";
+  const projectType = typeof searchParams.projectType === "string" && inquiryProjectTypes.includes(searchParams.projectType as (typeof inquiryProjectTypes)[number])
+    ? searchParams.projectType
+    : inquiryProjectTypes[1];
+  return { ...inquiryContext, sourcePage, projectType };
+}
+
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ sourcePage?: string; projectType?: string }> }) {
+  const context = getInquiryContext(await searchParams);
+  const emailUrl = buildMailtoUrl(context);
 
   return (
     <PageShell>
@@ -44,8 +55,8 @@ export default function ContactPage() {
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12 lg:grid-cols-[1.1fr_0.72fr] lg:items-start">
             <InquiryForm
-              context={inquiryContext}
-              defaultProjectType={inquiryProjectTypes[1]}
+              context={context}
+              defaultProjectType={context.projectType}
               projectOptions={[...inquiryProjectTypes]}
             />
             <aside className="space-y-7">
