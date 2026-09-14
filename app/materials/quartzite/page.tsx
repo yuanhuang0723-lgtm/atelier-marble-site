@@ -3,9 +3,9 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Quartzite Materials for Projects in China",
+  title: "Quartzite Countertop Fabrication & Supply",
   description:
-    "Review quartzite material direction for countertops, hotel interiors, and commercial projects from China. Confirm lot, thickness, finish, matching, and fabrication suitability.",
+    "Quartzite countertop fabrication and project supply from China. Confirm lot, thickness, finish, matching, cut-outs, and fabrication suitability before quotation.",
   alternates: { canonical: absoluteUrl("/materials/quartzite") },
   openGraph: {
     title: "Quartzite Materials for Projects in China",
@@ -38,6 +38,7 @@ export default function QuartziteMaterialsPage() {
         "Confirm current lot and project suitability before fabrication is approved"
       ]}
       details={["Quartzite kitchen countertops and islands", "Hotel and commercial surface packages", "Feature surfaces and cut-to-size components", "Finished edges, openings, and export packing coordination"]}
+      specificationGroups={[{ title: "Quartzite material", items: ["Material name or reference image, current lot, slab dimensions, thickness, and available quantity", "Surface finish, exposed edges, visible face direction, and matching expectation", "Sample approval and acceptable natural variation recorded before fabrication"] }, { title: "Countertop fabrication", items: ["Sink and faucet templates, cut-outs, edge profiles, joints, support, and overhang", "Drawing or BOQ revision, piece labels, room or area grouping, and quantities", "Destination, packing requirements, and delivery timing supplied for quotation review"] }]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying quartzite."
       relatedLink={{ label: "See countertop fabrication scope", href: "/countertops" }}

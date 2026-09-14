@@ -3,9 +3,9 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Marble Countertops from China for Project Buyers",
+  title: "Marble Countertop Fabrication from China",
   description:
-    "Custom marble countertops from Yunfu, China for kitchens, hotels, villas, and commercial interiors. Review slabs, cut-outs, edges, finish, and packing.",
+    "Marble countertop fabrication from Yunfu, China for kitchens, hotels, villas, and commercial interiors. Review slabs, cut-outs, edges, finish, and packing.",
   alternates: { canonical: absoluteUrl("/countertops/marble-countertops") },
   openGraph: {
     title: "Marble Countertops from China for Project Buyers",
@@ -38,6 +38,7 @@ export default function MarbleCountertopsPage() {
         "Export packing requirements considered before the quotation path is finalized"
       ]}
       details={["Marble kitchen countertops and islands", "Hotel bathroom and vanity packages", "Commercial counters and public-area surfaces", "Cut-to-size components with finished edges and openings"]}
+      specificationGroups={[{ title: "Marble fabrication scope", items: ["Dimensions, thickness, quantities, drawing revision, room or area labels, and visible face direction", "Sink, faucet, service, and other cut-outs marked with the correct templates", "Edge profile, backsplash, splash, joints, seams, corners, and support conditions"] }, { title: "Material and approval", items: ["Marble reference, current lot, surface finish, natural variation, and matching expectation", "Sample or lot approval recorded before the fabrication scope is released", "Maintenance and application requirements reviewed according to the project use"] }]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "Explore integrated stone sinks", href: "/countertops/integrated-stone-sinks" }}
