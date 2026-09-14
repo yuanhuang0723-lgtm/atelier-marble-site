@@ -177,10 +177,17 @@ async function main() {
         image: normalizePath(decodeHtml(match[1].match(/<image:loc>([^<]+)<\/image:loc>/i)?.[1] || ""))
       })).filter((entry) => entry.page !== "/" || entry.image !== "/");
       if (!entries.length) errors.push("image sitemap: no image entries");
-      for (const entry of entries.slice(0, 10)) {
+      const decodedPageBodies = new Map(validPages.map((page) => {
+        try {
+          return [page.path, decodeURIComponent(page.body)];
+        } catch {
+          return [page.path, page.body];
+        }
+      }));
+      for (const entry of entries) {
         const page = validPages.find((item) => item.path === entry.page);
-        if (!page) warnings.push(`image sitemap sample page is not in sitemap: ${entry.page}`);
-        else if (!page.body.includes(entry.image)) warnings.push(`image sitemap sample not found in page HTML: ${entry.image}`);
+        if (!page) warnings.push(`image sitemap page is not in sitemap: ${entry.page}`);
+        else if (!decodedPageBodies.get(page.path)?.includes(entry.image)) warnings.push(`image sitemap image not found in page HTML: ${entry.image}`);
       }
     }
   } catch (error) { errors.push(`image sitemap: ${error.message}`); }

@@ -4,7 +4,7 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication & Cut-to-Size Stone",
-  description: "Custom stone fabrication and cut-to-size stone from Yunfu, China for countertops, architectural parts, furniture, and sculptural work. Send drawings, BOQ, and dimensions for review.",
+  description: "Custom stone fabrication and cut-to-size work from Yunfu, China for countertops, architectural parts, furniture, and sculptural projects. Send drawings and dimensions for review.",
   alternates: { canonical: absoluteUrl("/custom-stone-fabrication-china") },
   openGraph: {
     title: "Custom Stone Fabrication & Cut-to-Size Stone",
