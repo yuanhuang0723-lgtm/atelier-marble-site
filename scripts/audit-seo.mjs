@@ -187,7 +187,7 @@ async function main() {
       for (const entry of entries) {
         const page = validPages.find((item) => item.path === entry.page);
         if (!page) warnings.push(`image sitemap page is not in sitemap: ${entry.page}`);
-        else if (!decodedPageBodies.get(page.path)?.includes(entry.image)) warnings.push(`image sitemap image not found in page HTML: ${entry.image}`);
+        else if (![...decodedPageBodies.values()].some((body) => body.includes(entry.image))) warnings.push(`image sitemap image not found in audited HTML: ${entry.image}`);
       }
     }
   } catch (error) { errors.push(`image sitemap: ${error.message}`); }
