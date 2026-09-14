@@ -1,10 +1,24 @@
 # Atelier Marble SEO Keyword Map
 
-Updated: 2026-09-10
+Updated: 2026-09-14
 
 ## Strategy
 
-The site targets English-language international buyers looking for a stone supplier, fabrication partner, or project quotation from China. Each indexable page gets one primary search intent. Related terms are placed in the page copy and internal links naturally; no hidden keyword blocks or keyword-stuffed homepage sections are used.
+The site targets English-language international buyers looking for a stone fabrication partner or project quotation from China. The current business priority is custom fabrication, cut-to-size work, and custom countertops; hotel work remains an application. Each indexable page gets one primary search intent. Related terms are placed in the page copy and internal links naturally; no hidden keyword blocks or keyword-stuffed homepage sections are used.
+
+## Priority map
+
+| Priority | Keyword | Primary page | Evidence status | Next decision |
+|---|---|---|---|---|
+| 5 | custom stone fabrication manufacturer | /custom-stone-fabrication-china | Business priority; search volume unverified | Review GSC queries after release |
+| 5 | cut to size stone fabrication | /custom-stone-fabrication-china | Business priority; search volume unverified | Review GSC queries after release |
+| 5 | custom stone countertops | /countertops | Business priority; search volume unverified | Review GSC queries after release |
+| 4 | quartzite countertop manufacturer | /materials/quartzite | Business priority; identity claim requires evidence | Check material and fabrication intent |
+| 4 | marble countertop fabrication | /countertops/marble-countertops | Business priority; search volume unverified | Check material and fabrication intent |
+| 4 | architectural stone manufacturer | /architectural-stone | Business priority; identity claim requires evidence | Confirm actual business role |
+| 4 | stone fabrication China | / | Business priority; search volume unverified | Review homepage queries |
+| 3 | Yunfu stone factory | /factory | Location and business role require evidence | Confirm factory wording |
+| 2 | marble supplier China | /materials/marble | Business priority; search volume unverified | Review material supplier queries |
 
 Search-volume and difficulty numbers are intentionally not fabricated. The available generic Bing result pages were noisy and did not provide reliable supplier SERP evidence. Replace these hypotheses with Google Search Console queries and Keyword Planner data after the new domain has accumulated data.
 
@@ -28,14 +42,14 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/materials/marble` | marble materials for hotel and commercial projects | marble countertops, vanity tops, finish, matching, current lot review | Commercial |
 | `/materials/quartzite` | quartzite materials for countertops and projects in China | quartzite supplier, kitchen islands, hotel surfaces, finish, lot review | Commercial |
 | `/materials/granite` | granite materials for commercial and hotel projects | granite countertops, islands, hotel surfaces, finish, lot review | Commercial |
-| `/countertops` | custom stone countertops China | marble countertops, quartzite, cut-to-size stone | Commercial |
+| `/countertops` | custom stone countertops | marble countertops, quartzite, cut-to-size stone | Commercial |
 | `/countertops/marble-countertops` | marble countertops from China | kitchen countertops, hotel counters, cut-outs, edge profiles, export packing | Commercial |
 | `/countertops/vanity-tops` | marble vanity tops for hotels | hotel bathroom stone, cabinet panels, basin cut-outs | Commercial |
 | `/countertops/integrated-stone-sinks` | integrated stone sinks supplier | vanity basins, custom stone sinks, countertop cut-outs | Commercial |
 | `/architectural-stone` | architectural stone supplier for hotel projects | architectural stone fabrication, commercial interiors, wall cladding | Commercial |
 | `/architectural-stone/wall-cladding` | architectural stone wall cladding from China | hotel feature walls, stone panels, elevations, cut-to-size fabrication | Commercial |
 | `/architectural-stone/flooring` | architectural stone flooring from China | hotel flooring, stone modules, floor plans, cut-to-size fabrication | Commercial |
-| `/custom-stone-fabrication-china` | custom stone fabrication China | stone furniture, sculptures, architectural accents | Commercial |
+| `/custom-stone-fabrication-china` | custom stone fabrication manufacturer | cut to size stone fabrication, stone furniture, sculptures, architectural accents | Commercial |
 | `/factory` | stone fabrication factory in China | Yunfu stone factory, CAD production, export packing | Trust and commercial |
 | `/how-we-work` | stone project workflow for export buyers | drawing review, material matching, QC, packing | Commercial investigation |
 
