@@ -7,12 +7,12 @@ import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/ass
 import { absoluteUrl, siteName } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Stone Supplier in China | Atelier Marble",
+  title: "Stone Fabrication China | Atelier Marble",
   description:
-    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers. Send your CAD or BOQ for review.",
+    "Custom stone fabrication from Yunfu, China for contractors, architects, developers, and importers. Send CAD, BOQ, or dimensions for project review.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Stone Supplier & Fabrication China | Atelier Marble",
+    title: "Stone Fabrication China | Atelier Marble",
     description:
       "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers. Send your CAD or BOQ for review.",
     url: absoluteUrl("/"),
@@ -23,25 +23,25 @@ export const metadata: Metadata = {
 
 const buyerIntentCards = [
   {
-    title: "Stone Countertop & Coffee Table",
-    href: "/countertops",
-    image: "/assets/home-top-cover.webp",
-    alt: "Marble dining table and stone countertop in a contemporary interior",
-    question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
-  },
-  {
-    title: "Cabinet Panels + Vanity Tops",
-    href: "/countertops/vanity-tops",
-    image: "/assets/vanity-cabinet/cover.webp",
-    alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",
-    question: "STONE VANITY TOP AND CABINET PANEL REFERENCE."
-  },
-  {
-    title: "Custom Stone Sculptures",
+    title: "Custom Stone Fabrication",
     href: "/custom-stone-fabrication-china",
-    image: "/assets/carving-decor/cover.webp",
-    alt: "Carved stone sculpture displayed in a contemporary interior",
-    question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
+    image: "/materials/featured-covers/carving-decor.webp",
+    alt: "Custom carved stone form prepared for an interior design project",
+    question: "CUSTOM STONE FABRICATION AND CUT-TO-SIZE PROJECTS."
+  },
+  {
+    title: "Custom Stone Countertops",
+    href: "/countertops",
+    image: "/materials/featured-covers/kitchen-countertop.webp",
+    alt: "Custom natural stone countertop prepared for a project",
+    question: "CUSTOM STONE COUNTERTOPS FOR KITCHEN, HOTEL, AND COMMERCIAL PROJECTS."
+  },
+  {
+    title: "Architectural Stone",
+    href: "/architectural-stone",
+    image: "/materials/categories/hotel-projects.webp",
+    alt: "Architectural stone surface reference for commercial interiors",
+    question: "ARCHITECTURAL STONE FABRICATION FOR WALLS, FLOORS, AND FEATURE SURFACES."
   },
   {
     title: "Hotel & Hospitality Projects",

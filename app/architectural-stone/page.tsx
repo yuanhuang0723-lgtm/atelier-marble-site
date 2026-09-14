@@ -6,9 +6,9 @@ import PageShell from "../../components/PageShell";
 import { absoluteUrl } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Architectural Stone Supplier in China",
+  title: "Architectural Stone Fabrication from China",
   description:
-    "Architectural stone supply and fabrication for hotel and commercial interiors, with material review, project coordination, and export support from China.",
+    "Architectural stone fabrication and project supply from China for walls, floors, feature surfaces, and custom interior components. Review drawings, finish, quantities, and packing.",
   alternates: { canonical: absoluteUrl("/architectural-stone") }
 };
 
@@ -81,6 +81,22 @@ export default function ArchitecturalStonePage() {
                   </div>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+        <section className="section-luxury bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Fabrication information</p>
+              <h2 className="heading-lg section-intro__title">Keep architectural stone details tied to the drawing.</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["Application", "Wall cladding, flooring, stairs, feature surfaces, and custom architectural parts."],
+                ["Documents", "Latest drawings, BOQ, dimensions, units, quantities, labels, and revision notes."],
+                ["Finish", "Material direction, thickness, exposed face, surface finish, edges, joints, and modules."],
+                ["Handover", "Inspection points, packing groups, labels, loading requirements, and destination details."]
+              ].map(([title, copy]) => <article key={title} className="card-luxury bg-paper p-6"><h2 className="font-title text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-ink">{title}</h2><p className="mt-3 text-sm leading-7 text-ink/70">{copy}</p></article>)}
             </div>
           </div>
         </section>

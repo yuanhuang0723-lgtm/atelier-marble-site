@@ -28,3 +28,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Inquiry regression tests
+        run: npm run test:inquiry
+
+      - name: Check test scripts
+        run: node --check scripts/audit-seo.mjs && node --check scripts/browser-inquiry-smoke.mjs
