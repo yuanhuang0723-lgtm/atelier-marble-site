@@ -148,7 +148,7 @@ video {
 
 @layer components {
   .container-luxury {
-    @apply mx-auto w-full max-w-7xl;
+    @apply mx-auto min-w-0 w-full max-w-7xl;
   }
 
   .section-luxury {

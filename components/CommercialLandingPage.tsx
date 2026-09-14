@@ -54,7 +54,7 @@ export default function CommercialLandingPage({
         ]} />
         <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} backgroundImageAlt={imageAlt} />
         <section className="section-luxury bg-paper">
-          <div className="container-luxury grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">
               <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} loading="lazy" decoding="async" />
               <div className="grid gap-4 p-7 md:p-9">
