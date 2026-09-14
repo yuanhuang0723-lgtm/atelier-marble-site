@@ -60,7 +60,7 @@ export default function FactoryPage() {
         <PageHero
           eyebrow="Capability proof"
           title="Stone fabrication factory in China with visible production proof."
-          description="Real workshop, craftsmanship, production, and packing images support hotel stone fabrication and bespoke natural stone manufacturing while keeping authenticity and export credibility."
+          description="Workshop, craftsmanship, production, and packing references show the questions buyers should verify when reviewing hotel stone fabrication and bespoke natural stone manufacturing."
           backgroundImage="/assets/factory/factory-hero-workshop.webp"
         />
         <section className="section-luxury bg-paper">
@@ -68,8 +68,8 @@ export default function FactoryPage() {
             <div className="section-intro section-intro--center">
               <h2 className="heading-lg section-intro__title">Export production with visible proof.</h2>
               <p className="body-luxury section-intro__copy">
-                The workshop imagery shows how material review, fabrication, inspection, and packing connect across an
-                export stone project. It gives buyers practical context beyond a product catalogue.
+                The workshop imagery provides context for material review, fabrication, inspection, and packing across an
+                export stone project. Buyers should confirm the exact scope, responsibility, and evidence for their own order.
               </p>
             </div>
             <div className="mb-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -77,7 +77,7 @@ export default function FactoryPage() {
                 ["01", "Scope review", "Drawings, quantities, material direction, and destination are checked before a quotation path is proposed."],
                 ["02", "Fabrication", "Cutting, shaping, edge finishing, and surface work are coordinated around the approved scope."],
                 ["03", "Quality review", "Dimensions, finish, visible surface character, and project details are reviewed before packing."],
-                ["04", "Export preparation", "Finished pieces are protected, grouped, and prepared for the agreed delivery plan."]
+                    ["04", "Export preparation", "Finished pieces are protected, grouped, and prepared against the agreed delivery and labeling requirements."]
               ].map(([number, title, copy]) => (
                 <article key={number} className="card-luxury bg-stone p-6">
                   <p className="eyebrow-luxury">{number}</p>

@@ -38,6 +38,7 @@ export default function MarbleMaterialsPage() {
         "Confirm current lot and project suitability before fabrication is approved"
       ]}
       details={["Marble countertops and islands", "Hotel vanity tops and bathroom packages", "Commercial interior wall and floor applications", "Custom cut-to-size stone components"]}
+      specificationGroups={[{ title: "Material review", items: ["Stone name or reference image, current lot, slab or piece dimensions, thickness, and available quantity", "Surface finish, exposed edges, face direction, bookmatch or vein-matching expectation", "Natural variation, fissures, repairs, shade range, and sample approval requirements"] }, { title: "Application fit", items: ["Countertop, vanity, wall, floor, or custom component application", "Cut-outs, edge profiles, joints, support, and installation constraints", "Maintenance expectations and any project-specific performance requirements"] }]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
