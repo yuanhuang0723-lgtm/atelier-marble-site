@@ -35,7 +35,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 
 | URL | Primary keyword | Supporting terms | Intent |
 |---|---|---|---|
-| `/` | stone supplier China | custom stone fabrication, project stone supply, export stone fabrication | Brand and commercial discovery |
+| `/` | stone fabrication China | custom stone fabrication, custom stone countertops, project stone supply | Brand and commercial discovery |
 | `/projects/hotel-stone-supply` | hotel stone supply China | hotel stone fabrication, hospitality stone supplier, vanity tops, lobby stone | Commercial |
 | `/projects/commercial-stone` | commercial stone fabrication China | retail stone, office interiors, hospitality project supply | Commercial |
 | `/materials` | natural stone materials for projects | marble slabs, material selection, export stone supply | Commercial |
@@ -46,7 +46,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/countertops/marble-countertops` | marble countertops from China | kitchen countertops, hotel counters, cut-outs, edge profiles, export packing | Commercial |
 | `/countertops/vanity-tops` | marble vanity tops for hotels | hotel bathroom stone, cabinet panels, basin cut-outs | Commercial |
 | `/countertops/integrated-stone-sinks` | integrated stone sinks supplier | vanity basins, custom stone sinks, countertop cut-outs | Commercial |
-| `/architectural-stone` | architectural stone supplier for hotel projects | architectural stone fabrication, commercial interiors, wall cladding | Commercial |
+| `/architectural-stone` | architectural stone manufacturer | architectural stone fabrication, commercial interiors, wall cladding | Commercial |
 | `/architectural-stone/wall-cladding` | architectural stone wall cladding from China | hotel feature walls, stone panels, elevations, cut-to-size fabrication | Commercial |
 | `/architectural-stone/flooring` | architectural stone flooring from China | hotel flooring, stone modules, floor plans, cut-to-size fabrication | Commercial |
 | `/custom-stone-fabrication-china` | custom stone fabrication manufacturer | cut to size stone fabrication, stone furniture, sculptures, architectural accents | Commercial |
