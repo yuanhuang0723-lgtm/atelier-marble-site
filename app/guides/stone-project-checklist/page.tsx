@@ -104,9 +104,8 @@ export default function StoneProjectChecklistPage() {
               <div className="card-luxury px-6 py-6 md:px-8">
                 <p className="eyebrow-luxury mb-3">Before you send an inquiry</p>
                 <p className="body-luxury">
-                  Good buyers do not ask for a quote with only a product name. They send enough context for the
-                  supplier to understand the project, evaluate the material, and decide whether the scope matches the
-                  right fabrication and packing path.
+                  A useful quotation request includes enough context to understand the project, evaluate the material,
+                  and choose the right fabrication and packing path.
                 </p>
               </div>
 
@@ -150,6 +149,23 @@ export default function StoneProjectChecklistPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="card-luxury px-6 py-6 md:px-8">
+                <h2 className="font-title text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-ink">Hotel vanity top fields</h2>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="min-w-[38rem] w-full text-left text-sm leading-7 text-ink/70">
+                    <thead className="border-b border-ink/15 text-ink"><tr><th className="py-3 pr-4 font-medium">Field</th><th className="py-3 pr-4 font-medium">What to provide</th><th className="py-3 font-medium">If missing</th></tr></thead>
+                    <tbody>
+                      {[
+                        ["Geometry", "Length, depth, thickness, units, basin and faucet positions", "Send a marked-up photo or rough sketch for first review"],
+                        ["Room schedule", "Room or type number, quantity, piece labels, drawing revision", "Group pieces by room type and identify unknown counts"],
+                        ["Finish", "Stone reference, surface finish, edge, splash or upstand", "State the preferred direction and what remains open"],
+                        ["Logistics", "Destination, packing, delivery term, timing and inspection needs", "Share destination market and target date before final pricing"]
+                      ].map(([field, provide, missing]) => <tr key={field} className="border-b border-ink/10 last:border-0"><td className="py-3 pr-4 align-top font-medium text-ink">{field}</td><td className="py-3 pr-4 align-top">{provide}</td><td className="py-3 align-top">{missing}</td></tr>)}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">

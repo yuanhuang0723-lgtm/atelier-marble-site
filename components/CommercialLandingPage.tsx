@@ -17,11 +17,12 @@ type CommercialLandingPageProps = {
   faqs?: { question: string; answer: string }[];
   faqTitle?: string;
   relatedLink?: { label: string; href: string };
+  specificationGroups?: { title: string; items: string[] }[];
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, specificationGroups, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -75,6 +76,26 @@ export default function CommercialLandingPage({
             </div>
           </div>
         </section>
+        {specificationGroups?.length ? (
+          <section className="section-luxury bg-stone">
+            <div className="container-luxury">
+              <div className="section-intro section-intro--center">
+                <p className="eyebrow-luxury">Quotation details</p>
+                <h2 className="heading-lg section-intro__title">Confirm these details before production pricing.</h2>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {specificationGroups.map((group) => (
+                  <article key={group.title} className="card-luxury bg-paper px-6 py-6">
+                    <h3 className="font-title text-[1.02rem] font-semibold uppercase tracking-[0.04em] text-ink">{group.title}</h3>
+                    <ul className="mt-4 grid gap-3 text-sm leading-7 text-ink/70">
+                      {group.items.map((item) => <li key={item} className="border-b border-ink/10 pb-3 last:border-0 last:pb-0">{item}</li>)}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
         {faqs?.length ? (
           <section className="section-luxury bg-paper">
             <div className="container-luxury">
