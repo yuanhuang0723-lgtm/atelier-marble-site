@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CommercialLandingPage from "../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../lib/seo";
+import { getAssets } from "../../lib/assets";
 
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication & Cut-to-Size Stone",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function CustomStoneFabricationPage() {
+  const referenceImages = getAssets("carving-decor", 2).concat(getAssets("coffee-table", 2)).map((asset) => ({ src: asset.src, alt: asset.alt, title: asset.title }));
   return (
     <CommercialLandingPage
       eyebrow="Custom stone fabrication"
@@ -23,6 +25,7 @@ export default function CustomStoneFabricationPage() {
       description="Review a practical fabrication path for countertops, architectural parts, furniture, and sculptural stone from drawings, BOQ files, dimensions, or reference images."
       image="/assets/carving-decor/cover.webp"
       imageAlt="Carved stone sculpture displayed in a contemporary interior"
+      referenceImages={referenceImages}
       bullets={[
         "Start with drawings, BOQ files, dimensions, quantities, or reference imagery",
         "Coordinate cutting, openings, edges, joints, visible faces, and surface finish",

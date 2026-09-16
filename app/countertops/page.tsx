@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CommercialLandingPage from "../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../lib/seo";
+import { getAssets } from "../../lib/assets";
 
 export const metadata: Metadata = {
   title: "Custom Stone Countertops from China",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function CountertopsPage() {
+  const referenceImages = getAssets("kitchen-countertop", 2).concat(getAssets("coffee-table", 1)).map((asset) => ({ src: asset.src, alt: asset.alt, title: asset.title }));
   return (
     <CommercialLandingPage
       eyebrow="Custom stone countertops"
@@ -23,6 +25,7 @@ export default function CountertopsPage() {
       description="Coordinate natural stone countertops from dimensions or drawings, including islands, hotel vanity packages, commercial counters, cut-outs, finished edges, and export packing."
       image="/assets/home-top-cover.webp"
       imageAlt="Marble dining table and stone countertop in a contemporary interior"
+      referenceImages={referenceImages}
       bullets={[
         "Kitchen countertops and islands prepared around your dimensions or drawings",
         "Hotel bathroom vanity tops and repeatable room-type quantities",

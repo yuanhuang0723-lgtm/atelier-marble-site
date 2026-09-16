@@ -18,11 +18,12 @@ type CommercialLandingPageProps = {
   faqTitle?: string;
   relatedLink?: { label: string; href: string };
   specificationGroups?: { title: string; items: string[] }[];
+  referenceImages?: { src: string; alt: string; title: string }[];
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, specificationGroups, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, specificationGroups, referenceImages, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -99,6 +100,26 @@ export default function CommercialLandingPage({
                       {group.items.map((item) => <li key={item} className="border-b border-ink/10 pb-3 last:border-0 last:pb-0">{item}</li>)}
                     </ul>
                   </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+        {referenceImages?.length ? (
+          <section className="section-luxury bg-paper">
+            <div className="container-luxury">
+              <div className="section-intro section-intro--center">
+                <p className="eyebrow-luxury">Project references</p>
+                <h2 className="heading-lg section-intro__title">Review related stone work before sending your scope.</h2>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {referenceImages.map((item) => (
+                  <figure key={item.src} className="card-luxury overflow-hidden p-3">
+                    <div className="media-luxury aspect-[4/3]">
+                      <img className="block h-full w-full object-cover" src={item.src} alt={item.alt} loading="lazy" />
+                    </div>
+                    <figcaption className="px-3 py-4 text-sm leading-7 text-ink/70">{item.title}</figcaption>
+                  </figure>
                 ))}
               </div>
             </div>
