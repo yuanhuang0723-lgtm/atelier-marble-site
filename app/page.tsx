@@ -23,25 +23,25 @@ export const metadata: Metadata = {
 
 const buyerIntentCards = [
   {
-    title: "Custom Stone Fabrication",
-    href: "/custom-stone-fabrication-china",
-    image: "/materials/featured-covers/carving-decor.webp",
-    alt: "Custom carved stone form prepared for an interior design project",
-    question: "CUSTOM STONE FABRICATION AND CUT-TO-SIZE PROJECTS."
-  },
-  {
-    title: "Custom Stone Countertops",
+    title: "Stone Countertop & Coffee Table",
     href: "/countertops",
-    image: "/materials/featured-covers/kitchen-countertop.webp",
-    alt: "Custom natural stone countertop prepared for a project",
-    question: "CUSTOM STONE COUNTERTOPS FOR KITCHEN, HOTEL, AND COMMERCIAL PROJECTS."
+    image: "/assets/home-top-cover.webp",
+    alt: "Marble dining table and stone countertop in a contemporary interior",
+    question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
   },
   {
-    title: "Architectural Stone",
-    href: "/architectural-stone",
-    image: "/materials/categories/hotel-projects.webp",
-    alt: "Architectural stone surface reference for commercial interiors",
-    question: "ARCHITECTURAL STONE FABRICATION FOR WALLS, FLOORS, AND FEATURE SURFACES."
+    title: "Cabinet Panels + Vanity Tops",
+    href: "/countertops/vanity-tops",
+    image: "/assets/vanity-cabinet/cover.webp",
+    alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",
+    question: "STONE VANITY TOP AND CABINET PANEL REFERENCE."
+  },
+  {
+    title: "Custom Stone Sculptures",
+    href: "/custom-stone-fabrication-china",
+    image: "/assets/carving-decor/cover.webp",
+    alt: "Carved stone sculpture displayed in a contemporary interior",
+    question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
   },
   {
     title: "Hotel & Hospitality Projects",
