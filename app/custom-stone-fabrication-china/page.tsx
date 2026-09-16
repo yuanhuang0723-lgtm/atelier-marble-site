@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Review drawings, dimensions, material direction, finishing, inspection, and export packing before requesting custom stone fabrication.",
     url: absoluteUrl("/custom-stone-fabrication-china"),
     siteName,
-    images: [{ url: absoluteUrl("/materials/featured-covers/carving-decor.webp") }]
+    images: [{ url: absoluteUrl("/assets/carving-decor/cover.webp") }]
   }
 };
 
@@ -21,8 +21,8 @@ export default function CustomStoneFabricationPage() {
       eyebrow="Custom stone fabrication"
       title="Custom stone fabrication and cut-to-size work for project buyers."
       description="Review a practical fabrication path for countertops, architectural parts, furniture, and sculptural stone from drawings, BOQ files, dimensions, or reference images."
-      image="/materials/featured-covers/carving-decor.webp"
-      imageAlt="Custom carved stone form prepared for an interior design project"
+      image="/assets/carving-decor/cover.webp"
+      imageAlt="Carved stone sculpture displayed in a contemporary interior"
       bullets={[
         "Start with drawings, BOQ files, dimensions, quantities, or reference imagery",
         "Coordinate cutting, openings, edges, joints, visible faces, and surface finish",

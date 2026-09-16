@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Review custom stone countertop scope, material direction, cut-outs, edges, finish, and export packing before quotation.",
     url: absoluteUrl("/countertops"),
     siteName,
-    images: [{ url: absoluteUrl("/materials/featured-covers/kitchen-countertop.webp") }]
+    images: [{ url: absoluteUrl("/assets/home-top-cover.webp") }]
   }
 };
 
@@ -21,8 +21,8 @@ export default function CountertopsPage() {
       eyebrow="Custom stone countertops"
       title="Custom stone countertops for kitchens, hotels, and commercial interiors."
       description="Coordinate natural stone countertops from dimensions or drawings, including islands, hotel vanity packages, commercial counters, cut-outs, finished edges, and export packing."
-      image="/materials/featured-covers/kitchen-countertop.webp"
-      imageAlt="Custom natural stone countertop prepared for a residential or hospitality project"
+      image="/assets/home-top-cover.webp"
+      imageAlt="Marble dining table and stone countertop in a contemporary interior"
       bullets={[
         "Kitchen countertops and islands prepared around your dimensions or drawings",
         "Hotel bathroom vanity tops and repeatable room-type quantities",
