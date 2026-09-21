@@ -30,7 +30,7 @@ const buyerIntentCards = [
     question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
   },
   {
-    title: "Cabinet Panels + Vanity Tops",
+    title: "Hotel Bathroom Countertops & Vanity Tops",
     href: "/countertops/vanity-tops",
     image: "/assets/vanity-cabinet/cover.webp",
     alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",

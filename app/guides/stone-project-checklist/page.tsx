@@ -153,6 +153,9 @@ export default function StoneProjectChecklistPage() {
 
               <div className="card-luxury px-6 py-6 md:px-8">
                 <h2 className="font-title text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-ink">Hotel vanity top fields</h2>
+                <p className="mt-3 text-sm leading-7 text-ink/70">
+                  Use these fields when preparing a scope for <Link className="text-cta-luxury" href="/countertops/vanity-tops">hotel bathroom countertops and vanity tops</Link>.
+                </p>
                 <div className="mt-4 overflow-x-auto">
                   <table className="min-w-[38rem] w-full text-left text-sm leading-7 text-ink/70">
                     <thead className="border-b border-ink/15 text-ink"><tr><th className="py-3 pr-4 font-medium">Field</th><th className="py-3 pr-4 font-medium">What to provide</th><th className="py-3 font-medium">If missing</th></tr></thead>
