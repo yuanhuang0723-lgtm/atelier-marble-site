@@ -17,13 +17,14 @@ type CommercialLandingPageProps = {
   faqs?: { question: string; answer: string }[];
   faqTitle?: string;
   relatedLink?: { label: string; href: string };
+  relatedLinks?: { label: string; href: string }[];
   specificationGroups?: { title: string; items: string[] }[];
   referenceImages?: { src: string; alt: string; title: string }[];
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, specificationGroups, referenceImages, metadata
+  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, referenceImages, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -78,6 +79,7 @@ export default function CommercialLandingPage({
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-3">
                 {relatedLink ? <Link className="text-cta-luxury inline-flex" href={relatedLink.href}>{relatedLink.label}</Link> : null}
+                {relatedLinks?.map((link) => <Link key={link.href} className="text-cta-luxury inline-flex" href={link.href}>{link.label}</Link>)}
                 <Link className="text-cta-luxury inline-flex" href="/materials">Review material library</Link>
                 <Link className="text-cta-luxury inline-flex" href="/resources">Open buyer resources</Link>
                 <Link className="text-cta-luxury inline-flex" href="/projects/hotel-stone-supply">See hotel stone supply</Link>
