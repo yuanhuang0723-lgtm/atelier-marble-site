@@ -4,15 +4,28 @@
 
 This repository is the live Atelier Marble independent-site source. The immediate SEO work is a controlled ranking experiment for the query `hotel bathroom countertop`, not a promise of a ranking or traffic result.
 
-- Repository: `C:\Users\86580\Documents\Codex\work\seo-luna-s0-20260914`
+- Repository: `F:\Atelier-Marble-Site`
 - Remote: `https://github.com/yuanhuang0723-lgtm/atelier-marble-site.git`
 - Branch used for release: `seo-luna-s0-20260914`
 - Remote production branch: `main`
-- Current released commit: `361543f0b22ffb8d5cc88257a04cb7f0f1a21933`
+- Current repository commit: `339420be0ccee764f06092293f680866536140ad`
+- Latest functional SEO release: `361543f0b22ffb8d5cc88257a04cb7f0f1a21933`
 - Site: `https://ateliermarblestone.com`
 - Deployment provider: Vercel through the existing Git integration
 
-Start a new session by checking `git status --short`, `git rev-parse HEAD`, and `git ls-remote origin refs/heads/main`. Do not assume an old working directory or stale local `main` branch is current.
+Start a new session from `F:\Atelier-Marble-Site` by checking `git status --short`, `git rev-parse HEAD`, and `git ls-remote origin refs/heads/main`. Do not assume an old working directory or stale local `main` branch is current.
+
+## Worktree Relocation
+
+On 2026-09-24 this linked Git worktree was moved from C: to `F:\Atelier-Marble-Site` using a cross-volume copy followed by `git worktree repair`. The former directory no longer exists. The move was verified with:
+
+```powershell
+npm run audit:assets
+npm run test:inquiry
+git worktree list --porcelain
+```
+
+The material source remains separate at `D:\石材素材`; do not move it with the repository unless the asset-audit configuration is updated and revalidated.
 
 ## Task We Are Doing
 
@@ -196,7 +209,7 @@ Do not replace real project or process imagery with generated imagery as proof o
 5. Do not use `git push origin main` from this worktree: it can push a stale local branch. Use `git push origin HEAD:main` after verifying the remote SHA and local diff.
 6. Before replacing an existing internal link, run the full sitemap audit. A seemingly unrelated case-study page can lose its only internal link.
 7. Do not declare Vercel deployment complete from GitHub status alone. Verify the production HTML and run production audit.
-8. Do not use the old or invalid worktree `C:\Users\86580\Documents\Codex\work\seo-main-20260910` for this task. Use the repository path at the top of this document.
+8. Do not use the old C: worktree `C:\Users\86580\Documents\Codex\work\seo-luna-s0-20260914`; it was moved and no longer exists. Also do not use the unrelated old worktree `C:\Users\86580\Documents\Codex\work\seo-main-20260910`. Use the repository path at the top of this document.
 9. Do not expose or store Supabase passwords, service-role keys, upload secrets, or other environment values in documents, command output, commits, or chat.
 
 ## Useful Files
