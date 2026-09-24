@@ -213,4 +213,3 @@ Do not replace real project or process imagery with generated imagery as proof o
 - Public-route check: `scripts/check-public-routes.mjs`
 - Query-to-page mapping: `docs/seo-keyword-map.md`
 - Existing GSC operating notes: `docs/google-search-console-indexing.md`
-
