@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
+import WorkshopVideoCard from "../components/WorkshopVideoCard";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
 import { absoluteUrl, siteName } from "../lib/seo";
+import { featuredWorkshopVideo } from "../data/workshop-videos";
 
 export const metadata: Metadata = {
   title: "Stone Fabrication China | Atelier Marble",
@@ -119,6 +121,25 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="home-workshop-video-title" className="section-luxury bg-stone">
+          <div className="container-luxury grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
+            <div>
+              <p className="eyebrow-luxury">From the workshop</p>
+              <h2 id="home-workshop-video-title" className="heading-lg mt-4 scroll-mt-24 text-left">
+                See a stone cutting operation in progress.
+              </h2>
+              <p className="body-luxury mt-5 max-w-xl">
+                A short, unedited clip gives a closer look at a stone workpiece being cut. Explore the full gallery for
+                more workshop and basin footage.
+              </p>
+              <Link className="text-cta-luxury mt-6 inline-flex" href="/factory#workshop-videos">
+                View all 16 workshop videos
+              </Link>
+            </div>
+            <WorkshopVideoCard video={featuredWorkshopVideo} featured />
           </div>
         </section>
 

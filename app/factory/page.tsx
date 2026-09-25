@@ -4,9 +4,11 @@ import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
+import WorkshopVideoCard from "../../components/WorkshopVideoCard";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
 import { getWorkshopImageSources } from "../../lib/factory-images";
 import { absoluteUrl, siteName } from "../../lib/seo";
+import { workshopVideos } from "../../data/workshop-videos";
 
 export const metadata: Metadata = {
   title: "Stone Fabrication Factory in China",
@@ -142,6 +144,21 @@ export default function FactoryPage() {
               <Link className="transition-colors hover:text-ink" href="/architectural-stone">Architectural Stone</Link>
               <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone</Link>
             </nav>
+          </div>
+        </section>
+        <section id="workshop-videos" aria-labelledby="workshop-videos-title" className="section-luxury scroll-mt-24 bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Workshop video library</p>
+              <h2 id="workshop-videos-title" className="heading-lg section-intro__title">16 short views of stone work and components.</h2>
+              <p className="body-luxury section-intro__copy">
+                Short videos show basin details, stone components, and work in progress. For project-specific capacity or
+                quality checks, request records tied to your order.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {workshopVideos.map((video) => <WorkshopVideoCard key={video.id} video={video} />)}
+            </div>
           </div>
         </section>
       </main>
