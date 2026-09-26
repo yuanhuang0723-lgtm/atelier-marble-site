@@ -53,7 +53,7 @@ for (const width of [360, 390, 430, 1280, 1440]) {
 }
 
 await page.setViewportSize({ width: 390, height: 900 });
-await page.goto(`${baseUrl}/contact?sourcePage=${encodeURIComponent("/projects/hotel-stone-supply")}&projectType=${encodeURIComponent("Hotel & Hospitality Projects")}`, { waitUntil: "domcontentloaded" });
+await page.goto(`${baseUrl}/contact?sourcePage=${encodeURIComponent("/projects/hotel-stone-supply")}&projectType=${encodeURIComponent("Hotel & Hospitality Projects")}`, { waitUntil: "load" });
 await page.getByRole("button", { name: /Browse$/ }).waitFor({ state: "visible" });
 console.log("checking file selection");
 const fileInput = page.locator('input[type="file"]');
