@@ -101,10 +101,10 @@ Tracked inquiry events:
 - `email_inquiry_click`
 - `file_upload_started`
 - `file_upload_completed`
-- `qualified_inquiry_submitted`
-- `generate_lead`
+- `qualified_inquiry_submitted` (diagnostic success event after the API accepts an inquiry)
+- `generate_lead` (completed-inquiry event emitted on the thank-you page, carrying project type, source page, and first landing page from a non-PII session payload)
 
-If `NEXT_PUBLIC_GOOGLE_ADS_ID` and `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` are both present, each inquiry event also sends a Google Ads `conversion` event. Campaign parameters such as `utm_source`, `utm_campaign`, `utm_term`, and `gclid` are stored in session storage and attached to inquiry events.
+If `NEXT_PUBLIC_GOOGLE_ADS_ID` and `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` are both present, only `generate_lead` sends a Google Ads `conversion` event; clicks, uploads, and the diagnostic event do not count as Ads conversions. Campaign parameters such as `utm_source`, `utm_campaign`, `utm_term`, and `gclid` are stored in session storage and attached to inquiry events. Configure `generate_lead` as the sole GA4 key event for completed inquiries; verify event receipt and the key-event setting in GA4 before reporting conversion results.
 
 ## Private Inquiry Uploads
 

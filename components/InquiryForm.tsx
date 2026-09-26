@@ -179,8 +179,37 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       });
       const result = (await response.json()) as { ok?: boolean; message?: string };
       if (!response.ok || !result.ok) throw new Error(result.message || "The inquiry could not be sent yet.");
-      trackConversionEvent("qualified_inquiry_submitted", { sourcePage: hydratedContext.sourcePage, projectType, hasContact: true, hasMessage: Boolean(message), hasBudget: Boolean(budgetRange), hasTimeline: Boolean(timeline), hasDrawings: uploadedFiles.length > 0, hasFiles: uploadedFiles.length > 0, fileCount: uploadedFiles.length, country, hasCompany: Boolean(company), hasDestination: Boolean(destinationPort), hasQuantity: Boolean(quantity), landingPage: getStoredLandingPage() });
-      window.sessionStorage.setItem("atelierInquirySubmitted", "1");
+      const inquiryEventContext = {
+        sourcePage: hydratedContext.sourcePage,
+        projectType,
+        hasContact: true,
+        hasMessage: Boolean(message),
+        hasBudget: Boolean(budgetRange),
+        hasTimeline: Boolean(timeline),
+        hasDrawings: uploadedFiles.length > 0,
+        hasFiles: uploadedFiles.length > 0,
+        fileCount: uploadedFiles.length,
+        country,
+        hasCompany: Boolean(company),
+        hasDestination: Boolean(destinationPort),
+        hasQuantity: Boolean(quantity),
+        landingPage: getStoredLandingPage()
+      };
+      try {
+        trackConversionEvent("qualified_inquiry_submitted", inquiryEventContext);
+      } catch {
+        // Analytics must not turn a provider-accepted inquiry into a form failure.
+      }
+      try {
+        window.sessionStorage.setItem("atelierInquirySubmitted", JSON.stringify(inquiryEventContext));
+      } catch {
+        // Fall back to a direct lead event if the thank-you page cannot read the session marker.
+        try {
+          trackConversionEvent("generate_lead", { ...inquiryEventContext, page_path: "/contact/thank-you" });
+        } catch {
+          // Tracking remains best-effort after the accepted inquiry.
+        }
+      }
       window.location.assign("/contact/thank-you");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "The inquiry could not be sent yet.");

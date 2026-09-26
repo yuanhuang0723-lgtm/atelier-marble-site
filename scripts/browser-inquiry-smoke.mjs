@@ -15,6 +15,7 @@ const submitGate = new Promise((resolve) => { releaseSubmit = resolve; });
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
 page.on("requestfailed", (request) => console.log(`request failed ${request.method()} ${request.url()}`));
+await page.route(/(?:googletagmanager|google-analytics)\.com/, (route) => route.abort());
 
 await page.route(`${baseUrl}/api/inquiry/upload-url`, async (route) => {
   await route.fulfill({
@@ -52,7 +53,7 @@ for (const width of [360, 390, 430, 1280, 1440]) {
 }
 
 await page.setViewportSize({ width: 390, height: 900 });
-await page.goto(`${baseUrl}/contact`, { waitUntil: "domcontentloaded" });
+await page.goto(`${baseUrl}/contact?sourcePage=${encodeURIComponent("/projects/hotel-stone-supply")}&projectType=${encodeURIComponent("Hotel & Hospitality Projects")}`, { waitUntil: "domcontentloaded" });
 await page.getByRole("button", { name: /Browse$/ }).waitFor({ state: "visible" });
 console.log("checking file selection");
 const fileInput = page.locator('input[type="file"]');
@@ -78,6 +79,10 @@ console.log(`after submit status: ${await page.locator('[role="alert"]').allText
 assert.equal(new URL(page.url()).pathname, "/contact/thank-you", "successful local inquiry did not navigate to thank-you");
 const leadCount = await page.evaluate(() => (window.dataLayer || []).filter((event) => event && event.event === "generate_lead").length);
 assert.equal(leadCount, 1, "success did not emit exactly one generate_lead event");
+const leadEvent = await page.evaluate(() => (window.dataLayer || []).find((event) => event && event.event === "generate_lead"));
+assert.equal(leadEvent.projectType, "Hotel & Hospitality Projects", "generate_lead lost the selected project type");
+assert.equal(leadEvent.sourcePage, "/projects/hotel-stone-supply", "generate_lead lost the originating service page");
+assert.equal(leadEvent.landingPage, "/", "generate_lead lost the organic landing page");
 await page.reload({ waitUntil: "domcontentloaded" });
 const leadCountAfterRefresh = await page.evaluate(() => (window.dataLayer || []).filter((event) => event && event.event === "generate_lead").length);
 const submissionMarkerAfterRefresh = await page.evaluate(() => window.sessionStorage.getItem("atelierInquirySubmitted"));

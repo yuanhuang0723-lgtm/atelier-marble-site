@@ -173,7 +173,7 @@ export function trackConversionEvent(eventName: string, payload: ConversionEvent
     ...enrichedPayload
   });
 
-  if (adsId && adsConversionLabel) {
+  if (eventName === "generate_lead" && adsId && adsConversionLabel) {
     window.gtag?.("event", "conversion", {
       send_to: `${adsId}/${adsConversionLabel}`,
       event_category: "inquiry",
