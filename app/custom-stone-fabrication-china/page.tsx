@@ -98,6 +98,7 @@ export default function CustomStoneFabricationPage() {
         { title: "Export preparation", items: ["Confirm protective packing, grouping, labels, loading requirements, and destination", "Share the latest approved documents with the inquiry", "Final pricing depends on confirmed scope, material, dimensions, quantity, and delivery requirements"] }
       ]}
       relatedLink={{ label: "Review the buyer workflow", href: "/how-we-work" }}
+      relatedLinks={[{ label: "View redacted drawing-review example", href: "/factory#factory-evidence" }]}
       faqTitle="Custom fabrication details, answered clearly."
       faqs={[
         { question: "What can be made from drawings or a BOQ?", answer: "The review can cover cut-to-size countertops, architectural stone parts, furniture, tables, sculptural forms, and other components when the scope and dimensions are clear." },
