@@ -12,6 +12,7 @@ export function GET() {
   const factoryEvidenceImages = [
     ...getPublicImageEntries("/assets/factory/local/").map((image) => image.src),
     ...getAssets("hotel-project").filter((asset) => asset.sourceFolder === "发货").map((asset) => asset.src),
+    "/assets/factory/evidence/redacted-stone-drawing-review-example.png",
     "/videos/posters/atelier-marble-workshop-clip-07.jpg"
   ];
   const imageGroups = [

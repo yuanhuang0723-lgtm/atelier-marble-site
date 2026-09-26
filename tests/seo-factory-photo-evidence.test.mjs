@@ -32,7 +32,9 @@ test("factory page uses semantic source-backed workshop photos", async () => {
 
 test("factory trust section includes workshop, packing, drawing and inspection context", () => {
   const html = renderToStaticMarkup(FactoryPage());
-  assert.match(html, /Workshop photos and packing references/i);
+  assert.match(html, /Redacted drawing, workshop photos, and packing references/i);
+  assert.match(html, /Redacted drawing example/i);
+  assert.match(html, /project identifiers and dimension values removed/i);
   assert.match(html, /CAD\/BOQ drawing review/i);
   assert.match(html, /QC checkpoints/i);
   assert.match(html, /machine model is not identified/i);

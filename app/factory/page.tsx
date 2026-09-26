@@ -14,6 +14,13 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 const workshopPhotos = getPublicImageEntries("/assets/factory/local/");
 const packingPhotos = getAssets("hotel-project").filter((asset) => asset.sourceFolder === "发货");
 const factoryEvidencePhotos = [
+  {
+    src: "/assets/factory/evidence/redacted-stone-drawing-review-example.png",
+    title: "Redacted drawing example",
+    alt: "Redacted stone drawing excerpt showing plan and elevation views; project identifiers and dimension values removed.",
+    caption: "Company/project identifiers, title-block text, dimension values, and searchable text have been removed. This is a drawing-review example, not a completed project or QC record.",
+    group: "Drawing review"
+  },
   ...workshopPhotos.map((photo) => ({
     src: photo.src,
     title: photo.title,
@@ -147,11 +154,12 @@ export default function FactoryPage() {
         <section id="factory-evidence" aria-labelledby="factory-evidence-title" className="section-luxury bg-paper">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">Workshop photos and packing references</p>
-              <h2 id="factory-evidence-title" className="heading-lg section-intro__title">See the workshop, stone handling, and packing context.</h2>
+              <p className="eyebrow-luxury">Redacted drawing, workshop photos, and packing references</p>
+              <h2 id="factory-evidence-title" className="heading-lg section-intro__title">Review drawings, workshop activity, and packing preparation.</h2>
               <p className="body-luxury max-w-3xl">
-                These source photos show workshop areas and packing preparation. They do not document a named shipment,
-                delivery destination, machine model, or independent inspection result.
+                The plan and elevation excerpt is redacted for public viewing. Identifying text and dimension values are removed;
+                the drawing is shown as a scope-review example, not as proof of completed production or inspection.
+                Workshop and packing photos also do not identify a named shipment, machine model, or independent QC result.
               </p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
