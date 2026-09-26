@@ -6,9 +6,9 @@ This repository is the live Atelier Marble independent-site source. The immediat
 
 - Repository: `F:\Atelier-Marble-Site`
 - Remote: `https://github.com/yuanhuang0723-lgtm/atelier-marble-site.git`
-- Branch used for release: `codex/atelier-seo-implementation` (published to `main` through the existing Vercel Git integration).
+- Branch used for release: `codex/seo-ctr-rollout` (published to `main` through the existing Vercel Git integration).
 - Remote production branch: `main`
-- Latest functional SEO release: `2b1245fc20f5cd2ff0db9c061ad008883a7b7710` (2026-09-26).
+- Latest functional SEO release: `aac60c8d268d685370738ee8d8c272632ff91a69` (2026-09-26).
 - Site: `https://ateliermarblestone.com`
 - Deployment provider: Vercel through the existing Git integration
 
@@ -130,16 +130,16 @@ npm run test:inquiry
 
 ## Current State and What Is Blocking
 
-Code and production technical validation are complete. Ranking progress is not yet verifiable because the controlled changes were released on 2026-09-21 and the raw GSC data analyzed only covered dates through 2026-09-19.
+The latest functional release is `aac60c8` (2026-09-26): the vanity page now contains 1,778 words of distinct hotel project-planning guidance and all 16 factory video posters have descriptive alt text. The title and description remain unchanged. Production technical checks passed, but ranking and click effects are not verifiable from the available export.
 
-The next evidence gate is a later exact-date Search Console comparison after a stable post-release window, with a query × page mapping for any candidate. The 2026-09-26 export covers visible daily rows only through 2026-09-23 and has no query-to-page join; keep the vanity snippet stable until the next comparable sample.
+The next evidence gate is a later exact-date Search Console comparison after a stable post-release window, with a query × page mapping for any candidate. The 2026-09-26 export covers visible daily rows only through 2026-09-23 and has no query-to-page join; keep the vanity snippet stable until the next comparable sample. Because body content changed on 2026-09-26, use a window on or after 2026-10-24 for a 28-day post-content comparison, allowing for GSC reporting lag.
 
 The target position of 15 is an engineering experiment target, not a guaranteed Google outcome. Do not mark the SEO task complete because code is deployed; report ranking, impression, click, CTR, and inquiry changes separately.
 
 ## Next Steps
 
-1. Wait until the post-release window has enough GSC data. Do not make another title or description change before the comparison.
-2. Export raw GSC data with the interface untranslated. Capture query, pages, countries, devices, clicks, impressions, CTR, and average position.
+1. Wait until at least 2026-10-24 and the GSC report has settled. Do not make another title or description change before the comparison.
+2. Export an exact-date GSC comparison with the interface untranslated. Capture query × page, countries, devices, clicks, impressions, CTR, and average position; retain the property and date filters.
 3. Analyze `hotel bathroom countertop` separately from whole-site averages.
 4. Decide based on the comparison:
    - Position improves toward 15 with no clicks: keep content stable and allow more impressions before a single CTR experiment.
@@ -242,3 +242,9 @@ Do not replace real project or process imagery with generated imagery as proof o
 - Follow-up code release `e9cf7ee173db059c4326e732591cb4f36472ebab` was pushed on 2026-09-26 and verified on production. The homepage now shows the buyer pathways and project-review inputs; `/factory` adds three source workshop photos, two packing-preparation references, a cutting still, a drawing-led Canada case link, and order-specific QC checkpoints. Captions state what the photos do not prove; the video does not identify a CNC model. Production audits pass 29 sitemap pages (27 length checks; privacy and held vanity snippet exempted), 30 routes, 9 page redirects, and 295 image redirects. The image sitemap contains 179 image locations; the three new semantic workshop assets return HTTP 200. Browser checks at 390px and 1440px found no horizontal overflow; all six evidence images load after scrolling; all 16 factory videos remain paused with `preload="none"` and no MP4 request before playback.
 - Keep `/countertops/vanity-tops` Title/Description unchanged for now. The supplied export ends 2026-09-23, only three days after the 2026-09-21 snippet release. `hotel bathroom countertop` has 13 query impressions at position 23.92; the vanity page aggregate has 87 impressions at position 27.26. Queries.csv and Pages.csv do not provide a query-to-page join, and no visible query exceeds 42 impressions. The CTR opportunity CSV correctly remains header-only. Ranking and inquiry effects are unverified.
 - The local `New_Title_Meta.xlsx` and `Keyword_Map.xlsx` workbooks now record the 2026-09-26 release state and GSC evidence. The raw ZIP and reports remain outside Git. The vanity snippet is explicitly held until a comparable post-release window with query-filtered page data is available.
+- Follow-up code commit `aac60c8d268d685370738ee8d8c272632ff91a69` was pushed to `main` on 2026-09-26. `/countertops/vanity-tops` now renders 1,778 main-content words; video poster alt text is populated from the reviewed clip descriptions. A production crawl found 253 image tags with no empty alt, missing title, or generic-named active images. Build/test results: 332 pages, 39/39 SEO/content tests, 8/8 inquiry tests. Production SEO audit passed 29 pages (27 strict snippet checks); mobile/desktop checks at 390px and 1440px found no horizontal overflow.
+- The target vanity snippet remains an explicit length exception at 61 Title characters and 174 Description characters, retained for a controlled comparison. The current ZIP only covers visible daily rows through 2026-09-23. No query exceeded 42 impressions; the exact query and vanity page table rows are separate aggregates, not a query-to-page join. The CTR opportunity table remains header-only.
+- The production route checker intermittently timed out when issuing hundreds of concurrent `curl --head` requests. A throttled follow-up verified the 295 image redirects; four timed-out URLs returned the expected HTTP 308 on individual retry. The page and legacy redirect map did not change in commit `aac60c8`.
+- Follow-up code commit `aac60c8d268d685370738ee8d8c272632ff91a69` was pushed to `main` on 2026-09-26. `/countertops/vanity-tops` now renders 1,778 visible main-content words across seven unique planning sections; its Title/Description were left unchanged. All 16 video poster images now use reviewed clip descriptions as `alt`. Build generated 332 pages; asset audit passed for 202 records; SEO/content tests pass 39/39; inquiry tests pass 8/8. Production SEO audit passed 29 pages (27 strict snippet-length checks; privacy and held vanity snippet exempted). A live 29-page crawl found 253 image tags with no empty alt, missing title, or generic-named active references. Mobile/desktop checks at 390px and 1440px found no horizontal overflow; vanity content is 1,778 words and its drawing-led reference link fits without horizontal clipping.
+- The production `npm run check:public` high-concurrency HEAD sweep timed out on intermittent public image requests. The affected URLs each returned the expected HTTP 308 when retried individually; a throttled pass verified all 295 image redirects. The current code did not alter route or image redirect maps. Do not record the high-concurrency timeout as a route or redirect failure.
+- The vanity Title is still 61 characters and its Description 174, outside the requested ranges. Keep them stable until a comparable post-release GSC window is available. Because the page body changed on 2026-09-26, request the next exact-date Query × Page export on or after 2026-10-24 to compare post-content impressions, clicks, CTR, and position. The current ZIP ends 2026-09-23 and cannot measure this release. Do not claim ranking or inquiry lift. A CNC model/photo, an actual CAD drawing image/file, completed QC evidence, GSC index status, CrUX field data, and GA4 event receipt remain unverified.
