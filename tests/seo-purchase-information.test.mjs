@@ -55,6 +55,27 @@ test("each commercial landing page answers the five basic procurement questions"
   }
 });
 
+test("hotel vanity page provides 1,500–2,500 words of distinct project-planning guidance", () => {
+  const html = renderToStaticMarkup(component(VanityTops)());
+  const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? html;
+  const visibleText = main
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const wordCount = visibleText.match(/\b[\p{L}\p{N}][\p{L}\p{N}'’-]*\b/gu)?.length ?? 0;
+
+  assert.ok(wordCount >= 1500 && wordCount <= 2500, `Expected 1,500–2,500 visible words, got ${wordCount}`);
+  assert.match(visibleText, /room type, and piece mark/i);
+  assert.match(visibleText, /drawing number, revision, date, unit system, and approval status/i);
+  assert.match(visibleText, /current template or a dimensioned outline/i);
+  assert.match(visibleText, /sample or approved reference/i);
+  assert.match(visibleText, /set the inspection points with the buyer/i);
+  assert.match(visibleText, /match labels and crate groups/i);
+});
+
 test("shared procurement section uses product-specific heading only where applicable", () => {
   const sinkHtml = renderToStaticMarkup(component(IntegratedSinks)());
   const fabricationHtml = renderToStaticMarkup(component(CustomFabrication)());

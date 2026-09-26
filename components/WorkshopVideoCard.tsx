@@ -49,7 +49,7 @@ export default function WorkshopVideoCard({ video, featured = false }: WorkshopV
             <img
               className="absolute inset-0 h-full w-full object-contain transition duration-300 group-hover:scale-[1.02]"
               src={video.poster}
-              alt=""
+              alt={video.description}
               title={video.title}
               loading="lazy"
               decoding="async"
