@@ -2,7 +2,7 @@ const auditUrl = new URL(process.env.SEO_AUDIT_URL || "https://ateliermarbleston
 const auditOrigin = auditUrl.origin;
 const canonicalOrigin = new URL(process.env.SEO_CANONICAL_ORIGIN || auditOrigin).origin;
 const requestTimeoutMs = Number(process.env.SEO_AUDIT_TIMEOUT_MS || 15000);
-const snippetLengthExemptions = new Set(["/privacy-policy", "/countertops/vanity-tops"]);
+const snippetLengthExemptions = new Set(["/privacy-policy"]);
 
 function decodeHtml(value) {
   return value
@@ -201,7 +201,7 @@ async function main() {
   if (warnings.length) console.warn(warnings.map((warning) => `Warning: ${warning}`).join("\n"));
   if (errors.length) { console.error(errors.map((error) => `- ${error}`).join("\n")); process.exit(1); }
   const snippetChecked = validPages.filter((page) => !snippetLengthExemptions.has(page.path)).length;
-  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin}); strict 50–60 / 140–160 snippet lengths passed for ${snippetChecked} pages, with the vanity snippet held for its post-release comparison.`);
+  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin}); strict 50–60 / 140–160 snippet lengths passed for ${snippetChecked} pages, with the legal privacy page exempted.`);
 }
 
 await main();

@@ -37,6 +37,7 @@ const candidates = [
   ["/guides/quality-control-delivery", QualityControl, "Stone Quality Control & Delivery Guide | Atelier Marble", "Review stone inspection, finish approval, labeling, packing, and delivery checks for hotel and commercial projects before shipment leaves China."],
   ["/factory", Factory, "Stone Fabrication Factory in China | Atelier Marble", "Selected workshop videos and buyer guidance for reviewing scope, drawings, materials, inspection points, packing, and destination requirements."],
   ["/guides/hotel-lobby-case-study", HotelLobby, "Hotel Lobby Stone Planning Guide for Buyers | Atelier Marble", "Hotel lobby stone planning guide for scope, materials, inspection checkpoints, packing, and delivery planning. The image is a concept visualization only."],
+  ["/countertops/vanity-tops", Vanity, "Hotel Bathroom Countertops & Vanity Tops | Atelier Marble", "Custom hotel vanity tops and marble bathroom counters from Yunfu, China. Send drawings, basin cut-outs, and quantities for a project quotation."],
   ["/about", About, "About Atelier Marble Stone Supply | Atelier Marble", "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects."]
 ];
 
@@ -50,9 +51,4 @@ test("core production snippet candidates match the strict title and description 
     assert.ok(description.length >= 140 && description.length <= 160, `${route} description length`);
   }
 
-});
-
-test("vanity title and description remain stable until a comparable post-release GSC window", () => {
-  assert.equal(Vanity.metadata.title, "Hotel Vanity Tops & Marble Bathroom Counters");
-  assert.equal(Vanity.metadata.description, "Custom marble hotel vanity tops and bathroom counters from China for hospitality projects. Send drawings, basin cut-outs, quantities, and destination for a project quotation.");
 });
