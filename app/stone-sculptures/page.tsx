@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import fs from "fs";
-import path from "path";
 import AdsLandingPage from "../../components/AdsLandingPage";
 import { getAssets } from "../../lib/assets";
+import { getPublicImageEntries, resolvePublicImage } from "../../lib/public-image-metadata";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
@@ -20,28 +19,21 @@ export const metadata: Metadata = {
   }
 };
 
-const localGalleryDir = path.join(process.cwd(), "public", "assets", "stone-sculptures", "local");
 const gallerySource = getAssets("carving-decor");
+const localGalleryImages = getPublicImageEntries("/assets/stone-sculptures/local/");
 
 function buildLocalGallery() {
-  if (!fs.existsSync(localGalleryDir)) {
-    return gallerySource;
-  }
-
-  const localFiles = fs
-    .readdirSync(localGalleryDir)
-    .filter((file) => /\.(png|jpe?g|webp|gif|avif)$/i.test(file))
-    .sort((a, b) => a.localeCompare(b, "en", { numeric: true, sensitivity: "base" }));
-
-  if (!localFiles.length) {
+  if (!localGalleryImages.length) {
     return gallerySource;
   }
 
   return gallerySource.map((asset, index) => {
-    const localFile = localFiles[index] ?? localFiles[localFiles.length - 1];
+    const image = localGalleryImages[index] ?? localGalleryImages[localGalleryImages.length - 1];
     return {
       ...asset,
-      src: `/assets/stone-sculptures/local/${encodeURIComponent(localFile)}`
+      src: image.src,
+      title: image.title || asset.title,
+      alt: image.alt || asset.alt
     };
   });
 }
@@ -54,8 +46,8 @@ export default function StoneSculpturesPage() {
       eyebrow="Custom stone sculpture supplier"
       title="Carved Stone Sculpture Supplier"
       description="Atelier Marble supports custom carved stone decor, marble sculpture pieces, and refined natural stone objects for hotels, galleries, villas, and architectural interiors."
-      heroImage="/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png"
-      heroAlt="custom carved stone sculpture displayed in a premium interior setting"
+      heroImage={resolvePublicImage("/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png").src}
+      heroAlt={resolvePublicImage("/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png").alt}
       keywords={[
         "carved stone sculpture supplier",
         "custom stone sculpture supplier",

@@ -122,7 +122,7 @@ video {
   }
 
   .site-nav__mobile {
-    @apply relative md:hidden;
+    @apply relative 2xl:hidden;
   }
 
   .site-nav__toggle {

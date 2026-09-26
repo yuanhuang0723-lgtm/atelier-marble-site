@@ -4,6 +4,7 @@ import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
+import ProjectProcurementInfo from "../../components/ProjectProcurementInfo";
 import { cleanDisplayTitle, getAssets } from "../../lib/assets";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
@@ -40,9 +41,9 @@ const materialFaqs = [
 export default function MaterialsPage() {
   const materials = getAssets("materials");
   const applicationRoutes = [
-    { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.webp", alt: "Natural stone countertop reference for kitchen and vanity applications" },
-    { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.webp", alt: "Architectural stone reference for hotel and hospitality projects" },
-    { title: "Custom Stone", href: "/custom-stone-fabrication-china", image: "/materials/featured-covers/carving-decor.webp", alt: "Custom stone carving reference for design-led interior applications" }
+    { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.webp", alt: "Stone countertop and vanity application reference image" },
+    { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.webp", alt: "Illustrative hotel interior with stone flooring and wall panels" },
+    { title: "Custom Stone", href: "/custom-stone-fabrication-china", image: "/materials/featured-covers/carving-decor.webp", alt: "Decorative stone sculpture reference showing a carved tree form" }
   ];
 
   return (
@@ -98,7 +99,7 @@ export default function MaterialsPage() {
             <div className="mb-12 grid gap-5 md:grid-cols-3">
               {applicationRoutes.map((route) => (
                 <Link key={route.href} href={route.href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-2">
-                  <img className="aspect-[16/9] w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.02]" src={route.image} alt={route.alt} loading="lazy" />
+                  <img className="aspect-[16/9] w-full rounded-[10px] object-cover transition duration-500 group-hover:scale-[1.02]" src={route.image} alt={route.alt} title={route.title} loading="lazy" />
                   <span className="flex items-center justify-between px-3 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink/75"><span>{route.title}</span><span aria-hidden="true">-&gt;</span></span>
                 </Link>
               ))}
@@ -109,7 +110,7 @@ export default function MaterialsPage() {
                 return (
                 <article key={asset.filename} className="card-luxury p-3">
                   <div className="media-luxury aspect-[4/3]">
-                    <img className="h-full w-full object-cover" src={asset.src} alt={`${displayTitle} natural stone slab reference ${String(index + 1).padStart(2, "0")} for countertop, vanity, and interior project review`} loading="lazy" />
+                    <img className="h-full w-full object-cover" src={asset.src} alt={`${displayTitle} natural stone slab reference ${String(index + 1).padStart(2, "0")} for countertop, vanity, and interior project review`} title={displayTitle} loading="lazy" />
                   </div>
                   <div className="px-4 py-6">
                     <p className="eyebrow-luxury mb-3">Slab reference {String(index + 1).padStart(2, "0")}</p>
@@ -140,6 +141,10 @@ export default function MaterialsPage() {
             </Link>
           </div>
         </section>
+        <ProjectProcurementInfo
+          materialOptions="The library includes marble, granite, and quartzite references. Confirm the current lot, thickness, finish, availability, and matching before approval."
+          customCapability="Material selection can be reviewed alongside countertop, vanity, hotel, architectural, and custom fabrication requirements."
+        />
         <section className="section-luxury bg-stone">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">

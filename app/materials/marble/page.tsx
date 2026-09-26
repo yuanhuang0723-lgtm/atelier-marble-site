@@ -3,9 +3,9 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Marble Materials for Projects in China",
+  title: "Marble Materials & Slabs for Projects",
   description:
-    "Review marble material direction for hotel, commercial, countertop, vanity, and custom stone projects from China. Confirm lot, thickness, finish, and matching before production.",
+    "Explore marble for hotel, commercial, and countertop projects. Confirm current lot, thickness, finish, veining, and matching before fabrication.",
   alternates: { canonical: absoluteUrl("/materials/marble") },
   openGraph: {
     title: "Marble Materials for Projects in China",
@@ -42,7 +42,7 @@ export default function MarbleMaterialsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
-      metadata={metadata}
+      purchaseInfo={{ materialOptions: "Natural marble. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.", customCapability: "Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components." }} metadata={metadata}
     />
   );
 }

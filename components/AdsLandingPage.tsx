@@ -4,6 +4,7 @@ import PageShell from "./PageShell";
 import TrustStrip from "./TrustStrip";
 import { Asset, cleanCardCopy } from "../lib/assets";
 import { buildWhatsAppUrl } from "../lib/conversion";
+import { resolvePublicImage } from "../lib/public-image-metadata";
 
 type AdsLandingPageProps = {
   eyebrow: string;
@@ -51,7 +52,7 @@ export default function AdsLandingPage({
     <PageShell>
       <main>
         <section className="hero-architectural min-h-[86vh]">
-          <img className="absolute inset-0 h-full w-full object-cover" src={heroImage} alt={heroAlt} />
+          <img className="absolute inset-0 h-full w-full object-cover" src={heroImage} alt={heroAlt} title={heroAlt} />
           <div className="hero-overlay absolute inset-0" />
           <div className="hero-architectural__content hero-architectural__content--center container-luxury min-h-[86vh] pb-24 pt-40">
             <div className="mx-auto max-w-4xl text-center">
@@ -108,7 +109,7 @@ export default function AdsLandingPage({
         <section className="section-luxury bg-stone">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
-              <h2 className="heading-lg section-intro__title">Real material and production references.</h2>
+              <h2 className="heading-lg section-intro__title">Stone shape and surface references.</h2>
             </div>
               <div className={galleryImageFit === "contain" ? "gallery-fit-contain grid gap-7 md:grid-cols-3" : "grid gap-7 md:grid-cols-3"}>
                 {gallery.map((asset, index) => (
@@ -121,19 +122,21 @@ export default function AdsLandingPage({
                       <>
                         <img
                           className="project-card__media-bg"
-                          src="/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png"
-                          alt="real carved stone workshop background with finished sculptural pieces"
+                          src={resolvePublicImage("/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png").src}
+                          alt={resolvePublicImage("/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png").alt}
+                          title={resolvePublicImage("/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png").title}
                           loading="lazy"
                         />
                         <img
                           className="project-card__media-fg"
                           src={asset.src}
                           alt={asset.alt}
+                          title={asset.title}
                           loading="lazy"
                         />
                       </>
                     ) : (
-                      <img className="h-full w-full object-cover" src={asset.src} alt={asset.alt} loading="lazy" />
+                      <img className="h-full w-full object-cover" src={asset.src} alt={asset.alt} title={asset.title} loading="lazy" />
                     )}
                   </div>
                   <div className={`project-card__body ${projectType === "Custom Furniture & Sculptures" && index === 1 ? "project-card__body--center" : ""}`}>

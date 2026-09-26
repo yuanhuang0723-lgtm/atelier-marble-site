@@ -4,22 +4,22 @@ import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
-import { cleanDisplayTitle, getAssets } from "../../lib/assets";
-import { getWorkshopImageSources } from "../../lib/factory-images";
+import ProjectProcurementInfo from "../../components/ProjectProcurementInfo";
+import WorkshopVideoCard from "../../components/WorkshopVideoCard";
+import { workshopVideos } from "../../data/workshop-videos";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Stone Fabrication Factory in China",
   description:
-    "Capability proof for a stone fabrication factory in Yunfu, China, including hotel stone work, CAD production, export packing, and quality review.",
+    "Selected workshop videos and buyer guidance for reviewing scope, drawings, materials, inspection points, packing, and destination requirements.",
   alternates: { canonical: absoluteUrl("/factory") },
   openGraph: {
     title: "Stone Fabrication Factory in China",
     description:
-      "Capability proof for a stone fabrication factory in Yunfu, China, including hotel stone work, CAD production, export packing, and quality review.",
+      "Selected workshop videos and buyer guidance for reviewing scope, drawings, materials, inspection points, packing, and destination requirements.",
     url: absoluteUrl("/factory"),
     siteName,
-    images: [{ url: absoluteUrl("/assets/factory/factory-hero-workshop.webp") }]
   }
 };
 
@@ -39,37 +39,22 @@ const faqs = [
 ];
 
 export default function FactoryPage() {
-  const defaults = getAssets("factory");
-  const sources = getWorkshopImageSources();
-  const imageCount = Math.max(defaults.length, sources.length);
-  const images = Array.from({ length: imageCount }, (_, index) => {
-    const fallback = defaults[index % defaults.length];
-    return {
-      ...fallback,
-      filename: `workshop-local-${index + 1}`,
-      src: sources[index] ?? fallback.src,
-      alt: `Workshop production reference ${String(index + 1).padStart(2, "0")} for stone fabrication and export preparation`
-    };
-  });
-
   return (
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
-          eyebrow="Capability proof"
-          title="Stone fabrication factory in China with visible production proof."
-          description="Workshop, craftsmanship, production, and packing references show the questions buyers should verify when reviewing hotel stone fabrication and bespoke natural stone manufacturing."
-          backgroundImage="/assets/factory/factory-hero-workshop.webp"
+          eyebrow="Workshop video gallery"
+          title="Stone fabrication factory in China."
+          description="Review drawings, material requirements, fabrication scope, inspection points, and export preparation against the needs of your stone project."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
-              <h2 className="heading-lg section-intro__title">Export production with visible proof.</h2>
+              <h2 className="heading-lg section-intro__title">A documented review from drawings to delivery.</h2>
               <p className="body-luxury section-intro__copy">
-                The workshop imagery provides context for material review, fabrication, inspection, and packing across an
-                export stone project. Buyers should confirm the exact scope, responsibility, and evidence for their own order.
+                Before production, confirm the material lot, approved dimensions and finish, inspection records, protective packing, and delivery terms for the specific order.
               </p>
             </div>
             <div className="mb-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -98,21 +83,8 @@ export default function FactoryPage() {
                 <p><strong className="block text-ink">Status</strong>Presented as a project reference from the Atelier Marble capability catalogue.</p>
               </div>
             </article>
-            <div className="factory-gallery grid gap-7 md:grid-cols-4">
-              {images.map((asset, index) => (
-                <article
-                  key={asset.filename}
-                  className={`card-luxury overflow-hidden p-3 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
-                >
-                  <div className={`media-luxury bg-[#f7f2ea] ${index === 0 ? "aspect-[4/3]" : "aspect-[4/5]"}`}>
-                    <img className="block h-full w-full object-cover object-center" src={asset.src} alt={asset.alt} loading="lazy" />
-                  </div>
-                  <div className="px-4 py-5">
-                    <p className="eyebrow-luxury mb-2">Workshop reference {String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="heading-md factory-gallery__title card-title">{cleanDisplayTitle(asset.title, "Stone Workshop Reference")}</h3>
-                  </div>
-                </article>
-              ))}
+            <div className="rounded-[14px] border border-ink/10 bg-stone p-7 text-sm leading-7 text-ink/70">
+              Ask to review project-specific factory photographs, process details, inspection records, and packing evidence before confirming a production scope. General workshop illustrations or finished-product images do not establish a particular machine, process, or quality result.
             </div>
           </div>
           <div className="container-luxury mt-16">
@@ -144,6 +116,25 @@ export default function FactoryPage() {
             </nav>
           </div>
         </section>
+        <section id="workshop-videos" aria-labelledby="workshop-videos-title" className="section-luxury bg-stone">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Workshop video library</p>
+              <h2 id="workshop-videos-title" className="heading-lg section-intro__title">{workshopVideos.length} short views of stone work and components.</h2>
+              <p className="body-luxury section-intro__copy">
+                Play any clip when you choose. Videos load only when played; the original camera framing is preserved.
+                Footage shows selected moments and does not by itself establish machine specifications or inspection results.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {workshopVideos.map((video) => <WorkshopVideoCard key={video.id} video={video} />)}
+            </div>
+          </div>
+        </section>
+        <ProjectProcurementInfo
+          materialOptions="Marble, granite, quartzite, and other approved stone. Confirm the current lot, thickness, finish, and matching before quotation."
+          customCapability="Review CAD/BOQ scope, cut-to-size details, edge finishing, surface work, inspection checkpoints, and export packing."
+        />
       </main>
     </PageShell>
   );

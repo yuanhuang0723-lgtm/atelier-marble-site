@@ -96,6 +96,7 @@ export default function StoneProjectChecklistPage() {
           title="Stone Project Checklist Before You Order"
           description="Use this checklist before requesting quotations for slabs, hotel projects, countertops, furniture, or sculptural stone work."
           backgroundImage="/generated/guides/project-checklist-hero.webp"
+          backgroundImageAlt="Illustrative hands reviewing a stone project plan beside material samples."
         />
 
         <section className="section-luxury bg-paper">

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const inquiryContext = {
   sourcePage: "/contact",
   intent: "Direct project consultation",
-  projectType: "Luxury Vanity Tops & Cabinet Panels"
+  projectType: inquiryProjectTypes[1]
 };
 
 const allowedSourcePath = /^\/(?:[a-z0-9-]+\/?)+$/;
@@ -35,7 +35,7 @@ function getInquiryContext(searchParams: { sourcePage?: string; projectType?: st
   const sourcePage = typeof searchParams.sourcePage === "string" && allowedSourcePath.test(searchParams.sourcePage) ? searchParams.sourcePage : "/contact";
   const projectType = typeof searchParams.projectType === "string" && inquiryProjectTypes.includes(searchParams.projectType as (typeof inquiryProjectTypes)[number])
     ? searchParams.projectType
-    : inquiryProjectTypes[1];
+    : inquiryContext.projectType;
   return { ...inquiryContext, sourcePage, projectType };
 }
 
@@ -74,7 +74,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                   <p>Drawings: useful for technical review and quote preparation</p>
                 </div>
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <a className="btn-luxury" href={buildWhatsAppUrl(inquiryContext)}>
+                  <a className="btn-luxury" href={buildWhatsAppUrl(context)}>
                     Discuss Project Requirements
                   </a>
                   <a className="text-cta-luxury self-center" href={emailUrl}>

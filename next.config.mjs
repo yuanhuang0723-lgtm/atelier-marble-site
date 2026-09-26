@@ -1,4 +1,15 @@
+import fs from "node:fs";
+import path from "node:path";
+
 /** @type {import('next').NextConfig} */
+const assetManifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "assets.json"), "utf8"));
+const legacyAssetRedirects = assetManifest
+  .filter((asset) => asset.legacySrc && asset.src && asset.legacySrc !== asset.src)
+  .map((asset) => ({ source: asset.legacySrc, destination: asset.src, permanent: true }));
+const publicImageMetadata = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "public-image-metadata.json"), "utf8"));
+const legacyPublicImageRedirects = Object.entries(publicImageMetadata)
+  .map(([source, image]) => ({ source: encodeURI(source), destination: image.src, permanent: true }));
+
 const nextConfig = {
   outputFileTracingRoot: process.cwd(),
   images: {
@@ -14,7 +25,9 @@ const nextConfig = {
       { source: "/custom-furniture-sculptures", destination: "/custom-stone-fabrication-china", permanent: true },
       { source: "/stone-sculptures", destination: "/custom-stone-fabrication-china", permanent: true },
       { source: "/marble-coffee-tables", destination: "/custom-stone-fabrication-china", permanent: true },
-      { source: "/stone-slabs", destination: "/materials", permanent: true }
+      { source: "/stone-slabs", destination: "/materials", permanent: true },
+      ...legacyAssetRedirects,
+      ...legacyPublicImageRedirects
     ];
   },
   async headers() {

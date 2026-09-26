@@ -3,9 +3,9 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Granite Materials for Commercial Projects",
+  title: "Granite for Commercial Projects in China",
   description:
-    "Review granite material direction for countertops, hotel interiors, and commercial projects from China. Confirm lot, thickness, finish, matching, and fabrication suitability.",
+    "Review granite for hotel and commercial projects. Confirm the available lot, thickness, finish, matching, and fabrication details before the project quotation.",
   alternates: { canonical: absoluteUrl("/materials/granite") },
   openGraph: {
     title: "Granite Materials for Commercial Projects",
@@ -41,7 +41,7 @@ export default function GraniteMaterialsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying granite."
       relatedLink={{ label: "See commercial countertop scope", href: "/countertops" }}
-      metadata={metadata}
+      purchaseInfo={{ materialOptions: "Natural granite. Confirm the current lot, thickness, finish, surface character, and intended application.", customCapability: "Review countertop and commercial components, edge details, cut-outs, quantities, and packing groups." }} metadata={metadata}
     />
   );
 }

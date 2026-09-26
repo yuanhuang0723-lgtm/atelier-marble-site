@@ -1,5 +1,4 @@
 import { getAssets, getProjectAssets } from "../../lib/assets";
-import { getWorkshopImageSources } from "../../lib/factory-images";
 import { absoluteUrl } from "../../lib/seo";
 
 export const runtime = "nodejs";
@@ -9,13 +8,8 @@ function escapeXml(value: string) {
 }
 
 export function GET() {
-  const factoryDefaults = getAssets("factory");
-  const factorySources = getWorkshopImageSources();
-  const factoryImageCount = Math.max(factoryDefaults.length, factorySources.length);
-  const factoryImages = Array.from({ length: factoryImageCount }, (_, index) => factorySources[index] ?? factoryDefaults[index % factoryDefaults.length].src);
   const imageGroups = [
     { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.webp", "/materials/featured-covers/carving-decor.webp", "/materials/categories/hotel-projects.webp"] },
-    { page: "/factory", images: ["/assets/factory/factory-hero-workshop.webp", ...factoryImages] },
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
     { page: "/projects", images: getProjectAssets("all").map((asset) => asset.src) },
     { page: "/architectural-stone", images: ["/materials/categories/hotel-projects.webp"] },

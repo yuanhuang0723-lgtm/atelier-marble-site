@@ -10,9 +10,9 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Stone Quality Control & Delivery",
+  title: "Stone Quality Control & Delivery Guide",
   description:
-    "A practical quality control and delivery guide for overseas buyers sourcing stone slabs, hotel projects, countertops, and custom fabrication from China.",
+    "Review stone inspection, finish approval, labeling, packing, and delivery checks for hotel and commercial projects before shipment leaves China.",
   alternates: { canonical: absoluteUrl("/guides/quality-control-delivery") },
   openGraph: {
     title: "Quality Control and Delivery Standards for Stone Projects",
@@ -94,6 +94,7 @@ export default function QualityControlDeliveryPage() {
           title="Quality Control and Delivery Standards for Stone Projects"
           description="See how inspection, packing, and delivery standards protect overseas stone buyers before shipment leaves China."
           backgroundImage="/generated/guides/qc-delivery-hero.webp"
+          backgroundImageAlt="Illustrative worker reviewing a stone panel in a workshop; not documentary evidence of an inspection."
         />
 
         <section className="section-luxury bg-paper">
