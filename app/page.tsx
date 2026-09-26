@@ -10,12 +10,12 @@ import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication from China | Atelier Marble",
   description:
-    "Custom stone fabrication from Yunfu, China for project teams. Send CAD, BOQ, or dimensions for a review of materials, quantities, packing, and delivery scope.",
+    "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, factory-direct work, and global shipping.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: "Custom Stone Fabrication from China | Atelier Marble",
     description:
-      "Custom stone fabrication from Yunfu, China for project teams. Send CAD, BOQ, or dimensions for a review of materials, quantities, packing, and delivery scope.",
+      "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, factory-direct work, and global shipping.",
     url: absoluteUrl("/"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
@@ -104,14 +104,14 @@ export default function HomePage() {
                 CAD Drawing to Real Stone Fabrication
               </h1>
               <p className="mt-5 font-title text-lg font-medium uppercase tracking-[0.08em] text-white md:text-xl">
-                Custom Marble &amp; Stone Components for Project Teams
+                Custom Marble &amp; Stone Components Manufacturer
               </p>
               <p className="hero-architectural__copy mt-3 max-w-2xl !text-left">
                 Send a CAD drawing, BOQ, or rough dimensions for a project-specific review of custom stone components
                 from Yunfu, China.
               </p>
               <ul aria-label="Fabrication and fulfillment capabilities" className="mt-5 flex max-w-3xl flex-wrap gap-2">
-                {["CAD & BOQ Review", "Project-Based Scope", "Material Coordination", "Packing Planning", "Destination Review"].map((capability) => (
+                {["One Piece Custom", "CAD Support", "Factory Direct", "Small MOQ", "Global Shipping"].map((capability) => (
                   <li key={capability} className="rounded-full border border-white/35 bg-black/20 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white md:text-[11px]">
                     {capability}
                   </li>

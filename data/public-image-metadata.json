@@ -538,5 +538,23 @@
     "title": "Illustrative Stone Vanity Concept",
     "alt": "Illustrative stone vanity and basin design; not a photograph of a completed order.",
     "caption": "Illustrative Stone Vanity Concept"
+  },
+  "/assets/factory/local/workshop-19.jpg": {
+    "src": "/assets/factory/workshop/stone-workshop-packing-area-b1a9572643.webp",
+    "title": "Workshop stone packing area",
+    "alt": "Worker beside protected stone pieces among wooden transport racks in a workshop; no shipment destination or date is shown.",
+    "caption": "Workshop stone packing area"
+  },
+  "/assets/factory/local/workshop-25.jpg": {
+    "src": "/assets/factory/workshop/stone-workshop-rack-handling-ced6af3f74.webp",
+    "title": "Workshop crate handling",
+    "alt": "Worker preparing protective wrapping around stone components on wooden racks in a workshop.",
+    "caption": "Workshop crate handling"
+  },
+  "/assets/factory/local/workshop-30.jpg": {
+    "src": "/assets/factory/workshop/stone-workshop-overhead-hoist-630d0f77ee.webp",
+    "title": "Workshop overhead lifting area",
+    "alt": "Overhead lifting hook above stone pieces and wooden transport frames inside a workshop; lifting equipment model is not identified.",
+    "caption": "Workshop overhead lifting area"
   }
 }

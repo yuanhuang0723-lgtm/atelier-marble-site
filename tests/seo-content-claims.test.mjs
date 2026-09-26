@@ -19,9 +19,14 @@ const ProjectProcurementInfo = typeof ProjectProcurementInfoModule.default === "
   ? ProjectProcurementInfoModule.default
   : ProjectProcurementInfoModule.default.default;
 
-test("homepage metadata and capability labels avoid unverified order and delivery promises", () => {
-  assert.doesNotMatch(Home.metadata.description, /factory-direct|small orders|global project shipping/i);
-  assert.doesNotMatch(homeSource, /One Piece Custom|Factory Direct|Small MOQ|Global Shipping/);
+test("homepage metadata and hero state the requested custom-stone offer", () => {
+  assert.match(Home.metadata.description, /one-piece orders, small MOQs, factory-direct work, and global shipping/i);
+  assert.match(homeSource, /Custom Marble &amp; Stone Components Manufacturer/);
+  assert.match(homeSource, /One Piece Custom/);
+  assert.match(homeSource, /CAD Support/);
+  assert.match(homeSource, /Factory Direct/);
+  assert.match(homeSource, /Small MOQ/);
+  assert.match(homeSource, /Global Shipping/);
 });
 
 test("factory search metadata describes review material instead of claiming capability proof", () => {
@@ -34,11 +39,11 @@ test("factory gallery count stays synchronized with the video list", () => {
   assert.match(factorySource, /<h2[^>]*>\{workshopVideos\.length\} short views of stone work and components\.<\/h2>/);
 });
 
-test("procurement information scopes delivery terms to the buyer's destination", () => {
+test("procurement information answers shipping with destination-specific quotation terms", () => {
   const html = renderToStaticMarkup(ProjectProcurementInfo({ materialOptions: "Stone", customCapability: "Custom work" }));
-  assert.match(html, /Destination &amp; delivery/);
-  assert.match(html, /reviewed for the stated destination/i);
-  assert.doesNotMatch(html, /global shipping can be quoted/i);
+  assert.match(html, /Shipping/);
+  assert.match(html, /global shipping can be quoted/i);
+  assert.match(html, /route, packing, loading sequence, and delivery terms are confirmed for the destination/i);
 });
 
 test("service structured data does not claim worldwide coverage", () => {

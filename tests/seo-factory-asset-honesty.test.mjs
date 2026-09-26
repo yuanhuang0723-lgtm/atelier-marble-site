@@ -78,7 +78,8 @@ test("remaining visual references use source-aware descriptions and semantic pub
       projectConceptTitles.add(asset.title);
     }
     if (asset.sourceFolder === "发货") {
-      assert.match(asset.alt, /not documentation of export packing or shipment|not an export packing or shipment record/i);
+      assert.match(asset.alt, /wooden transport frame|wrapped stone pieces/i);
+      assert.match(asset.alt, /shipment date and destination|no shipment date or destination/i);
     }
   }
 

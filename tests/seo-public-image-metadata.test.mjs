@@ -23,10 +23,15 @@ const dormantLegacyAliases = new Map([
   ["/materials/projects/d4e51396-56b5-41df-b9c8-512c466315e3-1636e29d07.webp", "/materials/factory/illustrative-stone-workshop-layout-concept-1636e29d07.webp"],
   ["/materials/projects/img_0121-df5b5c47ef.webp", "/materials/kitchen-countertop/round-stone-tabletop-reference-df5b5c47ef.webp"]
 ]);
+const factoryPhotoRedirects = new Map([
+  ["/assets/factory/local/workshop-19.jpg", "/assets/factory/workshop/stone-workshop-packing-area-b1a9572643.webp"],
+  ["/assets/factory/local/workshop-25.jpg", "/assets/factory/workshop/stone-workshop-rack-handling-ced6af3f74.webp"],
+  ["/assets/factory/local/workshop-30.jpg", "/assets/factory/workshop/stone-workshop-overhead-hoist-630d0f77ee.webp"]
+]);
 
 test("referenced nonmanifest concept images have descriptive paths, honest alt text, and local files", async () => {
   const entries = Object.entries(metadata);
-  assert.equal(entries.length, 90);
+  assert.equal(entries.length, 93);
   assert.equal(entries.filter(([oldSrc]) => oldSrc.startsWith("/assets/stone-sculptures/local/")).length, 25);
 
   for (const [oldSrc, image] of entries) {
@@ -38,8 +43,13 @@ test("referenced nonmanifest concept images have descriptive paths, honest alt t
     if (dormantLegacyAliases.has(oldSrc)) {
       assert.equal(image.src, dormantLegacyAliases.get(oldSrc));
       await fs.access(path.join(root, "public", oldSrc.slice(1)));
+    } else if (factoryPhotoRedirects.has(oldSrc)) {
+      assert.equal(image.src, factoryPhotoRedirects.get(oldSrc));
+      assert.match(image.alt, /workshop|crate|stone/i);
+      assert.doesNotMatch(image.alt, /CNC model|certified QC|completed shipment/i);
+      await assert.rejects(fs.access(path.join(root, "public", oldSrc.slice(1))));
     } else {
-      assert.match(path.basename(image.src), /^[a-z0-9-]+-[a-f0-9]{8}\.(png|jpg)$/);
+      assert.match(path.basename(image.src), /^[a-z0-9-]+-[a-f0-9]{8,10}\.(png|jpg|webp)$/);
       if (!oldSrc.startsWith("/assets/stone-sculptures/local/")) assert.match(image.alt, /illustrative/i);
       await assert.rejects(fs.access(path.join(root, "public", oldSrc.slice(1))));
     }

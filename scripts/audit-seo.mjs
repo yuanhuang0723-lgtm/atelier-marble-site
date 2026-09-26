@@ -2,6 +2,7 @@ const auditUrl = new URL(process.env.SEO_AUDIT_URL || "https://ateliermarbleston
 const auditOrigin = auditUrl.origin;
 const canonicalOrigin = new URL(process.env.SEO_CANONICAL_ORIGIN || auditOrigin).origin;
 const requestTimeoutMs = Number(process.env.SEO_AUDIT_TIMEOUT_MS || 15000);
+const snippetLengthExemptions = new Set(["/privacy-policy", "/countertops/vanity-tops"]);
 
 function decodeHtml(value) {
   return value
@@ -141,9 +142,11 @@ async function main() {
   for (const page of validPages) {
     if (page.status !== 200) errors.push(`${page.path}: HTTP ${page.status}${page.location ? ` -> ${page.location}` : ""}`);
     if (page.title.length === 0) errors.push(`${page.path}: missing title`);
-    if (page.title.length > 65) warnings.push(`${page.path}: title is long (${page.title.length})`);
     if (page.description.length === 0) errors.push(`${page.path}: missing description`);
-    if (page.description.length < 80 || page.description.length > 180) warnings.push(`${page.path}: description length ${page.description.length}`);
+    if (!snippetLengthExemptions.has(page.path)) {
+      if (page.title.length < 50 || page.title.length > 60) errors.push(`${page.path}: title length ${page.title.length}, expected 50–60`);
+      if (page.description.length < 140 || page.description.length > 160) errors.push(`${page.path}: description length ${page.description.length}, expected 140–160`);
+    }
     if (page.h1Values.length === 0) errors.push(`${page.path}: missing H1`);
     if (page.h1Values.length > 1) errors.push(`${page.path}: expected one H1, found ${page.h1Values.length}`);
     if (page.hasKeywordMeta) errors.push(`${page.path}: explicit meta keywords found`);
@@ -197,7 +200,8 @@ async function main() {
   }
   if (warnings.length) console.warn(warnings.map((warning) => `Warning: ${warning}`).join("\n"));
   if (errors.length) { console.error(errors.map((error) => `- ${error}`).join("\n")); process.exit(1); }
-  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin})`);
+  const snippetChecked = validPages.filter((page) => !snippetLengthExemptions.has(page.path)).length;
+  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin}); strict 50–60 / 140–160 snippet lengths passed for ${snippetChecked} pages, with the vanity snippet held for its post-release comparison.`);
 }
 
 await main();

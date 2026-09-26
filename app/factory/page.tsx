@@ -7,7 +7,35 @@ import PageShell from "../../components/PageShell";
 import ProjectProcurementInfo from "../../components/ProjectProcurementInfo";
 import WorkshopVideoCard from "../../components/WorkshopVideoCard";
 import { workshopVideos } from "../../data/workshop-videos";
+import { getAssets } from "../../lib/assets";
+import { getPublicImageEntries } from "../../lib/public-image-metadata";
 import { absoluteUrl, siteName } from "../../lib/seo";
+
+const workshopPhotos = getPublicImageEntries("/assets/factory/local/");
+const packingPhotos = getAssets("hotel-project").filter((asset) => asset.sourceFolder === "发货");
+const factoryEvidencePhotos = [
+  ...workshopPhotos.map((photo) => ({
+    src: photo.src,
+    title: photo.title,
+    alt: photo.alt,
+    caption: "User-provided workshop photo; no project or shipment destination is identified.",
+    group: "Workshop photo"
+  })),
+  ...packingPhotos.map((asset) => ({
+    src: asset.src,
+    title: asset.title,
+    alt: asset.alt,
+    caption: "Packing-preparation reference; the image does not document a completed shipment.",
+    group: "Packing preparation"
+  })),
+  {
+    src: "/videos/posters/atelier-marble-workshop-clip-07.jpg",
+    title: "Stone cutting in progress",
+    alt: "A cutting head over a dark stone workpiece; the specific machine model is not identified.",
+    caption: "Still from a workshop video. It does not identify a CNC model or a finished QC result.",
+    group: "Cutting footage"
+  }
+];
 
 export const metadata: Metadata = {
   title: "Stone Fabrication Factory in China",
@@ -114,6 +142,51 @@ export default function FactoryPage() {
               <Link className="transition-colors hover:text-ink" href="/architectural-stone">Architectural Stone</Link>
               <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone</Link>
             </nav>
+          </div>
+        </section>
+        <section id="factory-evidence" aria-labelledby="factory-evidence-title" className="section-luxury bg-paper">
+          <div className="container-luxury">
+            <div className="section-intro section-intro--center">
+              <p className="eyebrow-luxury">Workshop photos and packing references</p>
+              <h2 id="factory-evidence-title" className="heading-lg section-intro__title">See the workshop, stone handling, and packing context.</h2>
+              <p className="body-luxury max-w-3xl">
+                These source photos show workshop areas and packing preparation. They do not document a named shipment,
+                delivery destination, machine model, or independent inspection result.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {factoryEvidencePhotos.map((photo) => (
+                <figure key={photo.src} className="card-luxury overflow-hidden bg-white">
+                  <div className="media-luxury aspect-[4/3] bg-stone">
+                    <img className="block h-full w-full object-cover" src={photo.src} alt={photo.alt} title={photo.title} loading="lazy" decoding="async" />
+                  </div>
+                  <figcaption className="grid gap-2 p-5">
+                    <p className="eyebrow-luxury">{photo.group}</p>
+                    <h3 className="font-title text-[1.05rem] font-medium uppercase leading-tight tracking-[0.04em] text-ink">{photo.title}</h3>
+                    <p className="text-sm leading-6 text-ink/65">{photo.caption}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="mt-10 grid gap-4 lg:grid-cols-3">
+              <article className="card-luxury bg-stone p-6">
+                <p className="eyebrow-luxury">CAD/BOQ drawing review</p>
+                <h3 className="mt-3 font-title text-[1.1rem] font-semibold uppercase text-ink">A drawing-led project reference</h3>
+                <p className="mt-3 text-sm leading-7 text-ink/68">The Canada shower-niche reference describes CAD detailing, shop drawings, cut lists, and repeat-unit coordination.</p>
+                <Link className="text-cta-luxury mt-4 inline-flex" href="/projects/canada-shower-niches-2025">View the drawing-led case reference</Link>
+              </article>
+              <article className="card-luxury bg-stone p-6">
+                <p className="eyebrow-luxury">QC checkpoints</p>
+                <h3 className="mt-3 font-title text-[1.1rem] font-semibold uppercase text-ink">Agree the checks for each order</h3>
+                <p className="mt-3 text-sm leading-7 text-ink/68">Confirm dimensions, openings, edge and finish, visible surfaces, labels, packing, and which inspection records are required before production.</p>
+              </article>
+              <article className="card-luxury bg-stone p-6">
+                <p className="eyebrow-luxury">Machine details</p>
+                <h3 className="mt-3 font-title text-[1.1rem] font-semibold uppercase text-ink">Confirm CNC requirements by scope</h3>
+                <p className="mt-3 text-sm leading-7 text-ink/68">The available cutting clip does not identify its machine model. Share the drawing and ask which machine and process are suitable for the part.</p>
+                <Link className="text-cta-luxury mt-4 inline-flex" href="#workshop-videos">Review workshop footage</Link>
+              </article>
+            </div>
           </div>
         </section>
         <section id="workshop-videos" aria-labelledby="workshop-videos-title" className="section-luxury scroll-mt-24 bg-stone">

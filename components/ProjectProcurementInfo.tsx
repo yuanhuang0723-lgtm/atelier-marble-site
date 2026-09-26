@@ -15,8 +15,8 @@ export default function ProjectProcurementInfo({ materialOptions, customCapabili
     },
     { label: "Material options", detail: materialOptions },
     {
-      label: "Destination & delivery",
-      detail: "Delivery route, packing, loading sequence, and terms are reviewed for the stated destination. Confirm whether the requested route and scope can be included in the project quotation."
+      label: "Shipping",
+      detail: "Global shipping can be quoted. Route, packing, loading sequence, and delivery terms are confirmed for the destination and project scope."
     },
     { label: "Custom capability", detail: customCapability }
   ];

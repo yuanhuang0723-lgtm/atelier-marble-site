@@ -324,10 +324,10 @@ const visualReferenceFolders = {
   },
   "发货": {
     label: "Stone Workpiece Handling Reference",
-    titleBase: "Stone Workpiece Handling Reference",
-    industryTerm: "stone workpiece and workshop handling area",
-    description: "Stone workpieces shown in workshop handling areas. These images do not document export packing, loading, or shipment.",
-    imageAlt: "Stone workpiece in a workshop handling area; not documentation of export packing or shipment.",
+    titleBase: "Stone Packing Preparation Reference",
+    industryTerm: "wrapped stone components and wooden transport frame preparation",
+    description: "User-provided workshop images show protected stone pieces and packing preparation. They do not document a shipment date, destination, or completed delivery.",
+    imageAlt: "Protected stone components and wooden transport frames in a workshop; shipment date and destination are not documented.",
     publicFilenameBase: "stone-workpiece-handling-reference"
   },
   "酒店封面": {
@@ -495,14 +495,14 @@ const visualReferenceAssetOverrides = new Map([
     publicFilenameBase: "illustrative-stone-vanity", isIllustrative: true
   }],
   ["发货|LXGU8211.JPG", {
-    label: "Stone Components on Workshop Stands", titleBase: "Stone Components on Workshop Stands", industryTerm: "stone components arranged on workshop stands",
-    description: "Stone components arranged on supports in a work area; the image does not document export packing or shipment.",
-    imageAlt: "Stone components arranged on supports in a work area; not an export packing or shipment record.", publicFilenameBase: "stone-components-workshop-stands"
+    label: "Stone Packing Preparation", titleBase: "Stone Pieces Protected in a Wooden Transport Frame", industryTerm: "wrapped stone components secured in a wooden transport frame",
+    description: "A source photo shows wrapped stone components on a wooden transport frame inside a workshop. It does not identify a shipment date, destination, or completed delivery.",
+    imageAlt: "Wrapped stone components secured in a wooden transport frame inside a workshop; no shipment date or destination is shown.", publicFilenameBase: "stone-components-workshop-stands"
   }],
   ["发货|NXYB7914.JPG", {
-    label: "Stone Workpiece Handling", titleBase: "Stone Workpiece Handling", industryTerm: "worker handling a stone workpiece in a workshop",
-    description: "A worker handles a stone workpiece in a workshop area; the image does not document packing or shipment.",
-    imageAlt: "Worker handling a stone workpiece in a workshop; not documentation of export packing or shipment.", publicFilenameBase: "stone-workpiece-handling"
+    label: "Protected Stone Load Handling", titleBase: "Worker Handling Wrapped Stone Pieces", industryTerm: "worker handling wrapped stone pieces on a wooden pallet",
+    description: "A source photo shows a worker handling wrapped stone pieces on a pallet in a workshop. It does not identify a shipment date, destination, or completed delivery.",
+    imageAlt: "A worker handling wrapped stone pieces on a wooden pallet in a workshop; shipment date and destination are not documented.", publicFilenameBase: "stone-workpiece-handling"
   }],
   ["酒店封面|3cf6f27a-c457-472c-b46c-a8effb460825.png", {
     label: "Illustrative Hotel Interior Concept", titleBase: "Illustrative Hotel Interior Concept", industryTerm: "illustrative hotel lobby with architectural stone surfaces",

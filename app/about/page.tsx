@@ -9,12 +9,12 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "About Atelier Marble Stone Supply",
   description:
-    "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication scope, packing, and delivery planning for overseas buyers.",
+    "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects.",
   alternates: { canonical: absoluteUrl("/about") },
   openGraph: {
     title: "About Atelier Marble Stone Supply",
     description:
-      "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication scope, packing, and delivery planning for overseas buyers.",
+      "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects.",
     url: absoluteUrl("/about"),
     siteName,
   }

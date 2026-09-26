@@ -17,10 +17,11 @@ import * as QualityControl from "../app/guides/quality-control-delivery/page";
 import * as Vanity from "../app/countertops/vanity-tops/page";
 import * as Factory from "../app/factory/page";
 import * as HotelLobby from "../app/guides/hotel-lobby-case-study/page";
+import * as About from "../app/about/page";
 
 const brand = " | Atelier Marble";
 const candidates = [
-  ["/", Home, "Custom Stone Fabrication from China | Atelier Marble", "Custom stone fabrication from Yunfu, China for project teams. Send CAD, BOQ, or dimensions for a review of materials, quantities, packing, and delivery scope."],
+  ["/", Home, "Custom Stone Fabrication from China | Atelier Marble", "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, factory-direct work, and global shipping."],
   ["/architectural-stone", ArchitecturalStone, "Architectural Stone Fabrication from China | Atelier Marble", "Architectural stone for hotel and commercial interiors, made from project drawings. Share wall or floor layouts, quantities, finish, and destination for review."],
   ["/architectural-stone/wall-cladding", WallCladding, "Stone Wall Cladding Fabrication from China | Atelier Marble", "Custom stone wall cladding from China for hotel lobbies and commercial interiors. Review material, panel layout, finish, quantities, and packing from drawings."],
   ["/materials/marble", MarbleMaterials, "Marble Materials & Slabs for Projects | Atelier Marble", "Explore marble for hotel, commercial, and countertop projects. Confirm current lot, thickness, finish, veining, and matching before fabrication."],
@@ -35,10 +36,11 @@ const candidates = [
   ["/guides/hotel-stone-pricing", HotelPricing, "Hotel Stone Pricing for Overseas Buyers | Atelier Marble", "Plan a hotel stone quotation with materials, room counts, drawings, finishes, cut-outs, packing, destination, and delivery scope before comparing bids."],
   ["/guides/quality-control-delivery", QualityControl, "Stone Quality Control & Delivery Guide | Atelier Marble", "Review stone inspection, finish approval, labeling, packing, and delivery checks for hotel and commercial projects before shipment leaves China."],
   ["/factory", Factory, "Stone Fabrication Factory in China | Atelier Marble", "Selected workshop videos and buyer guidance for reviewing scope, drawings, materials, inspection points, packing, and destination requirements."],
-  ["/guides/hotel-lobby-case-study", HotelLobby, "Hotel Lobby Stone Planning Guide for Buyers | Atelier Marble", "Hotel lobby stone planning guide for scope, materials, inspection checkpoints, packing, and delivery planning. The image is a concept visualization only."]
+  ["/guides/hotel-lobby-case-study", HotelLobby, "Hotel Lobby Stone Planning Guide for Buyers | Atelier Marble", "Hotel lobby stone planning guide for scope, materials, inspection checkpoints, packing, and delivery planning. The image is a concept visualization only."],
+  ["/about", About, "About Atelier Marble Stone Supply | Atelier Marble", "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects."]
 ];
 
-test("out-of-range core snippets match the reviewed candidates, excluding the held vanity experiment", () => {
+test("core production snippet candidates match the strict title and description lengths", () => {
   for (const [route, page, renderedTitle, description] of candidates) {
     const metadata = page.metadata ?? page.default.metadata;
     const pageTitle = route === "/" ? renderedTitle : renderedTitle.slice(0, -brand.length);
@@ -48,6 +50,9 @@ test("out-of-range core snippets match the reviewed candidates, excluding the he
     assert.ok(description.length >= 140 && description.length <= 160, `${route} description length`);
   }
 
+});
+
+test("vanity title and description remain stable until a comparable post-release GSC window", () => {
   assert.equal(Vanity.metadata.title, "Hotel Vanity Tops & Marble Bathroom Counters");
-  assert.equal(Vanity.metadata.description.length, 174);
+  assert.equal(Vanity.metadata.description, "Custom marble hotel vanity tops and bathroom counters from China for hospitality projects. Send drawings, basin cut-outs, quantities, and destination for a project quotation.");
 });

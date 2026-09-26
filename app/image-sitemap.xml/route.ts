@@ -1,5 +1,6 @@
 import { getAssets, getProjectAssets } from "../../lib/assets";
 import { absoluteUrl } from "../../lib/seo";
+import { getPublicImageEntries } from "../../lib/public-image-metadata";
 
 export const runtime = "nodejs";
 
@@ -8,6 +9,11 @@ function escapeXml(value: string) {
 }
 
 export function GET() {
+  const factoryEvidenceImages = [
+    ...getPublicImageEntries("/assets/factory/local/").map((image) => image.src),
+    ...getAssets("hotel-project").filter((asset) => asset.sourceFolder === "发货").map((asset) => asset.src),
+    "/videos/posters/atelier-marble-workshop-clip-07.jpg"
+  ];
   const imageGroups = [
     { page: "/", images: ["/materials/hero/atelier-marble-luxury-hero.webp", "/materials/featured-covers/carving-decor.webp", "/materials/categories/hotel-projects.webp"] },
     { page: "/materials", images: getAssets("materials").map((asset) => asset.src) },
@@ -19,6 +25,7 @@ export function GET() {
     { page: "/countertops/integrated-stone-sinks", images: ["/assets/vanity-cabinet/hero.webp"] },
     { page: "/projects/hotel-stone-supply", images: ["/materials/categories/hotel-projects.webp"] },
     { page: "/projects/commercial-stone", images: ["/materials/categories/hotel-projects.webp"] },
+    { page: "/factory", images: factoryEvidenceImages },
     { page: "/custom-stone-fabrication-china", images: ["/materials/featured-covers/carving-decor.webp"] },
     { page: "/resources", images: ["/generated/guides/buyer-guide-hero.webp"] },
     { page: "/architectural-stone/wall-cladding", images: ["/materials/categories/hotel-projects.webp"] },

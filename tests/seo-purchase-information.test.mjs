@@ -44,7 +44,7 @@ function component(moduleNamespace) {
 }
 
 test("each commercial landing page answers the five basic procurement questions", () => {
-  const labels = ["Minimum order (MOQ)", "Lead time", "Material options", "Destination &amp; delivery", "Custom capability"];
+  const labels = ["Minimum order (MOQ)", "Lead time", "Material options", "Shipping", "Custom capability"];
   for (const [pageName, moduleNamespace] of businessPages) {
     const html = renderToStaticMarkup(component(moduleNamespace)());
     for (const label of labels) {
