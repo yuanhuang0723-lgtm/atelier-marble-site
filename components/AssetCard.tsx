@@ -37,6 +37,7 @@ export default function AssetCard({
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
           src={coverSrc || asset.src}
           alt={`${coverAlt || asset.alt}. ${title}`}
+          title={title}
           loading="lazy"
         />
       </div>

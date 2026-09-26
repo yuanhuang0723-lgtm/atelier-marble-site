@@ -16,28 +16,32 @@ function getKitchenCountertopAssets(): Asset[] {
     .readdirSync(LOCAL_ASSET_DIR)
     .filter((file) => /\.(png|jpe?g|webp)$/i.test(file))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-    .map((file, index) => ({
+    .map((file, index) => {
+      const referenceNumber = String(index + 1).padStart(2, "0");
+      const title = `Stone countertop and tabletop reference ${referenceNumber}`;
+      return {
       category: "kitchen-countertop",
       filename: file,
       label: `Countertop Reference ${String(index + 1).padStart(2, "0")}`,
-      title: `Countertop Reference ${String(index + 1).padStart(2, "0")}`,
+      title,
       src: `/assets/kitchen-countertops/local/${encodeURIComponent(file)}`,
-      alt: "natural stone countertop and coffee table reference",
+      alt: `${title}; a visual reference only, with source and project provenance unverified.`,
       categoryLabel: "STONE COUNTERTOP & COFFEE TABLE",
       description:
-        "Visual stone countertop and coffee table reference showing natural veining, table shapes, and finished fabrication details."
-    }));
+        "Stone countertop, tabletop, and basin components shown for visual comparison; confirm material and project details separately."
+      };
+    });
 }
 
 export const metadata: Metadata = {
   title: "Stone Countertop & Coffee Table",
   description:
-    "Natural stone countertop and coffee table references with fabrication images for residential, hospitality, and commercial projects.",
+    "Visual references for comparing stone countertop, vanity, tabletop, and basin forms before discussing a project scope.",
   alternates: { canonical: absoluteUrl("/kitchen-countertops") },
   openGraph: {
     title: "Stone Countertop & Coffee Table",
     description:
-      "Visual countertop and coffee table references with export-ready fabrication details and finished surface quality.",
+      "Visual references for countertop, vanity, tabletop, and basin forms across residential, hospitality, and commercial interiors.",
     url: absoluteUrl("/kitchen-countertops"),
     siteName,
     images: [
@@ -57,7 +61,7 @@ export default function KitchenCountertopsPage() {
       title="Stone Countertop & Coffee Table"
       description="Atelier Marble presents real stone countertop and coffee table references for residential, hospitality, and commercial sourcing with export-ready fabrication support."
       heroImage="/assets/kitchen-countertops/hero/countertop-hero.png"
-      heroAlt="natural stone countertop and coffee table production reference"
+      heroAlt="Stone countertop and table forms shown as visual references; not documentary proof of production."
       keywords={[
         "stone countertop supplier",
         "coffee table stone fabrication",

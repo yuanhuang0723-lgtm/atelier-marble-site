@@ -21,12 +21,12 @@ export type CategoryGalleryPageData = {
 export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
   "hotel-hospitality-projects": {
     slug: "/hotel-hospitality-projects",
-    eyebrow: "Hotel & Hospitality Projects",
-    title: "Luxury hospitality stone references.",
+    eyebrow: "Illustrative Hotel Stone Concepts",
+    title: "Illustrative hospitality stone interiors.",
     description:
-      "A curated hotel project gallery showing premium hospitality stone applications across lobby, reception, corridor, lounge, and bathroom settings.",
+      "Illustrative hospitality interiors showing stone surfaces across lobby, reception, corridor, lounge, and bathroom settings.",
     intro:
-      "This gallery focuses on hospitality-scale stone work, with a wider set of scene types that help buyers assess atmosphere, finish, and commercial project fit.",
+      "These design references help compare atmosphere, surface tone, and possible stone applications. They are visual concepts, not records of completed hotel projects.",
     items: [
       {
         src: "/assets/hotel-project/local/0ede5720-0895-486d-aed9-3efcb71a8729.png",
@@ -76,19 +76,19 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
     ],
     metaTitle: "Hotel & Hospitality Projects",
     metaDescription:
-      "Nine ultra-realistic hospitality stone reference images for hotel lobbies, reception areas, corridors, guest spaces, vanities, and commercial interiors.",
+      "Illustrative hotel stone interior concepts for comparing lobby, reception, corridor, lounge, and bathroom applications before project review.",
     openGraphImage: "/assets/hotel-project/local/0ede5720-0895-486d-aed9-3efcb71a8729.png"
   },
   "luxury-residential-kitchens": {
     slug: "/luxury-residential-kitchens",
-    eyebrow: "STONE VANITY TOP & CABINET PANEL REFERENCE",
-    title: "Luxury Vanity Tops & Cabinet Panels",
+    eyebrow: "Illustrative Vanity and Cabinet Concepts",
+    title: "Stone vanity tops and cabinet panels.",
     description:
-      "A curated gallery of luxury vanity tops, cabinet panels, and stone bathroom references for export buyers.",
+      "Illustrative vanity tops, cabinet panels, and bathroom interiors for design review; these images do not document completed customer projects.",
     intro:
-      "The gallery highlights real material texture, custom fabrication, vanity top applications, cabinet panel proportion, and export-ready finishing.",
+      "Use these visual concepts to compare cabinet proportions, basin placement, and stone surface direction before sharing project drawings.",
     heroImage: "/assets/vanity-cabinet/hero.webp",
-    heroAlt: "Ultra realistic luxury stone vanity top and cabinet panel showroom scene",
+    heroAlt: "Illustrative stone vanity and cabinet panel in a bathroom concept.",
     items: [
       {
         src: "/assets/vanity-cabinet/09a73605-c984-4955-a69d-423def707689.png",
@@ -198,19 +198,19 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
     ],
     metaTitle: "Luxury Vanity Tops & Cabinet Panels",
     metaDescription:
-      "A curated gallery of luxury vanity tops and cabinet panels with real material texture, custom fabrication detail, and export-ready presentation.",
+      "Illustrative stone vanity and cabinet-panel concepts for comparing bathroom layouts, basin placement, and surface direction before project review.",
     openGraphImage: "/assets/vanity-cabinet/hero.webp"
   },
   "architectural-stone-interiors": {
     slug: "/architectural-stone-interiors",
-    eyebrow: "STONE COUNTERTOP & COFFEE TABLE REFERENCE",
-    title: "LUXURY STONE COUNTERTOPS & COFFEE TABLES",
+    eyebrow: "Illustrative Stone Table Concepts",
+    title: "Stone countertops and coffee tables.",
     description:
-      "A curated gallery of luxury stone countertops, coffee tables, and custom tabletop references for export buyers.",
+      "Illustrative countertops, coffee tables, and tabletop forms for design review; the images are not evidence of completed customer orders.",
     intro:
-      "The gallery highlights full-size countertop proportion, natural stone texture, edge thickness, structural support, and premium furniture-grade finishing.",
+      "Compare tabletop shapes, surface tones, and support forms before confirming the dimensions and material direction for a project.",
     heroImage: "/assets/stone-table-coffee/hero-local-cover.png",
-    heroAlt: "Stone countertop and coffee table local material cover",
+    heroAlt: "Illustrative stone countertop and coffee table concepts in interior settings.",
     items: [
       {
         src: "/assets/stone-table-coffee/10604b55-3279-43c1-8119-b9c37a2124b9.png",
@@ -280,17 +280,17 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
     ],
     metaTitle: "Luxury Stone Countertops & Coffee Tables",
     metaDescription:
-      "A curated stone countertop and coffee table gallery showing full-size natural stone references, export-ready fabrication detail, and premium furniture applications.",
+      "Illustrative stone countertop and coffee-table concepts for comparing surface tone, table shape, and furniture applications before project review.",
     openGraphImage: "/assets/stone-table-coffee/hero.png"
   },
   "custom-furniture-sculptures": {
     slug: "/custom-furniture-sculptures",
-    eyebrow: "STONE CARVING & SCULPTURE REFERENCE",
-    title: "CUSTOM STONE CARVING & SCULPTURE COLLECTION",
+    eyebrow: "Illustrative Stone Sculpture Concepts",
+    title: "Carved stone forms and sculpture concepts.",
     description:
-      "A curated collection of custom stone carving references, sculptural stone works, and premium tabletop forms for export buyers.",
+      "Illustrative carved-stone forms, decorative objects, and tabletop concepts for design review; these images do not document completed orders.",
     intro:
-      "The gallery presents full-size carving pieces, sculptural forms, and stone work references with premium material presence and export-ready presentation.",
+      "Compare decorative forms and presentation ideas. Confirm material, dimensions, production feasibility, and project references separately.",
     heroImage: "/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png",
     heroAlt: "Ultra realistic luxury stone carving sculpture displayed in a premium interior setting",
     items: [
@@ -355,9 +355,9 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
         caption: "Premium Sculpture Work"
       }
     ],
-    metaTitle: "CUSTOM STONE CARVING & SCULPTURE COLLECTION",
+    metaTitle: "Illustrative Stone Carving & Sculpture Concepts",
     metaDescription:
-      "A curated stone carving and sculpture collection with premium material detail, custom tabletop forms, and export-ready presentation.",
+      "Illustrative stone carving and sculpture concepts for comparing decorative forms and tabletop designs before a project specification is prepared.",
     openGraphImage: "/assets/carving-decor/local/7b7cb542-0dbc-4626-b9cc-f663dbee6d06.png"
   }
 };

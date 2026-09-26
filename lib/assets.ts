@@ -11,6 +11,8 @@ export type AssetCategory =
 
 export type Asset = {
   filename: string;
+  publicFilename?: string;
+  legacySrc?: string;
   category: AssetCategory;
   mediaType?: "image" | "video";
   sourceFolder?: string;
@@ -275,10 +277,10 @@ const caseCopy: Record<AssetCategory, Pick<ProjectCaseStudy, "application" | "fi
       "Built for architects, designers, galleries, and luxury interior buyers seeking custom carved stone sculpture supplier capability with real production references."
   },
   factory: {
-    application: "Production, edge processing, workshop inspection, packing, and export support",
-    finishType: "Fabrication-stage and finished project surfaces",
+    application: "Illustrative workshop layouts and stone component design concepts",
+    finishType: "Concept renderings; actual material, finish, and production scope are not verified",
     scenario:
-      "Relevant for B2B buyers who need evidence of production strength before committing to hotel, countertop, furniture, or architectural stone packages."
+      "These images are visual concepts, not documentation of a specific facility, machine, production run, inspection, packing, or shipment. Request project-specific evidence before relying on a capability claim."
   },
   materials: {
     application: "Material selection, sample review, design matching, and project specification",
@@ -292,18 +294,15 @@ export function getCaseStudyForAsset(asset: Asset): ProjectCaseStudy {
   const specialReference = isCabinetSlabsVanityBasinsReference(asset);
   const specialGallery = specialReference ? buildCabinetSlabsVanityBasinsGallery() : [];
   const gallery = specialReference ? specialGallery : getAssets(asset.category);
-  const productionEvidence = specialReference
-    ? specialGallery
-    : asset.category === "factory"
-      ? getAssets("factory")
-      : getAssets("factory");
+  // No manifest images are currently verified as documentary production evidence.
+  const productionEvidence: Asset[] = [];
   const copy = caseCopy[asset.category];
   const contextByCategory: Record<AssetCategory, string> = {
     "kitchen-countertop": "Residential and developer kitchen projects with export-ready fabrication requirements.",
     "hotel-project": "Hospitality and commercial interiors that need consistent tone, finish, and coordination.",
     "coffee-table": "Custom furniture buyers sourcing stone pieces for premium residential and hospitality environments.",
     "carving-decor": "Decorative and sculptural commissions for villas, hotels, showrooms, and design-led interiors.",
-    "factory": "Workshop and packing evidence for buyers checking production readiness and export handling.",
+    "factory": "Illustrative workshop and component concepts; they are not documentary evidence of current production or export handling.",
     "materials": "Material selection and specification review before sampling or pricing.",
     "projects": "Client-ready project supply with real local references and delivery-focused execution."
   };
@@ -312,7 +311,7 @@ export function getCaseStudyForAsset(asset: Asset): ProjectCaseStudy {
     "hotel-project": "Lobby stone, wall cladding, flooring, reception details, and public-area surfaces.",
     "coffee-table": "Coffee tables, side tables, console pieces, and furniture-grade stone fabrication.",
     "carving-decor": "Carved decor, sculpture forms, plinths, and custom architectural accents.",
-    "factory": "Cutting, finishing, inspection, packing, and loading stages.",
+    "factory": "Visual concepts only; confirm actual processes, inspection records, packing, and loading requirements for the project.",
     "materials": "Slab review, tone matching, finish comparison, and application planning.",
     "projects": "Project packaging, pre-delivery assembly, and export coordination."
   };
@@ -321,7 +320,7 @@ export function getCaseStudyForAsset(asset: Asset): ProjectCaseStudy {
     "hotel-project": "Coordination-heavy work with larger volumes, repeatability, and site alignment.",
     "coffee-table": "Requires clean polishing, proportion control, and careful furniture finishing.",
     "carving-decor": "Craft-led execution with shape control, refinement, and surface integrity.",
-    "factory": "Demonstrates production discipline, packing control, and export preparation.",
+    "factory": "A rendering cannot demonstrate production discipline, packing control, or export readiness.",
     "materials": "Demands tone consistency and practical review before production commitment.",
     "projects": "Project coordination must align fabrication, packing, and delivery timing."
   };
@@ -330,7 +329,7 @@ export function getCaseStudyForAsset(asset: Asset): ProjectCaseStudy {
     "hotel-project": "A trustworthy hospitality reference that signals scale readiness and finish consistency.",
     "coffee-table": "A furniture piece with premium stone character and export-friendly fabrication quality.",
     "carving-decor": "A sculptural reference that communicates craftsmanship and luxury interior value.",
-    "factory": "A production reference that reassures buyers about workflow, handling, and packing reliability.",
+    "factory": "A visual concept that can support discussion, but does not establish production workflow, handling, or packing reliability.",
     "materials": "A material reference that supports clearer selection and quote preparation.",
     "projects": "A project archive reference that strengthens buyer confidence before pricing."
   };

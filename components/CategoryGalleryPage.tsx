@@ -6,21 +6,24 @@ import TrustStrip from "./TrustStrip";
 import { contact } from "../lib/assets";
 import { buildWhatsAppUrl } from "../lib/conversion";
 import { CategoryGalleryPageData } from "../lib/category-galleries";
+import { resolvePublicImage } from "../lib/public-image-metadata";
 
 type CategoryGalleryPageProps = {
   page: CategoryGalleryPageData;
 };
 
 export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) {
+  const heroImage = page.heroImage ? resolvePublicImage(page.heroImage) : null;
   return (
     <PageShell>
       <main>
-        {page.heroImage ? (
+        {heroImage ? (
           <section className="hero-architectural min-h-[78vh]">
             <Image
               className="object-cover object-center"
-              src={page.heroImage}
-              alt={`${page.heroAlt || page.title} for ${page.eyebrow}`}
+              src={heroImage.src}
+              alt={heroImage.alt || `${page.heroAlt || page.title} for ${page.eyebrow}`}
+              title={heroImage.title || page.heroAlt || page.title}
               fill
               priority
               sizes="100vw"
@@ -46,21 +49,24 @@ export default function CategoryGalleryPage({ page }: CategoryGalleryPageProps) 
               <p className="body-luxury section-intro__copy">{page.intro}</p>
             </div>
             <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
-              {page.items.map((item) => (
-                <figure
-                  key={item.src}
-                  className="card-luxury group overflow-hidden p-3"
-                >
-                  <div className="media-luxury category-gallery__media overflow-hidden">
-                    <img
-                      className="block h-auto w-full object-contain object-center transition duration-500 group-hover:scale-[1.02]"
-                      src={item.src}
-                      alt={`${item.alt}. ${item.caption}`}
-                      loading="lazy"
-                    />
-                  </div>
-                </figure>
-              ))}
+              {page.items.map((item) => {
+                const image = resolvePublicImage(item.src);
+                const caption = image.caption || item.caption;
+                return (
+                  <figure key={item.src} className="card-luxury group overflow-hidden p-3">
+                    <div className="media-luxury category-gallery__media overflow-hidden">
+                      <img
+                        className="block h-auto w-full object-contain object-center transition duration-500 group-hover:scale-[1.02]"
+                        src={image.src}
+                        alt={image.alt || `${item.alt}. ${item.caption}`}
+                        title={image.title || caption}
+                        loading="lazy"
+                      />
+                    </div>
+                    <figcaption className="px-2 pb-2 pt-3 text-sm text-ink/65">{caption}</figcaption>
+                  </figure>
+                );
+              })}
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link className="btn-luxury" href="/contact">

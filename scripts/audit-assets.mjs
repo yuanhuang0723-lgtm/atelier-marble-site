@@ -68,7 +68,7 @@ async function main() {
           errors.push(`label mismatch for ${asset.sourceFolder}/${asset.sourceName}: expected ${info.label}, got ${asset.label}`);
         }
 
-        const expectedTitle = titleFor(sourcePath, info, asset.mediaType || "image");
+        const expectedTitle = titleFor(sourcePath, info, asset.mediaType || "image", asset.filename);
         if (asset.title !== expectedTitle) {
           errors.push(`title mismatch for ${asset.sourceFolder}/${asset.sourceName}: expected "${expectedTitle}", got "${asset.title}"`);
         }
@@ -80,7 +80,13 @@ async function main() {
       }
     }
 
-    const filePath = path.join(projectRoot, "public", "materials", asset.category, asset.filename);
+    const publicFilename = asset.publicFilename || asset.filename;
+    const expectedSrc = `/materials/${asset.category}/${publicFilename}`;
+    if (asset.src !== expectedSrc) {
+      errors.push(`Public path mismatch for ${asset.category}/${asset.filename}: expected ${expectedSrc}, got ${asset.src}`);
+    }
+
+    const filePath = path.join(projectRoot, "public", "materials", asset.category, publicFilename);
     try {
       await fs.stat(filePath);
     } catch {

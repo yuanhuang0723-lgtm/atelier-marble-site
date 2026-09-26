@@ -62,7 +62,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/guides/quality-control-delivery` | stone quality control and delivery | `/factory`, `/how-we-work` |
 | `/guides/export-packing-standards` | export packing standards for stone | `/how-we-work`, `/contact` |
 | `/guides/stone-project-checklist` | what to send for a stone quotation | `/contact` |
-| `/guides/hotel-lobby-case-study` | hotel lobby stone project process | `/projects/hotel-stone-supply`, `/factory` |
+| `/guides/hotel-lobby-case-study` | hotel lobby stone project planning | `/projects/hotel-stone-supply`, `/factory` |
 
 ## On-page rules for future work
 

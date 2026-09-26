@@ -10,9 +10,9 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hotel Stone Pricing Guide",
+  title: "Hotel Stone Pricing for Overseas Buyers",
   description:
-    "A practical pricing guide for overseas buyers comparing hotel stone projects, marble supply, fabrication scope, quantities, packing, and delivery coordination.",
+    "Plan a hotel stone quotation with materials, room counts, drawings, finishes, cut-outs, packing, destination, and delivery scope before comparing bids.",
   alternates: { canonical: absoluteUrl("/guides/hotel-stone-pricing") },
   openGraph: {
     title: "Hotel Stone Pricing Guide for Overseas Buyers",
@@ -94,6 +94,7 @@ export default function HotelStonePricingPage() {
           title="Hotel Stone Pricing Guide for Overseas Buyers"
           description="Know what affects hotel stone project pricing before you request a quotation from a supplier in China."
           backgroundImage="/generated/guides/pricing-guide-hero.webp"
+          backgroundImageAlt="Illustrative buyers comparing stone samples and project pricing notes."
         />
 
         <section className="section-luxury bg-paper">

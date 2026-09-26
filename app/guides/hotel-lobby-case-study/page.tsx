@@ -10,14 +10,14 @@ import { buildMailtoUrl, buildWhatsAppUrl } from "../../../lib/conversion";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hotel Lobby Stone Project Case Study",
+  title: "Hotel Lobby Stone Planning Guide for Buyers",
   description:
-    "A hotel lobby stone project case study showing how overseas buyers can review scope, material, quality, packing, and delivery before ordering.",
+    "Hotel lobby stone planning guide for scope, materials, inspection checkpoints, packing, and delivery planning. The image is a concept visualization only.",
   alternates: { canonical: absoluteUrl("/guides/hotel-lobby-case-study") },
   openGraph: {
-    title: "Hotel Lobby Stone Project Case Study",
+    title: "Hotel Lobby Stone Planning Guide for Buyers",
     description:
-      "A practical case study for buyers comparing hotel stone suppliers in China, with scope, quality, and delivery takeaways.",
+      "Hotel lobby stone planning guide for scope, materials, inspection checkpoints, packing, and delivery planning. The image is a concept visualization only.",
     url: absoluteUrl("/guides/hotel-lobby-case-study"),
     siteName,
     images: [{ url: absoluteUrl("/generated/guides/case-study-hero.webp") }]
@@ -26,16 +26,16 @@ export const metadata: Metadata = {
 
 const inquiryContext = {
   sourcePage: "/guides/hotel-lobby-case-study",
-  intent: "Case study review",
-  projectType: "Hotel Lobby Case Study"
+  intent: "Hotel lobby planning guide",
+  projectType: "Hotel Lobby Planning"
 };
 
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Hotel Lobby Stone Project Case Study",
+  headline: "Hotel Lobby Stone Planning Guide for Buyers",
   description:
-    "A hotel lobby stone project case study showing how overseas buyers can review scope, quality, packing, and delivery before ordering.",
+    "Hotel lobby stone planning guidance for scope, material review, inspection, packing, and delivery. The featured image is a concept visualization only.",
   author: {
     "@type": "Organization",
     name: siteName
@@ -57,16 +57,16 @@ const takeaways = [
 
 const faqs = [
                 {
-                  q: "Is this a finished project or a reference case?",
-                  a: "It is a practical reference showing how buyers can think about the process before ordering."
+                  q: "Does this page document a completed hotel project?",
+                  a: "No. This is a planning guide, and the illustration is a concept visualization rather than a completed Atelier Marble project photo."
                 },
                 {
                   q: "Can I use this page to compare suppliers?",
-                  a: "Yes. Case studies help compare process maturity, not just product photos."
+                  a: "Use these checkpoints to compare documented process details, not just product photos."
                 },
                 {
                   q: "Will this help me decide whether to inquire?",
-                  a: "Yes. It gives buyers a clearer view of the project path and the supplier's working style."
+                  a: "It outlines project details and supporting evidence to request before choosing a supplier."
                 }
               ];
 
@@ -86,21 +86,22 @@ export default function HotelLobbyCaseStudyPage() {
   return (
     <PageShell>
       <main>
-        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Hotel Lobby Case Study", path: "/guides/hotel-lobby-case-study" }]} />
+        <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Hotel Lobby Planning Guide for Buyers", path: "/guides/hotel-lobby-case-study" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
         <PageHero
-          eyebrow="Project case study"
-          title="Hotel Lobby Stone Project Case Study"
-          description="See how a hotel lobby stone project can move from inquiry to material matching, QC, packing, and delivery."
+          eyebrow="Planning guide"
+          title="Hotel Lobby Stone Planning Guide for Buyers"
+          description="Use this guide to organize hotel-lobby scope, material review, inspection checkpoints, packing, and delivery responsibilities before requesting a quotation."
           backgroundImage="/generated/guides/case-study-hero.webp"
+          backgroundImageAlt="Illustrative hotel lobby with a stone reception desk and wall backdrop; concept visualization, not a completed project photo."
         />
 
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-start">
             <article className="grid gap-8">
               <div className="card-luxury px-6 py-6 md:px-8">
-                <p className="eyebrow-luxury mb-3">Case summary</p>
+                  <p className="eyebrow-luxury mb-3">Planning summary</p>
                 <p className="body-luxury">
                   Hotel lobby projects need more than attractive stone. Buyers want a supplier that can hold visual
                   consistency across a public space, control fabrication quality, and keep the shipment process clean
@@ -138,7 +139,7 @@ export default function HotelLobbyCaseStudyPage() {
 
               <div className="card-luxury px-6 py-6 md:px-8">
                 <h2 className="font-title text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-ink">
-                  What this case study shows buyers
+                  What this guide helps buyers review
                 </h2>
                 <ul className="mt-4 grid gap-3 text-sm leading-7 text-ink/70">
                   {takeaways.map((item) => (
@@ -158,7 +159,7 @@ export default function HotelLobbyCaseStudyPage() {
                       "Send project type, drawings, quantity, budget range, and timing so the quotation path reflects the real lobby scope."
                   },
                   {
-                    title: "After you review the case",
+                    title: "After you review the guide",
                     copy:
                       "Use the process to judge whether the supplier can handle hotel stone work with enough control and clarity."
                   }
@@ -186,7 +187,7 @@ export default function HotelLobbyCaseStudyPage() {
               <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
                 <p className="eyebrow-luxury mb-3">Need pricing for a hotel project?</p>
                 <p className="text-sm leading-7 text-ink/68">
-                  Use this case study as a reference point, then send your own drawings or scope so we can review the
+                  Use this planning guide as a reference point, then send your own drawings or scope so we can review the
                   project properly.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
@@ -217,7 +218,7 @@ export default function HotelLobbyCaseStudyPage() {
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
               <p className="eyebrow-luxury">FAQ</p>
-              <h2 className="heading-lg section-intro__title">Common case study questions from buyers.</h2>
+              <h2 className="heading-lg section-intro__title">Common planning questions from buyers.</h2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
               {faqs.map((item) => (

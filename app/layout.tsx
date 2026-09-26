@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Atelier Marble"
   },
   description:
-    "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers.",
+    "Custom stone fabrication and project coordination from Yunfu, China for hotel, kitchen, and architectural teams.",
   alternates: {
     canonical: absoluteUrl("/")
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName,
     title: "Atelier Marble | Custom Stone Fabrication & Project Supply",
     description:
-      "Custom countertops, vanity tops, hotel stone fabrication, architectural stone, and export-ready project supply.",
+      "Custom countertops, vanity tops, hotel stone fabrication, and architectural components coordinated to project scope.",
     url: siteUrl,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
   }

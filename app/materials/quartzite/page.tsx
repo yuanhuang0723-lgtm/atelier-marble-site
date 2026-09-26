@@ -3,9 +3,9 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Quartzite Countertop Fabrication & Supply",
+  title: "Quartzite Countertop Fabrication from China",
   description:
-    "Quartzite countertop fabrication and project supply from China. Confirm lot, thickness, finish, matching, cut-outs, and fabrication suitability before quotation.",
+    "Quartzite countertops from China. Confirm current lot, thickness, finish, slab matching, and cut-outs for your fabrication project before requesting a quote.",
   alternates: { canonical: absoluteUrl("/materials/quartzite") },
   openGraph: {
     title: "Quartzite Materials for Projects in China",
@@ -42,7 +42,7 @@ export default function QuartziteMaterialsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying quartzite."
       relatedLink={{ label: "See countertop fabrication scope", href: "/countertops" }}
-      metadata={metadata}
+      purchaseInfo={{ materialOptions: "Natural quartzite. Confirm the current lot, thickness, finish, surface character, and fabrication suitability.", customCapability: "Coordinate slab direction, countertop dimensions, edges, cut-outs, and matching expectations." }} metadata={metadata}
     />
   );
 }

@@ -1,56 +1,63 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import WorkshopVideoCard from "../components/WorkshopVideoCard";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
 import { absoluteUrl, siteName } from "../lib/seo";
-import { featuredWorkshopVideo } from "../data/workshop-videos";
+import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 
 export const metadata: Metadata = {
-  title: "Stone Fabrication China | Atelier Marble",
+  title: "Custom Stone Fabrication from China | Atelier Marble",
   description:
-    "Custom stone fabrication from Yunfu, China for contractors, architects, developers, and importers. Send CAD, BOQ, or dimensions for project review.",
+    "Custom stone fabrication from Yunfu, China for project teams. Send CAD, BOQ, or dimensions for a review of materials, quantities, packing, and delivery scope.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Stone Fabrication China | Atelier Marble",
+    title: "Custom Stone Fabrication from China | Atelier Marble",
     description:
-      "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers. Send your CAD or BOQ for review.",
+      "Custom stone fabrication from Yunfu, China for project teams. Send CAD, BOQ, or dimensions for a review of materials, quantities, packing, and delivery scope.",
     url: absoluteUrl("/"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
   }
 };
 
-const buyerIntentCards = [
+const buyerPathways = [
   {
-    title: "Stone Countertop & Coffee Table",
-    href: "/countertops",
-    image: "/assets/home-top-cover.webp",
-    alt: "Marble dining table and stone countertop in a contemporary interior",
-    question: "STONE COUNTERTOP & COFFEE TABLE REFERENCE."
-  },
-  {
-    title: "Hotel Bathroom Countertops & Vanity Tops",
+    audience: "Interior Design Studios",
+    title: "Turn finish ideas into stone details",
     href: "/countertops/vanity-tops",
     image: "/assets/vanity-cabinet/cover.webp",
-    alt: "Luxury stone vanity top and cabinet panels in a premium bathroom interior",
-    question: "STONE VANITY TOP AND CABINET PANEL REFERENCE."
+    alt: "Illustrative stone vanity top and cabinet panels in a bathroom interior concept",
+    copy: "Develop finish direction, component details, and room-ready vanity or countertop packages.",
+    cta: "Explore design project support"
   },
   {
-    title: "Custom Stone Sculptures",
+    audience: "Architecture Firms",
+    title: "Coordinate architectural components",
+    href: "/architectural-stone",
+    image: "/materials/categories/hotel-projects.webp",
+    alt: "Illustrative hotel interior concept with stone flooring and wall panels",
+    copy: "Review wall cladding, flooring, and custom stone components from drawings and schedules.",
+    cta: "View architectural stone"
+  },
+  {
+    audience: "Stone Importers",
+    title: "Plan repeatable supply packages",
+    href: "/how-we-work",
+    image: "/assets/home-top-cover.webp",
+    alt: "Illustrative stone dining table in a dining-room concept",
+    copy: "Scope quantities, material review, protective packing, and export planning together.",
+    cta: "Explore the supply workflow"
+  },
+  {
+    audience: "Stone Fabricators",
+    title: "Add drawing-led production support",
     href: "/custom-stone-fabrication-china",
     image: "/assets/carving-decor/cover.webp",
-    alt: "Carved stone sculpture displayed in a contemporary interior",
-    question: "CUSTOM STONE SCULPTURE REFERENCE FOR INTERIOR AND LOUNGE PROJECTS."
-  },
-  {
-    title: "Hotel & Hospitality Projects",
-    href: "/projects/hotel-stone-supply",
-    image: "/materials/categories/hotel-projects.webp",
-    alt: "Luxury hotel stone project with marble flooring and wall cladding",
-    question: "HOTEL PROJECT SUPPLY FOR DEVELOPERS, CONTRACTORS, AND PROCUREMENT TEAMS."
+    alt: "Illustrative carved stone sculpture in a modern interior concept",
+    copy: "Use shop drawings for custom stone parts when an external fabrication partner is useful.",
+    cta: "See custom fabrication"
   }
 ];
 
@@ -86,41 +93,54 @@ export default function HomePage() {
         }}
       />
       <main>
-        <section className="hero-architectural min-h-screen">
-          <Image
-            className="object-cover"
-            src="/materials/hero/atelier-marble-luxury-hero.webp"
-            alt="Marble architectural interior with natural stone surfaces"
-            fill
-            priority
-            sizes="100vw"
-          />
+        <section className="hero-architectural relative min-h-[calc(100svh-4rem)]">
           <div className="hero-overlay absolute inset-0" />
-          <div className="hero-architectural__content hero-architectural__content--center container-luxury">
-            <div className="mx-auto max-w-4xl">
-              <p className="hero-architectural__eyebrow">
-                Atelier Marble
+          <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-8 px-5 py-24 md:grid-cols-[1.2fr_0.8fr] md:gap-12 md:px-12 md:pb-20 md:pt-32">
+            <div className="max-w-4xl">
+              <p className="hero-architectural__eyebrow mb-4 max-w-3xl tracking-[0.18em] md:tracking-[0.24em]">
+                For interior design studios, architecture firms, stone importers &amp; fabricators
               </p>
-              <h1 className="hero-architectural__title hero-architectural__title--home">
-                Custom Stone Fabrication &amp; Project Supply from Yunfu, China
+              <h1 className="hero-architectural__title hero-architectural__title--home !mx-0 !max-w-[18ch] !text-left">
+                CAD Drawing to Real Stone Fabrication
               </h1>
-              <p className="hero-architectural__copy mx-auto max-w-2xl">
-                Atelier Marble is a stone supplier in China for hotel contractors, architects, developers, and
-                importers. Send your CAD, BOQ, or dimensions for material review, fabrication planning, and export
-                quotation.
+              <p className="mt-5 font-title text-lg font-medium uppercase tracking-[0.08em] text-white md:text-xl">
+                Custom Marble &amp; Stone Components for Project Teams
               </p>
-              <div className="hero-architectural__actions hero-architectural__actions--center">
+              <p className="hero-architectural__copy mt-3 max-w-2xl !text-left">
+                Send a CAD drawing, BOQ, or rough dimensions for a project-specific review of custom stone components
+                from Yunfu, China.
+              </p>
+              <ul aria-label="Fabrication and fulfillment capabilities" className="mt-5 flex max-w-3xl flex-wrap gap-2">
+                {["CAD & BOQ Review", "Project-Based Scope", "Material Coordination", "Packing Planning", "Destination Review"].map((capability) => (
+                  <li key={capability} className="rounded-full border border-white/35 bg-black/20 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white md:text-[11px]">
+                    {capability}
+                  </li>
+                ))}
+              </ul>
+              <div className="hero-architectural__actions !justify-start">
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href="/contact">
                   Upload CAD / BOQ for Quote
                 </Link>
-                <Link className="btn-luxury-inverse" href="/projects">
-                  View Project References
-                </Link>
-                <Link className="btn-luxury-inverse" href="/how-we-work">
-                  How We Work
+                <Link className="btn-luxury-inverse" href="/factory#workshop-videos">
+                  Watch Workshop Videos
                 </Link>
               </div>
             </div>
+
+            <aside aria-labelledby="quote-brief-title" className="rounded-2xl border border-white/25 bg-black/45 p-6 text-white shadow-2xl backdrop-blur-sm md:p-8">
+              <p className="eyebrow-luxury text-white/65">Start with the information you have</p>
+              <h2 id="quote-brief-title" className="mt-3 font-title text-2xl font-medium uppercase leading-tight tracking-[0.04em] text-white">
+                What to send for a project review
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-white/75">
+                A complete drawing helps, but a practical first review can start with a rough brief.
+              </p>
+              <ul className="mt-5 grid gap-3 text-sm leading-6 text-white/90">
+                <li className="border-t border-white/20 pt-3">Project type, pieces, and approximate quantities</li>
+                <li className="border-t border-white/20 pt-3">CAD, BOQ, marked-up references, or dimensions</li>
+                <li className="border-t border-white/20 pt-3">Material direction, finish, and delivery destination</li>
+              </ul>
+            </aside>
           </div>
         </section>
 
@@ -128,7 +148,7 @@ export default function HomePage() {
           <div className="container-luxury grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
             <div>
               <p className="eyebrow-luxury">From the workshop</p>
-              <h2 id="home-workshop-video-title" className="heading-lg mt-4 scroll-mt-24 text-left">
+              <h2 id="home-workshop-video-title" className="heading-lg mt-4 text-left">
                 See a stone cutting operation in progress.
               </h2>
               <p className="body-luxury mt-5 max-w-xl">
@@ -136,62 +156,42 @@ export default function HomePage() {
                 more workshop and basin footage.
               </p>
               <Link className="text-cta-luxury mt-6 inline-flex" href="/factory#workshop-videos">
-                View all 16 workshop videos
+                View all {workshopVideos.length} workshop videos
               </Link>
             </div>
             <WorkshopVideoCard video={featuredWorkshopVideo} featured />
           </div>
         </section>
 
-        <section className="section-luxury bg-paper">
+        <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
-              <p className="eyebrow-luxury">Buyer intent categories</p>
-              <h2 className="heading-lg buyer-intent-heading section-intro__title">Is this suitable for your project?</h2>
+              <p className="eyebrow-luxury">Project support by buyer type</p>
+              <h2 id="buyer-pathways-title" className="heading-lg section-intro__title">
+                Start with the work your team needs to deliver.
+              </h2>
+              <p className="body-luxury max-w-3xl">
+                From design development to repeat supply and custom production, choose the route that matches your role in the project.
+              </p>
             </div>
-            <div className="buyer-intent-layout">
-              <div className="buyer-intent-top">
-                {buyerIntentCards.slice(0, 3).map((card, index) => (
-                  <Link
-                    key={card.title}
-                    className={`project-card buyer-intent-card buyer-intent-card--${index === 0 ? "featured" : index === 1 ? "medium" : "small"} group`}
-                    href={card.href}
-                  >
-                    <div className="project-card__media">
-                      <img
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
-                        src={card.image}
-                        alt={card.alt}
-                      />
-                    </div>
-                    <div className="project-card__body">
-                      <p className="project-card__category">{card.question}</p>
-                      <h3 className="project-card__title card-title">{card.title}</h3>
-                      <p className="project-card__copy">
-                        Premium stone references for residential, hospitality, and commercial project sourcing.
-                      </p>
-                      <span className="project-card__cta project-card__cta--ghost">Request Project Quote</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              <Link className="buyer-intent-feature group" href="/projects/hotel-stone-supply">
-                <div className="buyer-intent-feature__media">
-                  <img
-                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.02]"
-                    src={buyerIntentCards[3].image}
-                    alt={buyerIntentCards[3].alt}
-                  />
-                </div>
-                <div className="buyer-intent-feature__overlay">
-                  <p className="buyer-intent-feature__category">{buyerIntentCards[3].question}</p>
-                  <h3 className="buyer-intent-feature__title">{buyerIntentCards[3].title}</h3>
-                  <p className="buyer-intent-feature__copy">
-                    Premium stone references for hotel lobbies, reception areas, and export-ready project delivery.
-                  </p>
-                  <span className="buyer-intent-feature__cta">Request Project Quote</span>
-                </div>
-              </Link>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {buyerPathways.map((card) => (
+                <Link key={card.audience} href={card.href} className="group overflow-hidden rounded-2xl border border-ink/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-stone">
+                    <img className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" src={card.image} alt={card.alt} title={card.title} loading="lazy" />
+                  </div>
+                  <div className="p-5 md:p-6">
+                    <p className="eyebrow-luxury">{card.audience}</p>
+                    <h3 className="mt-3 font-title text-xl font-medium uppercase leading-tight tracking-[0.03em] text-ink">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-ink/68">{card.copy}</p>
+                    <span className="mt-5 inline-flex text-[11px] font-semibold uppercase tracking-[0.12em] text-ink underline decoration-ink/30 underline-offset-4 group-hover:decoration-ink">
+                      {card.cta}
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -209,33 +209,33 @@ export default function HomePage() {
                 <img
                   className="block h-full w-full object-cover object-center"
                   src="/assets/why-choose-us/why-choose-us.webp"
-                  alt="Trusted stone supply hub overview with factory, warehouse, and material capacity details"
+                  alt="Stone supply overview graphic with product and workshop images; not documentary proof of facility or capacity"
+                  title="Stone supply overview graphic"
                   loading="lazy"
                 />
               </div>
               <div className="grid gap-6">
                 <p className="body-luxury max-w-2xl">
-                  Atelier Marble helps overseas buyers reduce project risk with dependable lead times, stable quality,
-                  clear communication, and export-ready support for kitchens, hospitality spaces, furniture, and custom
-                  stone work.
+                  Project scope, materials, inspection points, packing, and delivery requirements are reviewed against
+                  the buyer's drawings and destination before a quotation is prepared.
                 </p>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {[
                     {
-                      title: "Reliable Lead Times",
-                      copy: "Production and shipment are planned to keep project timing under control."
+                      title: "Schedule Review",
+                      copy: "Confirm material, approved drawings, quantity, finish, and packing before setting a project schedule."
                     },
                     {
-                      title: "Consistent Quality",
-                      copy: "Clear standards and accurate execution help avoid costly remakes."
+                      title: "Inspection Scope",
+                      copy: "Agree the checks, tolerances, visible-face expectations, and records required for each order."
                     },
                     {
-                      title: "Clear Communication",
-                      copy: "Detail confirmation and CAD support keep coordination efficient."
+                      title: "Drawing Coordination",
+                      copy: "Review CAD, BOQ, dimensions, and open questions before a quotation is prepared."
                     },
                     {
-                      title: "Export-Ready Delivery",
-                      copy: "Careful packing and loading support safer international delivery."
+                      title: "Destination Planning",
+                      copy: "Confirm destination, route options, packing, loading, and delivery terms for the project."
                     }
                   ].map((item) => (
                     <div key={item.title} className="card-luxury px-5 py-4">
@@ -247,8 +247,8 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="body-luxury max-w-2xl">
-                  For buyers who value timing, quality, and trust, Atelier Marble is built to support real project
-                  delivery.
+                  Share the latest drawings and project brief so scope, open decisions, and delivery responsibilities
+                  can be reviewed together.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link className="btn-luxury" href="/contact">
@@ -286,6 +286,7 @@ export default function HomePage() {
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                       src={item.coverSrc}
                       alt={item.coverAlt}
+                      title={cleanDisplayTitle(item.asset.title, item.asset.label)}
                       loading="lazy"
                     />
                   </div>

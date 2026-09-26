@@ -216,8 +216,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       <div className="rounded-[18px] border border-ink/10 bg-stone/40 px-5 py-4">
         <p className="eyebrow-luxury mb-2">Request a quotation</p>
         <p className="text-sm leading-7 text-ink/68">
-          Share project scope, drawings, budget, destination market, and timing. We use these details to match
-          material selection, fabrication scale, and packing requirements.
+          Only your email and a short project note are required. Everything else, including CAD or BOQ files, is optional for a first inquiry. Extra project details help us review material, fabrication, and packing needs.
         </p>
       </div>
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">

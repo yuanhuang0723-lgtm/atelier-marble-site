@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "./JsonLd";
 import PageHero from "./PageHero";
 import PageShell from "./PageShell";
+import ProjectProcurementInfo from "./ProjectProcurementInfo";
 import { contact } from "../lib/assets";
 import { absoluteUrl } from "../lib/seo";
 
@@ -11,6 +12,7 @@ type CommercialLandingPageProps = {
   title: string;
   description: string;
   image: string;
+  heroBackgroundImage?: string | null;
   imageAlt: string;
   bullets: string[];
   details: string[];
@@ -19,12 +21,16 @@ type CommercialLandingPageProps = {
   relatedLink?: { label: string; href: string };
   relatedLinks?: { label: string; href: string }[];
   specificationGroups?: { title: string; items: string[] }[];
+  contentSections?: { heading: string; paragraphs: string[] }[];
   referenceImages?: { src: string; alt: string; title: string }[];
+  purchaseInfo?: { materialOptions: string; customCapability: string };
+  imageCaption?: string;
+  contentSectionTitle?: string;
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, imageAlt, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, referenceImages, metadata
+  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -51,14 +57,15 @@ export default function CommercialLandingPage({
       <main>
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: eyebrow, item: metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : absoluteUrl("/") }] },
-          { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") }, areaServed: "Worldwide" },
+          { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") } },
           ...(faqJsonLd ? [faqJsonLd] : [])
         ]} />
-        <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={image} backgroundImageAlt={imageAlt} />
+        <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={heroBackgroundImage === undefined ? image : heroBackgroundImage ?? undefined} backgroundImageAlt={imageAlt} />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">
-              <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} loading="lazy" decoding="async" />
+              <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} title={title} loading="lazy" decoding="async" />
+              {imageCaption ? <p className="px-5 py-3 text-xs leading-6 text-ink/60">{imageCaption}</p> : null}
               <div className="grid gap-4 p-7 md:p-9">
                 <p className="eyebrow-luxury">Project supply scope</p>
                 {details.map((detail) => <p key={detail} className="body-luxury border-b border-ink/10 pb-4 last:border-0 last:pb-0">{detail}</p>)}
@@ -67,7 +74,7 @@ export default function CommercialLandingPage({
             <div className="space-y-8">
               <div>
                 <p className="eyebrow-luxury">Built around your drawings</p>
-                <h2 className="heading-lg mt-4">A clear path from material direction to export delivery.</h2>
+                <h2 className="heading-lg mt-4">A clear path from material direction to delivery planning.</h2>
                 <p className="body-luxury mt-5">Share the scope, dimensions, material direction, and destination. We can review the practical fabrication path before pricing.</p>
               </div>
               <ul className="grid gap-4 border-y border-ink/10 py-6">
@@ -87,6 +94,24 @@ export default function CommercialLandingPage({
             </div>
           </div>
         </section>
+        {contentSections?.length ? (
+          <section className="section-luxury bg-paper">
+            <div className="container-luxury">
+              <div className="section-intro section-intro--center">
+                <p className="eyebrow-luxury">Design and procurement guide</p>
+                <h2 className="heading-lg section-intro__title">{contentSectionTitle || "Plan drawings, quantities, and delivery as one project scope."}</h2>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                {contentSections.map((section) => (
+                  <article key={section.heading} className="card-luxury bg-stone p-7">
+                    <h3 className="font-title text-[1.12rem] font-semibold uppercase leading-tight tracking-[0.04em] text-ink">{section.heading}</h3>
+                    {section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-4 text-sm leading-7 text-ink/70">{paragraph}</p>)}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
         {specificationGroups?.length ? (
           <section className="section-luxury bg-stone">
             <div className="container-luxury">
@@ -107,6 +132,7 @@ export default function CommercialLandingPage({
             </div>
           </section>
         ) : null}
+        {purchaseInfo ? <ProjectProcurementInfo {...purchaseInfo} /> : null}
         {referenceImages?.length ? (
           <section className="section-luxury bg-paper">
             <div className="container-luxury">
@@ -118,7 +144,7 @@ export default function CommercialLandingPage({
                 {referenceImages.map((item) => (
                   <figure key={item.src} className="card-luxury overflow-hidden p-3">
                     <div className="media-luxury aspect-[4/3]">
-                      <img className="block h-full w-full object-cover" src={item.src} alt={item.alt} loading="lazy" />
+                      <img className="block h-full w-full object-cover" src={item.src} alt={item.alt} title={item.title} loading="lazy" />
                     </div>
                     <figcaption className="px-3 py-4 text-sm leading-7 text-ink/70">{item.title}</figcaption>
                   </figure>

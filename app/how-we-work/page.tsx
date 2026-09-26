@@ -4,19 +4,20 @@ import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import { ClipboardList, FileText, PackageCheck, ShieldCheck, MessageSquareQuote, Layers3 } from "lucide-react";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
+import ProjectProcurementInfo from "../../components/ProjectProcurementInfo";
 import { contact } from "../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../lib/conversion";
 import { absoluteUrl, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "How We Work for Export Buyers",
+  title: "Stone Project Workflow for Overseas Buyers",
   description:
-    "How Atelier Marble handles stone quotation, material matching, technical review, fabrication, export packing, and project coordination for overseas buyers.",
+    "Stone workflow for overseas buyers. Share scope, drawings, materials, and quantities to review quotation, inspection, packing, and delivery requirements.",
   alternates: { canonical: absoluteUrl("/how-we-work") },
   openGraph: {
-    title: "How We Work for Export Buyers",
+    title: "How We Work with Overseas Buyers",
     description:
-      "A clear export-buyer workflow for stone quotation, material selection, fabrication review, and packing coordination.",
+      "A project workflow for stone quotations, drawing review, material selection, inspection checkpoints, packing, and destination-specific delivery planning.",
     url: absoluteUrl("/how-we-work"),
     siteName,
     images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.webp") }]
@@ -52,20 +53,20 @@ const steps = [
   },
   {
     icon: ShieldCheck,
-    title: "Production control",
-    copy: "Layout confirmation and production or QC photos support the agreed project checkpoints."
+    title: "Production checkpoints",
+    copy: "Agree which production updates or inspection records the project requires, and confirm what evidence is available before quotation."
   },
   {
     icon: PackageCheck,
-    title: "Packing & coordination",
-    copy: "Export wooden crates and shipment documentation support are coordinated against the delivery term."
+    title: "Packing & delivery questions",
+    copy: "List wooden-crate requirements and shipment documents to discuss. Confirm responsibilities for the stated delivery term before quotation."
   }
 ];
 
 const trustPoints = [
   "Clear scope review before pricing",
-  "Factory-direct communication",
-  "Export packing prepared for shipment",
+  "Project communication around agreed review points",
+  "Packing and delivery responsibilities confirmed per project",
   "Support for hotel, commercial, kitchen, and custom stone projects"
 ];
 
@@ -78,9 +79,9 @@ export default function HowWeWorkPage() {
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "How We Work", path: "/how-we-work" }]} />
         <PageHero
-          eyebrow="Export buyer workflow"
-          title="A clear stone project workflow for export buyers."
-          description="A six-step RFQ workflow for overseas buyers covering project briefs, drawing review, material proposal, quotation, production control, and export coordination."
+          eyebrow="Overseas buyer workflow"
+          title="A clear stone project workflow for overseas buyers."
+          description="A six-step RFQ workflow for overseas buyers covering project briefs, drawing review, material proposal, quotation, production checkpoints, and delivery planning."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-10 lg:grid-cols-[1fr_0.78fr] lg:items-start">
@@ -147,10 +148,10 @@ export default function HowWeWorkPage() {
           <div className="container-luxury">
             <div className="section-intro section-intro--center">
               <p className="eyebrow-luxury">Why this helps</p>
-              <h2 className="heading-lg section-intro__title">A clearer workflow usually means a faster quotation.</h2>
+              <h2 className="heading-lg section-intro__title">A clearer workflow helps buyers prepare a useful quotation request.</h2>
               <p className="body-luxury section-intro__copy">
-                High-intent buyers want to know whether you can handle scope, timing, packing, and export coordination
-                before they ask for price.
+                Before comparing prices, buyers should clarify scope, timing, packing, and the responsibilities attached
+                to the proposed delivery term.
               </p>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
@@ -186,11 +187,15 @@ export default function HowWeWorkPage() {
             </nav>
           </div>
         </section>
+        <ProjectProcurementInfo
+          materialOptions="Material direction and current lot are reviewed against the application, quantity, finish, and project reference."
+          customCapability="Discuss drawing review, material confirmation, inspection scope, packing requirements, and delivery responsibilities for the project."
+        />
 
         <section className="section-luxury-compact bg-paper text-center">
           <h2 className="heading-lg mx-auto max-w-3xl">Ready to discuss a project?</h2>
           <p className="body-luxury mx-auto mt-4 max-w-2xl">
-            Send the project details and we will review the material path, pricing logic, and export support steps.
+            Send the project details so scope, materials, quotation inputs, and delivery requirements can be reviewed.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-4">
             <Link className="btn-luxury" href="/contact">

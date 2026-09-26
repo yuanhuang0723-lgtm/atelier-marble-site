@@ -63,12 +63,12 @@ export default function Footer() {
                 {contact.companyName}
               </p>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/38">
-                Bespoke stone supply for international projects
+                Stone project support for overseas buyers
               </p>
             </div>
             <p className="max-w-[42ch] text-[0.95rem] font-normal leading-7 text-white/60 md:text-[1rem]">
-              Atelier Marble is a luxury stone design studio for hotel projects, kitchens, interiors, furniture, and
-              architectural spaces worldwide.
+              Atelier Marble coordinates stone project reviews for hotel, kitchen, interior, furniture, and
+              architectural teams.
             </p>
           </div>
 
