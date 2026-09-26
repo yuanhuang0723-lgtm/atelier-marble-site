@@ -93,7 +93,7 @@ export default function HomePage() {
         }}
       />
       <main>
-        <section className="hero-architectural relative min-h-[calc(100svh-4rem)]">
+        <section className="hero-architectural hero-architectural--home relative min-h-[calc(100svh-4rem)]">
           <div className="hero-overlay absolute inset-0" />
           <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-8 px-5 py-24 md:grid-cols-[1.2fr_0.8fr] md:gap-12 md:px-12 md:pb-20 md:pt-32">
             <div className="max-w-4xl">
@@ -144,8 +144,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section aria-labelledby="home-workshop-video-title" className="section-luxury bg-stone">
-          <div className="container-luxury grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
+        <section aria-labelledby="home-workshop-video-title" className="section-luxury home-workshop-section bg-stone">
+          <div className="home-workshop-grid grid items-center">
             <div>
               <p className="eyebrow-luxury">From the workshop</p>
               <h2 id="home-workshop-video-title" className="heading-lg mt-4 text-left">

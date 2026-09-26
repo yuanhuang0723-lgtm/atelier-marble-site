@@ -81,6 +81,19 @@ video {
     linear-gradient(to top, rgba(18, 15, 13, 0.66), transparent 48%);
 }
 
+.hero-architectural--home {
+  background-color: #171411;
+  background-image: url("/assets/factory/factory-hero-workshop.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-architectural--home .hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(18, 15, 13, 0.68), rgba(18, 15, 13, 0.5) 50%, rgba(18, 15, 13, 0.42)),
+    linear-gradient(to top, rgba(18, 15, 13, 0.56), transparent 58%);
+}
+
 @layer components {
   .site-nav {
     @apply border-b border-[rgba(255,255,255,0.12)] bg-[rgba(247,241,232,0.84)] backdrop-blur-2xl;
@@ -161,6 +174,32 @@ video {
 
   .section-band {
     @apply px-5 py-10 md:px-12 md:py-12;
+  }
+
+  .home-workshop-section {
+    padding-block: clamp(3.5rem, 5vw, 5rem);
+  }
+
+  .home-workshop-grid {
+    width: 100%;
+    max-width: 72rem;
+    min-width: 0;
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .home-workshop-grid {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-workshop-section {
+      padding-block: 3rem;
+    }
   }
 
   .eyebrow-luxury {

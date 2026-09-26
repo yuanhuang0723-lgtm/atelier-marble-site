@@ -23,7 +23,7 @@ export default function WorkshopVideoCard({ video, featured = false }: WorkshopV
   };
 
   return (
-    <figure className={`mx-auto w-full overflow-hidden rounded-2xl border border-ink/10 bg-white ${featured ? "max-w-[480px] shadow-xl" : ""}`}>
+    <figure className={`mx-auto w-full overflow-hidden rounded-2xl border border-ink/10 bg-white ${featured ? "max-w-[480px] shadow-xl lg:mx-0" : ""}`}>
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#171614]">
         <video
           ref={videoRef}
