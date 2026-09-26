@@ -151,6 +151,7 @@ export default function StoneSupplierGuidePage() {
                     className="h-full w-full object-cover"
                     src="/generated/guides/buyer-guide-hero.webp"
                     alt="Luxury stone buyer guide preview with project notes and material references"
+                    title="Luxury stone buyer guide preview"
                   />
                 </div>
                 <div className="guide-hero-card__body">
@@ -175,6 +176,7 @@ export default function StoneSupplierGuidePage() {
                       className="h-full w-full object-cover"
                       src="/generated/guides/project-checklist-hero.webp"
                       alt="Stone project checklist with samples, drawings, and project details"
+                      title="Stone project checklist preview"
                     />
                   </div>
                   <div className="guide-card__body">
@@ -197,6 +199,7 @@ export default function StoneSupplierGuidePage() {
                       className="h-full w-full object-cover"
                       src="/generated/guides/qc-delivery-hero.webp"
                       alt="Stone quality control and delivery scene with packing and inspection references"
+                      title="Stone quality control and delivery guide preview"
                     />
                   </div>
                   <div className="guide-card__body">
@@ -258,6 +261,7 @@ export default function StoneSupplierGuidePage() {
                         className="h-full w-full object-cover"
                         src={cardImages[index]}
                         alt={cardAts[index]}
+                        title={cardAts[index]}
                       />
                     </div>
                     <div className="guide-card__body">
@@ -278,6 +282,7 @@ export default function StoneSupplierGuidePage() {
                       className="h-full w-full object-cover"
                       src="/generated/guides/buyer-notes-panel.png"
                       alt="Stone samples and project notes arranged on a premium desk"
+                      title="Stone samples and project notes"
                     />
                   </div>
                   <div className="guide-card__body">
@@ -302,6 +307,7 @@ export default function StoneSupplierGuidePage() {
                       className="h-full w-full object-cover"
                       src="/generated/guides/pricing-guide-hero.webp"
                       alt="Stone pricing discussion with samples, notes, and project quotation layout"
+                      title="Stone pricing discussion and quotation guide"
                     />
                   </div>
                   <div className="guide-card__body">
@@ -330,9 +336,10 @@ export default function StoneSupplierGuidePage() {
               <div className="guide-side-card">
                 <div className="guide-side-card__media">
                   <img
-                    className="h-full w-full object-cover"
-                    src="/generated/guides/buyer-notes-panel.png"
-                    alt="Stone samples and buyer notes preview on a premium desk"
+                      className="h-full w-full object-cover"
+                      src="/generated/guides/buyer-notes-panel.png"
+                      alt="Stone samples and buyer notes preview on a premium desk"
+                      title="Stone samples and buyer notes"
                   />
                 </div>
                 <div className="guide-side-card__body">
@@ -344,7 +351,7 @@ export default function StoneSupplierGuidePage() {
                     {quickLinks.map((item) => (
                       <Link className="guide-link-chip" href={item.href} key={item.label}>
                         <span className="guide-link-chip__thumb">
-                          <img src={item.image} alt={item.alt} className="h-full w-full object-cover" />
+                          <img src={item.image} alt={item.alt} title={item.alt} className="h-full w-full object-cover" />
                         </span>
                         <span>{item.label}</span>
                       </Link>
@@ -359,6 +366,7 @@ export default function StoneSupplierGuidePage() {
                     className="h-full w-full object-cover"
                     src="/generated/guides/case-study-hero.webp"
                     alt="Hotel project and stone interior reference for best fit guidance"
+                    title="Hotel stone project case study preview"
                   />
                 </div>
                 <div className="guide-side-card__body">
@@ -378,6 +386,7 @@ export default function StoneSupplierGuidePage() {
                     className="h-full w-full object-cover"
                     src="/generated/guides/pricing-guide-hero.webp"
                     alt="Project pricing discussion and material comparison for buyers"
+                    title="Stone project pricing guide preview"
                   />
                 </div>
                 <div className="guide-side-card__body">
