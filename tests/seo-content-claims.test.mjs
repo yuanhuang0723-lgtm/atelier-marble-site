@@ -45,6 +45,11 @@ test("service structured data does not claim worldwide coverage", () => {
   assert.doesNotMatch(commercialLandingSource, /areaServed\s*:\s*["']Worldwide["']/i);
 });
 
+test("commercial page heading presents delivery as planning, not a guaranteed export service", () => {
+  assert.match(commercialLandingSource, /A clear path from material direction to delivery planning/i);
+  assert.doesNotMatch(commercialLandingSource, /A clear path from material direction to export delivery/i);
+});
+
 test("workflow copy frames packing and shipment documents as project questions to confirm", () => {
   assert.doesNotMatch(workflowSource, /export wooden crates|shipment documentation support|factory-direct communication|export packing prepared for shipment/i);
   assert.match(workflowSource, /confirm responsibilities for the stated delivery term/i);

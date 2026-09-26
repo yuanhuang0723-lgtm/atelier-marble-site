@@ -74,7 +74,7 @@ export default function CommercialLandingPage({
             <div className="space-y-8">
               <div>
                 <p className="eyebrow-luxury">Built around your drawings</p>
-                <h2 className="heading-lg mt-4">A clear path from material direction to export delivery.</h2>
+                <h2 className="heading-lg mt-4">A clear path from material direction to delivery planning.</h2>
                 <p className="body-luxury mt-5">Share the scope, dimensions, material direction, and destination. We can review the practical fabrication path before pricing.</p>
               </div>
               <ul className="grid gap-4 border-y border-ink/10 py-6">
