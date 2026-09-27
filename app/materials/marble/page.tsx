@@ -42,6 +42,7 @@ export default function MarbleMaterialsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
+      relatedLinks={[{ label: "Review hotel vanity top packages", href: "/countertops/vanity-tops" }]}
       purchaseInfo={{ materialOptions: "Natural marble. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.", customCapability: "Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components." }} metadata={metadata}
     />
   );
