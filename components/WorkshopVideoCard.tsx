@@ -27,7 +27,7 @@ export default function WorkshopVideoCard({ video, featured = false }: WorkshopV
       <div className={`relative ${featured ? "aspect-[6/7]" : "aspect-[3/4]"} w-full overflow-hidden bg-[#171614]`}>
         <video
           ref={videoRef}
-          className={`absolute inset-0 h-full w-full bg-[#171614] object-contain ${isPlaying ? "" : "pointer-events-none opacity-0"}`}
+          className={`absolute inset-0 h-full w-full bg-[#171614] ${featured ? "object-cover" : "object-contain"} ${isPlaying ? "" : "pointer-events-none opacity-0"}`}
           controls={isPlaying}
           playsInline
           preload="none"
@@ -47,7 +47,7 @@ export default function WorkshopVideoCard({ video, featured = false }: WorkshopV
             title={`Play video: ${video.title}`}
           >
             <img
-              className="absolute inset-0 h-full w-full object-contain transition duration-300 group-hover:scale-[1.02]"
+              className={`absolute inset-0 h-full w-full ${featured ? "object-cover" : "object-contain"} transition duration-300 group-hover:scale-[1.02]`}
               src={video.poster}
               alt={video.description}
               title={video.title}

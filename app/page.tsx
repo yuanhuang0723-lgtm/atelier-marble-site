@@ -158,6 +158,22 @@ export default function HomePage() {
               <Link className="text-cta-luxury mt-6 inline-flex" href="/factory#workshop-videos">
                 View all {workshopVideos.length} workshop videos
               </Link>
+              <ol aria-label="Stone project workflow" className="mt-7 hidden grid-cols-3 divide-x divide-ink/15 border-y border-ink/15 py-4 sm:grid">
+                {[
+                  "Drawing review",
+                  "Cut-to-size parts",
+                  "Export coordination"
+                ].map((step, index) => (
+                  <li key={step} className="flex min-w-0 flex-col gap-1 px-3 first:pl-0 last:pr-0">
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-title text-xs font-medium uppercase leading-snug tracking-[0.04em] text-ink">
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
             </div>
             <WorkshopVideoCard video={featuredWorkshopVideo} featured />
           </div>
