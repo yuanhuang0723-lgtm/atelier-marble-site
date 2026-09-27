@@ -29,7 +29,7 @@ const inquiryContext = {
   projectType: inquiryProjectTypes[1]
 };
 
-const allowedSourcePath = /^\/(?:[a-z0-9-]+\/?)+$/;
+const allowedSourcePath = /^\/(?:[a-z0-9-]+\/?)*$/;
 
 function getInquiryContext(searchParams: { sourcePage?: string; projectType?: string }) {
   const sourcePage = typeof searchParams.sourcePage === "string" && allowedSourcePath.test(searchParams.sourcePage) ? searchParams.sourcePage : "/contact";

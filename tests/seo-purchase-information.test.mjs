@@ -203,6 +203,7 @@ test("contact shortcuts preserve one project context and explain optional fields
   const decode = (value) => decodeURIComponent(value.replace(/&amp;/g, "&"));
   for (const { searchParams, projectType, sourcePage } of [
     { searchParams: {}, projectType: "Commercial Stone Projects", sourcePage: "/contact" },
+    { searchParams: { sourcePage: "/", projectType: "Commercial Stone Projects" }, projectType: "Commercial Stone Projects", sourcePage: "/" },
     { searchParams: { sourcePage: "/projects/hotel-stone-supply", projectType: "Hotel & Hospitality Projects" }, projectType: "Hotel & Hospitality Projects", sourcePage: "/projects/hotel-stone-supply" }
   ]) {
     const html = await renderContact(searchParams);

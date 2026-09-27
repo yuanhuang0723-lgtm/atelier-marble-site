@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import WorkshopVideoCard from "../components/WorkshopVideoCard";
-import { cleanCardCopy, cleanDisplayTitle, contact, getAssets } from "../lib/assets";
+import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, siteName } from "../lib/seo";
 import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
   }
 };
+
+const homeInquiryHref = `/contact?sourcePage=%2F&projectType=${encodeURIComponent(inquiryProjectTypes[1])}`;
 
 const buyerPathways = [
   {
@@ -118,7 +120,7 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="hero-architectural__actions !justify-start">
-                <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href="/contact">
+                <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href={homeInquiryHref}>
                   Upload CAD / BOQ for Quote
                 </Link>
                 <Link className="btn-luxury-inverse" href="/factory#workshop-videos">
@@ -267,7 +269,7 @@ export default function HomePage() {
                   can be reviewed together.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link className="btn-luxury" href="/contact">
+                  <Link className="btn-luxury" href={homeInquiryHref}>
                     Discuss Your Project
                   </Link>
                   <a className="text-cta-luxury self-center" href={contact.whatsappUrl}>
@@ -317,7 +319,7 @@ export default function HomePage() {
             </div>
               <div className="mt-8">
                 <div className="flex flex-wrap gap-4">
-                  <Link className="text-cta-luxury" href="/contact">
+                  <Link className="text-cta-luxury" href={homeInquiryHref}>
                     Request Similar Project Pricing
                   </Link>
                   <Link className="text-cta-luxury" href="/how-we-work">
