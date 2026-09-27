@@ -182,7 +182,7 @@ video {
 
   .home-workshop-grid {
     width: 100%;
-    max-width: 80rem;
+    max-width: 68rem;
     min-width: 0;
     margin-inline: auto;
     grid-template-columns: minmax(0, 1fr);
@@ -191,8 +191,8 @@ video {
 
   @media (min-width: 1024px) {
     .home-workshop-grid {
-      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      gap: clamp(1.5rem, 2.5vw, 2.5rem);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+      gap: clamp(1.5rem, 2vw, 2rem);
     }
   }
 
