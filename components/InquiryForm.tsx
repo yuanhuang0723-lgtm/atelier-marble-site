@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { X } from "lucide-react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
 import { isAllowedInquiryFile } from "../lib/inquiry-files";
-import { getStoredLandingPage, getStoredLandingPath, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
+import { appendLandingPathToContactUrl, getStoredLandingPage, getStoredLandingPath, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
 type InquiryFormProps = {
   context: InquiryContext;
@@ -72,7 +72,10 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     return files.map((file) => `${file.name}:${file.size}:${file.lastModified}:${file.type}`).join("|");
   }
 
-  function track(method: "whatsapp" | "email") {
+  function track(method: "whatsapp" | "email", event?: ReactMouseEvent<HTMLAnchorElement>) {
+    if (event) {
+      event.currentTarget.href = appendLandingPathToContactUrl(event.currentTarget.href, getStoredLandingPath());
+    }
     trackConversionEvent(method === "whatsapp" ? "whatsapp_inquiry_click" : "email_inquiry_click", {
       method,
       sourcePage: hydratedContext.sourcePage,
@@ -363,10 +366,10 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         <button disabled={submitting} className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] disabled:cursor-wait disabled:opacity-60 md:h-[54px] md:text-[14px]" type="submit">
           {submitting ? "Sending..." : "Request Project Pricing"}
         </button>
-        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={() => track("email")}>
+        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={(event) => track("email", event)}>
           Email Project Details
         </a>
-        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => track("whatsapp")}>
+        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={(event) => track("whatsapp", event)}>
           Discuss on WhatsApp
         </a>
       </div>

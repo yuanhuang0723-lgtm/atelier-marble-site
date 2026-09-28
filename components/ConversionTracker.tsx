@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackConversionEvent } from "../lib/tracking";
+import { appendLandingPathToContactUrl, getStoredLandingPath, trackConversionEvent } from "../lib/tracking";
 
 function readCampaignParams() {
   const params = new URLSearchParams(window.location.search);
@@ -45,6 +45,9 @@ export default function ConversionTracker() {
       if (!isWhatsApp && !isMail) {
         return;
       }
+
+      const attributedHref = appendLandingPathToContactUrl(href, getStoredLandingPath());
+      if (attributedHref !== href) link.setAttribute("href", attributedHref);
 
       const eventName = isWhatsApp ? "whatsapp_inquiry_click" : "email_inquiry_click";
       trackConversionEvent(eventName, {

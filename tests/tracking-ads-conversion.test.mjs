@@ -79,3 +79,15 @@ test("inquiry landing attribution is reduced to a same-site path", () => {
   storage.set("atelierLandingPage", "https://outside.example/private");
   assert.equal(tracking.getStoredLandingPath(), "/contact");
 });
+
+test("mailto and WhatsApp shortcuts include the path-only landing attribution without duplicates", () => {
+  assert.equal(typeof tracking.appendLandingPathToContactUrl, "function", "a shared shortcut-attribution helper should be available");
+  const landingPath = "/countertops/vanity-tops";
+  const mailto = tracking.appendLandingPathToContactUrl("mailto:buyer@example.test?subject=Project&body=Need%20a%20quote", landingPath);
+  const whatsapp = tracking.appendLandingPathToContactUrl("https://wa.me/861234567890?text=Hello%20Atelier", landingPath);
+
+  assert.match(new URL(mailto).searchParams.get("body") || "", /Website page: \/countertops\/vanity-tops/);
+  assert.match(new URL(whatsapp).searchParams.get("text") || "", /Website page: \/countertops\/vanity-tops/);
+  assert.equal(tracking.appendLandingPathToContactUrl(mailto, landingPath), mailto, "the path must not be appended twice");
+  assert.equal(tracking.appendLandingPathToContactUrl("https://example.com/", landingPath), "https://example.com/");
+});

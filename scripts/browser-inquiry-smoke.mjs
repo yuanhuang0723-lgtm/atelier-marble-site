@@ -69,6 +69,14 @@ const homepageInquiryUrl = new URL(page.url());
 assert.equal(homepageInquiryUrl.searchParams.get("sourcePage"), "/", "homepage CTA lost its source page");
 assert.equal(homepageInquiryUrl.searchParams.get("projectType"), "Commercial Stone Projects", "homepage CTA lost its project type");
 await page.getByRole("button", { name: /Browse$/ }).waitFor({ state: "visible" });
+const asideMailBody = await readContactMessageAfterClick(page, "aside a[href^='mailto:']", "body");
+assert.match(asideMailBody || "", /Website page: \//, "the contact email shortcut lost the landing page");
+const asideWhatsAppText = await readContactMessageAfterClick(page, "aside a[href*='wa.me'], aside a[href*='whatsapp']", "text");
+assert.match(asideWhatsAppText || "", /Website page: \//, "the contact WhatsApp shortcut lost the landing page");
+const formMailBody = await readContactMessageAfterClick(page, "[data-qualified-inquiry-form='true'] a[href^='mailto:']", "body");
+assert.match(formMailBody || "", /Website page: \//, "the form email shortcut lost the landing page");
+const floatingWhatsAppText = await readContactMessageAfterClick(page, "a.whatsapp-floating-button", "text");
+assert.match(floatingWhatsAppText || "", /Website page: \//, "the floating WhatsApp shortcut lost the landing page");
 console.log("checking file selection");
 const fileInput = page.locator('input[type="file"]');
 await fileInput.setInputFiles(testFile);
@@ -145,4 +153,14 @@ async function waitForStableLayout(currentPage) {
     await new Promise((resolve) => requestAnimationFrame(() => resolve()));
     await new Promise((resolve) => requestAnimationFrame(() => resolve()));
   });
+}
+
+async function readContactMessageAfterClick(currentPage, selector, parameter) {
+  return currentPage.evaluate(({ linkSelector, queryParameter }) => {
+    const link = document.querySelector(linkSelector);
+    if (!(link instanceof HTMLAnchorElement)) throw new Error(`Missing contact shortcut: ${linkSelector}`);
+    document.addEventListener("click", (event) => event.preventDefault(), { once: true });
+    link.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    return new URL(link.href).searchParams.get(queryParameter);
+  }, { linkSelector: selector, queryParameter: parameter });
 }

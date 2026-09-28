@@ -66,6 +66,28 @@ export function getStoredLandingPath() {
   }
 }
 
+export function appendLandingPathToContactUrl(href: string, landingPath: string) {
+  if (!landingPath.startsWith("/") || landingPath.startsWith("//") || /[?#\s\\]/.test(landingPath)) return href;
+
+  try {
+    const url = new URL(href);
+    const parameter = url.protocol === "mailto:"
+      ? "body"
+      : url.protocol === "https:" && (url.hostname === "wa.me" || url.hostname === "whatsapp.com" || url.hostname.endsWith(".whatsapp.com"))
+        ? "text"
+        : null;
+    if (!parameter) return href;
+
+    const message = url.searchParams.get(parameter) || "";
+    const attributionLine = `Website page: ${landingPath}`;
+    if (message.split(/\r?\n/).some((line) => line.trim() === attributionLine)) return href;
+    url.searchParams.set(parameter, [message.trimEnd(), attributionLine].filter(Boolean).join("\n"));
+    return url.toString();
+  } catch {
+    return href;
+  }
+}
+
 export function trackPageviewEvent(payload: { page_path?: string; page_title?: string; referrer?: string }) {
   const pageViewPayload = {
     page_location: window.location.href,
