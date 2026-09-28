@@ -99,6 +99,7 @@ export default function CountertopsPage() {
         { title: "Quote and delivery", items: ["Destination market, packing requirements, timing, and delivery term", "Drawings, BOQ, marked-up photos, quantities, and material direction", "Pricing is confirmed after the project scope and fabrication requirements are reviewed"] }
       ]}
       relatedLink={{ label: "Explore marble countertop fabrication", href: "/countertops/marble-countertops" }}
+      relatedLinks={[{ label: "Explore hotel bathroom vanity tops", href: "/countertops/vanity-tops" }]}
       faqTitle="Custom countertop details, answered clearly."
       faqs={[
         { question: "What information helps price a custom stone countertop?", answer: "Share the application, dimensions or drawings, cut-outs, edge profile, quantity, material direction, finish, destination, and required timing." },
