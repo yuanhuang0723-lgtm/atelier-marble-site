@@ -12,6 +12,7 @@ const testFile = {
 const screenshotPath = process.env.BROWSER_SMOKE_SCREENSHOT || join(tmpdir(), "atelier-marble-browser-smoke-contact-390.png");
 let releaseSubmit;
 const submitGate = new Promise((resolve) => { releaseSubmit = resolve; });
+let homepageInquiryPayload;
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
 page.on("requestfailed", (request) => console.log(`request failed ${request.method()} ${request.url()}`));
@@ -33,6 +34,7 @@ await page.route(`${baseUrl}/api/inquiry/upload-url`, async (route) => {
 });
 await page.route(`${baseUrl}/mock-upload`, async (route) => route.fulfill({ status: 200, body: "ok" }));
 await page.route(`${baseUrl}/api/inquiry`, async (route) => {
+  homepageInquiryPayload = route.request().postDataJSON();
   await submitGate;
   await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, message: "accepted" }) });
 });
@@ -95,6 +97,7 @@ const leadEvent = await page.evaluate(() => (window.dataLayer || []).find((event
 assert.equal(leadEvent.projectType, "Commercial Stone Projects", "generate_lead lost the selected project type");
 assert.equal(leadEvent.sourcePage, "/", "generate_lead lost the originating homepage");
 assert.equal(leadEvent.landingPage, "/", "generate_lead lost the organic landing page");
+assert.equal(homepageInquiryPayload.landingPage, "/", "the inquiry email payload lost its original landing path");
 await page.reload({ waitUntil: "domcontentloaded" });
 const leadCountAfterRefresh = await page.evaluate(() => (window.dataLayer || []).filter((event) => event && event.event === "generate_lead").length);
 const submissionMarkerAfterRefresh = await page.evaluate(() => window.sessionStorage.getItem("atelierInquirySubmitted"));
@@ -103,11 +106,13 @@ assert.equal(submissionMarkerAfterRefresh, null, "submission marker was not cons
 
 const vanityPage = await browser.newPage({ viewport: { width: 390, height: 900 } });
 await vanityPage.route(/(?:googletagmanager|google-analytics)\.com/, (route) => route.abort());
+let vanityInquiryPayload;
 await vanityPage.route(`${baseUrl}/api/inquiry`, async (route) => {
+  vanityInquiryPayload = route.request().postDataJSON();
   await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, message: "accepted" }) });
 });
-await vanityPage.goto(`${baseUrl}/countertops/vanity-tops`, { waitUntil: "domcontentloaded" });
-await vanityPage.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") === "/countertops/vanity-tops");
+await vanityPage.goto(`${baseUrl}/countertops/vanity-tops?utm_source=browser-test`, { waitUntil: "domcontentloaded" });
+await vanityPage.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") === "/countertops/vanity-tops?utm_source=browser-test");
 const vanityInquiryNavigation = vanityPage.waitForURL((url) => url.pathname === "/contact");
 await vanityPage.getByRole("link", { name: "Upload CAD / BOQ for Quote" }).click();
 await vanityInquiryNavigation;
@@ -121,7 +126,9 @@ await vanityPage.waitForURL((url) => url.pathname === "/contact/thank-you");
 const vanityLeadEvent = await vanityPage.evaluate(() => (window.dataLayer || []).find((event) => event && event.event === "generate_lead"));
 assert.equal(vanityLeadEvent.projectType, "Luxury Vanity Tops & Cabinet Panels", "vanity generate_lead lost its project type");
 assert.equal(vanityLeadEvent.sourcePage, "/countertops/vanity-tops", "vanity generate_lead lost its source page");
-assert.equal(vanityLeadEvent.landingPage, "/countertops/vanity-tops", "vanity generate_lead lost its landing page");
+assert.equal(vanityLeadEvent.landingPage, "/countertops/vanity-tops?utm_source=browser-test", "vanity generate_lead lost its landing page");
+assert.equal(vanityInquiryPayload.landingPage, "/countertops/vanity-tops", "the inquiry email payload must omit query parameters from its landing path");
+assert.equal(vanityInquiryPayload.campaign.utm_source, "browser-test", "campaign attribution must remain available separately");
 await vanityPage.close();
 
 await page.screenshot({ path: screenshotPath, fullPage: false });

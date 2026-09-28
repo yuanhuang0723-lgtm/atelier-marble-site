@@ -25,7 +25,7 @@ const FILE_KEY_PATTERN = /^inquiries\/[0-9a-f-]{36}\.[a-z0-9]+$/i;
 const CAMPAIGN_KEYS = new Set(["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"]);
 const STRING_FIELDS = [
   "name", "contact", "budgetRange", "timeline", "message", "projectType", "intent", "sourcePage", "company",
-  "country", "destinationPort", "stoneScope", "quantity", "deliveryDate", "materialPreference", "phone", "website", "sessionId"
+  "country", "destinationPort", "stoneScope", "quantity", "deliveryDate", "materialPreference", "phone", "website", "sessionId", "landingPage"
 ] as const;
 
 type InquiryFile = { key: string; name: string; type: string; size: number; receipt: string };
@@ -34,6 +34,16 @@ type IdempotencyRow = { request_hash: string; status: "processing" | "sent" | "p
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isSafeLandingPath(value: string) {
+  if (!value.startsWith("/") || value.startsWith("//") || /[?#\s\\]/.test(value)) return false;
+  try {
+    const parsed = new URL(value, "https://atelier-marble.invalid");
+    return parsed.origin === "https://atelier-marble.invalid" && parsed.pathname === value;
+  } catch {
+    return false;
+  }
 }
 
 async function readJson(request: Request) {
@@ -58,8 +68,10 @@ function validateAndNormalizeBody(value: unknown): { body?: InquiryRequestBody; 
 
   for (const field of STRING_FIELDS) {
     if (field in body && body[field] !== undefined && typeof body[field] !== "string") return { message: "Invalid request fields." };
-    if (typeof body[field] === "string" && body[field].length > (field === "sourcePage" ? 500 : 2000)) return { message: "One or more fields are too long." };
+    if (typeof body[field] === "string" && body[field].length > (field === "sourcePage" || field === "landingPage" ? 500 : 2000)) return { message: "One or more fields are too long." };
   }
+
+  if (typeof body.landingPage === "string" && body.landingPage && !isSafeLandingPath(body.landingPage)) return { message: "Invalid inquiry landing page." };
 
   if (typeof body.campaign !== "undefined") {
     if (!isRecord(body.campaign) || Object.keys(body.campaign).some((key) => !CAMPAIGN_KEYS.has(key) || typeof body.campaign?.[key] !== "string" || String(body.campaign[key]).length > 300)) return { message: "Invalid campaign context." };
@@ -138,7 +150,7 @@ function buildMessage(body: InquiryRequestBody, fileLinks: string[]) {
   const campaign = isRecord(body.campaign) ? Object.entries(body.campaign).filter(([key]) => CAMPAIGN_KEYS.has(key)).map(([key, value]) => `${key}: ${String(value)}`) : [];
   return [
     "Hello Atelier Marble,", "", "I would like to discuss a project consultation.",
-    body.projectType ? `Project type: ${body.projectType}` : "", body.intent ? `Inquiry intent: ${body.intent}` : "", body.sourcePage ? `Source page: ${body.sourcePage}` : "",
+    body.projectType ? `Project type: ${body.projectType}` : "", body.intent ? `Inquiry intent: ${body.intent}` : "", body.sourcePage ? `Source page: ${body.sourcePage}` : "", body.landingPage ? `Landing page: ${body.landingPage}` : "",
     body.company ? `Company: ${body.company}` : "", body.country ? `Country: ${body.country}` : "", body.destinationPort ? `Destination port: ${body.destinationPort}` : "",
     body.stoneScope ? `Product / stone scope: ${body.stoneScope}` : "", body.quantity ? `Approximate quantity: ${body.quantity}` : "", body.deliveryDate ? `Required delivery date: ${body.deliveryDate}` : "",
     body.materialPreference ? `Material preference: ${body.materialPreference}` : "", body.phone ? `WhatsApp / phone: ${body.phone}` : "", campaign.length ? `Campaign: ${campaign.join(" | ")}` : "",
@@ -152,7 +164,7 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
   const payload = new URLSearchParams({
     _subject: `${String(body.projectType)} Project Consultation`, _template: "table", _captcha: "false", _replyto: String(body.contact),
     name: String(body.name || ""), contact: String(body.contact), budgetRange: String(body.budgetRange || ""), timeline: String(body.timeline || ""), message: String(body.message),
-    projectType: String(body.projectType), intent: String(body.intent || ""), sourcePage: String(body.sourcePage || ""), company: String(body.company || ""), country: String(body.country || ""),
+    projectType: String(body.projectType), intent: String(body.intent || ""), sourcePage: String(body.sourcePage || ""), landingPage: String(body.landingPage || ""), company: String(body.company || ""), country: String(body.country || ""),
     destinationPort: String(body.destinationPort || ""), stoneScope: String(body.stoneScope || ""), quantity: String(body.quantity || ""), deliveryDate: String(body.deliveryDate || ""),
     materialPreference: String(body.materialPreference || ""), phone: String(body.phone || ""), files: fileLinks.join("\n"), body: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
   });

@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
 import { isAllowedInquiryFile } from "../lib/inquiry-files";
-import { getStoredLandingPage, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
+import { getStoredLandingPage, getStoredLandingPath, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
 type InquiryFormProps = {
   context: InquiryContext;
@@ -173,7 +173,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         body: JSON.stringify({
           name, company, contact, country, destinationPort, stoneScope, quantity, deliveryDate,
           materialPreference, phone, budgetRange, timeline, message, projectType,
-          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, files: uploadedFiles,
+          intent: hydratedContext.intent, sourcePage: hydratedContext.sourcePage, landingPage: getStoredLandingPath(), files: uploadedFiles,
           campaign: readStoredCampaign(), idempotencyKey: getIdempotencyKey(), sessionId, website
         })
       });

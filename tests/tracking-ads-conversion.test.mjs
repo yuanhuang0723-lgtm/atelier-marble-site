@@ -4,7 +4,8 @@ import test, { beforeEach } from "node:test";
 process.env.NEXT_PUBLIC_GOOGLE_ADS_ID = "AW-TEST";
 process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL = "inquiry-label";
 
-const { trackConversionEvent, trackPageviewEvent } = await import("../lib/tracking");
+const tracking = await import("../lib/tracking");
+const { trackConversionEvent, trackPageviewEvent } = tracking;
 const dataLayer = [];
 const gtagCalls = [];
 const storage = new Map();
@@ -13,7 +14,7 @@ let fetchCalls = 0;
 
 globalThis.window = {
   dataLayer,
-  location: { pathname: "/contact", href: "https://site.test/contact", search: "" },
+  location: { origin: "https://site.test", pathname: "/contact", href: "https://site.test/contact", search: "" },
   sessionStorage: {
     getItem: (key) => storage.get(key) ?? null,
     setItem: (key, value) => storage.set(key, value),
@@ -69,4 +70,12 @@ test("pageview tracking does not make a fallback fetch when sendBeacon is unavai
 
   assert.equal(fetchCalls, 0, "no-op visitor events must not be sent with fetch");
   assert.ok(dataLayer.some((event) => event.event === "page_view"), "page_view should remain in the analytics data layer");
+});
+
+test("inquiry landing attribution is reduced to a same-site path", () => {
+  assert.equal(typeof tracking.getStoredLandingPath, "function", "a path-only landing helper should be available for inquiry records");
+  storage.set("atelierLandingPage", "/countertops/vanity-tops?utm_source=google&email=buyer@example.com");
+  assert.equal(tracking.getStoredLandingPath(), "/countertops/vanity-tops");
+  storage.set("atelierLandingPage", "https://outside.example/private");
+  assert.equal(tracking.getStoredLandingPath(), "/contact");
 });

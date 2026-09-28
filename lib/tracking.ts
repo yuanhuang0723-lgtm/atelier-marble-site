@@ -53,6 +53,19 @@ export function getStoredLandingPage() {
   }
 }
 
+export function getStoredLandingPath() {
+  const fallbackPath = window.location.pathname || "/";
+  const landingPage = getStoredLandingPage();
+  if (!landingPage.startsWith("/") || landingPage.startsWith("//")) return fallbackPath;
+
+  try {
+    const parsed = new URL(landingPage, window.location.origin);
+    return parsed.origin === window.location.origin ? parsed.pathname.slice(0, 500) || "/" : fallbackPath;
+  } catch {
+    return fallbackPath;
+  }
+}
+
 export function trackPageviewEvent(payload: { page_path?: string; page_title?: string; referrer?: string }) {
   const pageViewPayload = {
     page_location: window.location.href,

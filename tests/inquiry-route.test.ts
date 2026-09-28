@@ -104,6 +104,42 @@ test("inquiry route accepts a provider-confirmed no-file submission and deduplic
   assert.equal(emailCalls, 1);
 });
 
+test("inquiry email retains the first landing path separately from the source page", async () => {
+  const { POST } = await import("../app/api/inquiry/route");
+  const result = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.0.0.20" },
+    body: JSON.stringify(validBody({
+      sourcePage: "/guides/hotel-stone-pricing",
+      landingPage: "/countertops/vanity-tops"
+    }))
+  }));
+
+  assert.equal(result.status, 200);
+  const fields = new URLSearchParams(lastEmailPayload);
+  assert.equal(fields.get("sourcePage"), "/guides/hotel-stone-pricing");
+  assert.equal(fields.get("landingPage"), "/countertops/vanity-tops");
+  assert.match(fields.get("body") || "", /Landing page: \/countertops\/vanity-tops/);
+});
+
+test("inquiry route rejects landing-page query strings and external URLs", async () => {
+  const { POST } = await import("../app/api/inquiry/route");
+  const withQuery = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.0.0.21" },
+    body: JSON.stringify(validBody({ landingPage: "/countertops/vanity-tops?email=buyer@example.com" }))
+  }));
+  const external = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.0.0.22" },
+    body: JSON.stringify(validBody({ landingPage: "https://outside.example/private" }))
+  }));
+
+  assert.equal(withQuery.status, 400);
+  assert.equal(external.status, 400);
+  assert.equal(emailCalls, 0);
+});
+
 test("inquiry route rejects malformed JSON, scalar bodies, and forged file receipts", async () => {
   const { POST } = await import("../app/api/inquiry/route");
   const malformed = await POST(new Request("https://site.test/api/inquiry", { method: "POST", headers: { "x-forwarded-for": "10.0.0.3" }, body: "{" }));
