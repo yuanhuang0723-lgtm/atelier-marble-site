@@ -19,37 +19,6 @@ export type ConversionEventPayload = {
   landingPage?: string;
 };
 
-export type VisitorEventPayload = {
-  eventType: "pageview" | "conversion";
-  page_path?: string;
-  page_title?: string;
-  referrer?: string;
-  visitor_id?: string;
-  session_id?: string;
-  viewport_width?: number;
-  viewport_height?: number;
-  language?: string;
-  user_agent?: string;
-  event_name?: string;
-  link_text?: string;
-  link_type?: "whatsapp" | "email" | "other";
-  method?: string;
-  sourcePage?: string;
-  projectType?: string;
-  hasContact?: boolean;
-  hasMessage?: boolean;
-  hasBudget?: boolean;
-  hasTimeline?: boolean;
-  hasDrawings?: boolean;
-  hasFiles?: boolean;
-  fileCount?: number;
-  country?: string;
-  hasCompany?: boolean;
-  hasDestination?: boolean;
-  hasQuantity?: boolean;
-  landingPage?: string;
-};
-
 declare global {
   interface Window {
     dataLayer?: unknown[];
@@ -59,7 +28,6 @@ declare global {
 
 const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 const adsConversionLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
-const VISITOR_EVENTS_ENDPOINT = "/api/visitor-events";
 
 export function readStoredCampaign() {
   try {
@@ -85,61 +53,7 @@ export function getStoredLandingPage() {
   }
 }
 
-export function getOrCreateVisitorId(storageKey: string) {
-  try {
-    const stored = window.localStorage.getItem(storageKey);
-    if (stored) {
-      return stored;
-    }
-
-    const created = window.crypto?.randomUUID?.() || `visitor-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    window.localStorage.setItem(storageKey, created);
-    return created;
-  } catch {
-    return `visitor-${Date.now()}`;
-  }
-}
-
-export function getOrCreateSessionId(storageKey: string) {
-  try {
-    const stored = window.sessionStorage.getItem(storageKey);
-    if (stored) {
-      return stored;
-    }
-
-    const created = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    window.sessionStorage.setItem(storageKey, created);
-    return created;
-  } catch {
-    return `session-${Date.now()}`;
-  }
-}
-
-function postVisitorEvent(payload: VisitorEventPayload) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  const body = JSON.stringify(payload);
-
-  if (navigator.sendBeacon) {
-    const sent = navigator.sendBeacon(VISITOR_EVENTS_ENDPOINT, new Blob([body], { type: "application/json" }));
-    if (sent) {
-      return;
-    }
-  }
-
-  fetch(VISITOR_EVENTS_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body,
-    keepalive: true
-  }).catch(() => {});
-}
-
-export function trackPageviewEvent(payload: Omit<VisitorEventPayload, "eventType">) {
+export function trackPageviewEvent(payload: { page_path?: string; page_title?: string; referrer?: string }) {
   const pageViewPayload = {
     page_location: window.location.href,
     page_path: payload.page_path || window.location.pathname + window.location.search,
@@ -150,11 +64,6 @@ export function trackPageviewEvent(payload: Omit<VisitorEventPayload, "eventType
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: "page_view", ...pageViewPayload });
   window.gtag?.("event", "page_view", pageViewPayload);
-
-  postVisitorEvent({
-    eventType: "pageview",
-    ...payload
-  });
 }
 
 export function trackConversionEvent(eventName: string, payload: ConversionEventPayload = {}) {
@@ -167,11 +76,6 @@ export function trackConversionEvent(eventName: string, payload: ConversionEvent
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: eventName, ...enrichedPayload });
   window.gtag?.("event", eventName, enrichedPayload);
-  postVisitorEvent({
-    eventType: "conversion",
-    event_name: eventName,
-    ...enrichedPayload
-  });
 
   if (eventName === "generate_lead" && adsId && adsConversionLabel) {
     window.gtag?.("event", "conversion", {

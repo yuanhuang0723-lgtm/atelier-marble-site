@@ -41,6 +41,10 @@ for (const width of [360, 390, 430, 1280, 1440]) {
   console.log(`checking viewport ${width}`);
   await page.setViewportSize({ width, height: 900 });
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") !== null);
+  const landingPage = await page.evaluate(() => window.sessionStorage.getItem("atelierLandingPage"));
+  assert.equal(landingPage, "/", `homepage visit was not recorded as the first landing page at ${width}px`);
+  await waitForStableLayout(page);
   const homeText = await page.locator("body").innerText();
   assert.equal(homeText.includes("A clearer route for project stone."), false, `homepage still contains the workflow block at ${width}px`);
   assert.equal(homeText.includes("Discuss your project requirements."), false, `homepage still contains the duplicate CTA at ${width}px`);
@@ -48,12 +52,20 @@ for (const width of [360, 390, 430, 1280, 1440]) {
   assert.ok(homeWidth.scroll <= homeWidth.client + 1, `homepage overflows horizontally at ${width}px`);
 
   await page.goto(`${baseUrl}/contact`, { waitUntil: "domcontentloaded" });
+  await waitForStableLayout(page);
   const contactWidth = await page.evaluate(() => ({ client: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
   assert.ok(contactWidth.scroll <= contactWidth.client + 1, `contact page overflows horizontally at ${width}px`);
 }
 
 await page.setViewportSize({ width: 390, height: 900 });
-await page.goto(`${baseUrl}/contact?sourcePage=${encodeURIComponent("/projects/hotel-stone-supply")}&projectType=${encodeURIComponent("Hotel & Hospitality Projects")}`, { waitUntil: "load" });
+await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
+await page.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") === "/");
+const homepageInquiryNavigation = page.waitForURL((url) => url.pathname === "/contact");
+await page.getByRole("link", { name: "Upload CAD / BOQ for Quote" }).click();
+await homepageInquiryNavigation;
+const homepageInquiryUrl = new URL(page.url());
+assert.equal(homepageInquiryUrl.searchParams.get("sourcePage"), "/", "homepage CTA lost its source page");
+assert.equal(homepageInquiryUrl.searchParams.get("projectType"), "Commercial Stone Projects", "homepage CTA lost its project type");
 await page.getByRole("button", { name: /Browse$/ }).waitFor({ state: "visible" });
 console.log("checking file selection");
 const fileInput = page.locator('input[type="file"]');
@@ -80,8 +92,8 @@ assert.equal(new URL(page.url()).pathname, "/contact/thank-you", "successful loc
 const leadCount = await page.evaluate(() => (window.dataLayer || []).filter((event) => event && event.event === "generate_lead").length);
 assert.equal(leadCount, 1, "success did not emit exactly one generate_lead event");
 const leadEvent = await page.evaluate(() => (window.dataLayer || []).find((event) => event && event.event === "generate_lead"));
-assert.equal(leadEvent.projectType, "Hotel & Hospitality Projects", "generate_lead lost the selected project type");
-assert.equal(leadEvent.sourcePage, "/projects/hotel-stone-supply", "generate_lead lost the originating service page");
+assert.equal(leadEvent.projectType, "Commercial Stone Projects", "generate_lead lost the selected project type");
+assert.equal(leadEvent.sourcePage, "/", "generate_lead lost the originating homepage");
 assert.equal(leadEvent.landingPage, "/", "generate_lead lost the organic landing page");
 await page.reload({ waitUntil: "domcontentloaded" });
 const leadCountAfterRefresh = await page.evaluate(() => (window.dataLayer || []).filter((event) => event && event.event === "generate_lead").length);
@@ -89,10 +101,41 @@ const submissionMarkerAfterRefresh = await page.evaluate(() => window.sessionSto
 assert.equal(leadCountAfterRefresh, 0, "refresh emitted a duplicate generate_lead event");
 assert.equal(submissionMarkerAfterRefresh, null, "submission marker was not consumed");
 
+const vanityPage = await browser.newPage({ viewport: { width: 390, height: 900 } });
+await vanityPage.route(/(?:googletagmanager|google-analytics)\.com/, (route) => route.abort());
+await vanityPage.route(`${baseUrl}/api/inquiry`, async (route) => {
+  await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, message: "accepted" }) });
+});
+await vanityPage.goto(`${baseUrl}/countertops/vanity-tops`, { waitUntil: "domcontentloaded" });
+await vanityPage.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") === "/countertops/vanity-tops");
+const vanityInquiryNavigation = vanityPage.waitForURL((url) => url.pathname === "/contact");
+await vanityPage.getByRole("link", { name: "Upload CAD / BOQ for Quote" }).click();
+await vanityInquiryNavigation;
+const vanityInquiryUrl = new URL(vanityPage.url());
+assert.equal(vanityInquiryUrl.searchParams.get("sourcePage"), "/countertops/vanity-tops", "vanity CTA lost its source page");
+assert.equal(vanityInquiryUrl.searchParams.get("projectType"), "Luxury Vanity Tops & Cabinet Panels", "vanity CTA lost its project type");
+await vanityPage.getByLabel("Email").fill("browser-test@example.com");
+await vanityPage.getByLabel("Project Notes").fill("Synthetic local vanity inquiry smoke test.");
+await vanityPage.getByRole("button", { name: "Request Project Pricing" }).click();
+await vanityPage.waitForURL((url) => url.pathname === "/contact/thank-you");
+const vanityLeadEvent = await vanityPage.evaluate(() => (window.dataLayer || []).find((event) => event && event.event === "generate_lead"));
+assert.equal(vanityLeadEvent.projectType, "Luxury Vanity Tops & Cabinet Panels", "vanity generate_lead lost its project type");
+assert.equal(vanityLeadEvent.sourcePage, "/countertops/vanity-tops", "vanity generate_lead lost its source page");
+assert.equal(vanityLeadEvent.landingPage, "/countertops/vanity-tops", "vanity generate_lead lost its landing page");
+await vanityPage.close();
+
 await page.screenshot({ path: screenshotPath, fullPage: false });
 await browser.close();
-console.log("Browser smoke passed for 360, 390, 430, 1280, and 1440px; file reselection, submit lock, success navigation, and refresh tracking verified.");
+console.log("Browser smoke passed for 360, 390, 430, 1280, and 1440px; homepage and vanity inquiry attribution, file reselection, submit lock, success navigation, and refresh tracking verified.");
 
 async function assertFileVisible(currentPage, fileName) {
   await currentPage.getByText(fileName, { exact: false }).first().waitFor({ state: "visible" });
+}
+
+async function waitForStableLayout(currentPage) {
+  await currentPage.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+    await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+  });
 }
