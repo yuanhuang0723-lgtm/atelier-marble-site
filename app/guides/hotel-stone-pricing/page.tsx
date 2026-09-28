@@ -137,6 +137,11 @@ export default function HotelStonePricingPage() {
                       {item.title}
                     </h2>
                     <p className="mt-3 text-sm leading-7 text-ink/70">{item.copy}</p>
+                    {item.title === "Bathrooms" ? (
+                      <Link className="mt-4 inline-flex text-cta-luxury" href="/countertops/vanity-tops">
+                        Review hotel vanity-top scope
+                      </Link>
+                    ) : null}
                   </div>
                 ))}
               </div>
