@@ -82,7 +82,7 @@ export default function CommercialLandingPage({
                 {bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-[0.98rem] leading-7 text-ink/75"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />{bullet}</li>)}
               </ul>
               <div className="flex flex-wrap gap-4">
-                <Link className="btn-luxury-fill" href={contactHref}>{primaryCtaLabel || "Upload CAD / BOQ for Quote"}</Link>
+                <Link className="btn-luxury-fill" href={contactHref}>{primaryCtaLabel || "Request a Project Quote"}</Link>
                 <a className="btn-luxury" href={contact.whatsappUrl}>Discuss on WhatsApp</a>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-3">

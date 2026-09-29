@@ -73,6 +73,7 @@ export default function CountertopsPage() {
   return (
     <CommercialLandingPage
       eyebrow="Custom stone countertops"
+      primaryCtaLabel="Request Countertop Pricing"
       title="Custom stone countertops for kitchens, hotels, and commercial interiors."
       description="Coordinate natural stone countertops from dimensions or drawings, including islands, hotel vanity packages, commercial counters, cut-outs, finished edges, and export packing."
       contentSectionTitle="Scope countertop work by application and item."

@@ -86,6 +86,7 @@ export default function MarbleCountertopsPage() {
   return (
     <CommercialLandingPage
       eyebrow="Marble countertops"
+      primaryCtaLabel="Request Marble Countertop Pricing"
       title="Marble countertops planned around your project details."
       description="Review marble character, dimensions, cut-outs, edge profiles, finish, and packing requirements with a project-focused stone fabrication team in Yunfu, China."
       contentSectionTitle="Review marble layout, fabrication, and approval details."
