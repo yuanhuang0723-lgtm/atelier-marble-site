@@ -104,7 +104,10 @@ export default function MarbleCountertopsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "Explore integrated stone sinks", href: "/countertops/integrated-stone-sinks" }}
-      relatedLinks={[{ label: "Plan hotel vanity tops by room type", href: "/countertops/vanity-tops" }]}
+      relatedLinks={[
+        { label: "Plan hotel vanity tops by room type", href: "/countertops/vanity-tops" },
+        { label: "Review workshop and packing references", href: "/factory#factory-evidence" }
+      ]}
       purchaseInfo={{ materialOptions: "Natural marble. Confirm current lot, thickness, finish, vein direction, and batch matching.", customCapability: "Review kitchen and hotel countertop layouts, cut-outs, edges, finish, and repeat-piece matching." }} metadata={metadata}
     />
   );
