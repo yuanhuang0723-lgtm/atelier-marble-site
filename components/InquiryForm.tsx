@@ -251,117 +251,126 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           Only your email and a short project note are required. Everything else, including CAD or BOQ files, is optional for a first inquiry. Extra project details help us review material, fabrication, and packing needs.
         </p>
       </div>
-      <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Contact Name
-          <input
-            className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
-            name="name"
-            type="text"
-            placeholder="Your name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </label>
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Email
-          <input
-            className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
-            name="contact"
-            type="email"
-            placeholder="Your email address"
-            required
-            value={contact}
-            onChange={(event) => setContact(event.target.value)}
-          />
-        </label>
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Company
-          <input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="company" placeholder="Company name" value={company} onChange={(event) => setCompany(event.target.value)} />
-        </label>
-      </div>
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Country<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="country" placeholder="Country" value={country} onChange={(event) => setCountry(event.target.value)} /></label>
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Destination Port<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="destinationPort" placeholder="Port or city" value={destinationPort} onChange={(event) => setDestinationPort(event.target.value)} /></label>
-      </div>
-      <div className={`grid gap-3 ${projectOptions?.length ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
-        {projectOptions?.length ? (
-          <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-            Project Type
-            <select
-              className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
-              name="projectType"
-              value={projectType}
-              onChange={(event) => setProjectType(event.target.value)}
-            >
-              {projectOptions.map((option) => (
-                <option key={option}>{option}</option>
-              ))}
-            </select>
-          </label>
-        ) : null}
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Budget Range
-          <select
-            className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
-            name="budgetRange"
-            value={budgetRange}
-            onChange={(event) => setBudgetRange(event.target.value)}
-          >
-            <option value="">Select budget range</option>
-            <option>Under USD 10,000</option>
-            <option>USD 10,000 - 30,000</option>
-            <option>USD 30,000 - 80,000</option>
-            <option>USD 80,000 - 200,000</option>
-            <option>USD 200,000+</option>
-          </select>
-        </label>
-      </div>
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Product / Stone Scope<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="stoneScope" placeholder="Countertops, vanity tops, slabs..." value={stoneScope} onChange={(event) => setStoneScope(event.target.value)} /></label>
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Approximate Quantity<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="quantity" placeholder="Pieces, rooms, or m²" value={quantity} onChange={(event) => setQuantity(event.target.value)} /></label>
-      </div>
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Required Delivery Date<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none" name="deliveryDate" type="date" value={deliveryDate} onChange={(event) => setDeliveryDate(event.target.value)} /></label>
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Material Preference<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="materialPreference" placeholder="Marble, quartzite..." value={materialPreference} onChange={(event) => setMaterialPreference(event.target.value)} /></label>
-      </div>
-      <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">WhatsApp / Phone<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="phone" placeholder="Country code included" value={phone} onChange={(event) => setPhone(event.target.value)} /></label>
-      <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">CAD / BOQ / Reference Files
-        <input ref={fileInputRef} className="sr-only" type="file" multiple accept=".pdf,.dwg,.dxf,.xlsx,.xls,.jpg,.jpeg,.png,.zip" onChange={handleFiles} />
-        <button type="button" className="flex min-h-12 items-center justify-between rounded-[12px] border border-dashed border-ink/25 bg-[var(--color-paper)] px-4 text-left text-[14px] font-normal normal-case tracking-normal text-ink/65 hover:border-ink/50" onClick={() => fileInputRef.current?.click()}><span>{files.length ? `${files.length} file${files.length > 1 ? "s" : ""} selected` : "Choose up to 5 files"}</span><span className="text-xs uppercase tracking-[0.12em]">Browse</span></button>
-        <span className="text-xs font-normal normal-case tracking-normal text-ink/50">PDF, DWG, DXF, XLSX, JPG, PNG or ZIP. 25 MB per file.</span>
-        {files.length ? <ul className="grid gap-2" aria-label="Selected files">{files.map((file, index) => <li key={`${file.name}-${file.lastModified}`} className="flex min-w-0 items-center justify-between gap-3 rounded-[10px] border border-ink/10 bg-stone/50 px-3 py-2 text-xs text-ink/70"><span className="min-w-0 truncate">{file.name} <span className="text-ink/45">({(file.size / 1024 / 1024).toFixed(1)} MB)</span></span><button type="button" className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/55 hover:border-ink/30 hover:text-ink" aria-label={`Remove ${file.name}`} title={`Remove ${file.name}`} onClick={() => removeFile(index)}><X className="h-3.5 w-3.5" aria-hidden="true" /></button></li>)}</ul> : null}
+      <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+        Email
+        <input
+          className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
+          name="contact"
+          type="email"
+          placeholder="Your email address"
+          autoComplete="email"
+          required
+          value={contact}
+          onChange={(event) => setContact(event.target.value)}
+        />
       </label>
-      <div className="grid gap-3 md:grid-cols-1">
-        <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
-          Timeline Expectation
-          <select
-            className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
-            name="timeline"
-            value={timeline}
-            onChange={(event) => setTimeline(event.target.value)}
-          >
-            <option value="">Select timeline</option>
-            <option>Immediate</option>
-            <option>Within 1 month</option>
-            <option>1-3 months</option>
-            <option>3-6 months</option>
-            <option>Flexible</option>
-          </select>
-        </label>
-      </div>
       <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
         Project Notes
         <textarea
-          className="min-h-[160px] w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 py-3 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
+          className="min-h-[120px] w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 py-3 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
           name="message"
-          placeholder="Material preference, quantities, drawings, destination market, and any special requirements."
+          placeholder="What stone work do you need? Share a few details or the project stage."
           required
           minLength={10}
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
       </label>
+      <details className="rounded-[16px] border border-ink/10 bg-paper px-4 md:px-5">
+        <summary className="cursor-pointer py-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/70">
+          Add project details (optional)
+        </summary>
+        <div className="grid gap-4 border-t border-ink/10 pb-4 pt-4 md:pb-5 md:pt-5">
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+              Contact Name
+              <input
+                className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition placeholder:text-ink/35 focus:border-[rgba(31,27,24,0.42)]"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder="Your name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </label>
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+              Company
+              <input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="company" autoComplete="organization" placeholder="Company name" value={company} onChange={(event) => setCompany(event.target.value)} />
+            </label>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Country<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="country" placeholder="Country" value={country} onChange={(event) => setCountry(event.target.value)} /></label>
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Destination Port<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="destinationPort" placeholder="Port or city" value={destinationPort} onChange={(event) => setDestinationPort(event.target.value)} /></label>
+          </div>
+          <div className={`grid gap-3 ${projectOptions?.length ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
+            {projectOptions?.length ? (
+              <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+                Project Type
+                <select
+                  className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
+                  name="projectType"
+                  value={projectType}
+                  onChange={(event) => setProjectType(event.target.value)}
+                >
+                  {projectOptions.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+              Budget Range
+              <select
+                className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
+                name="budgetRange"
+                value={budgetRange}
+                onChange={(event) => setBudgetRange(event.target.value)}
+              >
+                <option value="">Select budget range</option>
+                <option>Under USD 10,000</option>
+                <option>USD 10,000 - 30,000</option>
+                <option>USD 30,000 - 80,000</option>
+                <option>USD 80,000 - 200,000</option>
+                <option>USD 200,000+</option>
+              </select>
+            </label>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Product / Stone Scope<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="stoneScope" placeholder="Countertops, vanity tops, slabs..." value={stoneScope} onChange={(event) => setStoneScope(event.target.value)} /></label>
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Approximate Quantity<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="quantity" placeholder="Pieces, rooms, or m²" value={quantity} onChange={(event) => setQuantity(event.target.value)} /></label>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Required Delivery Date<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none" name="deliveryDate" type="date" value={deliveryDate} onChange={(event) => setDeliveryDate(event.target.value)} /></label>
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">Material Preference<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="materialPreference" placeholder="Marble, quartzite..." value={materialPreference} onChange={(event) => setMaterialPreference(event.target.value)} /></label>
+          </div>
+          <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">WhatsApp / Phone<input className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none placeholder:text-ink/35" name="phone" type="tel" autoComplete="tel" placeholder="Country code included" value={phone} onChange={(event) => setPhone(event.target.value)} /></label>
+          <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">CAD / BOQ / Reference Files
+            <input ref={fileInputRef} className="sr-only" type="file" multiple accept=".pdf,.dwg,.dxf,.xlsx,.xls,.jpg,.jpeg,.png,.zip" onChange={handleFiles} />
+            <button type="button" className="flex min-h-12 items-center justify-between rounded-[12px] border border-dashed border-ink/25 bg-[var(--color-paper)] px-4 text-left text-[14px] font-normal normal-case tracking-normal text-ink/65 hover:border-ink/50" onClick={() => fileInputRef.current?.click()}><span>{files.length ? `${files.length} file${files.length > 1 ? "s" : ""} selected` : "Choose up to 5 files"}</span><span className="text-xs uppercase tracking-[0.12em]">Browse</span></button>
+            <span className="text-xs font-normal normal-case tracking-normal text-ink/50">PDF, DWG, DXF, XLSX, JPG, PNG or ZIP. 25 MB per file.</span>
+            {files.length ? <ul className="grid gap-2" aria-label="Selected files">{files.map((file, index) => <li key={`${file.name}-${file.lastModified}`} className="flex min-w-0 items-center justify-between gap-3 rounded-[10px] border border-ink/10 bg-stone/50 px-3 py-2 text-xs text-ink/70"><span className="min-w-0 truncate">{file.name} <span className="text-ink/45">({(file.size / 1024 / 1024).toFixed(1)} MB)</span></span><button type="button" className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/55 hover:border-ink/30 hover:text-ink" aria-label={`Remove ${file.name}`} title={`Remove ${file.name}`} onClick={() => removeFile(index)}><X className="h-3.5 w-3.5" aria-hidden="true" /></button></li>)}</ul> : null}
+          </label>
+          <div className="grid gap-3 md:grid-cols-1">
+            <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
+              Timeline Expectation
+              <select
+                className="h-12 w-full min-w-0 rounded-[12px] border border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-[15px] leading-6 text-ink outline-none transition focus:border-[rgba(31,27,24,0.42)]"
+                name="timeline"
+                value={timeline}
+                onChange={(event) => setTimeline(event.target.value)}
+              >
+                <option value="">Select timeline</option>
+                <option>Immediate</option>
+                <option>Within 1 month</option>
+                <option>1-3 months</option>
+                <option>3-6 months</option>
+                <option>Flexible</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </details>
       <div className="flex flex-wrap gap-3 pt-1">
         <button disabled={submitting} className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] disabled:cursor-wait disabled:opacity-60 md:h-[54px] md:text-[14px]" type="submit">
           {submitting ? "Sending..." : "Request Project Pricing"}
