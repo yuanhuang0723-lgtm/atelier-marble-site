@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import JsonLd from "../components/JsonLd";
@@ -96,6 +97,15 @@ export default function HomePage() {
       />
       <main>
         <section className="hero-architectural hero-architectural--home relative min-h-[calc(100svh-4rem)]">
+          <Image
+            className="object-cover object-center"
+            src="/assets/factory/factory-hero-workshop.webp"
+            alt="Interior of a stone fabrication workshop with machines and workers."
+            title="Stone fabrication workshop"
+            fill
+            preload
+            sizes="100vw"
+          />
           <div className="hero-overlay absolute inset-0" />
           <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center gap-8 px-5 py-24 md:grid-cols-[1.2fr_0.8fr] md:gap-12 md:px-12 md:pb-20 md:pt-32">
             <div className="max-w-4xl">

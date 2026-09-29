@@ -83,9 +83,6 @@ video {
 
 .hero-architectural--home {
   background-color: #171411;
-  background-image: url("/assets/factory/factory-hero-workshop.webp");
-  background-position: center;
-  background-size: cover;
 }
 
 .hero-architectural--home .hero-overlay {

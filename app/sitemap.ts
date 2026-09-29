@@ -33,33 +33,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/privacy-policy"
   ];
-  const recentlyUpdated = new Set([
-    "/",
-    "/projects",
-    "/architectural-stone",
-    "/architectural-stone/wall-cladding",
-    "/architectural-stone/flooring",
-    "/materials",
-    "/materials/marble",
-    "/materials/quartzite",
-    "/materials/granite",
-    "/factory",
-    "/contact",
-    "/countertops",
-    "/countertops/marble-countertops",
-    "/projects/hotel-stone-supply",
-    "/projects/commercial-stone",
-    "/projects/canada-shower-niches-2025",
-    "/custom-stone-fabrication-china",
-    "/resources",
-    "/how-we-work"
-  ]);
+  // Keep these dates aligned with the latest significant page-content, structured-data, or link update.
+  // Omit lastModified when there is no verified significant-update date; update this map with future edits.
+  const lastModifiedByRoute: Record<string, string> = {
+    "/": "2026-09-28",
+    "/projects": "2026-09-10",
+    "/architectural-stone": "2026-09-26",
+    "/architectural-stone/wall-cladding": "2026-09-26",
+    "/architectural-stone/flooring": "2026-09-26",
+    "/materials": "2026-09-26",
+    "/materials/marble": "2026-09-28",
+    "/materials/quartzite": "2026-09-26",
+    "/materials/granite": "2026-09-26",
+    "/factory": "2026-09-27",
+    "/contact": "2026-09-29",
+    "/countertops": "2026-09-29",
+    "/countertops/marble-countertops": "2026-09-29",
+    "/countertops/vanity-tops": "2026-09-29",
+    "/countertops/integrated-stone-sinks": "2026-09-26",
+    "/projects/hotel-stone-supply": "2026-09-26",
+    "/projects/commercial-stone": "2026-09-26",
+    "/projects/canada-shower-niches-2025": "2026-09-26",
+    "/custom-stone-fabrication-china": "2026-09-27",
+    "/resources": "2026-09-26",
+    "/how-we-work": "2026-09-26",
+    "/guides/stone-supplier-china": "2026-09-26",
+    "/guides/hotel-stone-pricing": "2026-09-28",
+    "/guides/stone-project-checklist": "2026-09-26",
+    "/guides/quality-control-delivery": "2026-09-26",
+    "/guides/hotel-lobby-case-study": "2026-09-26",
+    "/about": "2026-09-26"
+  };
   return [
     ...staticRoutes.map((route) => ({
       url: absoluteUrl(route),
-      changeFrequency: "weekly" as const,
-      priority: route === "/" ? 1 : 0.8,
-      ...(recentlyUpdated.has(route) ? { lastModified: new Date("2026-09-10T00:00:00.000Z") } : {})
+      ...(lastModifiedByRoute[route] ? { lastModified: lastModifiedByRoute[route] } : {})
     }))
   ];
 }
