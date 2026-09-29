@@ -26,11 +26,12 @@ type CommercialLandingPageProps = {
   purchaseInfo?: { materialOptions: string; customCapability: string };
   imageCaption?: string;
   contentSectionTitle?: string;
+  primaryCtaLabel?: string;
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
+  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, primaryCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -81,7 +82,7 @@ export default function CommercialLandingPage({
                 {bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-[0.98rem] leading-7 text-ink/75"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />{bullet}</li>)}
               </ul>
               <div className="flex flex-wrap gap-4">
-                <Link className="btn-luxury-fill" href={contactHref}>Upload CAD / BOQ for Quote</Link>
+                <Link className="btn-luxury-fill" href={contactHref}>{primaryCtaLabel || "Upload CAD / BOQ for Quote"}</Link>
                 <a className="btn-luxury" href={contact.whatsappUrl}>Discuss on WhatsApp</a>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-3">

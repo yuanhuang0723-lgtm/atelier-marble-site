@@ -122,7 +122,7 @@ await vanityPage.route(`${baseUrl}/api/inquiry`, async (route) => {
 await vanityPage.goto(`${baseUrl}/countertops/vanity-tops?utm_source=browser-test`, { waitUntil: "domcontentloaded" });
 await vanityPage.waitForFunction(() => window.sessionStorage.getItem("atelierLandingPage") === "/countertops/vanity-tops?utm_source=browser-test");
 const vanityInquiryNavigation = vanityPage.waitForURL((url) => url.pathname === "/contact");
-await vanityPage.getByRole("link", { name: "Upload CAD / BOQ for Quote" }).click();
+await vanityPage.getByRole("link", { name: "Request Hotel Vanity Pricing" }).click();
 await vanityInquiryNavigation;
 const vanityInquiryUrl = new URL(vanityPage.url());
 assert.equal(vanityInquiryUrl.searchParams.get("sourcePage"), "/countertops/vanity-tops", "vanity CTA lost its source page");
