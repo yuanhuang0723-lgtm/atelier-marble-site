@@ -163,7 +163,10 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
   async function retryFormSubmitFromBrowser(fallback: { endpoint: string; payload: string }) {
     const response = await fetch(fallback.endpoint, {
       method: "POST",
-      headers: { Accept: "application/json" },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
       body: fallback.payload
     });
     let result: { success?: boolean | string; message?: string };
