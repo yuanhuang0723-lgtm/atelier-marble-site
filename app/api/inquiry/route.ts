@@ -110,12 +110,12 @@ async function claimIdempotency(supabase: NonNullable<ReturnType<typeof getSupab
   const inserted = await supabase.from("inquiry_idempotency").insert({ idempotency_key: key, request_hash: requestHash, status: "processing" });
   if (!inserted.error) return { kind: "claimed" as const };
   if (inserted.error.code !== "23505") {
-    console.error("[inquiry] idempotency insert unavailable", { code: inserted.error.code || "unknown", status: inserted.status || 0 });
+    console.error("[inquiry] idempotency insert unavailable", { code: inserted.error.code || "unknown", status: inserted.status || 0, name: inserted.error.name || "unknown", message: String(inserted.error.message || "").slice(0, 160) });
     return { kind: "unavailable" as const };
   }
   const existing = await supabase.from("inquiry_idempotency").select("request_hash,status,response_message").eq("idempotency_key", key).maybeSingle<IdempotencyRow>();
   if (existing.error || !existing.data) {
-    console.error("[inquiry] idempotency lookup unavailable", { code: existing.error?.code || "missing_row", status: existing.status || 0 });
+    console.error("[inquiry] idempotency lookup unavailable", { code: existing.error?.code || "missing_row", status: existing.status || 0, name: existing.error?.name || "unknown", message: String(existing.error?.message || "").slice(0, 160) });
     return { kind: "unavailable" as const };
   }
   if (existing.data.request_hash !== requestHash) return { kind: "conflict" as const };
