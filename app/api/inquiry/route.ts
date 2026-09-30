@@ -189,9 +189,10 @@ function buildMessage(body: InquiryRequestBody, fileLinks: string[]) {
 
 async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
   const recipient = process.env.INQUIRY_RECIPIENT || contact.inquiryRecipient;
+  const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/+$/, "");
   const payload = new URLSearchParams({
     _subject: `${String(body.projectType)} Project Consultation`, _template: "table", _captcha: "false", _replyto: String(body.contact),
-    name: String(body.name || ""), contact: String(body.contact), budgetRange: String(body.budgetRange || ""), timeline: String(body.timeline || ""), message: String(body.message),
+    name: String(body.name || ""), email: String(body.contact), contact: String(body.contact), budgetRange: String(body.budgetRange || ""), timeline: String(body.timeline || ""), message: String(body.message),
     projectType: String(body.projectType), intent: String(body.intent || ""), sourcePage: String(body.sourcePage || ""), landingPage: String(body.landingPage || ""), company: String(body.company || ""), country: String(body.country || ""),
     destinationPort: String(body.destinationPort || ""), stoneScope: String(body.stoneScope || ""), quantity: String(body.quantity || ""), deliveryDate: String(body.deliveryDate || ""),
     materialPreference: String(body.materialPreference || ""), phone: String(body.phone || ""), referrerHost: String(body.referrerHost || ""), files: fileLinks.join("\n"), body: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
@@ -199,7 +200,19 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
 
   let response: Response;
   try {
-    response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, { method: "POST", headers: { Accept: "application/json" }, body: payload, signal: AbortSignal.timeout(15000) });
+    response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        Origin: siteOrigin,
+        Referer: `${siteOrigin}/contact`,
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      body: payload,
+      signal: AbortSignal.timeout(15000)
+    });
   } catch (error) {
     console.error("[inquiry] email provider fetch failed", {
       name: error instanceof Error ? error.name : "unknown",

@@ -158,6 +158,7 @@ test("inquiry email retains the first landing path separately from the source pa
 
   assert.equal(result.status, 200);
   const fields = new URLSearchParams(lastEmailPayload);
+  assert.equal(fields.get("email"), "buyer@example.com");
   assert.equal(fields.get("sourcePage"), "/guides/hotel-stone-pricing");
   assert.equal(fields.get("landingPage"), "/countertops/vanity-tops");
   assert.equal(fields.get("referrerHost"), "www.google.ca");
