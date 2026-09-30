@@ -200,15 +200,26 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
   let response: Response;
   try {
     response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, { method: "POST", headers: { Accept: "application/json" }, body: payload, signal: AbortSignal.timeout(15000) });
-  } catch {
+  } catch (error) {
+    console.error("[inquiry] email provider fetch failed", {
+      name: error instanceof Error ? error.name : "unknown",
+      message: error instanceof Error ? error.message.slice(0, 160) : String(error).slice(0, 160)
+    });
     return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." };
   }
 
   let data: unknown;
-  try { data = JSON.parse(await response.text()) as unknown; } catch { return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." }; }
+  const responseText = await response.text();
+  try { data = JSON.parse(responseText) as unknown; } catch {
+    console.error("[inquiry] email provider returned non-json", { status: response.status, body: responseText.slice(0, 160) });
+    return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." };
+  }
   if (!isRecord(data)) return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." };
   const success = data.success === true || data.success === "true";
-  if (!response.ok || !success) return { kind: "failed" as const, message: typeof data.message === "string" ? data.message : "The email provider rejected the inquiry." };
+  if (!response.ok || !success) {
+    console.error("[inquiry] email provider rejected inquiry", { status: response.status, success, message: typeof data.message === "string" ? data.message.slice(0, 160) : "unknown" });
+    return { kind: "failed" as const, message: typeof data.message === "string" ? data.message : "The email provider rejected the inquiry." };
+  }
   return { kind: "sent" as const, message: typeof data.message === "string" ? data.message : "Inquiry sent." };
 }
 
