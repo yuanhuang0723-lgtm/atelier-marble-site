@@ -45,10 +45,11 @@ export default function PrivacyPolicyPage() {
                 are retained only as long as needed for project communication and operational record keeping.
               </p>
               <p className="body-luxury">
-                Uploaded project files are stored in a private Cloudflare R2 bucket and are accessed only through
-                time-limited signed links for quotation review. Inquiry messages are delivered through FormSubmit to
-                the Atelier Marble contact address. These services are used for handling the inquiry and are not used
-                to publish your files on the website.
+                Uploaded project files are stored in private Supabase Storage and are accessed only through
+                time-limited signed links for quotation review. Inquiry messages are delivered to the Atelier Marble
+                contact address through the email provider configured for the site, which may include FormSubmit or
+                Alibaba Cloud Enterprise Mail. These services are used for handling the inquiry and are not used to
+                publish your files on the website.
               </p>
               <p className="body-luxury">
                 For privacy questions, contact us through the inquiry page or the email addresses listed in the footer.

@@ -26,11 +26,19 @@ SUPABASE_INQUIRY_BUCKET=inquiry-files
 INQUIRY_UPLOAD_SECRET=<optional-independent-server-secret>
 INQUIRY_RECIPIENT=ding@atelier-marble.ltd
 INQUIRY_DEGRADED_NO_FILE_FALLBACK=false
+SMTP_HOST=smtp.qiye.aliyun.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=ding@atelier-marble.ltd
+SMTP_PASS=<Aliyun mailbox SMTP authorization code>
+SMTP_FROM=ding@atelier-marble.ltd
 ```
 
 `SUPABASE_SERVICE_ROLE_KEY` and `INQUIRY_UPLOAD_SECRET` must never be committed, sent to the browser, added to GitHub, or exposed as `NEXT_PUBLIC_*`. The browser receives only a short-lived signed upload URL and an opaque, signed receipt. File bytes go directly from the browser to Supabase Storage; they do not pass through a Vercel function.
 
 `INQUIRY_DEGRADED_NO_FILE_FALLBACK` is an explicit temporary recovery switch. When set to `true`, a no-file inquiry can still use the existing FormSubmit provider if Supabase durable idempotency is unavailable. It uses per-instance memory deduplication, so it is not equivalent to the durable Supabase path; file submissions remain unavailable until Supabase is restored. Set it back to `false` after the Supabase project, migration, and private bucket are verified.
+
+When the Aliyun Enterprise Mail SMTP variables are configured, the server uses SMTP instead of FormSubmit. `SMTP_USER` defaults to `INQUIRY_RECIPIENT`; port 465 defaults to implicit TLS. Create the SMTP authorization code in the mailbox account and store it directly as the Vercel Production secret `SMTP_PASS`. Never paste the authorization code into chat, source files, or logs. A successful SMTP response confirms server acceptance; verify a clearly marked internal message in the mailbox before considering delivery fully accepted.
 
 ## 3. Application behavior and limits
 

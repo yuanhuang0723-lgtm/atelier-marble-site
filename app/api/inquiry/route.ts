@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 import {
   DOWNLOAD_LINK_TTL_SECONDS,
@@ -189,6 +190,45 @@ function buildMessage(body: InquiryRequestBody, fileLinks: string[]) {
 
 async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
   const recipient = process.env.INQUIRY_RECIPIENT || contact.inquiryRecipient;
+  const smtpPassword = process.env.SMTP_PASS;
+  if (smtpPassword) {
+    const smtpUser = process.env.SMTP_USER || recipient;
+    const smtpPort = Number(process.env.SMTP_PORT || 465);
+    const smtpHost = process.env.SMTP_HOST || "smtp.qiye.aliyun.com";
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : smtpPort === 465,
+      auth: { user: smtpUser, pass: smtpPassword },
+      connectionTimeout: 12000,
+      greetingTimeout: 12000,
+      socketTimeout: 20000
+    });
+    try {
+      const info = await transporter.sendMail({
+        from: process.env.SMTP_FROM || smtpUser,
+        to: recipient,
+        replyTo: String(body.contact),
+        subject: `${String(body.projectType)} Project Consultation`,
+        text: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
+      });
+      if (!info.accepted.length || info.rejected.length) {
+        console.error("[inquiry] SMTP server did not accept every recipient", { acceptedCount: info.accepted.length, rejectedCount: info.rejected.length });
+        return { kind: "failed" as const, message: "The email server did not accept the inquiry. Please try email or WhatsApp instead." };
+      }
+      return { kind: "sent" as const, message: "Inquiry accepted by the email server." };
+    } catch (error) {
+      console.error("[inquiry] SMTP delivery failed", {
+        name: error instanceof Error ? error.name : "unknown",
+        code: error && typeof error === "object" && "code" in error ? String(error.code).slice(0, 40) : "unknown",
+        message: error instanceof Error ? error.message.slice(0, 160) : String(error).slice(0, 160)
+      });
+      return { kind: "failed" as const, message: "The email server could not confirm delivery. Please use email or WhatsApp instead." };
+    } finally {
+      transporter.close();
+    }
+  }
+
   const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/+$/, "");
   const payload = new URLSearchParams({
     _subject: `${String(body.projectType)} Project Consultation`, _template: "table", _captcha: "false", _replyto: String(body.contact),
