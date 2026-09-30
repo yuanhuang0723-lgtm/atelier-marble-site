@@ -25,9 +25,12 @@ SUPABASE_SERVICE_ROLE_KEY=<server-only-secret>
 SUPABASE_INQUIRY_BUCKET=inquiry-files
 INQUIRY_UPLOAD_SECRET=<optional-independent-server-secret>
 INQUIRY_RECIPIENT=ding@atelier-marble.ltd
+INQUIRY_DEGRADED_NO_FILE_FALLBACK=false
 ```
 
 `SUPABASE_SERVICE_ROLE_KEY` and `INQUIRY_UPLOAD_SECRET` must never be committed, sent to the browser, added to GitHub, or exposed as `NEXT_PUBLIC_*`. The browser receives only a short-lived signed upload URL and an opaque, signed receipt. File bytes go directly from the browser to Supabase Storage; they do not pass through a Vercel function.
+
+`INQUIRY_DEGRADED_NO_FILE_FALLBACK` is an explicit temporary recovery switch. When set to `true`, a no-file inquiry can still use the existing FormSubmit provider if Supabase durable idempotency is unavailable. It uses per-instance memory deduplication, so it is not equivalent to the durable Supabase path; file submissions remain unavailable until Supabase is restored. Set it back to `false` after the Supabase project, migration, and private bucket are verified.
 
 ## 3. Application behavior and limits
 

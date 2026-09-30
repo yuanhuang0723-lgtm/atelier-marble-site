@@ -20,9 +20,11 @@ export const dynamic = "force-dynamic";
 const MAX_REQUEST_BYTES = 512 * 1024;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const requestWindow = new Map<string, { count: number; startedAt: number }>();
+const fallbackIdempotency = new Map<string, { requestHash: string; status: IdempotencyRow["status"]; responseMessage: string | null; createdAt: number }>();
 const IDENTITY_KEY_PATTERN = /^[A-Za-z0-9_-]{16,100}$/;
 const FILE_KEY_PATTERN = /^inquiries\/[0-9a-f-]{36}\.[a-z0-9]+$/i;
 const CAMPAIGN_KEYS = new Set(["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"]);
+const FALLBACK_IDEMPOTENCY_TTL_MS = 24 * 60 * 60 * 1000;
 const STRING_FIELDS = [
   "name", "contact", "budgetRange", "timeline", "message", "projectType", "intent", "sourcePage", "company",
   "country", "destinationPort", "stoneScope", "quantity", "deliveryDate", "materialPreference", "phone", "website", "sessionId", "landingPage", "referrerHost"
@@ -122,6 +124,25 @@ async function claimIdempotency(supabase: NonNullable<ReturnType<typeof getSupab
   return { kind: existing.data.status, message: existing.data.response_message || undefined } as const;
 }
 
+function claimFallbackIdempotency(key: string, requestHash: string) {
+  const now = Date.now();
+  for (const [storedKey, row] of fallbackIdempotency) {
+    if (now - row.createdAt > FALLBACK_IDEMPOTENCY_TTL_MS) fallbackIdempotency.delete(storedKey);
+  }
+  const existing = fallbackIdempotency.get(key);
+  if (!existing) {
+    fallbackIdempotency.set(key, { requestHash, status: "processing", responseMessage: null, createdAt: now });
+    return { kind: "claimed" as const };
+  }
+  if (existing.requestHash !== requestHash) return { kind: "conflict" as const };
+  return { kind: existing.status, message: existing.responseMessage || undefined } as const;
+}
+
+function setFallbackIdempotencyStatus(key: string, status: IdempotencyRow["status"], message: string) {
+  const existing = fallbackIdempotency.get(key);
+  if (existing) fallbackIdempotency.set(key, { ...existing, status, responseMessage: message });
+}
+
 async function setIdempotencyStatus(supabase: NonNullable<ReturnType<typeof getSupabaseAdmin>>, key: string, status: IdempotencyRow["status"], message: string) {
   await supabase.from("inquiry_idempotency").update({ status, response_message: message, completed_at: new Date().toISOString() }).eq("idempotency_key", key);
 }
@@ -212,7 +233,23 @@ export async function POST(request: Request) {
 
   const idempotencyKey = String(body.idempotencyKey);
   const claim = await claimIdempotency(supabase, idempotencyKey, buildRequestHash(body));
-  if (claim.kind === "unavailable") return NextResponse.json({ ok: false, message: "The inquiry service is temporarily unavailable." }, { status: 503 });
+  if (claim.kind === "unavailable") {
+    const allowNoFileFallback = process.env.INQUIRY_DEGRADED_NO_FILE_FALLBACK === "true";
+    if (!allowNoFileFallback || body.files?.length) return NextResponse.json({ ok: false, message: "The inquiry service is temporarily unavailable." }, { status: 503 });
+
+    const fallbackClaim = claimFallbackIdempotency(idempotencyKey, buildRequestHash(body));
+    if (fallbackClaim.kind === "conflict") return NextResponse.json({ ok: false, message: "This submission key was already used for different data." }, { status: 409 });
+    if (fallbackClaim.kind === "sent") return NextResponse.json({ ok: true, message: fallbackClaim.message || "Inquiry already sent." });
+    if (fallbackClaim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });
+    if (fallbackClaim.kind === "pending") return NextResponse.json({ ok: false, message: fallbackClaim.message || "The inquiry delivery could not be confirmed. Please contact us through WhatsApp." }, { status: 502 });
+    if (fallbackClaim.kind === "failed") return NextResponse.json({ ok: false, message: fallbackClaim.message || "The email provider rejected this inquiry." }, { status: 502 });
+
+    console.warn("[inquiry] durable idempotency unavailable; using no-file email fallback");
+    const email = await sendInquiryEmail(body, []);
+    setFallbackIdempotencyStatus(idempotencyKey, email.kind, email.message);
+    if (email.kind !== "sent") return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
+    return NextResponse.json({ ok: true, message: email.message });
+  }
   if (claim.kind === "conflict") return NextResponse.json({ ok: false, message: "This submission key was already used for different data." }, { status: 409 });
   if (claim.kind === "sent") return NextResponse.json({ ok: true, message: claim.message || "Inquiry already sent." });
   if (claim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });

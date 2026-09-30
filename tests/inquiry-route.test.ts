@@ -8,10 +8,12 @@ const originalUrl = process.env.SUPABASE_URL;
 const originalKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const originalBucket = process.env.SUPABASE_INQUIRY_BUCKET;
 const originalRecipient = process.env.INQUIRY_RECIPIENT;
+const originalFallback = process.env.INQUIRY_DEGRADED_NO_FILE_FALLBACK;
 
 let emailCalls = 0;
 let emailMode: "success" | "rejection" | "malformed" = "success";
 let storageMode: "success" | "missing" | "failure" = "success";
+let idempotencyMode: "success" | "unavailable" = "success";
 let lastEmailPayload = "";
 let idempotencyRows = new Map<string, { request_hash: string; status: string; response_message: string | null }>();
 
@@ -30,6 +32,7 @@ function installMockFetch() {
       return response({ success: true, message: "accepted" });
     }
     if (url.includes("/rest/v1/inquiry_idempotency")) {
+      if (idempotencyMode === "unavailable") throw new TypeError("fetch failed");
       const method = init?.method || "GET";
       if (method === "POST") {
         const payload = JSON.parse(String(init?.body || "{}")) as { idempotency_key: string; request_hash: string };
@@ -76,9 +79,11 @@ beforeEach(() => {
   process.env.SUPABASE_SERVICE_ROLE_KEY = "test-service-role-key";
   process.env.SUPABASE_INQUIRY_BUCKET = "inquiry-files";
   process.env.INQUIRY_RECIPIENT = "ding@atelier-marble.ltd";
+  process.env.INQUIRY_DEGRADED_NO_FILE_FALLBACK = "true";
   emailCalls = 0;
   emailMode = "success";
   storageMode = "success";
+  idempotencyMode = "success";
   lastEmailPayload = "";
   idempotencyRows = new Map();
   installMockFetch();
@@ -90,6 +95,7 @@ afterEach(() => {
   process.env.SUPABASE_SERVICE_ROLE_KEY = originalKey;
   process.env.SUPABASE_INQUIRY_BUCKET = originalBucket;
   process.env.INQUIRY_RECIPIENT = originalRecipient;
+  process.env.INQUIRY_DEGRADED_NO_FILE_FALLBACK = originalFallback;
 });
 
 test("inquiry route accepts a provider-confirmed no-file submission and deduplicates retry", async () => {
@@ -102,6 +108,40 @@ test("inquiry route accepts a provider-confirmed no-file submission and deduplic
   assert.equal(retry.status, 200);
   assert.equal((await retry.json()).ok, true);
   assert.equal(emailCalls, 1);
+});
+
+test("no-file inquiry uses the email provider when durable idempotency is unavailable", async () => {
+  const { POST } = await import("../app/api/inquiry/route");
+  idempotencyMode = "unavailable";
+  const result = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.0.0.13" },
+    body: JSON.stringify(validBody({ idempotencyKey: "123e4567-e89b-12d3-a456-426614174013" }))
+  }));
+  assert.equal(result.status, 200);
+  assert.equal((await result.json()).ok, true);
+  assert.equal(emailCalls, 1);
+});
+
+test("degraded no-file fallback does not accept attachments", async () => {
+  const { POST } = await import("../app/api/inquiry/route");
+  idempotencyMode = "unavailable";
+  const key = "inquiries/123e4567-e89b-12d3-a456-426614174014.pdf";
+  const file = {
+    key,
+    name: "scope.pdf",
+    type: "application/pdf",
+    size: 12,
+    receipt: createUploadReceipt({ key, name: "scope.pdf", type: "application/pdf", size: 12, sessionId: "session-1234567890123456" }, "test-service-role-key")
+  };
+  const result = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST",
+    headers: { "x-forwarded-for": "10.0.0.14" },
+    body: JSON.stringify(validBody({ idempotencyKey: "123e4567-e89b-12d3-a456-426614174014", files: [file] }))
+  }));
+  assert.equal(result.status, 503);
+  assert.equal((await result.json()).ok, false);
+  assert.equal(emailCalls, 0);
 });
 
 test("inquiry email retains the first landing path separately from the source page", async () => {
