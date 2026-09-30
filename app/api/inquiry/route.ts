@@ -109,9 +109,15 @@ function buildRequestHash(body: InquiryRequestBody) {
 async function claimIdempotency(supabase: NonNullable<ReturnType<typeof getSupabaseAdmin>>, key: string, requestHash: string) {
   const inserted = await supabase.from("inquiry_idempotency").insert({ idempotency_key: key, request_hash: requestHash, status: "processing" });
   if (!inserted.error) return { kind: "claimed" as const };
-  if (inserted.error.code !== "23505") return { kind: "unavailable" as const };
+  if (inserted.error.code !== "23505") {
+    console.error("[inquiry] idempotency insert unavailable", { code: inserted.error.code || "unknown", status: inserted.status || 0 });
+    return { kind: "unavailable" as const };
+  }
   const existing = await supabase.from("inquiry_idempotency").select("request_hash,status,response_message").eq("idempotency_key", key).maybeSingle<IdempotencyRow>();
-  if (existing.error || !existing.data) return { kind: "unavailable" as const };
+  if (existing.error || !existing.data) {
+    console.error("[inquiry] idempotency lookup unavailable", { code: existing.error?.code || "missing_row", status: existing.status || 0 });
+    return { kind: "unavailable" as const };
+  }
   if (existing.data.request_hash !== requestHash) return { kind: "conflict" as const };
   return { kind: existing.data.status, message: existing.data.response_message || undefined } as const;
 }
@@ -199,7 +205,10 @@ export async function POST(request: Request) {
   if (!normalized.body) return NextResponse.json({ ok: false, message: normalized.message }, { status: 400 });
   const body = normalized.body;
   const supabase = getSupabaseAdmin();
-  if (!supabase) return NextResponse.json({ ok: false, message: "The inquiry service is not configured yet." }, { status: 503 });
+  if (!supabase) {
+    console.error("[inquiry] Supabase server credentials are unavailable");
+    return NextResponse.json({ ok: false, message: "The inquiry service is not configured yet." }, { status: 503 });
+  }
 
   const idempotencyKey = String(body.idempotencyKey);
   const claim = await claimIdempotency(supabase, idempotencyKey, buildRequestHash(body));
