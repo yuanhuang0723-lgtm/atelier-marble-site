@@ -149,7 +149,9 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
       const uploadBody = new FormData();
       uploadBody.append("cacheControl", "3600");
       uploadBody.append("", file);
-      const upload = await fetch(signed.uploadUrl, { method: "POST", body: uploadBody });
+      const uploadToken = new URL(signed.uploadUrl).searchParams.get("token");
+      if (!uploadToken) throw new Error("File upload authorization is unavailable.");
+      const upload = await fetch(signed.uploadUrl, { method: "PUT", headers: { Authorization: `Bearer ${uploadToken}` }, body: uploadBody });
       if (!upload.ok) throw new Error(`Could not upload ${file.name}.`);
       uploaded.push({ key: signed.key, name: signed.name, type: signed.contentType, size: file.size, receipt: signed.receipt });
     }
