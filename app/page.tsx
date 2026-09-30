@@ -11,12 +11,12 @@ import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication from China | Atelier Marble",
   description:
-    "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, coordinated production, and global shipping.",
+    "Custom stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, coordinated production, and global shipping.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: "Custom Stone Fabrication from China | Atelier Marble",
     description:
-      "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, coordinated production, and global shipping.",
+      "Custom stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, coordinated production, and global shipping.",
     url: absoluteUrl("/"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
