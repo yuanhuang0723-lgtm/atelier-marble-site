@@ -111,7 +111,8 @@ test("inquiry email retains the first landing path separately from the source pa
     headers: { "x-forwarded-for": "10.0.0.20" },
     body: JSON.stringify(validBody({
       sourcePage: "/guides/hotel-stone-pricing",
-      landingPage: "/countertops/vanity-tops"
+      landingPage: "/countertops/vanity-tops",
+      referrerHost: "www.google.ca"
     }))
   }));
 
@@ -119,7 +120,9 @@ test("inquiry email retains the first landing path separately from the source pa
   const fields = new URLSearchParams(lastEmailPayload);
   assert.equal(fields.get("sourcePage"), "/guides/hotel-stone-pricing");
   assert.equal(fields.get("landingPage"), "/countertops/vanity-tops");
+  assert.equal(fields.get("referrerHost"), "www.google.ca");
   assert.match(fields.get("body") || "", /Landing page: \/countertops\/vanity-tops/);
+  assert.match(fields.get("body") || "", /External referrer host: www\.google\.ca/);
 });
 
 test("inquiry route rejects landing-page query strings and external URLs", async () => {

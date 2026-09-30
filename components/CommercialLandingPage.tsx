@@ -27,11 +27,12 @@ type CommercialLandingPageProps = {
   imageCaption?: string;
   contentSectionTitle?: string;
   primaryCtaLabel?: string;
+  heroCtaLabel?: string;
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, primaryCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
+  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -52,6 +53,7 @@ export default function CommercialLandingPage({
       ? "Luxury Vanity Tops & Cabinet Panels"
       : "Commercial Stone Projects";
   const contactHref = `/contact?sourcePage=${encodeURIComponent(sourcePage)}&projectType=${encodeURIComponent(contactProjectType)}`;
+  const resolvedHeroCtaLabel = heroCtaLabel || (eyebrow.toLowerCase().includes("vanity") ? primaryCtaLabel : undefined);
 
   return (
     <PageShell>
@@ -61,7 +63,14 @@ export default function CommercialLandingPage({
           { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") } },
           ...(faqJsonLd ? [faqJsonLd] : [])
         ]} />
-        <PageHero eyebrow={eyebrow} title={title} description={description} backgroundImage={heroBackgroundImage === undefined ? image : heroBackgroundImage ?? undefined} backgroundImageAlt={imageAlt} />
+        <PageHero
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          backgroundImage={heroBackgroundImage === undefined ? image : heroBackgroundImage ?? undefined}
+          backgroundImageAlt={imageAlt}
+          cta={resolvedHeroCtaLabel ? { href: contactHref, label: resolvedHeroCtaLabel, note: "Start with a short brief; drawings can follow when they are ready." } : undefined}
+        />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">

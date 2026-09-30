@@ -73,6 +73,7 @@ export default function CustomStoneFabricationPage() {
   return (
     <CommercialLandingPage
       eyebrow="Custom stone fabrication"
+      heroCtaLabel="Request Custom Fabrication Pricing"
       title="Custom stone fabrication and cut-to-size work for project buyers."
       description="Review a practical fabrication path for countertops, architectural parts, furniture, and sculptural stone from drawings, BOQ files, dimensions, or reference images."
       image="/assets/carving-decor/cover.webp"

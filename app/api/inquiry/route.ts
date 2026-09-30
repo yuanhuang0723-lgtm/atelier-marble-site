@@ -25,7 +25,7 @@ const FILE_KEY_PATTERN = /^inquiries\/[0-9a-f-]{36}\.[a-z0-9]+$/i;
 const CAMPAIGN_KEYS = new Set(["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"]);
 const STRING_FIELDS = [
   "name", "contact", "budgetRange", "timeline", "message", "projectType", "intent", "sourcePage", "company",
-  "country", "destinationPort", "stoneScope", "quantity", "deliveryDate", "materialPreference", "phone", "website", "sessionId", "landingPage"
+  "country", "destinationPort", "stoneScope", "quantity", "deliveryDate", "materialPreference", "phone", "website", "sessionId", "landingPage", "referrerHost"
 ] as const;
 
 type InquiryFile = { key: string; name: string; type: string; size: number; receipt: string };
@@ -72,6 +72,7 @@ function validateAndNormalizeBody(value: unknown): { body?: InquiryRequestBody; 
   }
 
   if (typeof body.landingPage === "string" && body.landingPage && !isSafeLandingPath(body.landingPage)) return { message: "Invalid inquiry landing page." };
+  if (typeof body.referrerHost === "string" && body.referrerHost && (body.referrerHost.length > 255 || !/^[a-z0-9.-]+$/i.test(body.referrerHost))) return { message: "Invalid inquiry referrer." };
 
   if (typeof body.campaign !== "undefined") {
     if (!isRecord(body.campaign) || Object.keys(body.campaign).some((key) => !CAMPAIGN_KEYS.has(key) || typeof body.campaign?.[key] !== "string" || String(body.campaign[key]).length > 300)) return { message: "Invalid campaign context." };
@@ -153,7 +154,7 @@ function buildMessage(body: InquiryRequestBody, fileLinks: string[]) {
     body.projectType ? `Project type: ${body.projectType}` : "", body.intent ? `Inquiry intent: ${body.intent}` : "", body.sourcePage ? `Source page: ${body.sourcePage}` : "", body.landingPage ? `Landing page: ${body.landingPage}` : "",
     body.company ? `Company: ${body.company}` : "", body.country ? `Country: ${body.country}` : "", body.destinationPort ? `Destination port: ${body.destinationPort}` : "",
     body.stoneScope ? `Product / stone scope: ${body.stoneScope}` : "", body.quantity ? `Approximate quantity: ${body.quantity}` : "", body.deliveryDate ? `Required delivery date: ${body.deliveryDate}` : "",
-    body.materialPreference ? `Material preference: ${body.materialPreference}` : "", body.phone ? `WhatsApp / phone: ${body.phone}` : "", campaign.length ? `Campaign: ${campaign.join(" | ")}` : "",
+    body.materialPreference ? `Material preference: ${body.materialPreference}` : "", body.phone ? `WhatsApp / phone: ${body.phone}` : "", body.referrerHost ? `External referrer host: ${body.referrerHost}` : "", campaign.length ? `Campaign: ${campaign.join(" | ")}` : "",
     body.name ? `Name: ${body.name}` : "", `Contact: ${body.contact}`, body.budgetRange ? `Budget range: ${body.budgetRange}` : "", body.timeline ? `Timeline: ${body.timeline}` : "", "",
     "Project notes:", body.message, fileLinks.length ? `\nFiles:\n${fileLinks.map((link) => link.split(": ")[0]).join("\n")}` : "", "", "Please advise material options, fabrication approach, and project pricing steps."
   ].filter(Boolean).join("\n");
@@ -166,7 +167,7 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
     name: String(body.name || ""), contact: String(body.contact), budgetRange: String(body.budgetRange || ""), timeline: String(body.timeline || ""), message: String(body.message),
     projectType: String(body.projectType), intent: String(body.intent || ""), sourcePage: String(body.sourcePage || ""), landingPage: String(body.landingPage || ""), company: String(body.company || ""), country: String(body.country || ""),
     destinationPort: String(body.destinationPort || ""), stoneScope: String(body.stoneScope || ""), quantity: String(body.quantity || ""), deliveryDate: String(body.deliveryDate || ""),
-    materialPreference: String(body.materialPreference || ""), phone: String(body.phone || ""), files: fileLinks.join("\n"), body: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
+    materialPreference: String(body.materialPreference || ""), phone: String(body.phone || ""), referrerHost: String(body.referrerHost || ""), files: fileLinks.join("\n"), body: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
   });
 
   let response: Response;

@@ -27,6 +27,14 @@ export default function ConversionTracker() {
     if (!sessionStorage.getItem("atelierLandingPage")) {
       sessionStorage.setItem("atelierLandingPage", `${window.location.pathname}${window.location.search}`.slice(0, 500));
     }
+    if (!sessionStorage.getItem("atelierReferrerHost") && document.referrer) {
+      try {
+        const referrer = new URL(document.referrer);
+        if (referrer.origin !== window.location.origin) sessionStorage.setItem("atelierReferrerHost", referrer.hostname.slice(0, 255));
+      } catch {
+        // Ignore malformed referrers; the inquiry remains attributable by landing page.
+      }
+    }
 
     const handler = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest("a");

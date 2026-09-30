@@ -13,8 +13,8 @@ const items = [
   },
   {
     icon: Factory,
-    title: "Factory Direct Supply",
-    copy: "Direct fabrication without unnecessary layers."
+    title: "Fabrication + Partners",
+    copy: "Coordinated production for custom project scope."
   },
   {
     icon: PackageCheck,

@@ -8,11 +8,15 @@ Destination port or city:
 
 Project type:
 Product or stone scope:
+Piece mark or component ID:
+Drawing revision:
 Approximate quantity:
-Approximate dimensions:
+Dimensions and units:
+Openings, edges, joints, or support notes:
 Material preference:
 Finish preference:
 Required delivery date:
+Destination packaging or labeling requirements:
 
 Please attach drawings, BOQ files, reference images, or other project information when available.
 

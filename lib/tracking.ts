@@ -66,6 +66,15 @@ export function getStoredLandingPath() {
   }
 }
 
+export function getStoredReferrerHost() {
+  try {
+    const host = window.sessionStorage.getItem("atelierReferrerHost") || "";
+    return /^[a-z0-9.-]+$/i.test(host) ? host.slice(0, 255) : "";
+  } catch {
+    return "";
+  }
+}
+
 export function appendLandingPathToContactUrl(href: string, landingPath: string) {
   if (!landingPath.startsWith("/") || landingPath.startsWith("//") || /[?#\s\\]/.test(landingPath)) return href;
 
