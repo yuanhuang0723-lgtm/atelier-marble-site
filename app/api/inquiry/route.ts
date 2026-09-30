@@ -225,15 +225,67 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
   const responseText = await response.text();
   try { data = JSON.parse(responseText) as unknown; } catch {
     console.error("[inquiry] email provider returned non-json", { status: response.status, body: responseText.slice(0, 160) });
+    if (response.status === 403) {
+      return {
+        kind: "failed" as const,
+        message: "The email provider blocked the server request. Retrying from your browser may work.",
+        idempotencyMessage: "FORM_SUBMIT_BLOCKED",
+        browserFallback: { endpoint: `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, payload: payload.toString() }
+      };
+    }
     return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." };
   }
   if (!isRecord(data)) return { kind: "pending" as const, message: "The inquiry was not confirmed by the email provider. Please try again later or use WhatsApp." };
   const success = data.success === true || data.success === "true";
   if (!response.ok || !success) {
     console.error("[inquiry] email provider rejected inquiry", { status: response.status, success, message: typeof data.message === "string" ? data.message.slice(0, 160) : "unknown" });
-    return { kind: "failed" as const, message: typeof data.message === "string" ? data.message : "The email provider rejected the inquiry." };
+    return {
+      kind: "failed" as const,
+      message: typeof data.message === "string" ? data.message : "The email provider rejected the inquiry.",
+      ...(response.status === 403 ? {
+        idempotencyMessage: "FORM_SUBMIT_BLOCKED",
+        browserFallback: { endpoint: `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, payload: payload.toString() }
+      } : {})
+    };
   }
   return { kind: "sent" as const, message: typeof data.message === "string" ? data.message : "Inquiry sent." };
+}
+
+function getBrowserEmailFallback(body: InquiryRequestBody) {
+  const recipient = process.env.INQUIRY_RECIPIENT || contact.inquiryRecipient;
+  const payload = new URLSearchParams({
+    _subject: `${String(body.projectType)} Project Consultation`,
+    _template: "table",
+    _captcha: "false",
+    _replyto: String(body.contact),
+    name: String(body.name || ""),
+    email: String(body.contact),
+    contact: String(body.contact),
+    budgetRange: String(body.budgetRange || ""),
+    timeline: String(body.timeline || ""),
+    message: String(body.message),
+    projectType: String(body.projectType),
+    intent: String(body.intent || ""),
+    sourcePage: String(body.sourcePage || ""),
+    landingPage: String(body.landingPage || ""),
+    company: String(body.company || ""),
+    country: String(body.country || ""),
+    destinationPort: String(body.destinationPort || ""),
+    stoneScope: String(body.stoneScope || ""),
+    quantity: String(body.quantity || ""),
+    deliveryDate: String(body.deliveryDate || ""),
+    materialPreference: String(body.materialPreference || ""),
+    phone: String(body.phone || ""),
+    referrerHost: String(body.referrerHost || ""),
+    files: "",
+    body: buildMessage(body, [])
+  });
+  return { endpoint: `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, payload: payload.toString() };
+}
+
+function browserFallbackResponse(message: string, body: InquiryRequestBody) {
+  if (body.files?.length) return NextResponse.json({ ok: false, message }, { status: 502 });
+  return NextResponse.json({ ok: false, code: "browser_email_fallback", message, browserFallback: getBrowserEmailFallback(body) }, { status: 502 });
 }
 
 export async function POST(request: Request) {
@@ -266,19 +318,28 @@ export async function POST(request: Request) {
     if (fallbackClaim.kind === "sent") return NextResponse.json({ ok: true, message: fallbackClaim.message || "Inquiry already sent." });
     if (fallbackClaim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });
     if (fallbackClaim.kind === "pending") return NextResponse.json({ ok: false, message: fallbackClaim.message || "The inquiry delivery could not be confirmed. Please contact us through WhatsApp." }, { status: 502 });
-    if (fallbackClaim.kind === "failed") return NextResponse.json({ ok: false, message: fallbackClaim.message || "The email provider rejected this inquiry." }, { status: 502 });
+    if (fallbackClaim.kind === "failed") {
+      if (fallbackClaim.message === "FORM_SUBMIT_BLOCKED") return browserFallbackResponse("The email provider blocked the server request. Retrying from your browser may work.", body);
+      return NextResponse.json({ ok: false, message: fallbackClaim.message || "The email provider rejected this inquiry." }, { status: 502 });
+    }
 
     console.warn("[inquiry] durable idempotency unavailable; using no-file email fallback");
     const email = await sendInquiryEmail(body, []);
-    setFallbackIdempotencyStatus(idempotencyKey, email.kind, email.message);
-    if (email.kind !== "sent") return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
+    setFallbackIdempotencyStatus(idempotencyKey, email.kind, email.kind === "failed" && "idempotencyMessage" in email ? email.idempotencyMessage || email.message : email.message);
+    if (email.kind !== "sent") {
+      if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, browserFallback: email.browserFallback }, { status: 502 });
+      return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
+    }
     return NextResponse.json({ ok: true, message: email.message });
   }
   if (claim.kind === "conflict") return NextResponse.json({ ok: false, message: "This submission key was already used for different data." }, { status: 409 });
   if (claim.kind === "sent") return NextResponse.json({ ok: true, message: claim.message || "Inquiry already sent." });
   if (claim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });
   if (claim.kind === "pending") return NextResponse.json({ ok: false, message: claim.message || "The inquiry delivery could not be confirmed. Please contact us through WhatsApp." }, { status: 502 });
-  if (claim.kind === "failed") return NextResponse.json({ ok: false, message: claim.message || "The email provider rejected this inquiry." }, { status: 502 });
+  if (claim.kind === "failed") {
+    if (claim.message === "FORM_SUBMIT_BLOCKED") return browserFallbackResponse("The email provider blocked the server request. Retrying from your browser may work.", body);
+    return NextResponse.json({ ok: false, message: claim.message || "The email provider rejected this inquiry." }, { status: 502 });
+  }
 
   const fileResult = await buildFileLinks(body, supabase);
   if (fileResult.error) {
@@ -286,8 +347,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: fileResult.error }, { status: 400 });
   }
   const email = await sendInquiryEmail(body, fileResult.links || []);
-  await setIdempotencyStatus(supabase, idempotencyKey, email.kind, email.message);
-  if (email.kind !== "sent") return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
+  await setIdempotencyStatus(supabase, idempotencyKey, email.kind, email.kind === "failed" && "idempotencyMessage" in email ? email.idempotencyMessage || email.message : email.message);
+  if (email.kind !== "sent") {
+    if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, browserFallback: email.browserFallback }, { status: 502 });
+    return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
+  }
   return NextResponse.json({ ok: true, message: email.message });
 }
 

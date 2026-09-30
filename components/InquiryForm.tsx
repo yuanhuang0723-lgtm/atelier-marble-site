@@ -160,6 +160,23 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
     return uploaded;
   }
 
+  async function retryFormSubmitFromBrowser(fallback: { endpoint: string; payload: string }) {
+    const response = await fetch(fallback.endpoint, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: fallback.payload
+    });
+    let result: { success?: boolean | string; message?: string };
+    try {
+      result = await response.json() as { success?: boolean | string; message?: string };
+    } catch {
+      throw new Error("FormSubmit did not return a confirmed response. Please use email or WhatsApp instead.");
+    }
+    if (!response.ok || !(result.success === true || result.success === "true")) {
+      throw new Error(result.message || "The email provider did not confirm delivery. Please use email or WhatsApp instead.");
+    }
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting) return;
@@ -180,8 +197,20 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           campaign: readStoredCampaign(), referrerHost: getStoredReferrerHost(), idempotencyKey: getIdempotencyKey(), sessionId, website
         })
       });
-      const result = (await response.json()) as { ok?: boolean; message?: string };
-      if (!response.ok || !result.ok) throw new Error(result.message || "The inquiry could not be sent yet.");
+      const result = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+        code?: string;
+        browserFallback?: { endpoint: string; payload: string };
+      };
+      if (!response.ok || !result.ok) {
+        if (result.code === "browser_email_fallback" && result.browserFallback && uploadedFiles.length === 0) {
+          setStatus("Retrying through your browser...");
+          await retryFormSubmitFromBrowser(result.browserFallback);
+        } else {
+          throw new Error(result.message || "The inquiry could not be sent yet.");
+        }
+      }
       const inquiryEventContext = {
         sourcePage: hydratedContext.sourcePage,
         projectType,
