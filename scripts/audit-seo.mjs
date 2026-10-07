@@ -116,6 +116,19 @@ function parseSitemapPaths(xml) {
   return [...xml.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => normalizePath(decodeHtml(match[1])));
 }
 
+function mainImagePaths(html) {
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
+  const images = new Set();
+  for (const match of main.matchAll(/<img\b[^>]*src\s*=\s*["']([^"']+)["']/gi)) {
+    const src = decodeHtml(match[1]);
+    if (/^(?:data|blob):/i.test(src)) continue;
+    const url = new URL(src, auditOrigin);
+    const original = url.pathname === "/_next/image" ? url.searchParams.get("url") : url.href;
+    if (original) images.add(normalizePath(original, auditOrigin));
+  }
+  return images;
+}
+
 async function main() {
   const errors = [];
   const warnings = [];
@@ -171,26 +184,38 @@ async function main() {
   }
   for (const [path, sources] of incoming) if (path !== "/" && sources.size === 0) errors.push(`${path}: no incoming internal link`);
 
+  let imageAssociations = 0;
+  let imagePagesChecked = 0;
   try {
     const images = await fetchResource(`${auditOrigin}/image-sitemap.xml?seoAudit=1`);
     if (images.status !== 200) errors.push(`image sitemap: HTTP ${images.status}${images.location ? ` -> ${images.location}` : ""}`);
     else {
-      const entries = [...images.body.matchAll(/<url>([\s\S]*?)<\/url>/gi)].map((match) => ({
-        page: normalizePath(decodeHtml(match[1].match(/<loc>([^<]+)<\/loc>/i)?.[1] || "")),
-        image: normalizePath(decodeHtml(match[1].match(/<image:loc>([^<]+)<\/image:loc>/i)?.[1] || ""))
-      })).filter((entry) => entry.page !== "/" || entry.image !== "/");
-      if (!entries.length) errors.push("image sitemap: no image entries");
-      const decodedPageBodies = new Map(validPages.map((page) => {
-        try {
-          return [page.path, decodeURIComponent(page.body)];
-        } catch {
-          return [page.path, page.body];
-        }
-      }));
-      for (const entry of entries) {
-        const page = validPages.find((item) => item.path === entry.page);
-        if (!page) warnings.push(`image sitemap page is not in sitemap: ${entry.page}`);
-        else if (![...decodedPageBodies.values()].some((body) => body.includes(entry.image))) warnings.push(`image sitemap image not found in audited HTML: ${entry.image}`);
+      const groups = new Map();
+      for (const match of images.body.matchAll(/<url>([\s\S]*?)<\/url>/gi)) {
+        const location = match[1].match(/<loc>([^<]+)<\/loc>/i)?.[1];
+        if (!location) { errors.push("image sitemap: missing page location"); continue; }
+        const pageUrl = new URL(decodeHtml(location), canonicalOrigin);
+        const page = normalizePath(pageUrl.href, canonicalOrigin);
+        const entries = [...match[1].matchAll(/<image:loc>([^<]+)<\/image:loc>/gi)].map((entry) => {
+          const imageUrl = new URL(decodeHtml(entry[1]), canonicalOrigin);
+          if (imageUrl.origin !== canonicalOrigin || imageUrl.search || imageUrl.hash) errors.push(`${page}: image sitemap URL needs review (${imageUrl.origin}${imageUrl.pathname})`);
+          return normalizePath(imageUrl.href, canonicalOrigin);
+        });
+        if (pageUrl.origin !== canonicalOrigin) errors.push(`${page}: image sitemap canonical origin mismatch`);
+        if (groups.has(page)) errors.push(`${page}: duplicate image sitemap page group`);
+        if (!entries.length || entries.length > 1000) errors.push(`${page}: invalid image sitemap image count ${entries.length}`);
+        if (new Set(entries).size !== entries.length) errors.push(`${page}: duplicate image sitemap image URL`);
+        if (!paths.includes(page)) errors.push(`${page}: image sitemap page is not in the page sitemap`);
+        groups.set(page, new Set(entries));
+        imageAssociations += entries.length;
+      }
+      if (!groups.size) errors.push("image sitemap: no image entries");
+      imagePagesChecked = groups.size;
+      for (const page of validPages) {
+        const displayed = mainImagePaths(page.body);
+        const listed = groups.get(page.path) || new Set();
+        for (const image of displayed) if (!listed.has(image)) errors.push(`${page.path}: displayed image missing from image sitemap (${image})`);
+        for (const image of listed) if (!displayed.has(image)) errors.push(`${page.path}: image sitemap URL not displayed on this page (${image})`);
       }
     }
   } catch (error) { errors.push(`image sitemap: ${error.message}`); }
@@ -201,7 +226,7 @@ async function main() {
   if (warnings.length) console.warn(warnings.map((warning) => `Warning: ${warning}`).join("\n"));
   if (errors.length) { console.error(errors.map((error) => `- ${error}`).join("\n")); process.exit(1); }
   const snippetChecked = validPages.filter((page) => !snippetLengthExemptions.has(page.path)).length;
-  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin}); strict 50–60 / 140–160 snippet lengths passed for ${snippetChecked} pages, with the legal privacy page exempted.`);
+  console.log(`SEO audit passed for ${validPages.length} sitemap pages at ${auditOrigin} (canonical: ${canonicalOrigin}); strict 50–60 / 140–160 snippet lengths passed for ${snippetChecked} pages, with the legal privacy page exempted; image sitemap matches ${imageAssociations} displayed image associations across ${imagePagesChecked} pages.`);
 }
 
 await main();
