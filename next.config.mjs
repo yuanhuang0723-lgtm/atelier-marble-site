@@ -44,6 +44,14 @@ const nextConfig = {
         ]
       },
       {
+        source: "/atelier-marble-supplier-profile.pdf",
+        headers: [
+          { key: "Content-Type", value: "application/pdf" },
+          { key: "Content-Disposition", value: "inline; filename=atelier-marble-supplier-profile.pdf" },
+          { key: "X-Robots-Tag", value: "noindex" }
+        ]
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },

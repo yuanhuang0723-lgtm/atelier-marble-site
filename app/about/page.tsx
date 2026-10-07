@@ -9,12 +9,12 @@ import { absoluteUrl, siteName } from "../../lib/seo";
 export const metadata: Metadata = {
   title: "About Atelier Marble Stone Supply",
   description:
-    "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects.",
+    "Meet Atelier Marble in Yunfu, China. Our own processing and partner coordination support custom natural stone parts, drawing review, and export planning.",
   alternates: { canonical: absoluteUrl("/about") },
   openGraph: {
     title: "About Atelier Marble Stone Supply",
     description:
-      "Learn about Atelier Marble, a Yunfu-based stone project studio coordinating material review, fabrication, packing, and delivery planning for overseas projects.",
+      "Meet Atelier Marble in Yunfu, China. Our own processing and partner coordination support custom natural stone parts, drawing review, and export planning.",
     url: absoluteUrl("/about"),
     siteName,
   }
@@ -27,8 +27,8 @@ export default function AboutPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }]} />
         <PageHero
           eyebrow="Company profile"
-          title="Stone project coordination from Yunfu, China."
-          description="Atelier Marble coordinates project reviews for hotel stone, kitchen surfaces, interiors, furniture, and custom stone work. Share drawings, quantities, and destination details to discuss the scope."
+          title="Natural stone project supply from Yunfu, China."
+          description="Our own processing and partner coordination support drawing-based stone components for trade and project buyers. Share drawings, quantities, material direction, and destination details."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12">
@@ -37,10 +37,12 @@ export default function AboutPage() {
                 <p className="eyebrow-luxury">Yunfu-based project supply</p>
                 <h2 className="heading-lg text-left">A practical stone partner for international projects.</h2>
                 <p className="body-luxury max-w-2xl">
-                  Atelier Marble coordinates stone project reviews from Yunfu for overseas buyers. We support project
-                  references, material guidance, quotation preparation, and practical production coordination. The
+                  Atelier Marble combines our own processing with partner coordination from Yunfu for overseas buyers. We support material guidance, quotation preparation, and practical production coordination. The
                   working brief can begin with a drawing, BOQ,
                   dimensions, or a clear material direction.
+                </p>
+                <p className="body-luxury max-w-2xl">
+                  Our scope includes custom countertops, hotel vanity tops, and cut-to-size architectural components. Material lots, finished dimensions, tolerances, inspection points, and delivery responsibilities are confirmed for each project.
                 </p>
                 <p className="body-luxury max-w-2xl">
                   Our role is to make the stone scope easier to review: connect the intended application with material
@@ -83,6 +85,8 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-4 border-t border-ink/10 pt-8">
               <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
               <Link className="btn-luxury" href="/factory">Review Workshop Capability</Link>
+              <a className="btn-luxury" href="/atelier-marble-supplier-profile.pdf" download>Download Supplier Profile (PDF)</a>
+              <Link className="text-cta-luxury self-center" href="/custom-stone-fabrication-china">Review cut-to-size fabrication scope</Link>
             </div>
           </div>
         </section>

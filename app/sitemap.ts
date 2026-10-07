@@ -55,14 +55,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects/commercial-stone": "2026-09-26",
     "/projects/canada-shower-niches-2025": "2026-09-26",
     "/custom-stone-fabrication-china": "2026-10-07",
-    "/resources": "2026-09-26",
+    "/resources": "2026-10-07",
     "/how-we-work": "2026-10-07",
     "/guides/stone-supplier-china": "2026-10-07",
     "/guides/hotel-stone-pricing": "2026-09-28",
     "/guides/stone-project-checklist": "2026-09-26",
     "/guides/quality-control-delivery": "2026-09-26",
     "/guides/hotel-lobby-case-study": "2026-09-26",
-    "/about": "2026-09-26"
+    "/about": "2026-10-07"
   };
   return [
     ...staticRoutes.map((route) => ({
