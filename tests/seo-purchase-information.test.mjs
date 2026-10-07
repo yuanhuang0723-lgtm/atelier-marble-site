@@ -55,7 +55,7 @@ test("each commercial landing page answers the five basic procurement questions"
   }
 });
 
-test("hotel vanity page provides 1,500–2,500 words of distinct project-planning guidance", () => {
+test("hotel vanity page shows product references before optional project-planning guidance", () => {
   const html = renderToStaticMarkup(component(VanityTops)());
   const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? html;
   const visibleText = main
@@ -65,9 +65,14 @@ test("hotel vanity page provides 1,500–2,500 words of distinct project-plannin
     .replace(/&nbsp;/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  const wordCount = visibleText.match(/\b[\p{L}\p{N}][\p{L}\p{N}'’-]*\b/gu)?.length ?? 0;
-
-  assert.ok(wordCount >= 1500 && wordCount <= 2500, `Expected 1,500–2,500 visible words, got ${wordCount}`);
+  assert.ok(html.indexOf('id="vanity-products"') < html.indexOf("Project planning, when you need it."));
+  assert.equal((main.match(/<details\b/g) ?? []).length, 7);
+  assert.doesNotMatch(main, /<details\b[^>]*\bopen(?:\s|=|>)/);
+  assert.match(html, /stone-vanity-basin-component-2bef9ce2df/);
+  assert.match(html, /double-basin-vanity-scene-a24dccf5/);
+  assert.match(visibleText, /Illustrative interiors/);
+  assert.match(visibleText, /no specific hotel order or installation is attributed/);
+  assert.match(html, /redacted-stone-drawing-review-example/);
   assert.match(visibleText, /room type, and piece mark/i);
   assert.match(visibleText, /drawing number, revision, date, unit system, and approval status/i);
   assert.match(visibleText, /current template or a dimensioned outline/i);

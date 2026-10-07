@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import JsonLd from "./JsonLd";
 import PageHero from "./PageHero";
@@ -21,7 +22,9 @@ type CommercialLandingPageProps = {
   relatedLink?: { label: string; href: string };
   relatedLinks?: { label: string; href: string }[];
   specificationGroups?: { title: string; items: string[] }[];
-  contentSections?: { heading: string; paragraphs: string[] }[];
+  contentSections?: { heading: string; summary?: string; paragraphs: string[] }[];
+  contentSectionLayout?: "cards" | "disclosure";
+  visualOverview?: ReactNode;
   referenceImages?: { src: string; alt: string; title: string }[];
   purchaseInfo?: { materialOptions: string; customCapability: string };
   imageCaption?: string;
@@ -32,7 +35,7 @@ type CommercialLandingPageProps = {
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
+  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -71,7 +74,7 @@ export default function CommercialLandingPage({
           backgroundImageAlt={imageAlt}
           cta={resolvedHeroCtaLabel ? { href: contactHref, label: resolvedHeroCtaLabel, note: "Start with a short brief; drawings can follow when they are ready." } : undefined}
         />
-        <section className="section-luxury bg-paper">
+        {visualOverview || <section className="section-luxury bg-paper">
           <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">
               <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} title={title} loading="lazy" decoding="async" />
@@ -103,7 +106,7 @@ export default function CommercialLandingPage({
               </div>
             </div>
           </div>
-        </section>
+        </section>}
         {contentSections?.length ? (
           <section className="section-luxury bg-paper">
             <div className="container-luxury">
@@ -111,14 +114,31 @@ export default function CommercialLandingPage({
                 <p className="eyebrow-luxury">Design and procurement guide</p>
                 <h2 className="heading-lg section-intro__title">{contentSectionTitle || "Plan drawings, quantities, and delivery as one project scope."}</h2>
               </div>
-              <div className="grid gap-5 md:grid-cols-2">
+              {contentSectionLayout === "disclosure" ? (
+                <div className="mx-auto max-w-4xl divide-y divide-ink/15 border-y border-ink/15">
+                  {contentSections.map((section) => (
+                    <details key={section.heading} className="group py-5">
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-5 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink [&::-webkit-details-marker]:hidden">
+                        <span>
+                          <span className="block text-lg font-medium leading-7 text-ink">{section.heading}</span>
+                          {section.summary ? <span className="mt-2 block text-sm leading-6 text-ink/65">{section.summary}</span> : null}
+                        </span>
+                        <span aria-hidden="true" className="shrink-0 text-2xl leading-7 text-ink/60 group-open:rotate-45">+</span>
+                      </summary>
+                      <div className="max-w-3xl pb-2 pt-2">
+                        {section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-4 text-base leading-8 text-ink/70">{paragraph}</p>)}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              ) : <div className="grid gap-5 md:grid-cols-2">
                 {contentSections.map((section) => (
                   <article key={section.heading} className="card-luxury bg-stone p-7">
                     <h3 className="font-title text-[1.12rem] font-semibold uppercase leading-tight tracking-[0.04em] text-ink">{section.heading}</h3>
                     {section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-4 text-sm leading-7 text-ink/70">{paragraph}</p>)}
                   </article>
                 ))}
-              </div>
+              </div>}
             </div>
           </section>
         ) : null}

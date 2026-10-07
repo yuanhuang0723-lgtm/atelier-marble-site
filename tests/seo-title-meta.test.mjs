@@ -21,7 +21,7 @@ import * as About from "../app/about/page";
 
 const brand = " | Atelier Marble";
 const candidates = [
-  ["/", Home, "Custom Stone Fabrication from China | Atelier Marble", "Custom marble and stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, factory-direct work, and global shipping."],
+  ["/", Home, "Custom Stone Fabrication from China | Atelier Marble", "Custom stone components from Yunfu, China. Send CAD, BOQ, or dimensions for one-piece orders, small MOQs, coordinated production, and global shipping."],
   ["/architectural-stone", ArchitecturalStone, "Architectural Stone Fabrication from China | Atelier Marble", "Architectural stone for hotel and commercial interiors, made from project drawings. Share wall or floor layouts, quantities, finish, and destination for review."],
   ["/architectural-stone/wall-cladding", WallCladding, "Stone Wall Cladding Fabrication from China | Atelier Marble", "Custom stone wall cladding from China for hotel lobbies and commercial interiors. Review material, panel layout, finish, quantities, and packing from drawings."],
   ["/materials/marble", MarbleMaterials, "Marble Materials & Slabs for Projects | Atelier Marble", "Explore marble for hotel, commercial, and countertop projects. Confirm current lot, thickness, finish, veining, and matching before fabrication."],

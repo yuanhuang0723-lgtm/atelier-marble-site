@@ -49,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact": "2026-09-29",
     "/countertops": "2026-09-29",
     "/countertops/marble-countertops": "2026-09-29",
-    "/countertops/vanity-tops": "2026-09-29",
+    "/countertops/vanity-tops": "2026-10-07",
     "/countertops/integrated-stone-sinks": "2026-09-26",
     "/projects/hotel-stone-supply": "2026-09-26",
     "/projects/commercial-stone": "2026-09-26",
