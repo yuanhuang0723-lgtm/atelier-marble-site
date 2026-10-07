@@ -97,8 +97,19 @@ export function appendLandingPathToContactUrl(href: string, landingPath: string)
   }
 }
 
+export function getInternalVerificationContext() {
+  const stored = readStoredCampaign();
+  const query = new URLSearchParams(window.location.search || "");
+  const source = query.get("utm_source") || stored.utm_source;
+  const medium = query.get("utm_medium") || stored.utm_medium;
+  return source === "internal_verification" && medium === "internal_test"
+    ? { debug_mode: true, traffic_type: "internal" }
+    : {};
+}
+
 export function trackPageviewEvent(payload: { page_path?: string; page_title?: string; referrer?: string }) {
   const pageViewPayload = {
+    ...getInternalVerificationContext(),
     page_location: window.location.href,
     page_path: payload.page_path || window.location.pathname + window.location.search,
     page_title: payload.page_title || document.title,
@@ -113,6 +124,7 @@ export function trackPageviewEvent(payload: { page_path?: string; page_title?: s
 export function trackConversionEvent(eventName: string, payload: ConversionEventPayload = {}) {
   const enrichedPayload = {
     ...readStoredCampaign(),
+    ...getInternalVerificationContext(),
     ...payload,
     landingPage: payload.landingPage || getStoredLandingPage()
   };

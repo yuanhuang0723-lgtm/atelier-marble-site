@@ -35,6 +35,7 @@ beforeEach(() => {
   storage.clear();
   beaconCalls = 0;
   fetchCalls = 0;
+  window.location.search = "";
 });
 
 test("Google Ads counts only a completed generate_lead as a conversion", () => {
@@ -70,6 +71,29 @@ test("pageview tracking does not make a fallback fetch when sendBeacon is unavai
 
   assert.equal(fetchCalls, 0, "no-op visitor events must not be sent with fetch");
   assert.ok(dataLayer.some((event) => event.event === "page_view"), "page_view should remain in the analytics data layer");
+});
+
+test("only explicitly marked internal verification sessions send debug/internal flags", () => {
+  trackPageviewEvent({ page_path: "/" });
+  assert.equal(gtagCalls.at(-1)[2].debug_mode, undefined);
+  assert.equal(gtagCalls.at(-1)[2].traffic_type, undefined);
+
+  window.location.search = "?utm_source=internal_verification&utm_medium=internal_test";
+  trackPageviewEvent({ page_path: "/countertops/vanity-tops" });
+  assert.equal(gtagCalls.at(-1)[2].debug_mode, true);
+  assert.equal(gtagCalls.at(-1)[2].traffic_type, "internal");
+
+  storage.set("atelierCampaign", JSON.stringify({ utm_source: "internal_verification", utm_medium: "internal_test" }));
+  window.location.search = "";
+  trackConversionEvent("generate_lead", { sourcePage: "/countertops/vanity-tops" });
+  const lead = gtagCalls.findLast(([command, name]) => command === "event" && name === "generate_lead");
+  assert.equal(lead[2].debug_mode, true);
+  assert.equal(lead[2].traffic_type, "internal");
+
+  window.location.search = "?utm_source=google&utm_medium=organic";
+  trackPageviewEvent({ page_path: "/" });
+  assert.equal(gtagCalls.at(-1)[2].debug_mode, undefined);
+  assert.equal(gtagCalls.at(-1)[2].traffic_type, undefined);
 });
 
 test("inquiry landing attribution is reduced to a same-site path", () => {
