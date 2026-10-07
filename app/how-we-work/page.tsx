@@ -125,6 +125,9 @@ export default function HowWeWorkPage() {
                   Send drawings, project type, budget range, and destination market. This gives us enough context to
                   recommend material, packing, and project scope with less back-and-forth.
                 </p>
+                <p className="mt-4 text-sm leading-7 text-ink/68">
+                  For finished components, <Link className="underline underline-offset-4" href="/custom-stone-fabrication-china">review the cut-to-size stone fabrication scope</Link> before preparing your piece schedule.
+                </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a className="btn-luxury" href={whatsappUrl}>
                     Discuss on WhatsApp

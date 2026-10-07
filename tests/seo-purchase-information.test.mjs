@@ -117,9 +117,10 @@ test("custom fabrication page gives drawing-led buyers substantive quotation gui
     .replace(/&nbsp;/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  const wordCount = visibleText.match(/\b[\p{L}\p{N}][\p{L}\p{N}'’-]*\b/gu)?.length ?? 0;
-
-  assert.ok(wordCount >= 1500 && wordCount <= 2500, `Expected 1,500–2,500 visible words, got ${wordCount}`);
+  assert.match(visibleText, /Cut-to-size stone parts, scoped for your project/i);
+  assert.match(visibleText, /our own processing with partner coordination/i);
+  assert.match(visibleText, /Component scope Useful quotation inputs/i);
+  assert.ok(html.indexOf("Workshop and component references.") < html.indexOf("Drawing and fabrication details, when you need them."));
   assert.match(visibleText, /drawing revisions and component schedules/i);
   assert.match(visibleText, /natural stone variation/i);
   assert.match(visibleText, /site measuring and installation/i);

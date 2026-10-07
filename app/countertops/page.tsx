@@ -103,6 +103,7 @@ export default function CountertopsPage() {
       relatedLink={{ label: "Explore marble countertop fabrication", href: "/countertops/marble-countertops" }}
       relatedLinks={[
         { label: "Explore hotel bathroom vanity tops", href: "/countertops/vanity-tops" },
+        { label: "Review cut-to-size stone fabrication in China", href: "/custom-stone-fabrication-china" },
         { label: "Review workshop and packing references", href: "/factory#factory-evidence" }
       ]}
       faqTitle="Custom countertop details, answered clearly."

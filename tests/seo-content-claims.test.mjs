@@ -20,11 +20,12 @@ const ProjectProcurementInfo = typeof ProjectProcurementInfoModule.default === "
   : ProjectProcurementInfoModule.default.default;
 
 test("homepage metadata and hero state the requested custom-stone offer", () => {
-  assert.match(Home.metadata.description, /one-piece orders, small MOQs, factory-direct work, and global shipping/i);
-  assert.match(homeSource, /Custom Marble &amp; Stone Components Manufacturer/);
+  assert.match(Home.metadata.description, /one-piece orders, small MOQs, coordinated production, and global shipping/i);
+  assert.match(homeSource, /Custom Marble &amp; Stone Components/);
   assert.match(homeSource, /One Piece Custom/);
   assert.match(homeSource, /CAD Support/);
-  assert.match(homeSource, /Factory Direct/);
+  assert.match(homeSource, /Fabrication Partners/);
+  assert.doesNotMatch(homeSource, /Factory Direct/);
   assert.match(homeSource, /Small MOQ/);
   assert.match(homeSource, /Global Shipping/);
 });

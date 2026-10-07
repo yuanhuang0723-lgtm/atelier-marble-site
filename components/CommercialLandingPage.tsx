@@ -14,7 +14,9 @@ type CommercialLandingPageProps = {
   description: string;
   image: string;
   heroBackgroundImage?: string | null;
+  heroBackgroundImageAlt?: string;
   imageAlt: string;
+  imageFit?: "cover" | "contain";
   bullets: string[];
   details: string[];
   faqs?: { question: string; answer: string }[];
@@ -25,7 +27,13 @@ type CommercialLandingPageProps = {
   contentSections?: { heading: string; summary?: string; paragraphs: string[] }[];
   contentSectionLayout?: "cards" | "disclosure";
   visualOverview?: ReactNode;
+  overviewHeading?: string;
+  overviewDescription?: string;
+  scopeRows?: { component: string; inputs: string }[];
   referenceImages?: { src: string; alt: string; title: string }[];
+  referencePlacement?: "before-content" | "after-content";
+  referenceSectionTitle?: string;
+  referenceSectionDescription?: string;
   purchaseInfo?: { materialOptions: string; customCapability: string };
   imageCaption?: string;
   contentSectionTitle?: string;
@@ -35,7 +43,7 @@ type CommercialLandingPageProps = {
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, imageAlt, imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
+  eyebrow, title, description, image, heroBackgroundImage, heroBackgroundImageAlt, imageAlt, imageFit = "cover", imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, overviewHeading, overviewDescription, scopeRows, referencePlacement = "after-content", referenceSectionTitle, referenceSectionDescription, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -57,6 +65,27 @@ export default function CommercialLandingPage({
       : "Commercial Stone Projects";
   const contactHref = `/contact?sourcePage=${encodeURIComponent(sourcePage)}&projectType=${encodeURIComponent(contactProjectType)}`;
   const resolvedHeroCtaLabel = heroCtaLabel || (eyebrow.toLowerCase().includes("vanity") ? primaryCtaLabel : undefined);
+  const referenceGallery = referenceImages?.length ? (
+    <section className="section-luxury bg-paper">
+      <div className="container-luxury">
+        <div className="section-intro section-intro--center">
+          <p className="eyebrow-luxury">{referenceSectionTitle ? "Visual references" : "Project references"}</p>
+          <h2 className="heading-lg section-intro__title">{referenceSectionTitle || "Review related stone work before sending your scope."}</h2>
+          {referenceSectionDescription ? <p className="mt-4 text-sm leading-7 text-ink/70">{referenceSectionDescription}</p> : null}
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {referenceImages.map((item) => (
+            <figure key={item.src} className="card-luxury overflow-hidden p-3">
+              <div className="media-luxury aspect-[4/3]">
+                <img className={`block h-full w-full ${referencePlacement === "before-content" ? "object-contain" : "object-cover"}`} src={item.src} alt={item.alt} title={item.title} loading="lazy" />
+              </div>
+              <figcaption className="px-3 py-4 text-sm leading-7 text-ink/70">{item.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null;
 
   return (
     <PageShell>
@@ -71,13 +100,13 @@ export default function CommercialLandingPage({
           title={title}
           description={description}
           backgroundImage={heroBackgroundImage === undefined ? image : heroBackgroundImage ?? undefined}
-          backgroundImageAlt={imageAlt}
+          backgroundImageAlt={heroBackgroundImageAlt || imageAlt}
           cta={resolvedHeroCtaLabel ? { href: contactHref, label: resolvedHeroCtaLabel, note: "Start with a short brief; drawings can follow when they are ready." } : undefined}
         />
         {visualOverview || <section className="section-luxury bg-paper">
           <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">
-              <img className="block aspect-[4/3] h-auto w-full object-cover" src={image} alt={imageAlt} title={title} loading="lazy" decoding="async" />
+              <img className={`block aspect-[4/3] h-auto w-full ${imageFit === "contain" ? "object-contain" : "object-cover"}`} src={image} alt={imageAlt} title={title} loading="lazy" decoding="async" />
               {imageCaption ? <p className="px-5 py-3 text-xs leading-6 text-ink/60">{imageCaption}</p> : null}
               <div className="grid gap-4 p-7 md:p-9">
                 <p className="eyebrow-luxury">Project supply scope</p>
@@ -87,8 +116,8 @@ export default function CommercialLandingPage({
             <div className="space-y-8">
               <div>
                 <p className="eyebrow-luxury">Built around your drawings</p>
-                <h2 className="heading-lg mt-4">A clear path from material direction to delivery planning.</h2>
-                <p className="body-luxury mt-5">Share the scope, dimensions, material direction, and destination. We can review the practical fabrication path before pricing.</p>
+                <h2 className="heading-lg mt-4">{overviewHeading || "A clear path from material direction to delivery planning."}</h2>
+                <p className="body-luxury mt-5">{overviewDescription || "Share the scope, dimensions, material direction, and destination. We can review the practical fabrication path before pricing."}</p>
               </div>
               <ul className="grid gap-4 border-y border-ink/10 py-6">
                 {bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-[0.98rem] leading-7 text-ink/75"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />{bullet}</li>)}
@@ -107,6 +136,19 @@ export default function CommercialLandingPage({
             </div>
           </div>
         </section>}
+        {scopeRows?.length ? (
+          <section className="section-luxury-compact bg-stone">
+            <div className="container-luxury">
+              <h2 className="font-title text-2xl md:text-3xl">What to send for your cut-to-size stone quotation.</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink/70">Choose the component scope and send the details you have. Final geometry, material, tolerances, and responsibilities are agreed before fabrication.</p>
+              <table className="mt-6 w-full table-fixed border-collapse text-left text-sm leading-7">
+                <thead><tr className="border-b border-ink/20"><th scope="col" className="w-1/3 py-3 pr-4 font-medium">Component scope</th><th scope="col" className="py-3 font-medium">Useful quotation inputs</th></tr></thead>
+                <tbody>{scopeRows.map((row) => <tr key={row.component} className="border-b border-ink/10"><th scope="row" className="py-4 pr-4 align-top font-medium">{row.component}</th><td className="py-4 align-top text-ink/70">{row.inputs}</td></tr>)}</tbody>
+              </table>
+            </div>
+          </section>
+        ) : null}
+        {referencePlacement === "before-content" ? referenceGallery : null}
         {contentSections?.length ? (
           <section className="section-luxury bg-paper">
             <div className="container-luxury">
@@ -163,26 +205,7 @@ export default function CommercialLandingPage({
           </section>
         ) : null}
         {purchaseInfo ? <ProjectProcurementInfo {...purchaseInfo} /> : null}
-        {referenceImages?.length ? (
-          <section className="section-luxury bg-paper">
-            <div className="container-luxury">
-              <div className="section-intro section-intro--center">
-                <p className="eyebrow-luxury">Project references</p>
-                <h2 className="heading-lg section-intro__title">Review related stone work before sending your scope.</h2>
-              </div>
-              <div className="grid gap-5 sm:grid-cols-2">
-                {referenceImages.map((item) => (
-                  <figure key={item.src} className="card-luxury overflow-hidden p-3">
-                    <div className="media-luxury aspect-[4/3]">
-                      <img className="block h-full w-full object-cover" src={item.src} alt={item.alt} title={item.title} loading="lazy" />
-                    </div>
-                    <figcaption className="px-3 py-4 text-sm leading-7 text-ink/70">{item.title}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : null}
+        {referencePlacement === "after-content" ? referenceGallery : null}
         {faqs?.length ? (
           <section className="section-luxury bg-paper">
             <div className="container-luxury">

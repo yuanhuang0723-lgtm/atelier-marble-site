@@ -396,6 +396,9 @@ export default function StoneSupplierGuidePage() {
                     Send your project details and we will review whether the scope fits stone slab supply, hotel stone
                     fabrication, countertops, or custom fabrication.
                   </p>
+                  <p className="mt-4 text-sm leading-7 text-ink/68">
+                    For finished parts supplied from drawings, <Link className="underline underline-offset-4" href="/custom-stone-fabrication-china">compare cut-to-size stone fabrication in China</Link> and identify the dimensions, openings, quantities, and destination to include in the quotation.
+                  </p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Link className="btn-luxury" href="/contact">
                       Request Project Pricing
