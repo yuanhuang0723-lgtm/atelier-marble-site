@@ -98,6 +98,8 @@ const flooringProductJsonLd = {
     { "@type": "PropertyValue", name: "Standard Tile Thickness", value: "18mm, 20mm, 30mm (calibrated ±1mm tolerance)" },
     { "@type": "PropertyValue", name: "Available Finishes", value: "Honed, Polished, Brushed, Acid-Washed, Antique" },
     { "@type": "PropertyValue", name: "Vein Matching & Layout", value: "Vein-Flow Alignment, Repeat Module Sequencing & Dry-Lay Inspection" },
+    { "@type": "PropertyValue", name: "Abrasion Resistance", value: "ASTM C241 / ASTM C1353 Ha >= 10 for commercial high-traffic durability" },
+    { "@type": "PropertyValue", name: "Slip Resistance", value: "ANSI A326.3 DCOF >= 0.42 for wet interior walkways with honed / textured finishes" },
     { "@type": "PropertyValue", name: "Physical Specifications", value: "Bulk density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa" },
     { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Film Spacers" }
   ],
@@ -117,6 +119,63 @@ const flooringProductJsonLd = {
       url: absoluteUrl("/")
     }
   }
+};
+
+const flooringPlanningHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Architectural Stone Flooring Procurement & Layout Planning Workflow",
+  description: "An 8-stage architectural methodology for architects, interior designers, and commercial contractors coordinating cut-to-size natural stone floor modules from shop drawings to container crating.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Datum & Layout Direction Alignment",
+      text: "Establish room datums, boundary interfaces, and grid orientations from architectural plans and finish schedules."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Module, Border & Pattern Coordination",
+      text: "Coordinate repeat tile module dimensions, joint lines, perimeter cuts, and vein-flow continuity across public spaces."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Threshold, Stair & Transition Detailing",
+      text: "Detail door openings, metal transition strips, stair nosings, risers, and landings with section elevations."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Slope & Wet-Area Drainage Verification",
+      text: "Verify floor levels, falls, and waterproofing interfaces with site engineering teams before module cutting."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Material Lot Selection & Finish Specification",
+      text: "Select stone lots and verify slip resistance (ANSI A326.3 DCOF >= 0.42) and abrasion index (ASTM C241 Ha >= 10) for high traffic."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Substrate & Expansion Joint Demarcation",
+      text: "Delineate subfloor bedding requirements and movement joints between the stone supply scope and site contractor."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Drawing Revisions & Factory Dry-Lay Inspection",
+      text: "Conduct workshop dry-lay inspections, photographic vein-matching verification, and calibrated thickness checks."
+    },
+    {
+      "@type": "HowToStep",
+      position: 8,
+      name: "Phased Zone Packing & Ocean Container Crating",
+      text: "Pack modules grouped by floor, room, or zone into fumigated ISPM 15 wooden crates with protective foam spacers."
+    }
+  ]
 };
 
 export default function ArchitecturalFlooringPage() {
@@ -144,7 +203,7 @@ export default function ArchitecturalFlooringPage() {
         materialOptions: "Natural marble, granite, limestone, or travertine (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm the selected lot, finish, 18mm/20mm/30mm calibrated thickness (±1mm tolerance), and module sizing.",
         customCapability: "One-piece custom pieces and small MOQ commercial project scopes supported. Coordinate cut-to-size modules, borders, thresholds, stairs, repeat layouts, dry-lay vein matching, and piece-marked fumigated crate packing from current plans."
       }}
-      additionalJsonLd={[flooringProductJsonLd]}
+      additionalJsonLd={[flooringProductJsonLd, flooringPlanningHowToJsonLd]}
       metadata={metadata}
     />
   );

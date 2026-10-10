@@ -62,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/hotel-stone-pricing": "2026-10-10",
     "/guides/stone-project-checklist": "2026-10-10",
     "/guides/quality-control-delivery": "2026-10-10",
-    "/guides/hotel-lobby-case-study": "2026-09-26",
+    "/guides/hotel-lobby-case-study": "2026-10-10",
     "/about": "2026-10-10"
   };
   return [

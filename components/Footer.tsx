@@ -16,6 +16,7 @@ const footerGroups: FooterGroup[] = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
+      { label: "Factory Workshop", href: "/factory" },
       { label: "How We Work", href: "/how-we-work" },
       { label: "Privacy Policy", href: "/privacy-policy" }
     ]
@@ -27,7 +28,9 @@ const footerGroups: FooterGroup[] = [
       { label: "Buyer Guide", href: "/guides/stone-supplier-china" },
       { label: "Packing Guide", href: "/guides/export-packing-standards" },
       { label: "Pricing Guide", href: "/guides/hotel-stone-pricing" },
+      { label: "QC & Delivery", href: "/guides/quality-control-delivery" },
       { label: "Project Checklist", href: "/guides/stone-project-checklist" },
+      { label: "Hotel Planning Guide", href: "/guides/hotel-lobby-case-study" },
       { label: "Marble Materials", href: "/materials/marble" },
       { label: "Quartzite Materials", href: "/materials/quartzite" },
       { label: "Granite Materials", href: "/materials/granite" }
@@ -37,8 +40,13 @@ const footerGroups: FooterGroup[] = [
     title: "Applications",
     links: [
       { label: "Hotel Projects", href: "/projects/hotel-stone-supply" },
+      { label: "Commercial Stone", href: "/projects/commercial-stone" },
       { label: "Countertops & Vanity", href: "/countertops" },
+      { label: "Marble Countertops", href: "/countertops/marble-countertops" },
+      { label: "Integrated Sinks", href: "/countertops/integrated-stone-sinks" },
       { label: "Architectural Stone", href: "/architectural-stone" },
+      { label: "Wall Cladding", href: "/architectural-stone/wall-cladding" },
+      { label: "Flooring", href: "/architectural-stone/flooring" },
       { label: "Custom Stone", href: "/custom-stone-fabrication-china" }
     ]
   },

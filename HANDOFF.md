@@ -47,12 +47,20 @@
      - `/guides/stone-supplier-china`：注入 4 步中国石材供应商背景调查 HowTo Schema。
      - `/factory`：注入 4 阶段图纸深化到出厂交付工厂评审 HowTo Schema。
    - `app/sitemap.ts`：同步全部更新路由的 lastModified 时间戳为 2026-10-10（保持 `/countertops/vanity-tops` 观察期锁定至 2026-10-07）。
-6. **全套自动化测试与构建验收（100% 通过）**：
+6. **全球标杆深度对标与建筑地面/墙面规范强化（Cycle 8）**：
+   - 对标国际石材巨头（Antolini, Polycor, Levantina, Stone Source）及美国大理石协会（MIA）：
+     - `/guides/hotel-lobby-case-study`：注入 5 步酒店大堂石材采购与规划 HowTo Schema。
+     - `/custom-stone-fabrication-china`：注入 7 阶段图纸深化与数控加工 HowTo Schema。
+     - `/countertops`：注入 7 步石材台面与瀑布岛台采购规范 HowTo Schema。
+     - `/architectural-stone/flooring`：注入 ASTM C241 耐磨（Ha >= 10）与 ANSI A326.3 动摩擦系数（DCOF >= 0.42 湿地防滑）规格，并注入 8 阶段地面模数规划 HowTo Schema。
+     - `/architectural-stone/wall-cladding`：注入 ASTM C1354 锚栓拉拔测试与抗风压安全系数（3:1-4:1），并注入 8 阶段墙面板干挂施工 HowTo Schema。
+     - `components/Footer.tsx`：全站页脚均衡补充商业工装台面、地面、墙面与指南直达锚文本，彻底杜绝孤岛页面。
+     - `app/sitemap.ts`：更新 `/guides/hotel-lobby-case-study` 为 2026-10-10（保持 `/countertops/vanity-tops` 锁定至 2026-10-07）。
+7. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
-   - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，网络代理与重试机制加固完毕。
-   - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-7. **持续观测窗口与锁定保护**：
+   - `npm run build`：332 个静态页面全部成功编译（0 错误、0 警告）。
+8. **持续观测窗口与锁定保护**：
    - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
    - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 

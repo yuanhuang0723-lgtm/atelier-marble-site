@@ -112,6 +112,57 @@ const countertopProductJsonLd = {
   }
 };
 
+const countertopProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Custom Natural Stone Countertop Specification & Procurement Protocol",
+  description: "A 7-step engineering guide for architects, contractors, and hospitality procurement teams specifying custom stone countertops, waterfall kitchen islands, and commercial bar tops.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Component Identification & Piece Mark Listing",
+      text: "Tie every countertop to a specific room, piece mark, finished dimensions (length, depth, thickness), and current drawing revision."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Cabinet Base & Structural Support Coordination",
+      text: "Coordinate countertop dimensions with cabinet base widths, support rails, cantilever overhangs, and site tolerances."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Island Top & Waterfall End Detailing",
+      text: "Detail waterfall joint transitions, mitered 45-degree apron folds, exposed underside finishes, and continuous vein alignment across planes."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Fixture Cutout & Plumbing Template Mapping",
+      text: "Provide exact CAD coordinates and manufacturer templates for undermount sinks, faucet drillings, cooktops, and pop-up electrical sockets."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Material Lot Selection & Surface Finishes",
+      text: "Select natural stone slabs (marble, quartzite, granite) and specify finishes (polished, honed, leathered) aligned with project stain and wear requirements."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Edge Profiles, Seams & Backsplash Detailing",
+      text: "Define edge profiling (eased, bullnose, mitered 40-50mm apron), seam placements away from sink cut-outs, and matching backsplash heights."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Drawing Sign-Off & Phased Export Packing",
+      text: "Authorize final production shop drawings, dry-lay photo approval, and specify fumigated A-frame crate packing with foam interleaving."
+    }
+  ]
+};
+
 export default function CountertopsPage() {
   const referenceImages = getAssets("kitchen-countertop", 4).map((asset) => ({ src: asset.src, alt: asset.alt, title: asset.title }));
   return (
@@ -178,7 +229,7 @@ export default function CountertopsPage() {
         materialOptions: "Natural marble, granite, and quartzite (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >110 MPa). Confirm current lot, 20mm/30mm thickness (±1mm tolerance), finish, cut-outs, and vein matching.",
         customCapability: "One-piece custom slabs and multi-unit project scopes supported. Coordinate countertop dimensions, waterfall islands, sink and faucet cut-outs, splash details, edge profiles, dry-lay vein matching, and fumigated crate packing."
       }}
-      additionalJsonLd={[countertopProductJsonLd]}
+      additionalJsonLd={[countertopProductJsonLd, countertopProcurementHowToJsonLd]}
       metadata={metadata}
     />
   );

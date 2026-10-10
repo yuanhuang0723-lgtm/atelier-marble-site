@@ -112,6 +112,57 @@ const customFabricationProductJsonLd = {
   }
 };
 
+const customFabricationHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Bespoke Cut-to-Size Natural Stone Fabrication Protocol",
+  description: "A 7-stage architectural fabrication workflow for overseas stone buyers, translating CAD shop drawings and BOQ schedules into CNC-machined, quality-inspected, and crated stone components.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Drawing Package & BOQ Review",
+      text: "Link each component to its current architectural drawing revision, dimension units, piece marks, and bill of quantities."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Geometry, Edge & Opening Coordination",
+      text: "Confirm finished component dimensions, CNC edge profiles (e.g. eased, mitered), sink/faucet cut-out templates, and joinery interfaces."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Material Lot Selection & Surface Finishing",
+      text: "Select stone lots (marble, quartzite, granite) and specify finishes (polished, honed, leathered) with vein flow and matching guidelines."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Repeat Component Scheduling & Markings",
+      text: "Group multi-unit components by room type or floor, applying consistent piece marks across drawings, schedules, and packing labels."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Shop Drawing Approval & Inspection Sign-Off",
+      text: "Obtain formal sign-off on shop drawings, lot approval, and define workshop dry-lay photo/video inspection requirements prior to cutting."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Interface Demarcation & Site Tolerances",
+      text: "Delineate factory fabrication tolerances (±1mm) from site measurement and installation responsibilities."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Protective Export Packing & Logistics Hand-Off",
+      text: "Pack finished stone pieces into fumigated ISPM 15 wooden crates with foam cushioning and organize shipping documents and container loading."
+    }
+  ]
+};
+
 export default function CustomStoneFabricationPage() {
   return (
     <CommercialLandingPage
@@ -177,7 +228,7 @@ export default function CustomStoneFabricationPage() {
         materialOptions: "Natural marble, granite, quartzite, and other approved stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa), subject to current lot, geometry, finish, and application.",
         customCapability: "One-piece custom prototypes and multi-container project lots supported. Translate CAD or BOQ details into cut-to-size components, ±1mm edge work, repeat quantities, dry-lay inspection points, and fumigated crate packing groups."
       }}
-      additionalJsonLd={[customFabricationProductJsonLd]}
+      additionalJsonLd={[customFabricationProductJsonLd, customFabricationHowToJsonLd]}
       metadata={metadata}
     />
   );

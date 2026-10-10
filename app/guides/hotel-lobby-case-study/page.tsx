@@ -79,6 +79,45 @@ const faqSchema = {
   }))
 };
 
+const hotelLobbyHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Hotel Lobby Stone Planning & Procurement Protocol",
+  description: "A 5-step strategic planning framework for hotel owners, architects, and procurement teams specifying natural stone flooring, feature wall cladding, and reception desks for luxury hospitality public spaces.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Define Scope and Spatial Boundaries",
+      text: "Compile architectural plans, elevations, reflected ceiling plans, and finish schedules covering lobby flooring, feature walls, reception desks, and transition thresholds."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Coordinate Material Selection and Vein Direction",
+      text: "Select natural stone varieties and specify vein flow, bookmatching requirements, and acceptable tone variation across large public expanses."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Establish Pre-Shipment Inspection Checkpoints",
+      text: "Define factory quality verification protocols including workshop dry-lay vein matching, high-resolution slab photo/video documentation, and piece-mark labeling prior to packing."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Standardize Protective Export Packaging",
+      text: "Specify fumigated ISPM 15 solid wood crates with internal foam cushioning, corner protectors, and moisture-barrier film to prevent transit damage during ocean freight."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Align Logistics and Phased Handover",
+      text: "Confirm shipping terms, container payload balancing, destination port handling, and phased site delivery sequencing aligned with the hotel construction timeline."
+    }
+  ]
+};
+
 export default function HotelLobbyCaseStudyPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -89,6 +128,7 @@ export default function HotelLobbyCaseStudyPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Hotel Lobby Planning Guide for Buyers", path: "/guides/hotel-lobby-case-study" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={hotelLobbyHowToJsonLd} />
         <PageHero
           eyebrow="Planning guide"
           title="Hotel Lobby Stone Planning Guide for Buyers"
