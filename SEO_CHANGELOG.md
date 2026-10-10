@@ -311,14 +311,47 @@ This changelog records the complete autonomous technical SEO audit, structured d
 
 ---
 
-## 10. Comprehensive Continuous Technical SEO Growth Summary
+---
 
-Across 6 successive autonomous execution cycles:
+## 10. Optimization Cycle 7 Execution Log: Industry Benchmark Alignment & Process Knowledge Graph Expansion
+
+Following in-depth competitor and global natural stone export leader benchmarks (Antolini, Polycor, Levantina, Stone Source), injected standardized Schema.org `HowTo` protocols across the buyer guides and factory review pillars:
+
+### Pages Completed:
+1. **`app/guides/export-packing-standards/page.tsx` (`/guides/export-packing-standards`)**:
+   - Injected Schema.org `HowTo` structured data (`packingHowToJsonLd`) mapping the 5-step ocean freight packaging and crating protocol:
+     1. Surface film & corner edge protection
+     2. ISPM 15 compliant heat-treated solid wooden crate & A-frame assembly
+     3. High-density foam component separation & piece labeling
+     4. Pre-shipment photo & video inspection records
+     5. 20GP container payload balancing (US 19.9t vs Europe 24-26t) & diagonal wall bracing.
+2. **`app/guides/quality-control-delivery/page.tsx` (`/guides/quality-control-delivery`)**:
+   - Injected Schema.org `HowTo` structured data (`qcHowToJsonLd`) mapping the 4-phase natural stone inspection and delivery protocol:
+     1. Pre-production CAD shop drawing & scope confirmation
+     2. In-process inspection & dry-lay vein matching
+     3. Pre-packing piece verification & room labeling
+     4. Pre-shipment crate inspection & container loading bracing.
+3. **`app/guides/stone-project-checklist/page.tsx` (`/guides/stone-project-checklist`)**:
+   - Injected Schema.org `HowTo` structured data (`checklistHowToJsonLd`) mapping the 6-step project scoping and inquiry preparation protocol.
+4. **`app/guides/hotel-stone-pricing/page.tsx` (`/guides/hotel-stone-pricing`)**:
+   - Injected Schema.org `HowTo` structured data (`pricingHowToJsonLd`) mapping the 4-stage commercial estimation protocol for hotel stone packages.
+5. **`app/guides/stone-supplier-china/page.tsx` (`/guides/stone-supplier-china`)**:
+   - Injected Schema.org `HowTo` structured data (`supplierHowToJsonLd`) mapping the 4-step supplier vetting and verification workflow.
+6. **`app/factory/page.tsx` (`/factory`)**:
+   - Injected Schema.org `HowTo` structured data (`factoryWorkflowHowToJsonLd`) mapping the 4-stage documented factory review workflow from CAD drawings to delivery.
+7. **`app/sitemap.ts` (`/sitemap.xml`)**:
+   - Synchronized `lastModified` timestamps across all updated routes to `2026-10-10`, maintaining `/countertops/vanity-tops` lock to `2026-10-07`.
+
+---
+
+## 11. Comprehensive Continuous Technical SEO Growth Summary
+
+Across 7 successive autonomous execution cycles:
 - **13 Commercial Landing & Hub Pages** feature deep Schema.org `Product` / `AggregateOffer` metadata with verified ASTM physical properties (`ASTM C97`, `ASTM C170`, `ASTM C615`), calibrated `±1mm` thickness tolerances, and fumigated export crate specifications.
-- **1 Buyer Workflow Pillar** features Schema.org `HowTo` step-by-step procurement guidance.
+- **7 Buyer Workflow & Guide Pillars** feature rich Schema.org `HowTo` step-by-step procurement and quality control guidance.
 - **1 Knowledge Resource Hub** features Schema.org `CollectionPage` + `Article` relationships.
 - **3 Corporate Entity Pages** (`/`, `/about`, `/contact`) anchor the complete Schema.org `Organization` Knowledge Graph.
-- **6 In-Depth Industry Guides** maintain 100% compliant `Article` + `FAQPage` markup.
+- **6 In-Depth Industry Guides** maintain 100% compliant `Article` + `FAQPage` + `HowTo` markup.
 - **Zero Layout Mutation (CLS = 0)** preserved across the entire site.
 - **All 332 Static Pages & 29 Canonical Routes** build cleanly with 100% passing tests.
 

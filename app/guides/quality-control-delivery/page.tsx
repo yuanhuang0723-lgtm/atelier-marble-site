@@ -79,6 +79,39 @@ const faqSchema = {
   }))
 };
 
+const qcHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Natural Stone Quality Control & Pre-Shipment Inspection Protocol",
+  description: "A comprehensive four-phase quality control and inspection protocol for overseas buyers sourcing stone slabs, countertops, and architectural stone from China.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Pre-Production Drawing & Scope Confirmation",
+      text: "Confirm CAD shop drawings, dimensions, edge profiles, material lot, and surface finish requirements before production starts."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "In-Process Inspection & Vein Matching",
+      text: "Review high-resolution sample photos, dry-lay vein matching progress, and dimension checks at critical machining stages."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Pre-Packing Verification & Piece Labeling",
+      text: "Verify piece count, part marks, edge protection, and room-by-room packing sequence before crates are closed and banded."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Pre-Shipment Crate Inspection & Container Loading",
+      text: "Inspect crate strapping, ISPM 15 fumigation stamps, moisture barrier wrapping, and container loading bracing before export dispatch."
+    }
+  ]
+};
+
 export default function QualityControlDeliveryPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -89,6 +122,7 @@ export default function QualityControlDeliveryPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Quality Control & Delivery", path: "/guides/quality-control-delivery" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={qcHowToJsonLd} />
         <PageHero
           eyebrow="Quality control"
           title="Quality Control and Delivery Standards for Stone Projects"

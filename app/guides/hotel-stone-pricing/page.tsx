@@ -79,6 +79,39 @@ const faqSchema = {
   }))
 };
 
+const pricingHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Hotel Stone Project Budgeting & Pricing Formulation Protocol",
+  description: "A commercial estimation guide for international hospitality developers and contractors calculating natural stone supply costs from China.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Quantify Area Schedules Across Hotel Zones",
+      text: "Breakdown project requirements by zone: lobby reception desks, public corridors, guest room vanity tops, bathroom wall panels, and shower thresholds."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Select Stone Variety & Evaluate Block Yield",
+      text: "Choose marble, quartzite, or granite varieties and evaluate quarry slab yield, lot consistency, and natural variation factors."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Calculate Fabrication Complexity & Cutouts",
+      text: "Account for waterjet basin cutouts, mitered 40-50mm apron folds, edge profiles (eased, bullnose, ogee), and dry-lay vein matching requirements."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Incorporate Phased Packing & Logistics",
+      text: "Factor in fumigated wooden crates, room-by-room labeled packaging, and 20GP container ocean freight terms to destination."
+    }
+  ]
+};
+
 export default function HotelStonePricingPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -89,6 +122,7 @@ export default function HotelStonePricingPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Hotel Stone Pricing", path: "/guides/hotel-stone-pricing" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={pricingHowToJsonLd} />
         <PageHero
           eyebrow="Pricing guide"
           title="Hotel Stone Pricing Guide for Overseas Buyers"

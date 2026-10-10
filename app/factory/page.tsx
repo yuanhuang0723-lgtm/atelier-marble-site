@@ -73,12 +73,46 @@ const faqs = [
   }
 ];
 
+const factoryWorkflowHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Stone Fabrication & Factory Review Workflow",
+  description: "A four-stage documented review workflow from technical drawings to export delivery for international natural stone projects.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Scope & Drawing Review",
+      text: "Drawings, CAD files, quantities, material direction, and destination requirements are thoroughly checked before proposing a quotation path."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Coordinated Fabrication",
+      text: "Cutting, 5-axis CNC shaping, edge finishing, and surface work are precision-coordinated around the approved shop drawing scope."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Quality Review & Inspection",
+      text: "Dimensions, calibrated ±1mm tolerances, surface finish, visible vein character, and project details are reviewed before crating."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Export Preparation & Logistics",
+      text: "Finished stone pieces are protected with foam and wrap, packed into fumigated wooden crates, and prepared against agreed delivery terms."
+    }
+  ]
+};
+
 export default function FactoryPage() {
   return (
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
+        <JsonLd data={factoryWorkflowHowToJsonLd} />
         <PageHero
           eyebrow="Workshop video gallery"
           title="Stone fabrication factory in China."

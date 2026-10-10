@@ -81,6 +81,51 @@ const faqSchema = {
   }))
 };
 
+const checklistHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "B2B Natural Stone Project Inquiry & Scoping Checklist Protocol",
+  description: "A step-by-step buyer checklist for international contractors and design studios preparing a natural stone procurement brief for suppliers in China.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Define Scope & Application Area",
+      text: "Clarify project type (hotel, commercial interior, residence), application zone (flooring, wall cladding, vanity tops, kitchen island), and delivery destination."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Assemble Dimensions & Quantities",
+      text: "Compile rough dimensions, square meter schedules, room piece counts, or CAD shop drawing sets to establish the basis of pricing."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Select Material Category & Form",
+      text: "Determine whether the scope requires raw marble/quartzite/granite slabs, standard cut-to-size modular tiles, or bespoke CNC-machined components."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Set Budget Parameters & Project Timeline",
+      text: "Establish commercial budget guidelines and project handoff milestones to align material selection and manufacturing lead time."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Align Material Finish & Vein Matching",
+      text: "Share stone tone preferences, surface finishes (polished, honed, leathered), and vein matching expectations before lot selection."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Confirm Export Packing & Logistics",
+      text: "Agree on fumigated crate standards, crate labeling rules, destination port, and ocean container payload requirements."
+    }
+  ]
+};
+
 export default function StoneProjectChecklistPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -91,6 +136,7 @@ export default function StoneProjectChecklistPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Stone Project Checklist", path: "/guides/stone-project-checklist" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={checklistHowToJsonLd} />
         <PageHero
           eyebrow="Buyer checklist"
           title="Stone Project Checklist Before You Order"

@@ -79,6 +79,45 @@ const faqSchema = {
   }))
 };
 
+const packingHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Export Stone Packaging & Ocean Freight Crating Protocol",
+  description: "Standardized export packing and crating procedures for natural stone slabs, countertops, cut-to-size panels, and custom furniture shipped in 20GP ocean containers.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Surface & Edge Protection",
+      text: "Confirm edge protection, corner control, and surface plastic film protection before crate assembly to prevent scratches, pressure marks, and friction damage."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Solid Wooden Crate & Frame Assembly",
+      text: "Build heavy-duty solid wooden crates or reinforced A-frames sized strictly to slab, countertop, or finished stone dimensions, using ISPM 15 compliant heat-treated timber."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Component Separation & Labeling",
+      text: "Separate fragile parts, insert high-density foam padding between pieces, and label every crate clearly with room marks, part identifiers, and handling instructions for loading teams."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Pre-Shipment Inspection & Photo Records",
+      text: "Perform pre-shipment inspection and document crate structure, internal bracing, and strapping with high-resolution photos and video before dispatch."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Container Loading & Diagonal Wall Bracing",
+      text: "Review destination market payload limits (e.g., US 19.9t vs Europe 24-26t), balance crate weight inside 20GP containers, and secure with diagonal wooden bracing to prevent transit movement."
+    }
+  ]
+};
+
 export default function ExportPackingStandardsPage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -89,6 +128,7 @@ export default function ExportPackingStandardsPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Export Packing Standards", path: "/guides/export-packing-standards" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={packingHowToJsonLd} />
         <PageHero
           eyebrow="Buyer guide"
           title="Export Packing Standards for Stone Projects"

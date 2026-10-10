@@ -125,6 +125,39 @@ const faqSchema = {
   ]
 };
 
+const supplierHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Vet & Select a Stone Supplier in China for Hotel Projects",
+  description: "A practical evaluation workflow for international project teams comparing stone fabricators and suppliers in China for hospitality and commercial projects.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Verify Real Project References & Redacted Shop Drawings",
+      text: "Look for verifiable commercial and hotel project references with detailed CAD shop drawings, rather than generic showroom catalog photos."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Confirm Technical Review & CAD Coordination Capability",
+      text: "Ensure the supplier reviews drawings, tolerances (±1mm), openings, and edge details thoroughly before issuing a fixed project quotation."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Evaluate Material Sourcing & Dry-Lay Inspection Standards",
+      text: "Check whether the supplier provides slab photo libraries, lot selection confirmation, and full-scale dry-lay vein matching inspection before packing."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Assess Export Packaging & 20GP Ocean Freight Logistics",
+      text: "Confirm ISPM 15 fumigated solid wooden crate construction, internal cushioning, diagonal container bracing, and destination payload compliance."
+    }
+  ]
+};
+
 export default function StoneSupplierGuidePage() {
   const emailUrl = buildMailtoUrl(inquiryContext);
   const whatsappUrl = buildWhatsAppUrl(inquiryContext);
@@ -135,6 +168,7 @@ export default function StoneSupplierGuidePage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Buyer Resources", path: "/resources" }, { name: "Stone Supplier in China", path: "/guides/stone-supplier-china" }]} />
         <JsonLd data={articleSchema} />
         <JsonLd data={faqSchema} />
+        <JsonLd data={supplierHowToJsonLd} />
         <PageHero
           eyebrow="Buyer guide"
           title="How to Choose a Stone Supplier in China for Hotel Projects"

@@ -38,13 +38,21 @@
    - `/`（首页）：注入 `Organization` 结构化数据，绑定企业 Logo、云浮办事处地址、英文销售 ContactPoint 与深加工能力描述。
    - `/about`（关于我们）：注入 `AboutPage` 与关联企业实体 Schema。
    - `/contact`（联系咨询）：注入 `ContactPage` 与销售入口 Schema。
-   - `app/sitemap.ts`：同步全部 18 条更新路由的 lastModified 时间戳为 2026-10-10（保持 `/countertops/vanity-tops` 观察期锁定）。
-5. **全套自动化测试与构建验收（100% 通过）**：
+5. **全球石材标杆深度对标与流程全景图谱（Cycle 7）**：
+   - 对标欧美及国际高端石材出口标杆（Antolini, Polycor, Levantina, Stone Source）：
+     - `/guides/export-packing-standards`：注入 5 步集装箱包装与 ISPM 15 熏蒸装柜 HowTo Schema（含美线 19.9t 与欧线 24-26t 限重加固）。
+     - `/guides/quality-control-delivery`：注入 4 阶段全流程石材验货与交付 HowTo Schema（图纸预审、对纹干铺、贴签分箱、港口装柜）。
+     - `/guides/stone-project-checklist`：注入 6 步采购询盘立项清单 HowTo Schema。
+     - `/guides/hotel-stone-pricing`：注入 4 步酒店石材预算测算 HowTo Schema。
+     - `/guides/stone-supplier-china`：注入 4 步中国石材供应商背景调查 HowTo Schema。
+     - `/factory`：注入 4 阶段图纸深化到出厂交付工厂评审 HowTo Schema。
+   - `app/sitemap.ts`：同步全部更新路由的 lastModified 时间戳为 2026-10-10（保持 `/countertops/vanity-tops` 观察期锁定至 2026-10-07）。
+6. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，网络代理与重试机制加固完毕。
    - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-6. **持续观测窗口与锁定保护**：
+7. **持续观测窗口与锁定保护**：
    - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
    - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 
