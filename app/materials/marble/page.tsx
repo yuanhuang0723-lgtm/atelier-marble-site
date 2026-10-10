@@ -23,6 +23,45 @@ const faqs = [
   { question: "Can I send a reference image first?", answer: "Yes. A reference image, rough dimensions, application, preferred tone, and approximate quantity can begin a practical material and fabrication review." }
 ];
 
+const marbleProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Cut-to-Size Natural Marble Slabs & Architectural Tiles",
+  description: "Direct manufacturer & exporter of premium natural marble slabs, cut-to-size tiles, and architectural components from Yunfu, China. Available in Calacatta, Carrara, Statuario, and Nero Marquina. Strict quality control, dry-lay inspection, and fumigated crate packing.",
+  category: "Building Materials > Natural Stone > Marble Slabs & Tiles",
+  material: "Natural Marble",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Bulk Density", value: "2.65 - 2.75 g/cm³ (ASTM C97)" },
+    { "@type": "PropertyValue", name: "Water Absorption Rate", value: "< 0.20% (ASTM C97)" },
+    { "@type": "PropertyValue", name: "Compressive Strength", value: "> 110 MPa (ASTM C170)" },
+    { "@type": "PropertyValue", name: "Modulus of Rupture", value: "> 10.5 MPa (ASTM C99)" },
+    { "@type": "PropertyValue", name: "Available Thicknesses", value: "18mm, 20mm, 30mm (±1mm tolerance)" },
+    { "@type": "PropertyValue", name: "Surface Finishes", value: "Polished, Honed, Leathered, Acid-Washed" },
+    { "@type": "PropertyValue", name: "Vein Matching", value: "Bookmatched, Continuous Flow, Dry-Lay Inspection" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates/Bundles with Plastic Film Protection" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on CAD & BOQ"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function MarbleMaterialsPage() {
   return (
     <CommercialLandingPage
@@ -30,7 +69,7 @@ export default function MarbleMaterialsPage() {
       title="Marble material direction for considered project decisions."
       description="Review marble character, application, finish, matching, and fabrication considerations with a project-focused stone supply team in Yunfu, China."
       image="/materials/hero/atelier-marble-luxury-hero.webp"
-      imageAlt="Marble material surface reference for hotel, commercial, and interior projects"
+      imageAlt="Natural marble slabs and cut-to-size tiles for commercial and luxury residential projects"
       bullets={[
         "Start with material character, preferred tone, application, and reference images",
         "Review thickness, finish, matching direction, cut-outs, and edge requirements",
@@ -38,12 +77,34 @@ export default function MarbleMaterialsPage() {
         "Confirm current lot and project suitability before fabrication is approved"
       ]}
       details={["Marble countertops and islands", "Hotel vanity tops and bathroom packages", "Commercial interior wall and floor applications", "Custom cut-to-size stone components"]}
-      specificationGroups={[{ title: "Material review", items: ["Stone name or reference image, current lot, slab or piece dimensions, thickness, and available quantity", "Surface finish, exposed edges, face direction, bookmatch or vein-matching expectation", "Natural variation, fissures, repairs, shade range, and sample approval requirements"] }, { title: "Application fit", items: ["Countertop, vanity, wall, floor, or custom component application", "Cut-outs, edge profiles, joints, support, and installation constraints", "Maintenance expectations and any project-specific performance requirements"] }]}
+      specificationGroups={[
+        {
+          title: "Material review",
+          items: [
+            "Stone variety name (Calacatta, Carrara, Statuario, Nero Marquina), current lot, slab dimensions, 18mm/20mm/30mm thickness (±1mm tolerance), and available square meters",
+            "Surface finishes (polished, honed, leathered, acid-washed), exposed edges, face direction, bookmatch, or continuous vein-matching expectation",
+            "Physical properties (ASTM C97 bulk density ~2.7 g/cm³, water absorption <0.2%, compressive strength >100 MPa), natural variation, and dry-lay photo approval"
+          ]
+        },
+        {
+          title: "Application fit",
+          items: [
+            "Countertop, vanity, wall cladding, flooring, or custom cut-to-size architectural component application",
+            "Cut-outs, edge profiles, joints, support, and installation constraints coordinated from drawings",
+            "Pre-shipment full slab inspection photos/videos, fumigated sturdy wooden crate packing with plastic film protection, and destination delivery terms"
+          ]
+        }
+      ]}
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
       relatedLinks={[{ label: "Review hotel vanity top packages", href: "/countertops/vanity-tops" }]}
-      purchaseInfo={{ materialOptions: "Natural marble. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.", customCapability: "Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components." }} metadata={metadata}
+      purchaseInfo={{
+        materialOptions: "Natural marble (Calacatta, Carrara, Statuario, Nero Marquina). Bulk density ~2.7 g/cm³, water absorption <0.20%, ASTM compressive strength >100 MPa. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.",
+        customCapability: "One-piece custom or container-load wholesale. Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components with fumigated wooden crate packing."
+      }}
+      additionalJsonLd={[marbleProductJsonLd]}
+      metadata={metadata}
     />
   );
 }

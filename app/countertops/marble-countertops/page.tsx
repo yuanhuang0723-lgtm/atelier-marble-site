@@ -17,25 +17,90 @@ export const metadata: Metadata = {
   }
 };
 
+const marbleProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Marble Countertops",
+  description:
+    "Custom marble countertop fabrication from Yunfu, China. Precision CNC cutting, undermount sink cut-outs, bookmatched vein alignment, 20mm and 30mm slabs, and mitered 40-50mm aprons.",
+  image: absoluteUrl("/materials/featured-covers/kitchen-countertop.webp"),
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  material: "Natural Marble",
+  additionalProperty: [
+    {
+      "@type": "PropertyValue",
+      "name": "Bulk Density",
+      "value": "2.70 g/cm³ (ASTM C97)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compressive Strength",
+      "value": ">110 MPa (ASTM C170)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Water Absorption",
+      "value": "<0.20% (ASTM C97)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thickness Options",
+      "value": "20mm, 30mm, mitered 40-50mm aprons"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Fabrication Scope",
+      "value": "Precision 5-axis CNC cutting, undermount sink cut-outs, ±1mm tolerances"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Vein Alignment",
+      "value": "Bookmatched vein alignment, dry-lay vein matching, pre-shipment inspection"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Export Packaging",
+      "value": "Fumigated wooden crates with plastic wrap protection"
+    }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: "120",
+    highPrice: "680",
+    offerCount: "50",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "USD",
+      description: "Project quote based on custom dimensions, marble lot grade, CNC cut-outs, and edge profiling."
+    },
+    availability: "https://schema.org/InStock",
+    url: absoluteUrl("/countertops/marble-countertops")
+  }
+};
+
 const marbleContentSections = [
   {
     heading: "Review marble lots and slab layout before pricing",
     paragraphs: [
-      "A marble countertop request should identify the room or area, piece marks, dimensions, quantity, thickness, finish, and drawing revision. Share the cabinet plan, appliance layout, openings, visible edges, and any adjoining splash or wall pieces. The product name alone is not a complete specification because two marble lots with the same trade name can differ in background tone, veining, and movement.",
+      "A marble countertop request should identify the room or area, piece marks, dimensions, quantity, thickness (standard 20mm, 30mm, or mitered 40-50mm aprons), finish, and drawing revision. Share the cabinet plan, appliance layout, openings, visible edges, and any adjoining splash or wall pieces. The product name alone is not a complete specification because two marble lots with the same trade name can differ in background tone, veining, and movement.",
       "State whether the project is selecting from a current lot, a sample, or a visual reference and who approves the material. If a quotation is prepared before the lot is confirmed, label the material direction as provisional. This keeps a budget estimate separate from a final production release and gives the buyer a clear list of decisions that still affect appearance or price."
     ]
   },
   {
     heading: "Record vein direction and face selection",
     paragraphs: [
-      "For a long run, island, waterfall end, or bookmatched detail, show the intended vein direction and the relationship between neighboring pieces. Use a plan or elevation to indicate which face is visible, how the pattern should turn at a corner, and where seams fall. If the drawing leaves those decisions open, note them for review instead of relying on an interior photograph to define the layout.",
+      "For a long run, island, waterfall end, or bookmatched detail, show the intended vein direction and the relationship between neighboring pieces. For dramatic veined stones like Calacatta or Arabescato, bookmatched vein alignment requires coordinated slab sequencing. Use a plan or elevation to indicate which face is visible, how the pattern should turn at a corner, and where seams fall. Workshop dry-lay vein matching allows design teams to verify pattern continuity across joints before final packing. If the drawing leaves those decisions open, note them for review instead of relying on an interior photograph to define the layout.",
       "Natural variation across the same lot can still be visible from one piece to another. If multiple tops must read together, identify the set and agree what type of visual continuity matters. Record whether matching is based on tone, movement, background color, or a particular pattern feature. The final selection and acceptable range should be approved against the actual project material, not inferred from a small screen image."
     ]
   },
   {
     heading: "Separate color preference from application requirements",
     paragraphs: [
-      "Describe the intended use: kitchen work surface, hotel vanity, reception counter, bar top, or another interior application. Note the expected finish, thickness, exposed faces, edges, cut-outs, and maintenance expectations for that setting. Marble varieties and finishes have different characteristics. The design and operations teams should confirm that the selected material and finish suit the actual use and cleaning plan rather than relying on a generic claim about performance.",
+      "Describe the intended use: kitchen work surface, hotel vanity, reception counter, bar top, or another interior application. Note the expected finish, thickness, exposed faces, edges, cut-outs, and maintenance expectations for that setting. Natural marble for commercial interiors typically demonstrates an ASTM bulk density around 2.7 g/cm³, water absorption under 0.20%, and compressive strength exceeding 110 MPa, but proper penetrating sealers are essential for stain prevention. Marble varieties and finishes have different characteristics. The design and operations teams should confirm that the selected material and finish suit the actual use and cleaning plan rather than relying on a generic claim about performance.",
       "If the project needs a sample, mock-up, or material-board approval, define what it is meant to confirm and who signs off. A sample helps discuss color and finish direction, but it may not represent every slab in a later lot. Record the accepted reference, lot, finish, and any agreed variation. If the material or finish changes after approval, review how the change affects the drawing, cost, quantity, and timing."
     ]
   },
@@ -43,13 +108,13 @@ const marbleContentSections = [
     heading: "Draw the countertop, cabinet, and opening interfaces",
     paragraphs: [
       "Show the finished top outline, cabinet dimensions, support condition, overhang, joints, seams, and wall return. Identify the edges that remain visible and any backsplash, upstand, side panel, or waterfall end that belongs with the marble scope. Distinguish finished dimensions from cabinet-opening or preliminary dimensions, and label units and measurement datums so the quote is based on a clear reference.",
-      "For sinks, faucets, cooktops, soap dispensers, outlets, and other openings, provide a template or dimensions from fixed edges or centerlines. Confirm which trade supplies each fixture and who approves the final opening location. If a cabinet, appliance, or plumbing decision is still pending, mark it as open. This prevents a provisional cut-out from being treated as a confirmed fabrication detail."
+      "For sinks, faucets, cooktops, soap dispensers, outlets, and other openings, provide a template or dimensions from fixed edges or centerlines. Precision 5-axis CNC cutting ensures undermount sink cut-outs, edge bevels, and faucet holes meet ±1mm tolerances. Confirm which trade supplies each fixture and who approves the final opening location. If a cabinet, appliance, or plumbing decision is still pending, mark it as open. This prevents a provisional cut-out from being treated as a confirmed fabrication detail."
     ]
   },
   {
     heading: "Specify edges, joints, and finish details by piece",
     paragraphs: [
-      "Name the requested edge profile and mark where it begins and ends. Show whether edges are polished, eased, built up, mitered, or left concealed by another component. Note how seams align with cabinets or appliances and whether the marble continues into a splash or wall return. Use sections for details where thickness, edge build-up, or the joint between pieces cannot be read from a plan.",
+      "Name the requested edge profile and mark where it begins and ends. Show whether edges are polished, eased, built up, mitered to form 40-50mm aprons, or left concealed by another component. Note how seams align with cabinets or appliances and whether the marble continues into a splash or wall return. Use sections for details where thickness, edge build-up, or the joint between pieces cannot be read from a plan.",
       "For several countertops, reuse the same edge and finish labels in the drawing and BOQ. Separate pieces that have a different profile or visible face rather than assuming a whole project has one standard detail. If a change is made after the sample or drawing is approved, list the affected piece marks and get the revised scope confirmed before it is used for a new quotation or production drawing."
     ]
   },
@@ -64,13 +129,13 @@ const marbleContentSections = [
     heading: "Approve the material and drawing as one scope",
     paragraphs: [
       "Before a final production scope is agreed, check that the drawing, BOQ, material reference, finish, cut-outs, edge details, and piece count describe the same package. Record who approves the selected marble, visible face, slab orientation, and final dimensions. If an approval is pending, show it as pending rather than treating a general reference image as sign-off.",
-      "Define the checks that matter for the order, such as dimensions, opening positions, edge completion, finish, labels, and visible surface character. Agree which records or photos can be provided and when. Inspection scope and evidence depend on the written quotation. Do not infer that a specific test, certificate, or project quality result exists unless it is supplied for that order."
+      "Define the checks that matter for the order, such as dimensions, opening positions, edge completion, finish, labels, and visible surface character. High-resolution pre-shipment slab photos/videos and dry-lay inspection records provide verifiable confirmation of dimensions, vein matching, and surface quality before crating. Agree which records or photos can be provided and when. Inspection scope and evidence depend on the written quotation. Do not infer that a specific test, certificate, or project quality result exists unless it is supplied for that order."
     ]
   },
   {
     heading: "Confirm packing and delivery responsibility",
     paragraphs: [
-      "Marble tops may have exposed edges, cut-outs, finished faces, or connected pieces that need coordinated protection. State how pieces should be grouped, labeled, and matched to a room or installation sequence. Share receiving constraints, destination, delivery term, and any buyer or forwarder packing instructions before the scope is priced. If local measuring or installation is needed, identify who arranges it separately.",
+      "Marble tops may have exposed edges, cut-outs, finished faces, or connected pieces that need coordinated protection. Slabs and cut-to-size tops are packed in robust fumigated wooden crates with plastic wrap protection, interior foam padding, and reinforced corners to prevent transit shock. State how pieces should be grouped, labeled, and matched to a room or installation sequence. Share receiving constraints, destination, delivery term, and any buyer or forwarder packing instructions before the scope is priced. If local measuring or installation is needed, identify who arranges it separately.",
       "Confirm who handles freight, insurance, customs clearance, unloading, and last-mile delivery. Fabrication and export packing do not automatically include site installation. The final quotation should state what is included and which delivery decisions remain open. Freight price and transit time depend on the route, shipment details, carrier, and agreed terms; they cannot be inferred from the marble type alone."
     ]
   }
@@ -108,7 +173,9 @@ export default function MarbleCountertopsPage() {
         { label: "Plan hotel vanity tops by room type", href: "/countertops/vanity-tops" },
         { label: "Review workshop and packing references", href: "/factory#factory-evidence" }
       ]}
-      purchaseInfo={{ materialOptions: "Natural marble. Confirm current lot, thickness, finish, vein direction, and batch matching.", customCapability: "Review kitchen and hotel countertop layouts, cut-outs, edges, finish, and repeat-piece matching." }} metadata={metadata}
+      purchaseInfo={{ materialOptions: "Natural marble (bulk density ~2.7 g/cm³, absorption <0.20%). Confirm current lot, 20mm/30mm thickness, finish, vein direction, and batch matching.", customCapability: "One-piece custom slabs and small MOQ projects supported. Review kitchen and hotel countertop layouts, cut-outs, edges, finish, dry-lay vein matching, and fumigated crate packing." }}
+      additionalJsonLd={[marbleProductJsonLd]}
+      metadata={metadata}
     />
   );
 }

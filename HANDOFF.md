@@ -1,15 +1,37 @@
 # Atelier Marble SEO 交接文档
 
-**更新日期：2026-10-01**
+**更新日期：2026-10-10**
 
 **用途：给全新会话接手；以下状态以本地核对及最近一次记录为准。**
 
-**当前工作区：** F:\Atelier-Marble-Site
+**当前工作区：** D:\独立站\Atelier-Marble-Site
 
 **生产站：** https://ateliermarblestone.com
 
 **Git 远端：** https://github.com/yuanhuang0723-lgtm/atelier-marble-site.git
 **生产分支：** main
+
+## 2026-10-10 自动化技术 SEO 与 Schema 注入进展
+1. **安装并调用 SEO Skills AI & Agentic SEO Skills 插件体系**：
+   - 全局安装 `~/.gemini/config/plugins/seo-skills-ai` 与 `~/.gemini/config/plugins/agentic-seo-skills`。
+   - 载入 ZERO LAYOUT MUTATION（CLS = 0）、ASTM 技术指标、全站 29 条路由审计规范。
+2. **Schema.org Product 结构化数据与技术规格注入（5个核心页面完成）**：
+   - `components/CommercialLandingPage.tsx`：扩展 `additionalJsonLd` 属性，支持非渲染 Schema 注入。
+   - `/materials/marble`：注入天然大理石 Product Schema（ASTM C97 密度 2.7 g/cm³、吸水率 <0.2%、ASTM C170 抗压强度 >110 MPa、±1mm 公差、熏蒸木架与干铺对纹），完善采购规格。
+   - `/countertops/marble-countertops`：注入大理石台面 Product Schema（CNC 水刀开孔、台下盆开孔、海棠角/密拼 40-50mm 裙边、AggregateOffer 询价入口），正文 1,733 词（严守 1,500–2,500 词）。
+   - `/materials/quartzite`：注入奢石/石英石 Product Schema（莫氏硬度 >7、低孔隙率、ASTM C170 >130 MPa、AggregateOffer），完善小起订量与单件定制指引。
+   - `/materials/granite`：注入工装花岗岩 Product Schema（ASTM C615、抗压 >150 MPa、光面/火烧面/荔枝面），更新工程规格组。
+   - `/countertops/integrated-stone-sinks`：注入一体盆/石材台下盆 Product Schema（整块雕刻与45度斜拼、1:50 导水坡度、防水测试、AggregateOffer），正文 1,773 词。
+3. **全套自动化测试与构建验收（100% 通过）**：
+   - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
+   - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
+   - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，FAQ 纯文本 100% 一字不差对齐。
+   - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
+4. **下周期优化优先级（Next 3 Priority Pages）**：
+   - `/architectural-stone/wall-cladding`（外墙/内墙干挂石材板）
+   - `/architectural-stone/flooring`（工装高人流地面规格板）
+   - `/projects/hotel-stone-supply`（酒店客房与公区整包石材配套）
+   - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
 
 ## 先读这一段
 

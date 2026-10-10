@@ -39,11 +39,12 @@ type CommercialLandingPageProps = {
   contentSectionTitle?: string;
   primaryCtaLabel?: string;
   heroCtaLabel?: string;
+  additionalJsonLd?: Record<string, unknown>[];
   metadata: Metadata;
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, heroBackgroundImageAlt, imageAlt, imageFit = "cover", imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, overviewHeading, overviewDescription, scopeRows, referencePlacement = "after-content", referenceSectionTitle, referenceSectionDescription, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, metadata
+  eyebrow, title, description, image, heroBackgroundImage, heroBackgroundImageAlt, imageAlt, imageFit = "cover", imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, overviewHeading, overviewDescription, scopeRows, referencePlacement = "after-content", referenceSectionTitle, referenceSectionDescription, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, additionalJsonLd, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -93,7 +94,8 @@ export default function CommercialLandingPage({
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: eyebrow, item: metadata.alternates && typeof metadata.alternates.canonical === "string" ? metadata.alternates.canonical : absoluteUrl("/") }] },
           { "@context": "https://schema.org", "@type": "Service", name: title, serviceType: eyebrow, description, provider: { "@type": "Organization", name: contact.companyName, url: absoluteUrl("/") } },
-          ...(faqJsonLd ? [faqJsonLd] : [])
+          ...(faqJsonLd ? [faqJsonLd] : []),
+          ...(additionalJsonLd ?? [])
         ]} />
         <PageHero
           eyebrow={eyebrow}

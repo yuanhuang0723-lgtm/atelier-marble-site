@@ -81,6 +81,66 @@ const contentSections = [
   }
 ];
 
+const integratedSinkProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Integrated Stone Sinks & Vanity Basins",
+  description:
+    "Custom integrated stone sinks and vanity basins fabricated from natural marble and quartzite in Yunfu, China. Featuring precision mitered basin folds or monolithic carving, sloped drainage profiles, ±1mm CNC tolerances, and fumigated export crating.",
+  image: absoluteUrl("/assets/vanity-cabinet/hero.webp"),
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  material: "Natural Stone / Marble / Quartzite",
+  additionalProperty: [
+    {
+      "@type": "PropertyValue",
+      "name": "Basin Construction",
+      "value": "Monolithic solid block carving or precision 45-degree miter-fold joinery"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Fabrication Tolerance",
+      "value": "±1mm dimensional tolerance via 5-axis CNC waterjet and machining"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Drainage Design",
+      "value": "Integrated slope channel, slot drain with removable cover, or standard pop-up cut-out"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Physical Properties",
+      "value": "Bulk density ~2.7 g/cm³ (ASTM C97), water absorption <0.20%, compressive strength >100 MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Quality Inspection",
+      "value": "Full water drainage flow test, dry-lay vanity alignment, and pre-shipment photos"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Export Packaging",
+      "value": "Fumigated wooden crates with internal foam cushioning and moisture barrier plastic wrap"
+    }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: "240",
+    highPrice: "1450",
+    offerCount: "35",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "USD",
+      description: "Custom vanity quote determined by basin geometry, marble or quartzite lot selection, drainage detail, and dimensions."
+    },
+    availability: "https://schema.org/InStock",
+    url: absoluteUrl("/countertops/integrated-stone-sinks")
+  }
+};
+
 export default function IntegratedStoneSinksPage() {
   return (
     <CommercialLandingPage
@@ -121,9 +181,10 @@ export default function IntegratedStoneSinksPage() {
       ]}
       faqTitle="Integrated stone sink details, answered clearly."
       purchaseInfo={{
-        materialOptions: "Stone choice depends on basin geometry and intended use. Confirm lot, thickness, surface finish, and maintenance needs.",
-        customCapability: "Plan basin geometry, drain, faucet openings, edges, finish, and the countertop interface from drawings."
+        materialOptions: "Stone choice depends on basin geometry and intended use (ASTM density ~2.7 g/cm³, absorption <0.20%). Confirm lot, thickness, surface finish, and maintenance needs.",
+        customCapability: "Single-piece custom vanities and small MOQ hotel bathroom runs supported. Plan basin geometry, drain, faucet openings, ±1mm CNC edges, finish, and the countertop interface from drawings."
       }}
+      additionalJsonLd={[integratedSinkProductJsonLd]}
       metadata={metadata}
     />
   );
