@@ -82,6 +82,63 @@ const marbleProductJsonLd = {
   }
 };
 
+const marbleCountertopHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Custom Marble Countertop Specification & Fabrication Protocol",
+  description: "An 8-stage architectural methodology for specifying, dry-laying, vein-matching, and exporting custom marble kitchen countertops, islands, and vanity surfaces.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Marble Lot Selection & Slab Layout Review",
+      text: "Review natural marble slab lots for tone and veining character before establishing dimensioned shop drawings."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Vein Direction & Bookmatched Alignment",
+      text: "Coordinate vein flow and bookmatched alignment across long countertop runs, islands, and vertical waterfall miters."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Application & Stain Maintenance Expectations",
+      text: "Align marble variety and finish (polished or honed) with kitchen or bathroom use, specifying protective penetrating sealers."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Cabinet Interface & Fixture Cutouts",
+      text: "Coordinate undermount sink cut-outs, faucet drillings, overhangs, and cabinet base supports using precise templates."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Edge Profiles, Seams & Mitered Aprons",
+      text: "Detail edge profiles (eased, bullnose, mitered 40-50mm aprons), seam placements, backsplashes, and wall returns."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Repeat Unit Scheduling by Room Type",
+      text: "Group multi-room hotel or residential countertops by room type, piece mark, and phased delivery batch."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Dry-Lay Inspection & Photo Verification",
+      text: "Conduct factory dry-lay vein matching with high-resolution photo and video documentation before crate loading."
+    },
+    {
+      "@type": "HowToStep",
+      position: 8,
+      name: "Protective Export Packing & Logistics",
+      text: "Pack finished marble tops into fumigated wooden crates with plastic wrap, foam padding, and steel band strapping."
+    }
+  ]
+};
+
 const marbleContentSections = [
   {
     heading: "Review marble lots and slab layout before pricing",
@@ -174,7 +231,7 @@ export default function MarbleCountertopsPage() {
         { label: "Review workshop and packing references", href: "/factory#factory-evidence" }
       ]}
       purchaseInfo={{ materialOptions: "Natural marble (bulk density ~2.7 g/cm³, absorption <0.20%). Confirm current lot, 20mm/30mm thickness, finish, vein direction, and batch matching.", customCapability: "One-piece custom slabs and small MOQ projects supported. Review kitchen and hotel countertop layouts, cut-outs, edges, finish, dry-lay vein matching, and fumigated crate packing." }}
-      additionalJsonLd={[marbleProductJsonLd]}
+      additionalJsonLd={[marbleProductJsonLd, marbleCountertopHowToJsonLd]}
       metadata={metadata}
     />
   );

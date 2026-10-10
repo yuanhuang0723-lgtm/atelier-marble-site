@@ -47,15 +47,21 @@
      - `/guides/stone-supplier-china`：注入 4 步中国石材供应商背景调查 HowTo Schema。
      - `/factory`：注入 4 阶段图纸深化到出厂交付工厂评审 HowTo Schema。
    - `app/sitemap.ts`：同步全部更新路由的 lastModified 时间戳为 2026-10-10（保持 `/countertops/vanity-tops` 观察期锁定至 2026-10-07）。
-6. **全球标杆深度对标与建筑地面/墙面规范强化（Cycle 8）**：
+6. **全球标杆深度对标与台面/案例/全场景规范强化（Cycle 8 全面收官）**：
    - 对标国际石材巨头（Antolini, Polycor, Levantina, Stone Source）及美国大理石协会（MIA）：
      - `/guides/hotel-lobby-case-study`：注入 5 步酒店大堂石材采购与规划 HowTo Schema。
      - `/custom-stone-fabrication-china`：注入 7 阶段图纸深化与数控加工 HowTo Schema。
      - `/countertops`：注入 7 步石材台面与瀑布岛台采购规范 HowTo Schema。
      - `/architectural-stone/flooring`：注入 ASTM C241 耐磨（Ha >= 10）与 ANSI A326.3 动摩擦系数（DCOF >= 0.42 湿地防滑）规格，并注入 8 阶段地面模数规划 HowTo Schema。
      - `/architectural-stone/wall-cladding`：注入 ASTM C1354 锚栓拉拔测试与抗风压安全系数（3:1-4:1），并注入 8 阶段墙面板干挂施工 HowTo Schema。
+     - `/countertops/integrated-stone-sinks`：注入 9 阶段定制一体盆/石材台下盆设计与出水防渗 HowTo Schema（`integratedSinkHowToJsonLd`）。
+     - `/countertops/marble-countertops`：注入 8 阶段商业大理石台面数控加工与对纹预铺 HowTo Schema（`marbleCountertopHowToJsonLd`）。
+     - `/projects/hotel-stone-supply`：注入 7 阶段酒店客房卫浴与公区石材整包配套采购 HowTo Schema（`hotelProcurementHowToJsonLd`）。
+     - `/projects/commercial-stone`：注入 8 阶段商业综合体与接待台石材深加工交付 HowTo Schema（`commercialStoneHowToJsonLd`）。
+     - `/projects/canada-shower-niches-2025`：注入 3 阶段定制石材壁龛防漏与坡度验收 HowTo Schema（`canadaShowerNichesHowToJsonLd`），并丰富 CreativeWork 结构化数据。
      - `components/Footer.tsx`：全站页脚均衡补充商业工装台面、地面、墙面与指南直达锚文本，彻底杜绝孤岛页面。
-     - `app/sitemap.ts`：更新 `/guides/hotel-lobby-case-study` 为 2026-10-10（保持 `/countertops/vanity-tops` 锁定至 2026-10-07）。
+     - `app/sitemap.ts`：同步更新全部改动页面及案例库为 2026-10-10（保持 `/countertops/vanity-tops` 锁定至 2026-10-07）。
+   - **全站 16 个核心路由 Schema.org HowTo 完整覆盖**：买家指南、工程案例、深加工服务、产品应用四大维度全面贯通，知识网络权重最大化。
 7. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。

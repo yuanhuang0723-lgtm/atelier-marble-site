@@ -128,6 +128,63 @@ const commercialStoneProductJsonLd = {
   }
 };
 
+const commercialStoneHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Commercial Interior Stone Fabrication & Procurement Protocol",
+  description: "An 8-stage technical workflow for commercial contractors and architectural procurement teams specifying stone reception desks, feature walls, flooring, and retail surfaces.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Site & Operational Phase Package Grouping",
+      text: "Structure commercial stone scopes by building, floor, zone, and project phase tied directly to BOQ line items."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Front-of-House vs Back-of-House Differentiation",
+      text: "Distinguish high-visibility reception desks and bar counters from utilitarian pantry and back-of-house worktops."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Reception, Retail & Public-Area Coordination",
+      text: "Coordinate feature cladding, reception countertops, and flooring transitions across public commercial zones."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Openings, Joints & Trade Interfaces",
+      text: "Provide coordinated CAD locations for sink cut-outs, electrical cable grommets, expansion joints, and steel supports."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Material Lot Selection & Surface Finishes",
+      text: "Select durable natural stone varieties and specify appropriate finishes (polished, honed, brushed) for traffic demands."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Repetition, Vein Matching & Revisions",
+      text: "Manage repeat elements, pair matched slabs for feature reception walls, and document all design revisions."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Factory QC Inspection & Release Sign-Off",
+      text: "Verify dimensions, edge profiles, openings, and dry-lay appearance with photographic records prior to crating."
+    },
+    {
+      "@type": "HowToStep",
+      position: 8,
+      name: "Phased Packing, Container Logistics & Hand-Off",
+      text: "Pack finished stone components into fumigated wooden crates labeled by zone and coordinate ocean container freight."
+    }
+  ]
+};
+
 export default function CommercialStonePage() {
   return (
     <CommercialLandingPage
@@ -162,7 +219,7 @@ export default function CommercialStonePage() {
         materialOptions: "Choose marble, quartzite, granite, or limestone by application (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Verify current lot, finish, 20mm/30mm calibrated thickness (±1mm tolerance), and repeat-unit matching.",
         customCapability: "One-piece prototypes and full commercial interior packages supported. Review hospitality, retail, office, and public-space components from drawings, BOQs, dry-lay inspection, and phased fumigated crate packing schedules."
       }}
-      additionalJsonLd={[commercialStoneProductJsonLd]}
+      additionalJsonLd={[commercialStoneProductJsonLd, commercialStoneHowToJsonLd]}
       metadata={metadata}
     />
   );

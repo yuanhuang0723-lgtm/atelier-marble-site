@@ -24,13 +24,54 @@ const facts = [
   ["Production model", "Repeat-unit coordination for a multi-batch fabrication program"]
 ];
 
+const canadaShowerNichesHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Multi-Batch Custom Stone Shower Niche Fabrication Protocol",
+  description: "A 3-stage repeat-unit commercial fabrication protocol for high-volume custom stone shower niches, detailing CAD component breakdown, cut lists, and multi-batch quality control.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "CAD Detailing & Component Breakdown",
+      text: "Break the scope into drawing-defined components that can be reviewed before fabrication."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Cut Lists & Repeat-Unit Standardization",
+      text: "Keep repeat-unit quantities and component details visible during quotation and production planning."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Batch Coordination & Phased Crating",
+      text: "Use layout confirmation, production records, and packing discussion to keep multi-batch work aligned."
+    }
+  ]
+};
+
 export default function CanadaShowerNichesPage() {
   return (
     <PageShell>
       <main>
         <JsonLd data={[
           { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Projects", item: absoluteUrl("/projects") }, { "@type": "ListItem", position: 3, name: "Canada Shower Niches Reference", item: absoluteUrl("/projects/canada-shower-niches-2025") }] },
-          { "@context": "https://schema.org", "@type": "CreativeWork", name: "Canada Custom Stone Shower Niches Project Reference", description: metadata.description, url: absoluteUrl("/projects/canada-shower-niches-2025") }
+          {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: "Canada Custom Stone Shower Niches Project Reference",
+            description: metadata.description,
+            url: absoluteUrl("/projects/canada-shower-niches-2025"),
+            spatialCoverage: "Canada",
+            countryOfOrigin: "China",
+            provider: {
+              "@type": "Organization",
+              name: siteName,
+              url: absoluteUrl("/")
+            }
+          },
+          canadaShowerNichesHowToJsonLd
         ]} />
         <PageHero
           eyebrow="Selected project reference"

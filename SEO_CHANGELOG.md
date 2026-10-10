@@ -362,8 +362,19 @@ Following the deep benchmarking of global natural stone export champions (Antoli
 6. **`components/Footer.tsx`**:
    - Balanced sitewide link equity distribution by linking all commercial application routes (`/projects/commercial-stone`, `/countertops/marble-countertops`, `/countertops/integrated-stone-sinks`, `/architectural-stone/wall-cladding`, `/architectural-stone/flooring`) and technical guide pillars (`/factory`, `/guides/quality-control-delivery`, `/guides/hotel-lobby-case-study`).
    - Eliminated all potential internal orphan signals, ensuring 100% crawl accessibility across all 29 canonical paths.
-7. **`app/sitemap.ts` (`/sitemap.xml`)**:
-   - Synchronized `lastModified` timestamp for `/guides/hotel-lobby-case-study` to `2026-10-10`, while keeping `/countertops/vanity-tops` strictly locked to `2026-10-07`.
+7. **`app/countertops/integrated-stone-sinks/page.tsx` (`/countertops/integrated-stone-sinks`)**:
+   - Injected Schema.org `HowTo` structured data (`integratedSinkHowToJsonLd`) mapping the 9-stage custom basin and vanity engineering workflow (Basin construction typology, Deck dimensioning, Sloped drainage & plumbing envelope, Wet-area stone lot approval, Cabinet substrate & wall returns, Multi-unit hotel scheduling, BOQ quotation package, 100% water drainage flow testing, and Fumigated crating).
+8. **`app/countertops/marble-countertops/page.tsx` (`/countertops/marble-countertops`)**:
+   - Injected Schema.org `HowTo` structured data (`marbleCountertopHowToJsonLd`) mapping the 8-stage marble countertop specification, dry-lay vein matching, and export protocol.
+9. **`app/projects/hotel-stone-supply/page.tsx` (`/projects/hotel-stone-supply`)**:
+   - Injected Schema.org `HowTo` structured data (`hotelProcurementHowToJsonLd`) mapping the 7-stage hotel stone supply procurement protocol (Package formulation, Guestroom scheduling, Scope separation, Trade interfaces, Material lot selection, Drawing revision control, and Phased container logistics).
+10. **`app/projects/commercial-stone/page.tsx` (`/projects/commercial-stone`)**:
+    - Injected Schema.org `HowTo` structured data (`commercialStoneHowToJsonLd`) mapping the 8-stage commercial interior stone fabrication protocol.
+11. **`app/projects/canada-shower-niches-2025/page.tsx` (`/projects/canada-shower-niches-2025`)**:
+    - Injected Schema.org `HowTo` structured data (`canadaShowerNichesHowToJsonLd`) mapping the 3-stage high-volume repeat-unit fabrication protocol (CAD detailing, Cut lists & standardization, and Multi-batch coordination).
+    - Enriched `CreativeWork` schema with geographical coverage (`Canada`), origin (`China`), and provider entity link (`Atelier Marble`).
+12. **`app/sitemap.ts` (`/sitemap.xml`)**:
+    - Synchronized `lastModified` timestamps for `/guides/hotel-lobby-case-study` and `/projects/canada-shower-niches-2025` to `2026-10-10`, while keeping `/countertops/vanity-tops` strictly locked to `2026-10-07`.
 
 ---
 
@@ -371,7 +382,7 @@ Following the deep benchmarking of global natural stone export champions (Antoli
 
 Across 8 successive autonomous execution cycles:
 - **13 Commercial Landing & Hub Pages** feature deep Schema.org `Product` / `AggregateOffer` metadata with verified ASTM physical properties (`ASTM C97`, `ASTM C170`, `ASTM C615`, `ASTM C241`, `ASTM C1354`, ANSI A326.3 DCOF), calibrated `±1mm` thickness tolerances, and fumigated export crate specifications.
-- **11 Buyer Workflow & Technical Guide Pillars** feature rich Schema.org `HowTo` step-by-step procurement, fabrication, and quality control guidance.
+- **16 Buyer Workflow & Technical Guide Pillars** feature rich Schema.org `HowTo` step-by-step procurement, fabrication, and quality control guidance across every single application and guide category.
 - **1 Knowledge Resource Hub** features Schema.org `CollectionPage` + `Article` relationships.
 - **3 Corporate Entity Pages** (`/`, `/about`, `/contact`) anchor the complete Schema.org `Organization` Knowledge Graph.
 - **6 In-Depth Industry Guides** maintain 100% compliant `Article` + `FAQPage` + `HowTo` markup.
@@ -382,5 +393,6 @@ Across 8 successive autonomous execution cycles:
 ### Ongoing Observation Window:
 - `/countertops/vanity-tops` remains strictly locked until **October 24, 2026** for Google Search Console observation purity.
 - Monitor incoming GSC performance reports for impressions, average position, and RFQ conversions across target commercial stone search queries.
+
 
 

@@ -106,6 +106,57 @@ const hotelSupplyProductJsonLd = {
   }
 };
 
+const hotelProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Hotel & Hospitality Stone Supply Procurement Protocol",
+  description: "A 7-stage architectural procurement methodology for hotel owners, general contractors, and FF&E purchasing teams coordinating guestroom vanities, lobby feature cladding, and public-area stone from China.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Package Formulation by Zone and Phase",
+      text: "Group the hotel stone scope into distinct guestroom, lobby, restaurant, and corridor packages tied to architectural drawings."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Guestroom Scheduling by Room Type",
+      text: "Schedule vanity tops and thresholds by room type, floor, and handedness (mirrored or exception layouts)."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Bathroom vs Public-Area Scope Separation",
+      text: "Delineate bathroom vanity packages from lobby feature walls, reception desks, and elevator surrounds."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Trade Interface & Drawing Coordination",
+      text: "Coordinate stone drawings with joinery, MEP plumbing, basin templates, and general contractor schedules."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Material Lot Selection & Color Consistency",
+      text: "Select natural marble and quartzite lots with agreed ranges for natural variation across repeated guestrooms."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Drawing Revisions & QC Inspection Checkpoints",
+      text: "Maintain strict drawing revision control and establish factory inspection points including dry-lay vein matching."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Phased Container Packing & Site Handover",
+      text: "Group fumigated crates by room type, floor, and delivery phase with bilingual labels for streamlined on-site receiving."
+    }
+  ]
+};
+
 export default function HotelStoneSupplyPage() {
   return (
     <CommercialLandingPage
@@ -197,7 +248,7 @@ export default function HotelStoneSupplyPage() {
         materialOptions: "Natural marble, quartzite, granite, or approved project stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm current lots, 20mm/30mm calibrated thickness (±1mm tolerance), and room-to-room matching.",
         customCapability: "One-piece mock-up units and full hotel room schedules supported. Review guestroom vanities, lobby and public-area surfaces, reception desks, dry-lay vein matching, room-by-room piece labeling, and phased fumigated crate packing from hotel drawing sets."
       }}
-      additionalJsonLd={[hotelSupplyProductJsonLd]}
+      additionalJsonLd={[hotelSupplyProductJsonLd, hotelProcurementHowToJsonLd]}
       metadata={metadata}
     />
   );

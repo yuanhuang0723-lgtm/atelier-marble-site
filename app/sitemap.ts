@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/countertops/integrated-stone-sinks": "2026-10-10",
     "/projects/hotel-stone-supply": "2026-10-10",
     "/projects/commercial-stone": "2026-10-10",
-    "/projects/canada-shower-niches-2025": "2026-09-26",
+    "/projects/canada-shower-niches-2025": "2026-10-10",
     "/custom-stone-fabrication-china": "2026-10-10",
     "/resources": "2026-10-10",
     "/how-we-work": "2026-10-10",

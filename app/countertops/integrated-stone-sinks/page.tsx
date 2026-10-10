@@ -141,6 +141,69 @@ const integratedSinkProductJsonLd = {
   }
 };
 
+const integratedSinkHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Custom Integrated Stone Sink & Vanity Basin Fabrication Protocol",
+  description: "A 9-stage architectural engineering workflow for coordinating bespoke monolithic carved or miter-folded natural stone basins, countertop decks, and plumbing interfaces.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Basin Construction Typology Definition",
+      text: "Establish whether the basin is monolithic solid-block carved or precision 45-degree miter-folded into the countertop deck."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Basin & Countertop Deck Dimensioning",
+      text: "Provide exact CAD drawings with interior bowl width, length, depth, corner radii, and perimeter deck clearances."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Drain, Faucet & Plumbing Envelope Coordination",
+      text: "Coordinate sloped drainage channels, slot drain covers, pop-up cut-outs, and plumbing supply clearances below."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Wet-Area Stone Lot & Finish Approval",
+      text: "Select suitable dense marble or quartzite lots and approve honed or polished surface finishes with penetrating sealers."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Cabinet Substrate & Wall Interface Resolution",
+      text: "Coordinate weight-bearing cabinet supports, steel wall brackets, backsplashes, and side returns."
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Multi-Unit Hospitality Room Scheduling",
+      text: "Group repeated hotel vanity tops by room type, handedness (left/right basin), and floor sequences."
+    },
+    {
+      "@type": "HowToStep",
+      position: 7,
+      name: "Quotation Package & BOQ Formulation",
+      text: "Compile detailed shop drawings, BOQ lines, piece marks, edge profiles, and delivery terms."
+    },
+    {
+      "@type": "HowToStep",
+      position: 8,
+      name: "Water Drainage Test & Pre-Shipment Inspection",
+      text: "Execute 100% water drainage flow tests, dry-lay alignment verification, and high-resolution photo/video records."
+    },
+    {
+      "@type": "HowToStep",
+      position: 9,
+      name: "Protective Export Crating & Shipping Hand-Off",
+      text: "Secure vanity sinks in custom fumigated wooden crates with internal foam cushioning and moisture-barrier wrap."
+    }
+  ]
+};
+
 export default function IntegratedStoneSinksPage() {
   return (
     <CommercialLandingPage
@@ -184,7 +247,7 @@ export default function IntegratedStoneSinksPage() {
         materialOptions: "Stone choice depends on basin geometry and intended use (ASTM density ~2.7 g/cm³, absorption <0.20%). Confirm lot, thickness, surface finish, and maintenance needs.",
         customCapability: "Single-piece custom vanities and small MOQ hotel bathroom runs supported. Plan basin geometry, drain, faucet openings, ±1mm CNC edges, finish, and the countertop interface from drawings."
       }}
-      additionalJsonLd={[integratedSinkProductJsonLd]}
+      additionalJsonLd={[integratedSinkProductJsonLd, integratedSinkHowToJsonLd]}
       metadata={metadata}
     />
   );
