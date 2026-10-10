@@ -109,11 +109,48 @@ const faqs = [
   }
 ];
 
+const architecturalStoneProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Architectural Natural Stone Fabrication & Export Supply Packages",
+  description: "Direct manufacturer & exporter of precision architectural natural stone from Yunfu, China. Providing custom wall cladding, flooring modules, stairs, thresholds, and decorative feature surfaces with ASTM physical compliance, calibrated ±1mm tolerances, dry-lay inspection, and fumigated crate packing.",
+  category: "Building Materials > Natural Stone > Architectural Stone Packages",
+  material: "Natural Stone (Marble, Granite, Quartzite, Limestone, Travertine)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Architectural Scope", value: "Wall Cladding Panels, Flooring Modules, Stairs, Sills, Column Surrounds" },
+    { "@type": "PropertyValue", name: "Fabrication Accuracy", value: "CNC Bridge Cutting, Waterjet Contouring, Calibrated ±1mm Tolerances" },
+    { "@type": "PropertyValue", name: "Engineering Coordination", value: "Elevation Linking, Panel Schedules, Kerf Anchor Slots, Movement Joints" },
+    { "@type": "PropertyValue", name: "Vein Matching & Inspection", value: "Bookmatched Elevations, Continuous Vein Flow, Dry-Lay Inspection" },
+    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 bulk density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Spacers & Secure Strapping" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on Architectural Plans & Schedules"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function ArchitecturalStonePage() {
   return (
     <PageShell>
       <main>
-        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }]} />
+        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd, architecturalStoneProductJsonLd, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }]} />
         <PageHero
           eyebrow="Architectural stone"
           title="Architectural stone supply for hotel and commercial interiors."
@@ -173,8 +210,8 @@ export default function ArchitecturalStonePage() {
           </div>
         </section>
         <ProjectProcurementInfo
-          materialOptions="Marble, granite, quartzite, and other approved stone can be reviewed by application. Confirm current lot, finish, thickness, and matching."
-          customCapability="Coordinate wall cladding, flooring, stairs, feature surfaces, and custom architectural parts from current drawings and schedules."
+          materialOptions="Natural marble, granite, quartzite, and limestone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa) can be reviewed by application. Confirm current lot, finish, 20mm/30mm calibrated thickness (±1mm tolerance), and matching."
+          customCapability="One-piece custom prototypes and full commercial project lots supported. Coordinate wall cladding, flooring, stairs, feature surfaces, dry-lay vein matching, and fumigated crate packing from current drawings and schedules."
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">

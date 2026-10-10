@@ -91,6 +91,43 @@ const faqs = [
   }
 ];
 
+const commercialStoneProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Commercial Interior Stone Fabrication & Project Supply Packages",
+  description: "Comprehensive commercial stone fabrication packages from Yunfu, China for hotels, retail flagships, office reception hubs, and public spaces. Cut-to-size countertops, feature cladding, and flooring modules with CNC precision edge profiling, ASTM physical testing compliance, dry-lay inspection, and phased crate packing.",
+  category: "Building Materials > Natural Stone > Commercial Stone Packages",
+  material: "Natural Stone (Marble, Granite, Quartzite, Limestone)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Commercial Scope", value: "Reception Counters, Retail Displays, Office Pantries, Public Wall & Floor Stone" },
+    { "@type": "PropertyValue", name: "Fabrication Accuracy", value: "CNC Bridge Saw & Waterjet Cutting, Calibrated ±1mm Tolerances, Mitered Returns" },
+    { "@type": "PropertyValue", name: "Package Management", value: "Zone & Phase Scheduling, Drawing Revision Control, BOQ Cross-Referencing" },
+    { "@type": "PropertyValue", name: "Vein Matching & QC", value: "Continuous Vein Flow, Elevation Dry-Lay Inspection & Photo Approval" },
+    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates Grouped by Site Zone with Corner Protection" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on Architectural BOQ & CAD Drawings"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function CommercialStonePage() {
   return (
     <CommercialLandingPage
@@ -122,9 +159,10 @@ export default function CommercialStonePage() {
       faqTitle="Commercial stone project details, answered clearly."
       faqs={faqs}
       purchaseInfo={{
-        materialOptions: "Choose stone by application, then verify current lot, finish, dimensions, and repeat-unit matching.",
-        customCapability: "Review hospitality, retail, office, and public-space components from drawings, BOQs, and quantity schedules."
+        materialOptions: "Choose marble, quartzite, granite, or limestone by application (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Verify current lot, finish, 20mm/30mm calibrated thickness (±1mm tolerance), and repeat-unit matching.",
+        customCapability: "One-piece prototypes and full commercial interior packages supported. Review hospitality, retail, office, and public-space components from drawings, BOQs, dry-lay inspection, and phased fumigated crate packing schedules."
       }}
+      additionalJsonLd={[commercialStoneProductJsonLd]}
       metadata={metadata}
     />
   );

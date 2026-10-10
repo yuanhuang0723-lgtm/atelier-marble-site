@@ -75,6 +75,43 @@ const contentSections = [
   }
 ];
 
+const customFabricationProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Bespoke Cut-to-Size Natural Stone Fabrication Services & Parts",
+  description: "Drawing-led bespoke cut-to-size stone fabrication from Yunfu, China. Processing marble, quartzite, granite, and limestone with 5-axis CNC routing, waterjet cut-outs, calibrated ±1mm tolerances, bookmatched vein sequencing, and fumigated export crate packaging.",
+  category: "Building Materials > Natural Stone > Custom Stone Fabrication",
+  material: "Natural Stone (Marble, Quartzite, Granite, Limestone)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Cut-to-Size Components, Waterjet Sinks, Mitered Aprons, Carved Basins" },
+    { "@type": "PropertyValue", name: "Machining Capability", value: "5-Axis CNC Milling, Automated Edge Profiling & High-Pressure Waterjet" },
+    { "@type": "PropertyValue", name: "Dimensional Tolerance", value: "Strict ±1mm Calibration on Sizing and Thickness" },
+    { "@type": "PropertyValue", name: "Inspection & Quality", value: "Pre-Assembly Dry-Lay Inspection, Vein Continuity & Full Photo Verification" },
+    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 bulk density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Film Spacers & Steel Strapping" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on CAD Shop Drawings & BOQ"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function CustomStoneFabricationPage() {
   return (
     <CommercialLandingPage
@@ -136,7 +173,12 @@ export default function CustomStoneFabricationPage() {
         { question: "Does fabrication include site measuring and installation?", answer: "Those responsibilities are not assumed. Identify the local installer and who supplies final site measurements before the scope is priced." },
         { question: "How should repeated project parts be scheduled?", answer: "Group the parts by room, area, or floor and use consistent piece marks across the current drawing revision, BOQ, approvals, and packing labels." }
       ]}
-      purchaseInfo={{ materialOptions: "Marble, granite, quartzite, and other approved stone, subject to current lot, geometry, finish, and application.", customCapability: "Translate CAD or BOQ details into cut-to-size components, edge work, repeat quantities, inspection points, and packing groups." }} metadata={metadata}
+      purchaseInfo={{
+        materialOptions: "Natural marble, granite, quartzite, and other approved stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa), subject to current lot, geometry, finish, and application.",
+        customCapability: "One-piece custom prototypes and multi-container project lots supported. Translate CAD or BOQ details into cut-to-size components, ±1mm edge work, repeat quantities, dry-lay inspection points, and fumigated crate packing groups."
+      }}
+      additionalJsonLd={[customFabricationProductJsonLd]}
+      metadata={metadata}
     />
   );
 }

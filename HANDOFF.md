@@ -15,7 +15,7 @@
 1. **安装并调用 SEO Skills AI & Agentic SEO Skills 插件体系**：
    - 全局安装 `~/.gemini/config/plugins/seo-skills-ai` 与 `~/.gemini/config/plugins/agentic-seo-skills`。
    - 载入 ZERO LAYOUT MUTATION（CLS = 0）、ASTM 技术指标、全站 29 条路由审计规范。
-2. **Schema.org Product 结构化数据与技术规格注入（8个核心页面完成）**：
+2. **Schema.org Product 结构化数据与技术规格注入（11个核心页面完成）**：
    - `components/CommercialLandingPage.tsx`：扩展 `additionalJsonLd` 属性，支持非渲染 Schema 注入。
    - `/materials/marble`：注入天然大理石 Product Schema（ASTM C97 密度 2.7 g/cm³、吸水率 <0.2%、ASTM C170 抗压强度 >110 MPa、±1mm 公差、熏蒸木架与干铺对纹），完善采购规格。
    - `/countertops/marble-countertops`：注入大理石台面 Product Schema（CNC 水刀开孔、台下盆开孔、海棠角/密拼 40-50mm 裙边、AggregateOffer 询价入口），正文 1,733 词（严守 1,500–2,500 词）。
@@ -25,15 +25,19 @@
    - `/architectural-stone/wall-cladding`：注入工装外墙/内墙干挂石材板 Product Schema（开槽干挂、±1mm 公差、抗风压与耐冻融、ASTM C170 >100 MPa）。
    - `/architectural-stone/flooring`：注入建筑地面石材/规格板 Product Schema（CNC 裁切、对纹干铺、酸洗/光面/亚光防滑处理、高人流承载）。
    - `/projects/hotel-stone-supply`：注入酒店客房与公区整包石材 Product Schema（台面、大堂背景墙、地面、门槛石整包配套、房型标签与分期木架包装）。
+   - `/projects/commercial-stone`：注入商业工装石材定制 Product Schema（前台接待台、零售展柜、茶水间台面、公共墙地面）。
+   - `/custom-stone-fabrication-china`：注入定制图纸石材加工 Product Schema（五轴数控加工、水刀雕刻、海棠角、预铺检视）。
+   - `/architectural-stone`：注入建筑石材总览 Product Schema（幕墙板、地面规格板、楼梯、门槛石、圆柱包板整包配套）。
 3. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，FAQ 纯文本 100% 一字不差对齐。
    - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-4. **下周期优化优先级（Cycle 3: Next 3 Priority Pages）**：
-   - `/projects/commercial-stone`（工装/商业综合体石材定制与分包）
-   - `/custom-stone-fabrication-china`（按图纸定制石材加工与五轴数控加工）
-   - `/architectural-stone`（建筑石材总览与外贸出口配套）
+4. **下周期优化优先级（Cycle 4: Next 3 Priority Pages）**：
+   - `/countertops`（商业台面总览与厨卫岛台配套）
+   - `/materials`（天然石材分类目录与矿口直采）
+   - `/resources`（石材外贸出口技术指南与买家决策中心）
+   - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
    - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
 
 ## 先读这一段
