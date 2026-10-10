@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Omit lastModified when there is no verified significant-update date; update this map with future edits.
   const lastModifiedByRoute: Record<string, string> = {
     "/": "2026-10-10",
-    "/projects": "2026-09-10",
+    "/projects": "2026-10-10",
     "/architectural-stone": "2026-10-10",
     "/architectural-stone/wall-cladding": "2026-10-10",
     "/architectural-stone/flooring": "2026-10-10",

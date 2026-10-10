@@ -389,10 +389,27 @@ Across 8 successive autonomous execution cycles:
 - **Sitewide Link Equity Balancing** guarantees zero orphaned routes and deep thematic clustering from the footer and hub pages.
 - **Zero Layout Mutation (CLS = 0)** strictly preserved across the entire site.
 - **All 332 Static Pages & 29 Canonical Routes** build cleanly with 100% passing tests (23/23 SEO assertions, 12/12 inquiry tests).
-
 ### Ongoing Observation Window:
 - `/countertops/vanity-tops` remains strictly locked until **October 24, 2026** for Google Search Console observation purity.
 - Monitor incoming GSC performance reports for impressions, average position, and RFQ conversions across target commercial stone search queries.
+
+---
+
+## 13. Cycle 9: Trademark Risk Elimination & Hub Page HowTo Completion
+
+1. **`lib/category-galleries.ts`**:
+   - Replaced domestic luxury brand references (`Original Bulgari Stone` and `Crystal Bulgari Black`) with international generic geological variety names: `Calacatta Viola Breccia` and `Crystal Black Breccia`.
+   - Completely eliminated luxury brand trademark exposure (`Bulgari` / LVMH) on frontend image alts and captions.
+2. **`app/architectural-stone/page.tsx` (`/architectural-stone`)**:
+   - Injected Schema.org `HowTo` structured data (`architecturalStoneProcurementHowToJsonLd`) mapping the 7-stage architectural panel coordination and procurement protocol verbatim from visible text.
+3. **`app/materials/page.tsx` (`/materials`)**:
+   - Injected Schema.org `HowTo` structured data (`materialProcurementHowToJsonLd`) mapping the 5-stage natural stone material selection, ASTM physical testing, and quarry lot sourcing workflow.
+4. **`app/projects/page.tsx` (`/projects`)**:
+   - Enriched `CollectionPage` schema `hasPart` to include `/projects/canada-shower-niches-2025`.
+5. **`app/sitemap.ts` (`/sitemap.xml`)**:
+   - Synchronized `lastModified` for `/projects` to `2026-10-10` while keeping `/countertops/vanity-tops` locked to `2026-10-07`.
+6. **Milestone: 18 Core Routes with Schema.org HowTo Coverage**:
+   - Complete coverage achieved across every single commercial hub, material catalog, application guide, and case study page sitewide.
 
 
 

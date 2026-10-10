@@ -75,6 +75,45 @@ const materialsProductJsonLd = {
   }
 };
 
+const materialProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Natural Stone Material Selection & Quarry Lot Sourcing Workflow",
+  description: "Standardized 5-step procurement procedure for sourcing, verifying, testing, and confirming natural marble, quartzite, and granite slab lots for architectural and hospitality projects.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Application & Aesthetic Review",
+      text: "Define the specific architectural application (countertops, interior wall cladding, high-traffic flooring, wet areas) to establish required stone density, porosity, and surface durability."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Quarry Lot & Slab Bundle Selection",
+      text: "Review high-definition photos and 4K inspection videos of active quarry blocks and numbered slab bundles to confirm background color tone, vein direction, and natural movement."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "ASTM Physical Specification Verification",
+      text: "Confirm physical test compliance including bulk density (ASTM C97 ~2.7 g/cm³), water absorption (<0.20%), and compressive strength (ASTM C170 >100 MPa) to guarantee structural performance."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Surface Finish & Edge Detail Approval",
+      text: "Specify and approve required surface treatments (polished, honed, leathered, acid-washed, or flamed) and calibrated thickness tolerances (18mm, 20mm, 30mm with ±1mm calibration)."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Physical Sample Dispatch & Lot Reservation",
+      text: "Dispatch calibrated 10x10cm or 15x15cm physical stone samples via express courier for architectural sign-off, followed by reserving the approved slab bundles prior to CNC fabrication."
+    }
+  ]
+};
+
 export default function MaterialsPage() {
   const materials = getAssets("materials");
   const applicationRoutes = [
@@ -93,6 +132,7 @@ export default function MaterialsPage() {
           { "@type": "WebPage", name: "Granite Materials", url: absoluteUrl("/materials/granite") }
         ] }} />
         <JsonLd data={materialsProductJsonLd} />
+        <JsonLd data={materialProcurementHowToJsonLd} />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: materialFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Material reference library"

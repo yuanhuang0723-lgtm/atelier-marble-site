@@ -62,11 +62,17 @@
      - `components/Footer.tsx`：全站页脚均衡补充商业工装台面、地面、墙面与指南直达锚文本，彻底杜绝孤岛页面。
      - `app/sitemap.ts`：同步更新全部改动页面及案例库为 2026-10-10（保持 `/countertops/vanity-tops` 锁定至 2026-10-07）。
    - **全站 16 个核心路由 Schema.org HowTo 完整覆盖**：买家指南、工程案例、深加工服务、产品应用四大维度全面贯通，知识网络权重最大化。
-7. **全套自动化测试与构建验收（100% 通过）**：
+7. **商标侵权风控清理与总览枢纽页 HowTo 终极完备（Cycle 9）**：
+   - `lib/category-galleries.ts`：将两处国内行话商品名 `Original Bulgari Stone` 与 `Crystal Bulgari Black` 替换为国际地质学名 `Calacatta Viola Breccia` 与 `Crystal Black Breccia`，彻底消除欧美知名奢侈品牌（Bulgari / LVMH）商标维权扫描隐患。
+   - `/architectural-stone`：注入 7 阶段工装建筑石材图纸深化与幕墙/地面排版协调 HowTo Schema（`architecturalStoneProcurementHowToJsonLd`）。
+   - `/materials`：注入 5 阶段天然石材矿山荒料选拔、物理性能 ASTM 检验与样块确认 HowTo Schema（`materialProcurementHowToJsonLd`）。
+   - `/projects`：CollectionPage 关联补充 `/projects/canada-shower-niches-2025`，同步 `app/sitemap.ts` 修改日期至 2026-10-10。
+   - **全站 18 个核心路由实现 Schema.org HowTo 终极全覆盖**。
+8. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `npm run build`：332 个静态页面全部成功编译（0 错误、0 警告）。
-8. **持续观测窗口与锁定保护**：
+9. **持续观测窗口与锁定保护**：
    - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
    - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 

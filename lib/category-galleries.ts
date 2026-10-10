@@ -1,4 +1,4 @@
-﻿export type CategoryGalleryItem = {
+export type CategoryGalleryItem = {
   src: string;
   alt: string;
   caption: string;
@@ -167,8 +167,8 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
       },
       {
         src: "/assets/vanity-cabinet/new/original-bulgari-stone-1227q975.jpg",
-        alt: "Original Bulgari Stone kitchen and dining interior with bookmatched stone flooring and island",
-        caption: "Original Bulgari Stone"
+        alt: "Calacatta Viola Stone kitchen and dining interior with bookmatched stone flooring and island",
+        caption: "Calacatta Viola Breccia"
       },
       {
         src: "/assets/vanity-cabinet/new/new-monet-garden-1227q957.jpg",
@@ -182,8 +182,8 @@ export const categoryGalleryPages: Record<string, CategoryGalleryPageData> = {
       },
       {
         src: "/assets/vanity-cabinet/new/crystal-bulgari-black-1227q985h.jpg",
-        alt: "Crystal Bulgari Black stone bathroom with freestanding tub and dark marble wall panels",
-        caption: "Crystal Bulgari Black"
+        alt: "Crystal Black Breccia stone bathroom with freestanding tub and dark marble wall panels",
+        caption: "Crystal Black Breccia"
       },
       {
         src: "/assets/vanity-cabinet/new/black-ink-golden-1227q981h.jpg",

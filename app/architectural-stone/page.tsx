@@ -146,11 +146,24 @@ const architecturalStoneProductJsonLd = {
   }
 };
 
+const architecturalStoneProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Architectural Stone Procurement & Panel Coordination Workflow",
+  description: "Standardized 7-stage engineering and procurement workflow for commercial architectural stone wall cladding, flooring, stairs, and feature surfaces from Yunfu, China.",
+  step: architecturalContentSections.map((section, idx) => ({
+    "@type": "HowToStep",
+    position: idx + 1,
+    name: section.heading,
+    text: section.paragraphs.join(" ")
+  }))
+};
+
 export default function ArchitecturalStonePage() {
   return (
     <PageShell>
       <main>
-        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd, architecturalStoneProductJsonLd, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }]} />
+        <JsonLd data={[breadcrumbJsonLd, collectionJsonLd, architecturalStoneProductJsonLd, architecturalStoneProcurementHowToJsonLd, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }]} />
         <PageHero
           eyebrow="Architectural stone"
           title="Architectural stone supply for hotel and commercial interiors."
