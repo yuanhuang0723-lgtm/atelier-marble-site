@@ -1,3 +1,12 @@
+import { ProxyAgent, setGlobalDispatcher } from "undici";
+
+const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+if (proxyUrl) {
+  try {
+    setGlobalDispatcher(new ProxyAgent(proxyUrl));
+  } catch {}
+}
+
 const auditUrl = new URL(process.env.SEO_AUDIT_URL || "https://ateliermarblestone.com");
 const auditOrigin = auditUrl.origin;
 const canonicalOrigin = new URL(process.env.SEO_CANONICAL_ORIGIN || auditOrigin).origin;
@@ -33,21 +42,27 @@ function getMetaTags(html) {
   });
 }
 
-async function fetchResource(url) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), requestTimeoutMs);
-  try {
-    const response = await fetch(url, { redirect: "manual", signal: controller.signal });
-    return {
-      status: response.status,
-      location: response.headers.get("location") || "",
-      body: await response.text()
-    };
-  } catch (error) {
-    const reason = error.name === "AbortError" ? `timeout after ${requestTimeoutMs}ms` : error.message;
-    throw new Error(`${url}: ${reason}`);
-  } finally {
-    clearTimeout(timer);
+async function fetchResource(url, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), requestTimeoutMs);
+    try {
+      const response = await fetch(url, { redirect: "manual", signal: controller.signal });
+      return {
+        status: response.status,
+        location: response.headers.get("location") || "",
+        body: await response.text()
+      };
+    } catch (error) {
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        continue;
+      }
+      const reason = error.name === "AbortError" ? `timeout after ${requestTimeoutMs}ms` : error.message;
+      throw new Error(`${url}: ${reason}`);
+    } finally {
+      clearTimeout(timer);
+    }
   }
 }
 

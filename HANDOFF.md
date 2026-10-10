@@ -15,7 +15,7 @@
 1. **安装并调用 SEO Skills AI & Agentic SEO Skills 插件体系**：
    - 全局安装 `~/.gemini/config/plugins/seo-skills-ai` 与 `~/.gemini/config/plugins/agentic-seo-skills`。
    - 载入 ZERO LAYOUT MUTATION（CLS = 0）、ASTM 技术指标、全站 29 条路由审计规范。
-2. **Schema.org Product 结构化数据与技术规格注入（11个核心页面完成）**：
+2. **Schema.org Product 结构化数据与技术规格注入（13个核心页面完成）**：
    - `components/CommercialLandingPage.tsx`：扩展 `additionalJsonLd` 属性，支持非渲染 Schema 注入。
    - `/materials/marble`：注入天然大理石 Product Schema（ASTM C97 密度 2.7 g/cm³、吸水率 <0.2%、ASTM C170 抗压强度 >110 MPa、±1mm 公差、熏蒸木架与干铺对纹），完善采购规格。
    - `/countertops/marble-countertops`：注入大理石台面 Product Schema（CNC 水刀开孔、台下盆开孔、海棠角/密拼 40-50mm 裙边、AggregateOffer 询价入口），正文 1,733 词（严守 1,500–2,500 词）。
@@ -28,16 +28,18 @@
    - `/projects/commercial-stone`：注入商业工装石材定制 Product Schema（前台接待台、零售展柜、茶水间台面、公共墙地面）。
    - `/custom-stone-fabrication-china`：注入定制图纸石材加工 Product Schema（五轴数控加工、水刀雕刻、海棠角、预铺检视）。
    - `/architectural-stone`：注入建筑石材总览 Product Schema（幕墙板、地面规格板、楼梯、门槛石、圆柱包板整包配套）。
+   - `/countertops`：注入商业台面总览 Product Schema（厨卫岛台、瀑布边、40-50mm 裙边、水刀精细开孔、ASTM C170 >110 MPa）。
+   - `/materials`：注入天然石材荒料与大板直采 Product Schema（大理石、奢石石英石、花岗岩全品类目录，±1mm 厚度公差）。
+   - `/resources`：注入 CollectionPage 与 Article 结构化数据，增强买家指南集群的权威信号与内部链接互联。
 3. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
-   - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，FAQ 纯文本 100% 一字不差对齐。
+   - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，网络代理与重试机制加固完毕。
    - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-4. **下周期优化优先级（Cycle 4: Next 3 Priority Pages）**：
-   - `/countertops`（商业台面总览与厨卫岛台配套）
-   - `/materials`（天然石材分类目录与矿口直采）
-   - `/resources`（石材外贸出口技术指南与买家决策中心）
-   - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
+4. **下周期优化优先级（Cycle 5: Next 3 Priority Pages）**：
+   - `/guides/stone-supplier-china`（中国天然石材供应商甄选指南）
+   - `/guides/export-packing-standards`（集装箱出口木箱熏蒸与防破损标准）
+   - `/guides/hotel-stone-pricing`（酒店石材卫浴台面报价预算指南）
    - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
 
 ## 先读这一段

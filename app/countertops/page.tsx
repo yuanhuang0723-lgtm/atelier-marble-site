@@ -75,6 +75,43 @@ const countertopContentSections = [
   }
 ];
 
+const countertopProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Natural Stone Countertops & Island Worktops Wholesale",
+  description: "Direct manufacturer & exporter of precision custom stone countertops from Yunfu, China. Fabricating kitchen islands, waterfall edges, commercial bars, and vanity tops in natural marble, quartzite, and granite with CNC cut-outs, calibrated ±1mm tolerances, dry-lay vein matching, and fumigated crate packaging.",
+  category: "Building Materials > Natural Stone > Countertops & Worktops",
+  material: "Natural Stone (Marble, Quartzite, Granite)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Kitchen Countertops, Waterfall Islands, Commercial Bar Tops, Cut-outs" },
+    { "@type": "PropertyValue", name: "Standard Thickness Options", value: "20mm, 30mm, laminated / mitered 40-50mm aprons (±1mm tolerance)" },
+    { "@type": "PropertyValue", name: "Edge Profile Options", value: "Eased, Mitered Edge, Bullnose, Ogee, Dupont, Chiseled" },
+    { "@type": "PropertyValue", name: "Sink & Cooktop Cutouts", value: "High-Precision 5-Axis Waterjet Cutouts with Polished Undermount Rims" },
+    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 bulk density ~2.7 g/cm³, ASTM C170 compressive strength >110 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with A-Frame Supports & High-Density Foam" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Custom Project RFQ Quotation Based on CAD Shop Drawings & Cut Lists"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function CountertopsPage() {
   const referenceImages = getAssets("kitchen-countertop", 4).map((asset) => ({ src: asset.src, alt: asset.alt, title: asset.title }));
   return (
@@ -137,7 +174,12 @@ export default function CountertopsPage() {
         { question: "Do you provide local measuring and installation?", answer: "This site is structured for project review and export fabrication. Local measuring or installation should be confirmed separately for the destination market." },
         { question: "Can one quotation include kitchens and hotel counters?", answer: "Yes. Separate the applications, room or area labels, quantities, drawings, material direction, and packing requirements so each scope can be reviewed accurately." }
       ]}
-      purchaseInfo={{ materialOptions: "Marble, granite, and quartzite can be reviewed. Confirm current lot, thickness, finish, cut-outs, and matching.", customCapability: "Coordinate countertop dimensions, islands, sink and faucet cut-outs, splash details, edge profiles, and package quantities." }} metadata={metadata}
+      purchaseInfo={{
+        materialOptions: "Natural marble, granite, and quartzite (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >110 MPa). Confirm current lot, 20mm/30mm thickness (±1mm tolerance), finish, cut-outs, and vein matching.",
+        customCapability: "One-piece custom slabs and multi-unit project scopes supported. Coordinate countertop dimensions, waterfall islands, sink and faucet cut-outs, splash details, edge profiles, dry-lay vein matching, and fumigated crate packing."
+      }}
+      additionalJsonLd={[countertopProductJsonLd]}
+      metadata={metadata}
     />
   );
 }

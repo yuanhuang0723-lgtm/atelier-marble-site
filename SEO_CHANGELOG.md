@@ -43,13 +43,13 @@ This changelog records the complete autonomous technical SEO audit, structured d
 | `/architectural-stone` | 59 ch | ✅ PASS | 160 ch | ✅ PASS | Architectural Hub | ✅ YES | ✅ YES | ✅ YES | High-level commercial hub imagery |
 | `/architectural-stone/wall-cladding` | 59 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest concept disclaimer (93 ch) |
 | `/architectural-stone/flooring` | 56 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest concept disclaimer (92 ch) |
-| `/materials` | 53 ch | ✅ PASS | 144 ch | ✅ PASS | Material Catalog Hub | ❌ NO | ✅ YES | ❌ NO | Material category navigation |
+| `/materials` | 53 ch | ✅ PASS | 144 ch | ✅ PASS | Material Catalog Hub | ✅ YES | ✅ YES | ✅ YES | Material category navigation |
 | `/materials/marble` | 54 ch | ✅ PASS | 144 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | **Optimized:** Specific B2B commercial alt (89 ch) |
 | `/materials/quartzite` | 60 ch | ✅ PASS | 157 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
 | `/materials/granite` | 57 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
 | `/factory` | 51 ch | ✅ PASS | 143 ch | ✅ PASS | Trust & Facility Evidence | ❌ N/A | ✅ YES | ❌ NO | Workshop video posters & redacted drawing alts |
 | `/contact` | 54 ch | ✅ PASS | 153 ch | ✅ PASS | Inquiry & Lead Capture | ❌ N/A | ❌ N/A | ❌ N/A | N/A (Form interface) |
-| `/countertops` | 52 ch | ✅ PASS | 152 ch | ✅ PASS | Commercial Pillar | ❌ NO | ✅ YES | ✅ YES | Verified kitchen & dining stone assets (67 ch) |
+| `/countertops` | 52 ch | ✅ PASS | 152 ch | ✅ PASS | Commercial Pillar | ✅ YES | ✅ YES | ✅ YES | Verified kitchen & dining stone assets (67 ch) |
 | `/countertops/marble-countertops` | 57 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Descriptive commercial reference alt (80 ch) |
 | `/countertops/vanity-tops` | 57 ch | ✅ PASS | 143 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Descriptive vanity interior alt (74 ch) *(Locked)* |
 | `/countertops/integrated-stone-sinks` | 55 ch | ✅ PASS | 150 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest 3D render disclaimer (112 ch) |
@@ -250,26 +250,47 @@ This changelog records the complete autonomous technical SEO audit, structured d
 
 ---
 
-## 7. Upcoming Optimization Cycle: Next 3 Priority Pages (Cycle 4)
+## 7. Optimization Cycle 4 Execution Log: Countertops Pillar, Materials Catalog & Resources Authority
 
-Per the keyword strategy and observation windows documented in `HANDOFF.md` (where `/countertops/vanity-tops` is strictly locked until **2026-10-24** to protect GSC observation purity), the three highest-impact candidates for Cycle 4 are:
+### Pages Completed:
+1. **`app/countertops/page.tsx` (`/countertops`)**:
+   - Injected `Product` + `AggregateOffer` Schema (`countertopProductJsonLd`) for custom natural stone countertops and island worktops wholesale.
+   - Specified 20mm/30mm thickness options, mitered 40-50mm aprons (±1mm tolerance), waterjet cutouts with polished undermount rims, ASTM C97 density ~2.7 g/cm³, and ASTM C170 compressive strength >110 MPa.
+   - Enriched `purchaseInfo` with technical parameters and prototype/production scope.
 
-### Priority 1: `app/countertops/page.tsx`
-- **Target Query Intent:** `custom natural stone countertops wholesale china` (Commercial countertop pillar).
+2. **`app/materials/page.tsx` (`/materials`)**:
+   - Injected `Product` + `AggregateOffer` Schema (`materialsProductJsonLd`) representing direct quarry sourcing and factory supply of architectural natural stone slabs.
+   - Embedded full technical specs for Calacatta, Carrara, Statuario, Nero Marquina, Luxury Quartzite, and commercial granite with ASTM testing and fumigated crating.
+   - Enriched `ProjectProcurementInfo` with physical specifications and export crating.
+
+3. **`app/resources/page.tsx` (`/resources`)**:
+   - Injected `CollectionPage` Schema (`collectionJsonLd`) linked to high-authority buyer guides with `Article` entities.
+   - Validated BreadcrumbList and FAQPage schemas.
+
+4. **`scripts/audit-seo.mjs`**:
+   - Enhanced network resilience with undici `ProxyAgent` integration and automatic retry loop on transient network latency.
+
+---
+
+## 8. Upcoming Optimization Cycle: Next 3 Priority Pages (Cycle 5)
+
+Per the keyword strategy and observation windows documented in `HANDOFF.md` (where `/countertops/vanity-tops` is strictly locked until **2026-10-24** to protect GSC observation purity), the three candidates for Cycle 5 are:
+
+### Priority 1: `app/guides/stone-supplier-china/page.tsx`
+- **Target Query Intent:** `how to choose a natural stone supplier in china` (Top-of-funnel decision guide).
 - **Scheduled Enhancements:**
-  1. Inject `Product` + `AggregateOffer` schema for commercial countertops (kitchen islands, waterfall edges, reception bars).
-  2. Embed edge profile standards, 40-50mm mitered aprons, and sink cutout options.
-  3. Maintain zero layout mutation via `additionalJsonLd` or `JsonLd`.
+  1. Add `Article` and `FAQPage` schema enhancements.
+  2. Embed structured review checkpoints for factory verification, dry-lay inspection, and export crating.
 
-### Priority 2: `app/materials/page.tsx`
-- **Target Query Intent:** `architectural stone materials supplier china wholesale` (Material catalog pillar).
+### Priority 2: `app/guides/export-packing-standards/page.tsx`
+- **Target Query Intent:** `stone slab export packing standards 20gp ocean container` (High-trust B2B logistics).
 - **Scheduled Enhancements:**
-  1. Inject comprehensive `Product` / `AggregateOffer` or catalog item schemas for natural marble, quartzite, granite, and limestone.
-  2. Embed ASTM classification, Mohs hardness, and export packaging specifications.
+  1. Inject `Article` + `HowTo` / `FAQPage` schema for stone crating and container loading standards.
+  2. Anchor trust signals for fumigated wooden crates, plastic film wrap, and anti-breakage protocols.
 
-### Priority 3: `app/resources/page.tsx`
-- **Target Query Intent:** `stone export guides procurement technical specifications` (Knowledge authority hub).
+### Priority 3: `app/guides/hotel-stone-pricing/page.tsx`
+- **Target Query Intent:** `hotel bathroom stone vanity pricing cost guide` (Commercial budget estimation).
 - **Scheduled Enhancements:**
-  1. Ensure complete `CollectionPage` and `Article` schema coverage across guide hubs.
-  2. Strengthen internal contextual links connecting back to high-intent product inquiry routes.
+  1. Inject `Article` + `FAQPage` schema with structured pricing variable breakdowns.
+  2. Maintain strict verbatim question/answer parity.
 
