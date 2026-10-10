@@ -12,7 +12,7 @@ function homepageHtml() {
 test("homepage introduces drawing-to-fabrication service for the requested buyer groups", () => {
   const html = homepageHtml();
   assert.match(html, /CAD Drawing to Real Stone Fabrication/);
-  assert.match(html, /Custom Marble &amp; Stone Components Manufacturer/);
+  assert.match(html, /Custom Marble &amp; Stone Components from Yunfu/);
   assert.match(html, /Interior Design Studios/);
   assert.match(html, /Architecture Firms/);
   assert.match(html, /Stone Importers/);
@@ -21,7 +21,7 @@ test("homepage introduces drawing-to-fabrication service for the requested buyer
 
 test("homepage displays the requested fabrication and fulfillment capabilities", () => {
   const html = homepageHtml();
-  for (const capability of ["One Piece Custom", "CAD Support", "Factory Direct", "Small MOQ", "Global Shipping"]) {
+  for (const capability of ["One Piece Custom", "CAD Support", "Fabrication Partners", "Small MOQ", "Global Shipping"]) {
     assert.ok(html.includes(capability), `Missing visible capability: ${capability}`);
   }
   assert.doesNotMatch(html, /dependable lead times|reliable lead times|stable quality|consistent quality|export-ready delivery|keep project timing under control|safer international delivery/i);
