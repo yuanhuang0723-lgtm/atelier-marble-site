@@ -366,5 +366,10 @@ Google Search Console 深链曾跳转登录页。2026-09-29 尝试只读打开�
   - Passed production build `npm run build` (332 static pages generated cleanly with Turbopack).
   - Verified responsive layouts on mobile (390x844) and desktop (1440x900) via Playwright: zero horizontal overflow (`scrollWidth <= clientWidth`), exactly 7 disclosure sections in main, 3 scopeRows rendered. Screenshots recorded in `outputs/countertops-responsive-20261010/`.
 - Ready for selective commit, push to `origin/main`, and production verification.
+- Production Push & Live Deployment Verification (2026-10-10):
+  - Commits `961e4d5` (feature) and `b3726ca` (weekly summary) pushed successfully to `origin/main`.
+  - Configured Windows Git Credential Manager store and sanitized remote origin URL.
+  - Verified live production deployment on `https://ateliermarblestone.com/countertops`: returns HTTP 200, HTML contains updated disclosure markup, single-sentence summaries, 4 authentic kitchen countertop assets, and `scopeRows` B2B quotation input mapping table.
+  - Weekly summary report for the week ending 2026-10-10 completed in `docs/seo-evidence/weekly-summary-2026-10-10.md`.
 
 
