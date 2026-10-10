@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact } from "../../lib/assets";
-import { absoluteUrl, siteName } from "../../lib/seo";
+import { absoluteUrl, organizationJsonLd, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "About Atelier Marble Stone Supply",
@@ -21,10 +22,20 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const aboutJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Atelier Marble Stone Supply",
+    url: absoluteUrl("/about"),
+    description: String(metadata.description),
+    mainEntity: organizationJsonLd()
+  };
+
   return (
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }]} />
+        <JsonLd data={aboutJsonLd} />
         <PageHero
           eyebrow="Company profile"
           title="Natural stone project supply from Yunfu, China."

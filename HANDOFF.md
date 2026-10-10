@@ -34,12 +34,17 @@
 3. **Schema.org HowTo 与知识网络注入**：
    - `/how-we-work`：注入 Schema.org `HowTo` 结构化数据，严格映射 6 大外贸石材询盘与交付流程（Brief、图纸评审、选板对纹、分项报价、QC验货、木箱出口）。
    - `/guides/*`：核验 6 篇旗舰指南的 `Article` 与 `FAQPage` 结构化数据完备性，一字不差对齐可见文本。
-4. **全套自动化测试与构建验收（100% 通过）**：
+4. **企业实体权威与知识图谱锚定（Cycle 6）**：
+   - `/`（首页）：注入 `Organization` 结构化数据，绑定企业 Logo、云浮办事处地址、英文销售 ContactPoint 与深加工能力描述。
+   - `/about`（关于我们）：注入 `AboutPage` 与关联企业实体 Schema。
+   - `/contact`（联系咨询）：注入 `ContactPage` 与销售入口 Schema。
+   - `app/sitemap.ts`：同步全部 18 条更新路由的 lastModified 时间戳为 2026-10-10（保持 `/countertops/vanity-tops` 观察期锁定）。
+5. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，网络代理与重试机制加固完毕。
    - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-5. **持续观测窗口与锁定保护**：
+6. **持续观测窗口与锁定保护**：
    - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
    - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 

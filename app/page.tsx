@@ -5,7 +5,7 @@ import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import WorkshopVideoCard from "../components/WorkshopVideoCard";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
-import { absoluteUrl, siteName } from "../lib/seo";
+import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
 import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 
 export const metadata: Metadata = {
@@ -86,14 +86,17 @@ export default function HomePage() {
   return (
     <PageShell>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: siteName,
-          url: absoluteUrl("/"),
-          description:
-            "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers."
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteName,
+            url: absoluteUrl("/"),
+            description:
+              "Custom stone fabrication and project supply from Yunfu, China for hotel contractors, architects, developers, and importers."
+          },
+          organizationJsonLd()
+        ]}
       />
       <main>
         <section className="hero-architectural hero-architectural--home relative min-h-[calc(100svh-4rem)]">

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import InquiryForm from "../../components/InquiryForm";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact, inquiryProjectTypes } from "../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../lib/conversion";
-import { absoluteUrl, siteName } from "../../lib/seo";
+import { absoluteUrl, organizationJsonLd, siteName } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Project Consultation for Stone Buyers",
@@ -43,10 +44,20 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
   const context = getInquiryContext(await searchParams);
   const emailUrl = buildMailtoUrl(context);
 
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Project Consultation & Quotation Request",
+    url: absoluteUrl("/contact"),
+    description: String(metadata.description),
+    mainEntity: organizationJsonLd()
+  };
+
   return (
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project Consultation", path: "/contact" }]} />
+        <JsonLd data={contactJsonLd} />
         <PageHero
           eyebrow="Project inquiry system"
           title="Request a quotation for hotel stone, slabs, and custom fabrication."
