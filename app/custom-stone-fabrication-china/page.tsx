@@ -124,6 +124,7 @@ export default function CustomStoneFabricationPage() {
       relatedLink={{ label: "Review the buyer workflow", href: "/how-we-work" }}
       relatedLinks={[
         { label: "View redacted drawing-review example", href: "/factory#factory-evidence" },
+        { label: "Review Canada shower niches case reference", href: "/projects/canada-shower-niches-2025" },
         { label: "Review countertop packages and cut-outs", href: "/countertops" },
         { label: "Review hotel vanity top schedules", href: "/countertops/vanity-tops" },
       ]}

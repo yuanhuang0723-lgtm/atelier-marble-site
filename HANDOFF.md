@@ -372,4 +372,16 @@ Google Search Console 深链曾跳转登录页。2026-09-29 尝试只读打开�
   - Verified live production deployment on `https://ateliermarblestone.com/countertops`: returns HTTP 200, HTML contains updated disclosure markup, single-sentence summaries, 4 authentic kitchen countertop assets, and `scopeRows` B2B quotation input mapping table.
   - Weekly summary report for the week ending 2026-10-10 completed in `docs/seo-evidence/weekly-summary-2026-10-10.md`.
 
+## 2026-10-10 Canada project reference cluster integration
+
+- Reinforced Canada-focused commercial discovery topic cluster:
+  1. Connected priority commercial page `/custom-stone-fabrication-china` directly to `/projects/canada-shower-niches-2025` via contextual related link.
+  2. Enriched `/projects/canada-shower-niches-2025` CTA with query attribution (`sourcePage=/projects/canada-shower-niches-2025&projectType=Commercial%20Stone%20Projects`) so inquiries preserve landing context.
+  3. Added reciprocal navigation links on `/projects/canada-shower-niches-2025` pointing back to `/custom-stone-fabrication-china` and `/countertops/vanity-tops`.
+- Quality Verification:
+  - Unit tests passed: `npm run test:inquiry` (12/12 passed).
+  - SEO & tracking tests passed: 25/25 passed.
+  - Image sitemap parity: `tests/seo-image-sitemap.test.mjs` passed.
+  - Full site build: `npm run build` generated 332 pages cleanly in 6.5s.
+
 
