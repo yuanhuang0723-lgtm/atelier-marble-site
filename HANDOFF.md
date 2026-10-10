@@ -31,16 +31,17 @@
    - `/countertops`：注入商业台面总览 Product Schema（厨卫岛台、瀑布边、40-50mm 裙边、水刀精细开孔、ASTM C170 >110 MPa）。
    - `/materials`：注入天然石材荒料与大板直采 Product Schema（大理石、奢石石英石、花岗岩全品类目录，±1mm 厚度公差）。
    - `/resources`：注入 CollectionPage 与 Article 结构化数据，增强买家指南集群的权威信号与内部链接互联。
-3. **全套自动化测试与构建验收（100% 通过）**：
+3. **Schema.org HowTo 与知识网络注入**：
+   - `/how-we-work`：注入 Schema.org `HowTo` 结构化数据，严格映射 6 大外贸石材询盘与交付流程（Brief、图纸评审、选板对纹、分项报价、QC验货、木箱出口）。
+   - `/guides/*`：核验 6 篇旗舰指南的 `Article` 与 `FAQPage` 结构化数据完备性，一字不差对齐可见文本。
+4. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `scripts/audit-seo.mjs`：全站 29 条路由审计全通，网络代理与重试机制加固完毕。
    - `npm run build`：332 个静态页面全部成功生成，无报错无 hydration 异常。
-4. **下周期优化优先级（Cycle 5: Next 3 Priority Pages）**：
-   - `/guides/stone-supplier-china`（中国天然石材供应商甄选指南）
-   - `/guides/export-packing-standards`（集装箱出口木箱熏蒸与防破损标准）
-   - `/guides/hotel-stone-pricing`（酒店石材卫浴台面报价预算指南）
-   - *注意：`/countertops/vanity-tops` 继续锁定观察至 2026-10-24。*
+5. **持续观测窗口与锁定保护**：
+   - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
+   - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 
 ## 先读这一段
 

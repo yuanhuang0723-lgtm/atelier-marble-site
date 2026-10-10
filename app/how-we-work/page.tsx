@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
+import JsonLd from "../../components/JsonLd";
 import { ClipboardList, FileText, PackageCheck, ShieldCheck, MessageSquareQuote, Layers3 } from "lucide-react";
 import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
@@ -63,6 +64,19 @@ const steps = [
   }
 ];
 
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "B2B Natural Stone Project Procurement & Fabrication Workflow",
+  description: "A comprehensive six-step RFQ procurement workflow for overseas stone buyers covering project briefs, drawing review, material matching, quotation, production inspection, and export packing.",
+  step: steps.map((step, idx) => ({
+    "@type": "HowToStep",
+    position: idx + 1,
+    name: step.title,
+    text: step.copy
+  }))
+};
+
 const trustPoints = [
   "Clear scope review before pricing",
   "Project communication around agreed review points",
@@ -78,6 +92,7 @@ export default function HowWeWorkPage() {
     <PageShell>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "How We Work", path: "/how-we-work" }]} />
+        <JsonLd data={howToJsonLd} />
         <PageHero
           eyebrow="Overseas buyer workflow"
           title="A clear stone project workflow for overseas buyers."
