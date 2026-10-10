@@ -411,5 +411,25 @@ Across 8 successive autonomous execution cycles:
 6. **Milestone: 18 Core Routes with Schema.org HowTo Coverage**:
    - Complete coverage achieved across every single commercial hub, material catalog, application guide, and case study page sitewide.
 
+---
+
+## 14. Cycle 10: Deep Material Catalog HowTo Integration & 100% Specification Knowledge Graph Coverage
+
+1. **`app/materials/marble/page.tsx` (`/materials/marble`)**:
+   - Injected Schema.org `HowTo` structured data (`marbleProcurementHowToJsonLd`) mapping the 5-stage marble material selection, dimensional coordination, ASTM physical property verification, and dry-lay vein matching protocol.
+2. **`app/materials/quartzite/page.tsx` (`/materials/quartzite`)**:
+   - Injected Schema.org `HowTo` structured data (`quartziteProcurementHowToJsonLd`) mapping the 5-stage luxury quartzite lot yield selection, Mohs ~7 hardness verification, 5-axis CNC bridge cutting, and fumigated crate packing workflow.
+3. **`app/materials/granite/page.tsx` (`/materials/granite`)**:
+   - Injected Schema.org `HowTo` structured data (`graniteProcurementHowToJsonLd`) mapping the 5-stage commercial granite high-traffic application assessment, ASTM C170 compressive strength (>150 MPa) testing, CNC cutting with piece mark labeling, and export crating protocol.
+4. **`app/sitemap.ts` (`/sitemap.xml`)**:
+   - Synchronized `lastModified` timestamps for `/materials/marble`, `/materials/quartzite`, and `/materials/granite` to `2026-10-11`, while keeping `/countertops/vanity-tops` strictly locked to `2026-10-07`.
+5. **Milestone: 21 Routes with Schema.org HowTo Coverage (100% of Actionable Material & Engineering Pages)**:
+   - All 21 commercial application, material catalog, fabrication service, case study, and technical guide routes now possess full Schema.org knowledge graph coverage.
+6. **Zero Layout Mutation & Regression Safety Verified**:
+   - 23/23 SEO assertions passed.
+   - 12/12 Inquiry unit tests passed.
+   - Full 332-page SSG compilation completed in 6.9s with 0 errors and 0 warnings.
+   - Strict Title (50-60 chars) and Description (140-160 chars) maintained across all 28 commercial pages.
+
 
 

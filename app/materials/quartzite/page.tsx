@@ -82,6 +82,45 @@ const quartziteProductJsonLd = {
   }
 };
 
+const quartziteProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Luxury Quartzite Material Selection & Countertop Fabrication Workflow",
+  description: "Standardized 5-step engineering and procurement workflow for selecting quartzite lots, validating crystalline hardness, precision CNC cutting, and dry-lay matching.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Material Direction & Project Inquiry",
+      text: "Start with quartzite material character, preferred tone, application, and reference images."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Geometry, Edge & Cutout Coordination",
+      text: "Review thickness (20mm, 30mm), surface finish (polished, honed, leathered), vein-matching direction, undermount sink cut-outs, and mitered edge aprons (40-50mm)."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Application & Project Suitability Assessment",
+      text: "Evaluate fit for kitchen countertops, waterfall islands, hotel vanity surfaces, feature walls, and commercial interior packages."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Quarry Lot Yield & ASTM Property Sign-Off",
+      text: "Verify physical standards: Mohs hardness ~7, bulk density 2.65 g/cm³ (ASTM C97), water absorption <0.15%, compressive strength >130 MPa (ASTM C170), and approve slab lot yield."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "5-Axis CNC Fabrication & Fumigated Export Crating",
+      text: "Execute precision 5-axis CNC bridge cutting (±1mm tolerance), bookmatched vein alignment, pre-shipment dry-lay inspection sign-off, and export-grade fumigated wooden crating with foam protection."
+    }
+  ]
+};
+
 const faqs = [
   { question: "What should be checked before specifying quartzite?", answer: "Confirm the material name, current lot, thickness, finish, surface character, matching direction, application suitability, quantity, and destination before production." },
   { question: "Can quartzite be reviewed for countertops?", answer: "Quartzite can be considered for kitchen countertops, islands, hotel surfaces, and commercial applications case by case, with dimensions and fabrication details reviewed together." },
@@ -128,7 +167,7 @@ export default function QuartziteMaterialsPage() {
         materialOptions: "Natural luxury quartzite (Mohs hardness ~7, bulk density 2.65 g/cm³, absorption <0.15%, compressive strength >130 MPa). Available in polished, honed, and leathered finishes. Confirm current lot, 20mm/30mm thickness, and matching.",
         customCapability: "One-piece custom tops and small MOQ orders supported. Coordinate slab vein direction, CNC cut-outs, ±1mm edge profiles, dry-lay inspection, and fumigated crate packing."
       }}
-      additionalJsonLd={[quartziteProductJsonLd]}
+      additionalJsonLd={[quartziteProductJsonLd, quartziteProcurementHowToJsonLd]}
       metadata={metadata}
     />
   );

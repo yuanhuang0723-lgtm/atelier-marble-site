@@ -87,6 +87,45 @@ const graniteProductJsonLd = {
   }
 };
 
+const graniteProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Commercial Granite Procurement & High-Traffic Fabrication Workflow",
+  description: "Standardized 5-step procurement procedure for evaluating commercial granite physical performance, surface finishes, CNC cutting tolerances, and export delivery.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Material Character & Commercial Scope",
+      text: "Start with granite material character, preferred color tone, high-traffic application, and reference images."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Thickness, Surface Finish & Edge Specifications",
+      text: "Review thickness (20mm, 30mm, 40mm cut-to-size), surface finish (polished, honed, flamed/thermal, bush-hammered, leathered), and finished edge profiles."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Application Verification & Joint Coordination",
+      text: "Verify suitability for public-area counters, reception desks, high-traffic commercial flooring, wall facades, and exterior architectural paving."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Quarry Lot Uniformity & ASTM Testing",
+      text: "Confirm physical standards: bulk density 2.65–2.80 g/cm³ (ASTM C97), water absorption <0.20%, compressive strength >150 MPa (ASTM C170), and verify lot shade uniformity."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "CNC Bridge Cutting, Piece Mark Labeling & Crating",
+      text: "Execute CNC bridge cutting (±1mm tolerance), pre-shipment dry-lay quality inspection, piece mark labeling for installation, and fumigated wooden crates with plastic wrap moisture protection."
+    }
+  ]
+};
+
 const faqs = [
   { question: "What granite information should be confirmed?", answer: "Confirm the material name, current lot, thickness, finish, surface character, matching direction, application suitability, quantity, and destination before production." },
   { question: "Can granite be reviewed for commercial countertops?", answer: "Granite can be considered for countertops, islands, hotel surfaces, and commercial applications case by case, with dimensions and fabrication details reviewed together." },
@@ -133,7 +172,7 @@ export default function GraniteMaterialsPage() {
         materialOptions: "Natural commercial granite (density 2.65–2.80 g/cm³, absorption <0.20%, compressive strength >150 MPa). Confirm the current lot, thickness, finish, and application suitability.",
         customCapability: "One-piece custom fabrication and small MOQ orders supported. Review countertop and commercial components, ±1mm CNC edge details, cut-outs, quantities, and fumigated crate packing."
       }}
-      additionalJsonLd={[graniteProductJsonLd]}
+      additionalJsonLd={[graniteProductJsonLd, graniteProcurementHowToJsonLd]}
       metadata={metadata}
     />
   );

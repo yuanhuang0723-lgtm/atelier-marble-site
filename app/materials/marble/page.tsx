@@ -62,6 +62,45 @@ const marbleProductJsonLd = {
   }
 };
 
+const marbleProcurementHowToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Architectural Marble Material Specification & Procurement Workflow",
+  description: "Standardized 5-step procurement procedure for reviewing marble character, confirming lot veining, specifying ASTM physical properties, and approving pre-shipment dry-lay matching for custom project fabrication.",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Material Character & Reference Review",
+      text: "Start with marble variety name (Calacatta, Carrara, Statuario, Nero Marquina), preferred tone, intended application, and project reference images."
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Dimensional & Surface Finish Coordination",
+      text: "Review required slab thickness (18mm, 20mm, 30mm with ±1mm tolerance), surface finishes (polished, honed, leathered, acid-washed), cut-outs, and edge profiles."
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Application Fit & Engineering Suitability",
+      text: "Confirm suitability for countertops, vanity tops, hotel bathrooms, commercial interior walls, or flooring with structural coordination from shop drawings."
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Block Lot & Physical Property Approval",
+      text: "Confirm current quarry lot, slab dimensions, natural variation across the lot, and ASTM standards (ASTM C97 bulk density ~2.7 g/cm³, water absorption <0.20%, ASTM C170 compressive strength >100 MPa)."
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Dry-Lay Vein Matching & Export Packaging",
+      text: "Conduct pre-shipment full slab inspection photos/videos, dry-lay photo approval, and fumigated sturdy wooden crate packing with plastic film protection."
+    }
+  ]
+};
+
 export default function MarbleMaterialsPage() {
   return (
     <CommercialLandingPage
@@ -103,7 +142,7 @@ export default function MarbleMaterialsPage() {
         materialOptions: "Natural marble (Calacatta, Carrara, Statuario, Nero Marquina). Bulk density ~2.7 g/cm³, water absorption <0.20%, ASTM compressive strength >100 MPa. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.",
         customCapability: "One-piece custom or container-load wholesale. Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components with fumigated wooden crate packing."
       }}
-      additionalJsonLd={[marbleProductJsonLd]}
+      additionalJsonLd={[marbleProductJsonLd, marbleProcurementHowToJsonLd]}
       metadata={metadata}
     />
   );

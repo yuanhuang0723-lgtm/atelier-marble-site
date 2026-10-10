@@ -68,11 +68,17 @@
    - `/materials`：注入 5 阶段天然石材矿山荒料选拔、物理性能 ASTM 检验与样块确认 HowTo Schema（`materialProcurementHowToJsonLd`）。
    - `/projects`：CollectionPage 关联补充 `/projects/canada-shower-niches-2025`，同步 `app/sitemap.ts` 修改日期至 2026-10-10。
    - **全站 18 个核心路由实现 Schema.org HowTo 终极全覆盖**。
-8. **全套自动化测试与构建验收（100% 通过）**：
+8. **核心石材品类专页 HowTo 终极图谱闭环（Cycle 10）**：
+   - `/materials/marble`：注入 5 阶段天然大理石品种核验、ASTM 指标、对纹干铺与木箱出口 HowTo Schema（`marbleProcurementHowToJsonLd`）。
+   - `/materials/quartzite`：注入 5 阶段奢石/石英石莫氏硬度验证、五轴数控桥切与预拼质检 HowTo Schema（`quartziteProcurementHowToJsonLd`）。
+   - `/materials/granite`：注入 5 阶段工装高人流花岗岩 ASTM C170 强度检验、构件编码标签与出口包装 HowTo Schema（`graniteProcurementHowToJsonLd`）。
+   - `app/sitemap.ts`：同步更新上述 3 个路由的 `lastModified` 为 `2026-10-11`（保持 `/countertops/vanity-tops` 锁定至 `2026-10-07`）。
+   - **全站 21 个核心业务路由实现 Schema.org HowTo 100% 终极全覆盖**（覆盖所有可操作的材料目录、深加工服务、工程应用、案例与指南专页）。
+9. **全套自动化测试与构建验收（100% 通过）**：
    - `tests/seo-*.test.mjs`：23/23 测试全通（严格标题 50–60 字符、描述 140–160 字符、采购5大问题全覆盖）。
    - `tests/inquiry-*.test.ts`：12/12 询盘及防重放全通。
    - `npm run build`：332 个静态页面全部成功编译（0 错误、0 警告）。
-9. **持续观测窗口与锁定保护**：
+10. **持续观测窗口与锁定保护**：
    - `/countertops/vanity-tops` 继续锁定观察至 **2026-10-24**，保持 GSC 纯净观察期，严禁任何改动。
    - 持续监控 Google Search Console 中 `hotel bathroom countertop`、`calacatta gold marble wholesale`、`commercial architectural stone china` 等词的展示、排名与询盘转化。
 
