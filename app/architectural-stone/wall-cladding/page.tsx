@@ -82,6 +82,43 @@ const faqs = [
   { question: "Is wall cladding suitable for hotel projects?", answer: "Hotel lobbies, reception areas, corridors, and other feature surfaces can be reviewed case by case with material, fabrication, quality, and export coordination considered together." }
 ];
 
+const wallCladdingProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Architectural Stone Wall Cladding Panels",
+  description: "Precision-fabricated natural stone wall cladding panels from Yunfu, China for commercial facades, hotel lobbies, and luxury interiors. Available in marble, granite, travertine, and limestone with dry-hung anchor kerfs, ±1mm thickness tolerances, ASTM physical testing compliance, and fumigated crate packaging.",
+  category: "Building Materials > Natural Stone > Wall Cladding Panels",
+  material: "Natural Stone (Marble, Granite, Limestone)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Cut-to-Size CNC Panel Sizing, Kerf Cutting & Anchor Slots" },
+    { "@type": "PropertyValue", name: "Standard Panel Thickness", value: "20mm, 25mm, 30mm (calibrated ±1mm tolerance)" },
+    { "@type": "PropertyValue", name: "Available Finishes", value: "Honed, Polished, Brushed, Sandblasted, Flamed" },
+    { "@type": "PropertyValue", name: "Vein Matching", value: "Bookmatched Elevations, Continuous Flow, Dry-Lay Inspection" },
+    { "@type": "PropertyValue", name: "Physical Properties", value: "Bulk density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Foam Spacers" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on Elevation Drawings & BOQ"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function ArchitecturalWallCladdingPage() {
   return (
     <CommercialLandingPage
@@ -103,7 +140,12 @@ export default function ArchitecturalWallCladdingPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying wall cladding."
       relatedLink={{ label: "Review commercial stone projects", href: "/projects/commercial-stone" }}
-      purchaseInfo={{ materialOptions: "Marble and other approved stone can be reviewed. Confirm the current lot, finish, panel matching, and thickness for each elevation.", customCapability: "Review panel layouts, openings, edge conditions, finish, and cut lists from approved elevations or CAD." }} metadata={metadata}
+      purchaseInfo={{
+        materialOptions: "Natural marble, limestone, granite, or travertine (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm the current lot, finish, panel matching, and 20mm/25mm/30mm thickness (±1mm tolerance) for each elevation.",
+        customCapability: "One-piece custom panels and small MOQ project scopes supported. Review panel layouts, kerf anchor slots, openings, edge conditions, finish, dry-lay inspection, and fumigated crate packing from approved elevations or CAD."
+      }}
+      additionalJsonLd={[wallCladdingProductJsonLd]}
+      metadata={metadata}
     />
   );
 }

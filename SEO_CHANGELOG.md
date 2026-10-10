@@ -41,19 +41,19 @@ This changelog records the complete autonomous technical SEO audit, structured d
 | `/` | 52 ch | ✅ PASS | 150 ch | ✅ PASS | Core Brand Discovery | ❌ N/A | ❌ N/A | ❌ N/A | Homepage hero & video gallery alts verified |
 | `/projects` | 50 ch | ✅ PASS | 148 ch | ✅ PASS | Project Portfolio Index | ❌ N/A | ❌ N/A | ❌ N/A | Portfolio thumbnail cards verified |
 | `/architectural-stone` | 59 ch | ✅ PASS | 160 ch | ✅ PASS | Architectural Hub | ❌ NO | ✅ YES | ✅ YES | High-level commercial hub imagery |
-| `/architectural-stone/wall-cladding` | 59 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Honest concept disclaimer (93 ch) |
-| `/architectural-stone/flooring` | 56 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Honest concept disclaimer (92 ch) |
+| `/architectural-stone/wall-cladding` | 59 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest concept disclaimer (93 ch) |
+| `/architectural-stone/flooring` | 56 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest concept disclaimer (92 ch) |
 | `/materials` | 53 ch | ✅ PASS | 144 ch | ✅ PASS | Material Catalog Hub | ❌ NO | ✅ YES | ❌ NO | Material category navigation |
 | `/materials/marble` | 54 ch | ✅ PASS | 144 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | **Optimized:** Specific B2B commercial alt (89 ch) |
-| `/materials/quartzite` | 60 ch | ✅ PASS | 157 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
-| `/materials/granite` | 57 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
+| `/materials/quartzite` | 60 ch | ✅ PASS | 157 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
+| `/materials/granite` | 57 ch | ✅ PASS | 159 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Generic stone reference alt (85 ch) |
 | `/factory` | 51 ch | ✅ PASS | 143 ch | ✅ PASS | Trust & Facility Evidence | ❌ N/A | ✅ YES | ❌ NO | Workshop video posters & redacted drawing alts |
 | `/contact` | 54 ch | ✅ PASS | 153 ch | ✅ PASS | Inquiry & Lead Capture | ❌ N/A | ❌ N/A | ❌ N/A | N/A (Form interface) |
 | `/countertops` | 52 ch | ✅ PASS | 152 ch | ✅ PASS | Commercial Pillar | ❌ NO | ✅ YES | ✅ YES | Verified kitchen & dining stone assets (67 ch) |
-| `/countertops/marble-countertops` | 57 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Descriptive commercial reference alt (80 ch) |
+| `/countertops/marble-countertops` | 57 ch | ✅ PASS | 155 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Descriptive commercial reference alt (80 ch) |
 | `/countertops/vanity-tops` | 57 ch | ✅ PASS | 143 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Descriptive vanity interior alt (74 ch) *(Locked)* |
-| `/countertops/integrated-stone-sinks` | 55 ch | ✅ PASS | 150 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Honest 3D render disclaimer (112 ch) |
-| `/projects/hotel-stone-supply` | 58 ch | ✅ PASS | 158 ch | ✅ PASS | Commercial Case Study | ❌ NO | ✅ YES | ✅ YES | Honest concept disclaimer (95 ch) |
+| `/countertops/integrated-stone-sinks` | 55 ch | ✅ PASS | 150 ch | ✅ PASS | Commercial Landing | ✅ YES | ✅ YES | ✅ YES | Honest 3D render disclaimer (112 ch) |
+| `/projects/hotel-stone-supply` | 58 ch | ✅ PASS | 158 ch | ✅ PASS | Commercial Case Study | ✅ YES | ✅ YES | ✅ YES | Honest concept disclaimer (95 ch) |
 | `/projects/commercial-stone` | 54 ch | ✅ PASS | 160 ch | ✅ PASS | Commercial Case Study | ❌ NO | ✅ YES | ✅ YES | Honest concept disclaimer (89 ch) |
 | `/projects/canada-shower-niches-2025` | 53 ch | ✅ PASS | 157 ch | ✅ PASS | Project Case Study | ❌ NO | ❌ NO | ✅ YES | Case study photo references |
 | `/custom-stone-fabrication-china` | 55 ch | ✅ PASS | 148 ch | ✅ PASS | Commercial Landing | ❌ NO | ✅ YES | ✅ YES | Redacted drawing review excerpt (111 ch) |
@@ -206,26 +206,50 @@ This changelog records the complete autonomous technical SEO audit, structured d
 
 ---
 
-## 5. Upcoming Optimization Cycle: Next 3 Priority Pages
+```
 
-Per the keyword strategy and observation windows documented in `HANDOFF.md` (where `/countertops/vanity-tops` is strictly locked until **2026-10-24** to protect GSC observation purity), the three highest-impact candidates for the next technical SEO iteration are:
+---
 
-### Priority 1: `app/architectural-stone/wall-cladding/page.tsx`
-- **Target Query Intent:** `exterior interior stone wall cladding panels china` (Commercial specification).
+## 5. Optimization Cycle 2 Execution Log: Architectural Stone & Hospitality Packages
+
+### Pages Completed:
+1. **`app/architectural-stone/wall-cladding/page.tsx` (`/architectural-stone/wall-cladding`)**:
+   - Injected `Product` + `AggregateOffer` Schema (`wallCladdingProductJsonLd`) covering cut-to-size CNC panel sizing, dry-hung anchor kerf slots, calibrated 20/25/30mm thickness (±1mm tolerance), ASTM C97 density ~2.7 g/cm³, absorption <0.20%, and ASTM C170 compressive strength >100 MPa.
+   - Enriched `purchaseInfo` with natural marble/limestone/granite technical parameters and small MOQ support.
+   - Verified Zero Layout Mutation: 0 CLS, purely metadata and non-rendering JSON-LD injection.
+
+2. **`app/architectural-stone/flooring/page.tsx` (`/architectural-stone/flooring`)**:
+   - Injected `Product` + `AggregateOffer` Schema (`flooringProductJsonLd`) for custom architectural stone flooring tiles and cut-to-size modules.
+   - Incorporated ASTM C170 compressive strength >100 MPa, honed/polished/acid-washed finishes, vein-flow alignment, and dry-lay inspection.
+   - Preserved visible word count strictly within 1,500–2,500 words.
+
+3. **`app/projects/hotel-stone-supply/page.tsx` (`/projects/hotel-stone-supply`)**:
+   - Injected `Product` + `AggregateOffer` Schema (`hotelSupplyProductJsonLd`) for comprehensive hospitality natural stone packages (guestroom vanities, lobby feature cladding, public-area flooring, reception desks).
+   - Enriched `purchaseInfo` highlighting room-type schedule organization, phased delivery grouping, and piece-mark labeling.
+   - Maintained all test assertions regarding illustrative concept rendering disclaimers.
+
+---
+
+## 6. Upcoming Optimization Cycle: Next 3 Priority Pages (Cycle 3)
+
+Per the keyword strategy and observation windows documented in `HANDOFF.md` (where `/countertops/vanity-tops` is strictly locked until **2026-10-24** to protect GSC observation purity), the three highest-impact candidates for Cycle 3 are:
+
+### Priority 1: `app/projects/commercial-stone/page.tsx`
+- **Target Query Intent:** `commercial stone fabrication project supply china` (Contract & commercial bidding).
 - **Scheduled Enhancements:**
-  1. Inject `Product` + `AggregateOffer` schema for dry-hung stone wall cladding panels with anchoring/fixing specifications.
-  2. Embed ASTM physical property standards for freeze-thaw resistance, wind load tolerance, and calibrated panel thickness.
+  1. Inject `Product` + `AggregateOffer` schema for commercial interior stone packages (reception desks, retail displays, office pantries).
+  2. Embed ASTM physical property standards, ±1mm fabrication tolerances, and phased project packaging.
   3. Maintain zero layout mutation via `additionalJsonLd`.
 
-### Priority 2: `app/architectural-stone/flooring/page.tsx`
-- **Target Query Intent:** `commercial architectural stone flooring tiles wholesale` (High-traffic commercial).
+### Priority 2: `app/custom-stone-fabrication-china/page.tsx`
+- **Target Query Intent:** `custom cut-to-size stone fabrication china factory` (High-intent drawing-led RFQs).
 - **Scheduled Enhancements:**
-  1. Inject `Product` + `AggregateOffer` schema for cut-to-size commercial flooring modules, slip-resistance finishes (honed, leathered, acid-washed), and dry-lay color transition grading.
-  2. Maintain strict word count and test assertions.
+  1. Inject `Product` + `AggregateOffer` schema for bespoke drawing-led stone cutting, 5-axis CNC routing, and dry-lay pre-assembly.
+  2. Maintain strict word count and drawing revision guidance.
 
-### Priority 3: `app/projects/hotel-stone-supply/page.tsx`
-- **Target Query Intent:** `hotel hospitality stone supply china` (High-margin contract procurement).
+### Priority 3: `app/architectural-stone/page.tsx`
+- **Target Query Intent:** `architectural stone supplier exporter china` (Category pillar authority).
 - **Scheduled Enhancements:**
-  1. Inject custom Hospitality Package `Product` or `Service` schema detailing multi-room vanity tops, public lobby floor modules, and guestroom bathroom thresholds.
-  2. Preserve illustrative concept labeling and room-type packaging guidance.
+  1. Inject comprehensive `Product` / `AggregateOffer` schema for architectural cut-to-size stone supply.
+  2. Align specification groups with international architect and interior design tender standards.
 

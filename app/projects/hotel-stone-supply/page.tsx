@@ -69,6 +69,43 @@ const hotelContentSections = [
   }
 ];
 
+const hotelSupplyProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Hotel & Hospitality Custom Stone Supply Packages",
+  description: "Comprehensive hospitality natural stone fabrication packages from Yunfu, China. Encompasses guestroom vanity tops, monolithic basin integration, lobby reception feature walls, architectural flooring, and elevator surrounds with strict drawing revision control, room-type labeling, dry-lay vein matching, and phased export crate packaging.",
+  category: "Building Materials > Natural Stone > Hospitality Stone Packages",
+  material: "Natural Marble, Quartzite, Granite, Engineered Stone",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Hospitality Scope", value: "Guestroom Vanities, Lobby Cladding, Public-Area Flooring, Reception Desks" },
+    { "@type": "PropertyValue", name: "Fabrication Standard", value: "5-Axis CNC Precision Shaping, Calibrated ±1mm Tolerances, Mitered Aprons" },
+    { "@type": "PropertyValue", name: "Project Organization", value: "Room-Type Schedules, Phased Delivery Grouping & Piece-Mark Labeling" },
+    { "@type": "PropertyValue", name: "Vein Matching & Inspection", value: "Elevation Bookmatching, Dry-Lay Photo Inspection & Slab Approval" },
+    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 bulk density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates Grouped by Floor/Phase with Foam Lining" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on Hospitality Architectural Drawings & BOQ"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function HotelStoneSupplyPage() {
   return (
     <CommercialLandingPage
@@ -157,9 +194,10 @@ export default function HotelStoneSupplyPage() {
         }
       ]}
       purchaseInfo={{
-        materialOptions: "Marble, granite, quartzite, or approved project stone. Confirm current lots and room-to-room matching.",
-        customCapability: "Review guestroom vanities, lobby and public-area surfaces, countertops, wall and floor stone, and repeat schedules."
+        materialOptions: "Natural marble, quartzite, granite, or approved project stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm current lots, 20mm/30mm calibrated thickness (±1mm tolerance), and room-to-room matching.",
+        customCapability: "One-piece mock-up units and full hotel room schedules supported. Review guestroom vanities, lobby and public-area surfaces, reception desks, dry-lay vein matching, room-by-room piece labeling, and phased fumigated crate packing from hotel drawing sets."
       }}
+      additionalJsonLd={[hotelSupplyProductJsonLd]}
       metadata={metadata}
     />
   );

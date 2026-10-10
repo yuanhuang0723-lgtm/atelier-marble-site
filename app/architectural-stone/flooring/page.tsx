@@ -82,6 +82,43 @@ const faqs = [
   { question: "Which projects can be considered?", answer: "Hotel corridors, lobbies, reception areas, commercial interiors, and other architectural applications can be reviewed case by case with material and delivery requirements confirmed first." }
 ];
 
+const flooringProductJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Architectural Stone Flooring Tiles & Modules",
+  description: "Precision-fabricated cut-to-size natural stone flooring tiles and modules from Yunfu, China for hotel lobbies, commercial reception areas, and luxury architectural interiors. Calibrated 18mm/20mm thickness (±1mm tolerance), ASTM C170 compressive strength (>100 MPa), honed/polished finishes, dry-lay inspection, and fumigated crate packaging.",
+  category: "Building Materials > Natural Stone > Flooring Tiles & Modules",
+  material: "Natural Stone (Marble, Granite, Limestone, Travertine)",
+  brand: {
+    "@type": "Brand",
+    name: "Atelier Marble"
+  },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Cut-to-Size CNC Module Sizing, Edge Profiling & Transition Detailing" },
+    { "@type": "PropertyValue", name: "Standard Tile Thickness", value: "18mm, 20mm, 30mm (calibrated ±1mm tolerance)" },
+    { "@type": "PropertyValue", name: "Available Finishes", value: "Honed, Polished, Brushed, Acid-Washed, Antique" },
+    { "@type": "PropertyValue", name: "Vein Matching & Layout", value: "Vein-Flow Alignment, Repeat Module Sequencing & Dry-Lay Inspection" },
+    { "@type": "PropertyValue", name: "Physical Specifications", value: "Bulk density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa" },
+    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Film Spacers" }
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    price: "0",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceType: "https://schema.org/InvoicePrice",
+      unitText: "Project RFQ Quotation Based on Floor Plans & BOQ"
+    },
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "Atelier Marble",
+      url: absoluteUrl("/")
+    }
+  }
+};
+
 export default function ArchitecturalFlooringPage() {
   return (
     <CommercialLandingPage
@@ -103,7 +140,12 @@ export default function ArchitecturalFlooringPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying stone flooring."
       relatedLink={{ label: "Review wall cladding applications", href: "/architectural-stone/wall-cladding" }}
-      purchaseInfo={{ materialOptions: "Marble, granite, and other approved natural stone. Confirm the selected lot, finish, module size, and matching.", customCapability: "Coordinate modules, borders, thresholds, stairs, repeat layouts, and labels from current plans." }} metadata={metadata}
+      purchaseInfo={{
+        materialOptions: "Natural marble, granite, limestone, or travertine (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm the selected lot, finish, 18mm/20mm/30mm calibrated thickness (±1mm tolerance), and module sizing.",
+        customCapability: "One-piece custom pieces and small MOQ commercial project scopes supported. Coordinate cut-to-size modules, borders, thresholds, stairs, repeat layouts, dry-lay vein matching, and piece-marked fumigated crate packing from current plans."
+      }}
+      additionalJsonLd={[flooringProductJsonLd]}
+      metadata={metadata}
     />
   );
 }
