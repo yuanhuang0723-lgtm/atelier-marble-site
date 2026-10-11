@@ -40,6 +40,13 @@ export const metadata: Metadata = {
       "Custom countertops, vanity tops, hotel stone fabrication, and architectural components coordinated to project scope.",
     url: siteUrl,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp"), width: 1536, height: 1024 }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Atelier Marble | Custom Stone Fabrication & Project Supply",
+    description:
+      "Custom countertops, vanity tops, hotel stone fabrication, and architectural components coordinated to project scope.",
+    images: [absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp")]
   }
 };
 
