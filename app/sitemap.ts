@@ -37,11 +37,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Omit lastModified when there is no verified significant-update date; update this map with future edits.
   const lastModifiedByRoute: Record<string, string> = {
     "/": "2026-10-10",
-    "/projects": "2026-10-10",
+    "/projects": "2026-10-11",
     "/architectural-stone": "2026-10-10",
     "/architectural-stone/wall-cladding": "2026-10-10",
     "/architectural-stone/flooring": "2026-10-10",
-    "/materials": "2026-10-10",
+    "/materials": "2026-10-11",
     "/materials/marble": "2026-10-11",
     "/materials/quartzite": "2026-10-11",
     "/materials/granite": "2026-10-11",
@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects/commercial-stone": "2026-10-10",
     "/projects/canada-shower-niches-2025": "2026-10-10",
     "/custom-stone-fabrication-china": "2026-10-10",
-    "/resources": "2026-10-10",
+    "/resources": "2026-10-11",
     "/how-we-work": "2026-10-11",
     "/guides/stone-supplier-china": "2026-10-10",
     "/guides/export-packing-standards": "2026-10-10",

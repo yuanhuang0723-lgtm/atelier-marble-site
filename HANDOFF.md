@@ -495,6 +495,12 @@ Google Search Console 深链曾跳转登录页。2026-09-29 尝试只读打开�
   - 自动化测试套件：12/12 询盘测试通过，46/46 SEO 与追踪单元测试通过（总计 58/58 测试 100% 通过）。
   - 全站编译：`npm run build` 生成 332 个静态页面顺利，0 警告 0 报错。
   - 完整证据报告：`docs/seo-evidence/implementation-plan-2026-10-11.md`。
+- **枢纽层级（Resources / Projects / Materials）全域图谱贯通**：
+  1. `app/resources/page.tsx`：增补 `Hotel Lobby Guide` (`/guides/hotel-lobby-case-study`) 进入 9 项买家核心资源卡片及 `CollectionPage` 知识图谱；更新范围导航独立挂载 `Hotel Vanity Tops` 与 `Custom Stone Fabrication`。
+  2. `app/projects/page.tsx`：在 `CollectionPage` 的 `hasPart` 结构化数据中补齐 `Hotel Bathroom Vanity Tops`；并在底部导航中增补 `Hotel Vanity Tops` 与 `Custom Stone Fabrication` 直达路径。
+  3. `app/materials/page.tsx`：在材料大库底图与底部导航增设 `Hotel Vanity Top Slabs` 与 `Cut-to-Size Fabrication` 直达链接。
+  4. `app/sitemap.ts`：同步 `/resources`、`/projects`、`/materials` 的 `lastModified` 为 `2026-10-11`。
+
 
 
 

@@ -47,6 +47,7 @@ export default async function ProjectsPage({
         <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Hotel and Commercial Stone Project References", url: absoluteUrl("/projects"), description: String(metadata.description), hasPart: [
           { "@type": "WebPage", name: "Hotel Stone Supply", url: absoluteUrl("/projects/hotel-stone-supply") },
           { "@type": "WebPage", name: "Commercial Stone Fabrication", url: absoluteUrl("/projects/commercial-stone") },
+          { "@type": "WebPage", name: "Hotel Bathroom Vanity Tops", url: absoluteUrl("/countertops/vanity-tops") },
           { "@type": "WebPage", name: "Canada Shower Niches Case Study", url: absoluteUrl("/projects/canada-shower-niches-2025") },
           { "@type": "WebPage", name: "Custom Stone Countertops", url: absoluteUrl("/countertops") },
           { "@type": "WebPage", name: "Custom Stone Fabrication", url: absoluteUrl("/custom-stone-fabrication-china") }
@@ -110,17 +111,23 @@ export default async function ProjectsPage({
                 </div>
               </div>
             ) : null}
-            <div className="mt-14">
+            <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3">
               <Link className="text-cta-luxury" href="/contact">
                 Request Project Pricing
               </Link>
-              <Link className="text-cta-luxury ml-8" href="/materials">
+              <Link className="text-cta-luxury" href="/countertops/vanity-tops">
+                Hotel Vanity Tops
+              </Link>
+              <Link className="text-cta-luxury" href="/custom-stone-fabrication-china">
+                Custom Stone Fabrication
+              </Link>
+              <Link className="text-cta-luxury" href="/materials">
                 Compare Stone Materials
               </Link>
-              <Link className="text-cta-luxury ml-8" href="/how-we-work">
+              <Link className="text-cta-luxury" href="/how-we-work">
                 See How We Work
               </Link>
-              <Link className="text-cta-luxury ml-8" href="/resources">
+              <Link className="text-cta-luxury" href="/resources">
                 Buyer Resources
               </Link>
             </div>

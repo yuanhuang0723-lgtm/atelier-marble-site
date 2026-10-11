@@ -6,7 +6,17 @@ import JsonLd from "../../components/JsonLd";
 import { absoluteUrl } from "../../lib/seo";
 
 export const metadata: Metadata = { title: "Stone Buyer Guides & Project Resources", description: "Buyer guides for stone materials, hotel pricing, project checklists, quality review, export packing, and choosing a supplier before you order.", alternates: { canonical: absoluteUrl("/resources") }, openGraph: { title: "Stone Buyer Resources", description: "Buyer guides for natural stone selection, hotel pricing, project checklists, quality control, export packing, and clearer project sourcing decisions.", url: absoluteUrl("/resources"), siteName: "Atelier Marble", images: [{ url: absoluteUrl("/generated/guides/buyer-guide-hero.webp") }] } };
-const resources = [["Supplier Profile (PDF)", "/atelier-marble-supplier-profile.pdf", "A one-page introduction to our natural stone scope, project inputs, and contact details."], ["Buyer Guide", "/guides/stone-supplier-china", "How to assess a stone supplier before sending project information."], ["Hotel Stone Pricing", "/guides/hotel-stone-pricing", "The project variables that shape a useful hotel stone quotation."], ["Project Checklist", "/guides/stone-project-checklist", "The dimensions, quantities, and destination details that help a review."], ["QC & Delivery", "/guides/quality-control-delivery", "Questions to ask about inspection, finishing, and delivery coordination."], ["Export Packing", "/guides/export-packing-standards", "A practical reference for protective packing and loading preparation."], ["How We Work", "/how-we-work", "From project review and material matching to quotation and export preparation."], ["Project Brief Template", "/project-brief-template.txt", "Download a simple brief template before requesting a quotation."]];
+const resources = [
+  ["Supplier Profile (PDF)", "/atelier-marble-supplier-profile.pdf", "A one-page introduction to our natural stone scope, project inputs, and contact details."],
+  ["Buyer Guide", "/guides/stone-supplier-china", "How to assess a stone supplier before sending project information."],
+  ["Hotel Stone Pricing", "/guides/hotel-stone-pricing", "The project variables that shape a useful hotel stone quotation."],
+  ["Project Checklist", "/guides/stone-project-checklist", "The dimensions, quantities, and destination details that help a review."],
+  ["QC & Delivery", "/guides/quality-control-delivery", "Questions to ask about inspection, finishing, and delivery coordination."],
+  ["Export Packing", "/guides/export-packing-standards", "A practical reference for protective packing and loading preparation."],
+  ["Hotel Lobby Guide", "/guides/hotel-lobby-case-study", "A practical planning guide for hotel lobby stone scope, materials, and delivery."],
+  ["How We Work", "/how-we-work", "From project review and material matching to quotation and export preparation."],
+  ["Project Brief Template", "/project-brief-template.txt", "Download a simple brief template before requesting a quotation."]
+];
 const faqs = [["What should I send for a first quotation review?", "Send the project type, approximate quantity, dimensions or drawings, material direction, destination, and required timing. A rough brief is enough to start a practical review."], ["Do I need a finished CAD drawing?", "No. CAD, BOQ files, reference images, or rough dimensions can all help. The clearer the scope, the more specific the fabrication and quotation discussion can be."], ["Can you confirm the material before production?", "Material name, availability, thickness, finish, matching, and application suitability should be confirmed with the team before production is approved."], ["Do you support hotel and commercial projects?", "The site is structured for hotel, hospitality, commercial, residential, countertop, vanity, and custom stone inquiries. Scope and quantities are reviewed case by case."], ["How do I request pricing?", "Use the quotation form to send your project details and optional files, or contact the team through WhatsApp for an initial project conversation."]];
 const collectionJsonLd = {
   "@context": "https://schema.org",
@@ -76,11 +86,12 @@ export default function ResourcesPage() {
             ))}
           </div>
           <nav aria-label="Project scope pages" className="container-luxury mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-ink/10 pt-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/55">
-            <Link className="transition-colors hover:text-ink" href="/countertops">Countertops &amp; Vanity</Link>
+            <Link className="transition-colors hover:text-ink" href="/countertops">Countertops</Link>
+            <Link className="transition-colors hover:text-ink" href="/countertops/vanity-tops">Hotel Vanity Tops</Link>
             <Link className="transition-colors hover:text-ink" href="/projects/hotel-stone-supply">Hotel Stone Supply</Link>
             <Link className="transition-colors hover:text-ink" href="/architectural-stone">Architectural Stone</Link>
             <Link className="transition-colors hover:text-ink" href="/materials">Materials</Link>
-            <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone</Link>
+            <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone Fabrication</Link>
           </nav>
         </section>
         <section className="section-luxury bg-stone">

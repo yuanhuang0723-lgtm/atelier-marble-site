@@ -201,20 +201,26 @@ export default function MaterialsPage() {
               })}
             </div>
           </div>
-          <div className="container-luxury mt-16">
+          <div className="container-luxury mt-16 flex flex-wrap gap-x-8 gap-y-3">
             <Link className="text-cta-luxury" href="/contact">
               Get Material Suggestion
             </Link>
-            <Link className="text-cta-luxury ml-8" href="/projects">
+            <Link className="text-cta-luxury" href="/countertops/vanity-tops">
+              Hotel Vanity Top Slabs
+            </Link>
+            <Link className="text-cta-luxury" href="/custom-stone-fabrication-china">
+              Cut-to-Size Fabrication
+            </Link>
+            <Link className="text-cta-luxury" href="/projects">
               See Stone Project Uses
             </Link>
-            <Link className="text-cta-luxury ml-8" href="/materials/marble">
+            <Link className="text-cta-luxury" href="/materials/marble">
               Review Marble Materials
             </Link>
-            <Link className="text-cta-luxury ml-8" href="/materials/quartzite">
+            <Link className="text-cta-luxury" href="/materials/quartzite">
               Review Quartzite Materials
             </Link>
-            <Link className="text-cta-luxury ml-8" href="/materials/granite">
+            <Link className="text-cta-luxury" href="/materials/granite">
               Review Granite Materials
             </Link>
           </div>
