@@ -173,7 +173,7 @@ export default function HotelStonePricingPage() {
                     <p className="mt-3 text-sm leading-7 text-ink/70">{item.copy}</p>
                     {item.title === "Bathrooms" ? (
                       <Link className="mt-4 inline-flex text-cta-luxury" href="/countertops/vanity-tops">
-                        Review hotel vanity-top scope
+                        Review hotel bathroom countertops & vanity tops
                       </Link>
                     ) : null}
                   </div>
@@ -273,7 +273,7 @@ export default function HotelStonePricingPage() {
                 </div>
               ))}
             </div>
-            <RelatedProjectLinks links={[{ label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" }, { label: "Commercial Stone", href: "/projects/commercial-stone" }, { label: "Request Pricing", href: "/contact" }]} />
+            <RelatedProjectLinks links={[{ label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" }, { label: "Hotel Bathroom Vanity Tops", href: "/countertops/vanity-tops" }, { label: "Commercial Stone", href: "/projects/commercial-stone" }, { label: "Request Pricing", href: "/contact" }]} />
           </div>
         </section>
       </main>

@@ -41,7 +41,8 @@ const footerGroups: FooterGroup[] = [
     links: [
       { label: "Hotel Projects", href: "/projects/hotel-stone-supply" },
       { label: "Commercial Stone", href: "/projects/commercial-stone" },
-      { label: "Countertops & Vanity", href: "/countertops" },
+      { label: "Countertops", href: "/countertops" },
+      { label: "Hotel Vanity Tops", href: "/countertops/vanity-tops" },
       { label: "Marble Countertops", href: "/countertops/marble-countertops" },
       { label: "Integrated Sinks", href: "/countertops/integrated-stone-sinks" },
       { label: "Architectural Stone", href: "/architectural-stone" },

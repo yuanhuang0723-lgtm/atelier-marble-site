@@ -137,7 +137,10 @@ export default function MarbleMaterialsPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
-      relatedLinks={[{ label: "Review hotel vanity top packages", href: "/countertops/vanity-tops" }]}
+      relatedLinks={[
+        { label: "Review luxury hotel vanity top materials & packages", href: "/countertops/vanity-tops" },
+        { label: "Review custom cut-to-size stone fabrication", href: "/custom-stone-fabrication-china" }
+      ]}
       purchaseInfo={{
         materialOptions: "Natural marble (Calacatta, Carrara, Statuario, Nero Marquina). Bulk density ~2.7 g/cm³, water absorption <0.20%, ASTM compressive strength >100 MPa. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.",
         customCapability: "One-piece custom or container-load wholesale. Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components with fumigated wooden crate packing."

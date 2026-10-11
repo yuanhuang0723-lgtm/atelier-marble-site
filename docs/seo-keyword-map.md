@@ -1,6 +1,6 @@
 # Atelier Marble SEO Keyword Map
 
-Updated: 2026-09-14
+Updated: 2026-09-28
 
 ## Strategy
 
@@ -31,6 +31,25 @@ Search-volume and difficulty numbers are intentionally not fabricated. The avail
 
 Google autocomplete supplied a small set of usable language signals on 2026-09-08, including `natural stone supplier China`, `architectural stone suppliers`, `architectural stone manufacturers`, and `bathroom vanity top manufacturers`. These are wording signals, not volume or ranking evidence. `sintered stone supplier China` was observed but is not assigned to a page because the current site does not establish that product scope.
 
+## Search Console observations (not query-to-page assignments)
+
+The user-supplied 2026-09-26 export contains 17 daily rows from 2026-09-07 through 2026-09-23: 122 site impressions and zero clicks. Its visible query rows are separate from its page rows, so the following terms are a site-level watchlist, not confirmed rankings for `/countertops/vanity-tops` or any other specific URL:
+
+| Observed query | Impressions | Average position | Interpretation for follow-up |
+|---|---:|---:|---|
+| `marble vanities tops` | 42 | 30.79 | Highest visible related query; retain the natural phrase `marble vanity tops` in the existing service page and verify the landing page in a joined export. |
+| `luxury hotel vanity top materials` | 22 | 25.55 | Material-selection intent; the existing vanity page already covers lot, finish, matching, and variation. Verify its actual landing page before changing copy. |
+| `hotel bathroom countertop` | 13 | 23.92 | Primary watch query; the current vanity page title and body already address hotel bathroom countertops. |
+| `hotel countertops` | 8 | 17.88 | Related commercial phrase; do not assign it to a URL until Query × Page data is available. |
+
+### Google autocomplete wording check (GB, 2026-09-28)
+
+- `hotel bathroom countertop` returned “how to attach/remove/replace bathroom countertop,” which signals mixed, likely consumer-oriented wording around the broad phrase.
+- `marble vanity tops manufacturer` returned `bathroom vanity top manufacturers` and cultured-marble manufacturer variants; `hotel vanity top materials` returned no suggestions.
+- These are phrasing signals only, not search volume, result rankings, or proof of the intent behind the GSC impressions. Keep the existing B2B hotel-project landing page, and do not add a generic DIY page or change the vanity snippet on autocomplete alone.
+
+No visible query reached 100 impressions. These positions and counts point to a ranking/visibility problem before a measurable snippet CTR test; they do not prove that the current title or description is suppressing clicks. Keep the vanity snippet stable through the observation window, then use an exact-date Query × Page export with country and device dimensions before changing page targeting.
+
 ## Commercial keyword map
 
 | URL | Primary keyword | Supporting terms | Intent |
@@ -49,7 +68,7 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 | `/architectural-stone` | architectural stone manufacturer | architectural stone fabrication, commercial interiors, wall cladding | Commercial |
 | `/architectural-stone/wall-cladding` | architectural stone wall cladding from China | hotel feature walls, stone panels, elevations, cut-to-size fabrication | Commercial |
 | `/architectural-stone/flooring` | architectural stone flooring from China | hotel flooring, stone modules, floor plans, cut-to-size fabrication | Commercial |
-| `/custom-stone-fabrication-china` | custom stone fabrication manufacturer | cut to size stone fabrication, stone furniture, sculptures, architectural accents | Commercial |
+| `/custom-stone-fabrication-china` | cut-to-size stone fabrication China | custom stone fabrication China, drawing-based components, outsourced fabrication | B2B procurement |
 | `/factory` | stone fabrication factory in China | Yunfu stone factory, CAD production, export packing | Trust and commercial |
 | `/how-we-work` | stone project workflow for export buyers | drawing review, material matching, QC, packing | Commercial investigation |
 
@@ -76,3 +95,38 @@ Google autocomplete supplied a small set of usable language signals on 2026-09-0
 ## Redirected legacy paths
 
 `/hotel-projects`, `/stone-slabs`, `/kitchen-countertops`, `/luxury-residential-kitchens`, `/architectural-stone-interiors`, `/custom-furniture-sculptures`, `/stone-sculptures`, and `/marble-coffee-tables` redirect permanently to their current canonical pages. Do not assign them separate keywords or create links to them.
+
+## 24-hour screenshot snapshot — 2026-09-30
+
+- The user-provided Web Search screenshot shows 1 click, 8 impressions, 12.5% CTR, and average position 8.3 for the selected 24-hour window; the interface said the report was last updated 6.5 hours earlier. This is a small point-in-time sample, not evidence of a sustained ranking or traffic change.
+- In the separate country view, the visible 8 impressions are Mexico 1, United States 2, France 2, United Kingdom 2, and Netherlands 1; no Canada row is visible. The page view shows a different visible total of 10, so do not combine these tables or attribute the click to a landing page.
+- The query view displays Chinese text and may be browser-translated. Do not infer the original English query. Use a fresh raw Query × Page export with country/device filters for the Canadian and vanity-page decisions.
+
+## 2026-10-07 procurement intent calibration
+
+See `docs/seo-procurement-iteration-2026-10-07.md` for the 12-query research and source examples. Search volume/difficulty remain unavailable. Provider searches are not Canadian Google rank measurements; one separate English Google check requested Canada for cut-to-size sourcing. Do not target local Canadian measuring/installation or claim stocked prefab/cultured-marble production without evidence. Fabrication's current GSC page filter has 6 impressions, no clicks, average 133.5, and no visible query rows through Oct 4. The Oct 7 release does not demonstrate a ranking improvement.
+
+## 2026-10-11 Search Console live read (chart Sep 9 – Oct 8, 2026)
+
+Source: Authenticated Search Console for `https://ateliermarblestone.com/`, English UI, read-only browser interaction (screenshot `gsc-pages.jpg`). UI 3-month filter; chart dates Sep 9 to Oct 8, 2026. Last updated 58.5 hours prior.
+
+- **Property Totals**: 273 impressions, 2 clicks, 0.7% CTR, average position 26.1.
+- **Page Dimension (Independent)**:
+  - `/`: 2 clicks, 16 impressions, position 7.7 (both recorded clicks attributed here; do not infer queries).
+  - `/countertops/vanity-tops`: 0 clicks, 192 impressions, position 24.2.
+  - `/countertops`: 0 clicks, 10 impressions, position 19.7.
+  - `/custom-stone-fabrication-china`: 0 clicks, 6 impressions, position 133.5.
+- **Query Dimension (Independent whole-property, not Query × Page)**:
+  - `marble vanities tops`: 82 impressions, avg pos 29.9
+  - `luxury hotel vanity top materials`: 39 impressions, avg pos 20.7
+  - `hotel bathroom countertop`: 23 impressions, avg pos 20.7
+  - `marble vanity tops`: 21 impressions, avg pos 18.6
+  - `hotel countertops`: 16 impressions, avg pos 19.6
+  - `atelier marble`: 9 impressions, avg pos 8.4
+- **Methodological Guardrails**:
+  - Independent dimensions: Do not join query aggregates to page aggregates without Query × Page breakdown. Page-impression totals cannot be added to query totals.
+  - High-impression nonbrand terms cluster around average positions 18–30 across blended dates, countries, and devices.
+  - Sample size constraint: With only 2 clicks across 30 days, organic traffic is far too sparse to infer CTR changes or calculate conversion rates.
+  - **Preserve the October 24, 2026 vanity metadata checkpoint**: Title (57 chars) and Meta Description (143 chars) remain strictly locked.
+  - Indexation status: 19 indexed / 28 not indexed. Exclusion reasons require systematic URL-level audit before classifying as errors.
+

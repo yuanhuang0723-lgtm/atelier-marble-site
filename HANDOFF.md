@@ -455,4 +455,47 @@ Google Search Console 深链曾跳转登录页。2026-09-29 尝试只读打开�
   - Image sitemap parity: `tests/seo-image-sitemap.test.mjs` passed.
   - Full site build: `npm run build` generated 332 pages cleanly in 6.5s.
 
+## 2026-10-11 GSC live read & baseline calibration
+
+- **Search Console Read-Only State** (chart Sep 9 – Oct 8, 2026, 3-month Web, updated 58.5h ago):
+  - Whole property: 273 impressions, 2 clicks, 0.7% CTR, avg position 26.1 (1 impression delta from user-reported 274; no growth/drop inference).
+  - Page aggregates (independent dimension):
+    - `/`: 2 clicks, 16 impressions, avg position 7.7 (both recorded clicks attributed here; do not infer specific queries).
+    - `/countertops/vanity-tops`: 0 clicks, 192 impressions, avg position 24.2.
+    - `/countertops`: 0 clicks, 10 impressions, avg position 19.7.
+    - `/custom-stone-fabrication-china`: 0 clicks, 6 impressions, avg position 133.5.
+  - Query aggregates (whole-property watchlist, independent from page rows):
+    - `marble vanities tops`: 82 impressions, avg position 29.9.
+    - `luxury hotel vanity top materials`: 39 impressions, avg position 20.7.
+    - `hotel bathroom countertop`: 23 impressions, avg position 20.7.
+    - `marble vanity tops`: 21 impressions, avg position 18.6.
+    - `hotel countertops`: 16 impressions, avg position 19.6.
+    - `atelier marble`: 9 impressions, avg position 8.4.
+- **Discipline & Guardrails**:
+  - Independent dimensions: Do not join query aggregates to page aggregates without a granular Query × Page export. Page impressions cannot be added to query totals.
+  - Higher-impression nonbrand terms cluster in positions 18–30 across mixed dates, countries, and devices.
+  - Conversion rate cannot be calculated from n=2 clicks. Form delivery acceptance is completely distinct from search exposure/ranking.
+  - **Preserve the October 24, 2026 vanity metadata checkpoint**: Title (57 chars) and Meta Description (143 chars) remain strictly locked; visual/body edits on Oct 7 confound attribution to earlier snippet changes.
+  - Indexation status: 19 indexed / 28 not indexed. Exclusion reasons and priority URL inspections pending systematic evaluation before classifying any as errors.
+  - Remote `origin/main` commit: `02bb51da8e8737b05ea97353e1f9aa9f6d00e69f`.
+
+## 2026-10-11 内部链接拓扑与高意向非品牌词语义加权优化
+
+- **优化背景与战略意图**：针对 GSC 2026-10-11 诊断中集中在 18–20 位的商业高价值查询（`hotel bathroom countertop`、`luxury hotel vanity top materials`、`marble vanity tops`、`hotel countertops`），在严格冻结 `/countertops/vanity-tops` 元数据（直至 2026-10-24 节点）的前提下，通过站内权威权重注入与精准锚文本关联，强化其向第一页冲刺的信号。
+- **具体实施项**：
+  1. `components/Footer.tsx`：页脚 `Applications` 栏目明确拆分，独立提供 `{ label: "Hotel Vanity Tops", href: "/countertops/vanity-tops" }`，赋予该核心页遍布全站 332 个静态页面的直接爬取与 PageRank 权重流，并保持与 `/countertops` 的实体区隔。
+  2. `app/materials/marble/page.tsx`：升级相关链接为 `{ label: "Review luxury hotel vanity top materials & packages", href: "/countertops/vanity-tops" }` 及 `{ label: "Review custom cut-to-size stone fabrication", href: "/custom-stone-fabrication-china" }`，精准对齐 20.7 位核心词。
+  3. `app/guides/hotel-stone-pricing/page.tsx`：卫浴板块引导链接升级为 `Review hotel bathroom countertops & vanity tops`，并在 `RelatedProjectLinks` 中增补 `Hotel Bathroom Vanity Tops`。
+  4. `app/how-we-work/page.tsx`：项目范围导航明确包含 `Hotel Vanity Tops` 与 `Custom Stone Fabrication`。
+  5. `app/sitemap.ts`：同步更新相关优化路由（`/how-we-work`、`/guides/hotel-stone-pricing`）的 `lastModified` 为 `2026-10-11`，坚守 `/countertops/vanity-tops` 锁定为 `2026-10-07`。
+- **质量保障与验证**：
+  - `npm run audit:assets`：202 项全部通过。
+  - `prepare:image-sitemap`：29 路由 / 239 页面-图片关联一致。
+  - `npm run audit:seo`：29 条 sitemap 路由、28 条严格 Snippet 检验全部通过。
+  - 自动化测试套件：12/12 询盘测试通过，46/46 SEO 与追踪单元测试通过（总计 58/58 测试 100% 通过）。
+  - 全站编译：`npm run build` 生成 332 个静态页面顺利，0 警告 0 报错。
+  - 完整证据报告：`docs/seo-evidence/implementation-plan-2026-10-11.md`。
+
+
+
 
