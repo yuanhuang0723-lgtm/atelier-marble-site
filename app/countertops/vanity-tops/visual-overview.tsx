@@ -56,6 +56,7 @@ export default function VanityTopVisualOverview({ contactHref }: { contactHref: 
               <p className="text-base font-medium">Email and a short project note are enough to start.</p>
               <p className="mt-3 text-sm leading-6 text-ink/70">Drawings can follow when they are ready. Include the destination and approximate quantity if you know them.</p>
               <Link className="btn-luxury-fill mt-5" href={contactHref}>Request Hotel Vanity Pricing</Link>
+              <Link className="btn-luxury mt-3 block text-center text-xs" href="/contact?sourcePage=%2Fcountertops%2Fvanity-tops&projectType=Stone%20Sample%20Consultation%20%26%20Material%20Review">Request Stone Samples</Link>
               <Link className="mt-4 block text-sm underline underline-offset-4" href="/project-brief-template.txt">Download the project brief template</Link>
             </div>
           </div>
@@ -85,7 +86,10 @@ export default function VanityTopVisualOverview({ contactHref }: { contactHref: 
               <figcaption className="mt-3 text-sm leading-6 text-ink/70">Workshop reference showing stone and packing preparation.</figcaption>
             </figure>
           </div>
-          <Link className="text-cta-luxury mt-7 inline-flex" href="/projects/canada-shower-niches-2025">Drawing-led case reference</Link>
+          <div className="mt-7 flex flex-wrap gap-6">
+            <Link className="text-cta-luxury inline-flex" href="/projects/hotel-vanity-tops-fabrication-case">120-Room Hotel Vanity Tops Fabrication Case</Link>
+            <Link className="text-cta-luxury inline-flex" href="/projects/canada-shower-niches-2025">Drawing-led case reference</Link>
+          </div>
         </div>
       </section>
     </>

@@ -9,6 +9,7 @@ import * as GraniteMaterials from "../app/materials/granite/page";
 import * as HotelSupply from "../app/projects/hotel-stone-supply/page";
 import * as Countertops from "../app/countertops/page";
 import * as CanadaProject from "../app/projects/canada-shower-niches-2025/page";
+import * as HotelVanityCase from "../app/projects/hotel-vanity-tops-fabrication-case/page";
 import * as CustomFabrication from "../app/custom-stone-fabrication-china/page";
 import * as Resources from "../app/resources/page";
 import * as HowWeWork from "../app/how-we-work/page";
@@ -30,6 +31,7 @@ const candidates = [
   ["/projects/hotel-stone-supply", HotelSupply, "Hotel Stone Supply & Fabrication in China | Atelier Marble", "Stone supply and fabrication for hotel vanity tops, lobby surfaces, countertops, and wall applications. Share drawings, quantities, material, and destination."],
   ["/countertops", Countertops, "Custom Stone Countertops from China | Atelier Marble", "Custom stone countertops from China for kitchens, hotels, and commercial spaces. Share dimensions, cut-outs, edges, finish, quantities, and destination."],
   ["/projects/canada-shower-niches-2025", CanadaProject, "Custom Stone Shower Niches in Canada | Atelier Marble", "See a Canada project reference for custom stone shower niches, with CAD detailing, shop drawings, cut lists, and multi-batch coordination across the program."],
+  ["/projects/hotel-vanity-tops-fabrication-case", HotelVanityCase, "Hotel Vanity Tops Stone Fabrication Case | Atelier Marble", "Redacted hotel vanity top stone fabrication case from Yunfu, China. CAD drawing review, CNC waterjet sink cutouts, dry-lay inspection, and export crating."],
   ["/custom-stone-fabrication-china", CustomFabrication, "Cut-to-Size Stone Fabrication in China | Atelier Marble", "Drawing-based stone fabrication from Yunfu, China. Review cut-to-size parts, openings, edges, repeat quantities, and export packing for a quotation."],
   ["/resources", Resources, "Stone Buyer Guides & Project Resources | Atelier Marble", "Buyer guides for stone materials, hotel pricing, project checklists, quality review, export packing, and choosing a supplier before you order."],
   ["/how-we-work", HowWeWork, "Stone Project Workflow for Overseas Buyers | Atelier Marble", "Stone workflow for overseas buyers. Share scope, drawings, materials, and quantities to review quotation, inspection, packing, and delivery requirements."],

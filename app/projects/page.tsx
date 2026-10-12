@@ -49,6 +49,7 @@ export default async function ProjectsPage({
           { "@type": "WebPage", name: "Commercial Stone Fabrication", url: absoluteUrl("/projects/commercial-stone") },
           { "@type": "WebPage", name: "Hotel Bathroom Vanity Tops", url: absoluteUrl("/countertops/vanity-tops") },
           { "@type": "WebPage", name: "Canada Shower Niches Case Study", url: absoluteUrl("/projects/canada-shower-niches-2025") },
+          { "@type": "WebPage", name: "Hotel Vanity Tops Stone Fabrication Case", url: absoluteUrl("/projects/hotel-vanity-tops-fabrication-case") },
           { "@type": "WebPage", name: "Custom Stone Countertops", url: absoluteUrl("/countertops") },
           { "@type": "WebPage", name: "Custom Stone Fabrication", url: absoluteUrl("/custom-stone-fabrication-china") }
         ] }} />
@@ -117,6 +118,9 @@ export default async function ProjectsPage({
               </Link>
               <Link className="text-cta-luxury" href="/countertops/vanity-tops">
                 Hotel Vanity Tops
+              </Link>
+              <Link className="text-cta-luxury" href="/projects/hotel-vanity-tops-fabrication-case">
+                Vanity Tops Fabrication Case
               </Link>
               <Link className="text-cta-luxury" href="/custom-stone-fabrication-china">
                 Custom Stone Fabrication

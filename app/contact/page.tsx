@@ -118,6 +118,21 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                 ))}
               </div>
               <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
+                <p className="eyebrow-luxury mb-4">Stone sample consultation</p>
+                <p className="text-sm leading-7 text-ink/70">
+                  Stone swatches (100×100mm or 150×150mm) and custom edge mock-ups are available to evaluate color tone, veining, and surface finish before cutting full slabs.
+                </p>
+                <p className="mt-3 text-xs leading-6 text-ink/55">
+                  Sample availability, custom preparation fees, quantities, and international courier express shipping terms (via DHL / FedEx) are reviewed and confirmed per project scope rather than offered as unconditional free shipping.
+                </p>
+                <Link
+                  className="btn-luxury mt-5 inline-block text-xs"
+                  href="/contact?sourcePage=%2Fcontact&projectType=Stone%20Sample%20Consultation%20%26%20Material%20Review"
+                >
+                  Request Stone Samples
+                </Link>
+              </div>
+              <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
                 <p className="eyebrow-luxury mb-4">Review before inquiry</p>
                 <div className="flex flex-col gap-4">
                   <Link className="text-cta-luxury" href="/projects">

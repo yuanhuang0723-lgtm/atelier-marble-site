@@ -111,7 +111,8 @@ export const inquiryProjectTypes = [
   "Integrated Stone Sinks & Vanity Basins",
   "Architectural Stone Interiors",
   "Stone Table & Coffee Table",
-  "Custom Furniture & Sculptures"
+  "Custom Furniture & Sculptures",
+  "Stone Sample Consultation & Material Review"
 ] as const;
 
 export const filterToCategories: Record<Exclude<ProjectFilter, "all">, AssetCategory[]> = {
@@ -387,6 +388,7 @@ export const contact = {
   whatsappUrl: "https://wa.me/8613288726333",
   inquiryRecipient: "ding@atelier-marble.ltd",
   emails: ["ding@atelier-marble.ltd"],
-  address: "中国广东省云浮市云城区格木桥石材转移基地",
+  address: "Gemuqiao Stone Transfer Base, Yuncheng District",
+  addressZh: "中国广东省云浮市云城区格木桥石材转移基地",
   location: "Yunfu, Guangdong, China"
 };

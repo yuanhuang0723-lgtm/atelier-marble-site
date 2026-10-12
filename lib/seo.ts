@@ -26,6 +26,7 @@ export function organizationJsonLd() {
       streetAddress: contact.address,
       addressLocality: "Yunfu",
       addressRegion: "Guangdong",
+      postalCode: "527300",
       addressCountry: "CN"
     },
     contactPoint: {
