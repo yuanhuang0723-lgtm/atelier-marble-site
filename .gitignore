@@ -6,6 +6,8 @@ out
 .env*
 .playwright-mcp/
 work/
+data/outreach-accounts.json
+data/outbox-eml/
 
 # OpenNext
 .open-next

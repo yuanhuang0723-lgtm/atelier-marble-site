@@ -3,14 +3,14 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hotel Stone Supply & Fabrication in China",
+  title: "Hotel Stone Project Supplier & Factory",
   description:
-    "Stone supply and fabrication for hotel vanity tops, lobby surfaces, countertops, and wall applications. Share drawings, quantities, material, and destination.",
+    "B2B hotel stone project supplier in China. Custom vanity tops, lobby reception feature walls, flooring, and guestroom packages from project drawings.",
   alternates: { canonical: absoluteUrl("/projects/hotel-stone-supply") },
   openGraph: {
-    title: "Hotel Stone Supply in China",
+    title: "Hotel Stone Project Supplier & Factory",
     description:
-      "Hotel and hospitality stone supply from Yunfu, China, including vanity tops, lobby stone, countertops, wall cladding, fabrication, and export packing.",
+      "B2B hotel stone project supplier in China. Custom vanity tops, lobby reception feature walls, flooring, and guestroom packages from project drawings.",
     url: absoluteUrl("/projects/hotel-stone-supply"),
     siteName,
     images: [{ url: absoluteUrl("/materials/categories/hotel-projects.webp") }]
@@ -72,8 +72,8 @@ const hotelContentSections = [
 const hotelSupplyProductJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Hotel & Hospitality Custom Stone Supply Packages",
-  description: "Comprehensive hospitality natural stone fabrication packages from Yunfu, China. Encompasses guestroom vanity tops, monolithic basin integration, lobby reception feature walls, architectural flooring, and elevator surrounds with strict drawing revision control, room-type labeling, dry-lay vein matching, and phased export crate packaging.",
+  name: "B2B Hotel Stone Project Supplier Packages & Fabrication",
+  description: "Comprehensive hospitality natural stone fabrication packages from hotel stone project supplier Atelier Marble in Yunfu, China. Encompasses guestroom vanity tops, monolithic basin integration, lobby reception feature walls, architectural flooring, and elevator surrounds with strict drawing revision control, room-type labeling, dry-lay vein matching, and phased export crate packaging.",
   category: "Building Materials > Natural Stone > Hospitality Stone Packages",
   material: "Natural Marble, Quartzite, Granite, Engineered Stone",
   brand: {
@@ -82,6 +82,7 @@ const hotelSupplyProductJsonLd = {
   },
   additionalProperty: [
     { "@type": "PropertyValue", name: "Hospitality Scope", value: "Guestroom Vanities, Lobby Cladding, Public-Area Flooring, Reception Desks" },
+    { "@type": "PropertyValue", name: "Supplier Role", value: "B2B Hotel Stone Project Supplier & Contract Fabricator" },
     { "@type": "PropertyValue", name: "Fabrication Standard", value: "5-Axis CNC Precision Shaping, Calibrated ±1mm Tolerances, Mitered Aprons" },
     { "@type": "PropertyValue", name: "Project Organization", value: "Room-Type Schedules, Phased Delivery Grouping & Piece-Mark Labeling" },
     { "@type": "PropertyValue", name: "Vein Matching & Inspection", value: "Elevation Bookmatching, Dry-Lay Photo Inspection & Slab Approval" },
@@ -160,25 +161,25 @@ const hotelProcurementHowToJsonLd = {
 export default function HotelStoneSupplyPage() {
   return (
     <CommercialLandingPage
-      eyebrow="Hotel project supply"
-      title="Hotel stone supply and fabrication for hospitality projects."
-      description="For developers, procurement teams, contractors, and designers who need coordinated material review, fabrication, QC, packing, and delivery planning."
+      eyebrow="Hotel stone project supplier"
+      title="Hotel stone project supplier in China, from architectural drawings."
+      description="For hotel developers, procurement teams, contractors, and designers who need a dependable B2B hotel stone project supplier for material review, fabrication, QC, packing, and delivery planning."
       image="/materials/categories/hotel-projects.webp"
       imageAlt="Illustrative hotel-lobby design concept with stone wall panels, flooring, and a reception area."
       imageCaption="Illustrative hotel-lobby concept only. It does not document a completed Atelier Marble hotel project or a verified supply scope."
       contentSectionTitle="Coordinate hotel scope by room type, area, and phase."
       contentSections={hotelContentSections}
       bullets={[
-        "Review project scope, drawings, quantities, and destination before pricing",
-        "Coordinate vanity tops, countertops, lobby surfaces, and custom stone elements",
-        "Keep material, fabrication, QC, and packing decisions connected",
-        "Use a structured inquiry to reduce avoidable quotation gaps"
+        "Experienced hotel stone project supplier coordinating full hospitality packages",
+        "Guestroom vanity tops, shower surrounds, and lobby stone from CAD schedules",
+        "Color lot control and dry-lay photo approval across repeated room types",
+        "Fumigated ISPM 15 wooden crate packaging labeled by room, floor, and phase"
       ]}
       details={[
-        "Hotel bathroom and vanity packages",
-        "Lobby, reception, and public-area stone",
-        "Commercial countertops and wall applications",
-        "Custom stone elements for hospitality interiors"
+        "B2B hotel stone project supplier for guestrooms and public areas",
+        "Vanity tops, monolithic basins, and thresholds grouped by room type",
+        "Lobby feature walls, reception desks, and elevator surrounds",
+        "Phased container packing organized by floor and delivery schedule"
       ]}
       specificationGroups={[
         {
@@ -224,6 +225,10 @@ export default function HotelStoneSupplyPage() {
       faqTitle="Hotel stone supply details, answered clearly."
       faqs={[
         {
+          question: "Why choose Atelier Marble as your hotel stone project supplier?",
+          answer: "As a specialized hotel stone project supplier in Yunfu, China, we coordinate guestroom packages, bathroom vanities, and lobby feature stone from your architectural drawings, ensuring drawing revision control, lot color consistency, dry-lay verification, and room-by-room phased packing."
+        },
+        {
           question: "What hotel stone work can be supplied?",
           answer: "The scope can include hotel bathroom and vanity packages, lobby and reception stone, commercial countertops, wall applications, and custom hospitality elements."
         },
@@ -246,7 +251,7 @@ export default function HotelStoneSupplyPage() {
       ]}
       purchaseInfo={{
         materialOptions: "Natural marble, quartzite, granite, or approved project stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm current lots, 20mm/30mm calibrated thickness (±1mm tolerance), and room-to-room matching.",
-        customCapability: "One-piece mock-up units and full hotel room schedules supported. Review guestroom vanities, lobby and public-area surfaces, reception desks, dry-lay vein matching, room-by-room piece labeling, and phased fumigated crate packing from hotel drawing sets."
+        customCapability: "One-piece custom mock-up units and small MOQ pilot rooms supported. As a B2B hotel stone project supplier, we handle full room schedules, guestroom vanities, lobby surfaces, reception desks, dry-lay vein matching, room-by-room piece labeling, and phased fumigated crate packing from hotel drawing sets."
       }}
       additionalJsonLd={[hotelSupplyProductJsonLd, hotelProcurementHowToJsonLd]}
       metadata={metadata}

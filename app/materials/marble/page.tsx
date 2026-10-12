@@ -3,14 +3,14 @@ import CommercialLandingPage from "../../../components/CommercialLandingPage";
 import { absoluteUrl, siteName } from "../../../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Marble Materials & Slabs for Projects",
+  title: "Cut-to-Size Marble Slabs & Fabrication",
   description:
-    "Explore marble for hotel, commercial, and countertop projects. Confirm current lot, thickness, finish, veining, and matching before fabrication.",
+    "Cut-to-size marble slabs and custom fabrication from Yunfu, China. Calacatta, Carrara, and Statuario with lot review, edge work, and export crating.",
   alternates: { canonical: absoluteUrl("/materials/marble") },
   openGraph: {
-    title: "Marble Materials for Projects in China",
+    title: "Cut-to-Size Marble Slabs & Fabrication",
     description:
-      "Review marble character, application, finish, matching, and fabrication considerations before requesting a project quotation.",
+      "Cut-to-size marble slabs and custom fabrication from Yunfu, China. Calacatta, Carrara, and Statuario with lot review, edge work, and export crating.",
     url: absoluteUrl("/materials/marble"),
     siteName,
     images: [{ url: absoluteUrl("/materials/hero/atelier-marble-luxury-hero.webp") }]
@@ -18,16 +18,16 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { question: "What marble information should be confirmed?", answer: "Confirm the material name, current lot, thickness, finish, surface character, matching direction, application suitability, quantity, and destination before production." },
-  { question: "Can marble be reviewed for countertops and vanities?", answer: "Marble can be considered for countertops, vanity tops, hotel bathrooms, commercial interiors, and custom components case by case, with dimensions and fabrication details reviewed together." },
-  { question: "Can I send a reference image first?", answer: "Yes. A reference image, rough dimensions, application, preferred tone, and approximate quantity can begin a practical material and fabrication review." }
+  { question: "What information is needed for cut-to-size marble fabrication?", answer: "Confirm the marble variety (Calacatta, Carrara, Statuario, etc.), current lot, required thickness, surface finish, edge details, cutouts, matching direction, quantities, and destination before production begins." },
+  { question: "Can cut-to-size marble be specified for countertops and vanities?", answer: "Yes. Cut-to-size marble is widely fabricated for kitchen countertops, hotel bathroom vanity tops, wall cladding, and custom architectural features with CAD shop drawings and dry-lay vein matching." },
+  { question: "Can I send reference drawings or sketches first?", answer: "Yes. An architectural CAD drawing, BOQ schedule, rough sketch, or reference photo can begin a practical cut-to-size marble review and quotation." }
 ];
 
 const marbleProductJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Custom Cut-to-Size Natural Marble Slabs & Architectural Tiles",
-  description: "Direct manufacturer & exporter of premium natural marble slabs, cut-to-size tiles, and architectural components from Yunfu, China. Available in Calacatta, Carrara, Statuario, and Nero Marquina. Strict quality control, dry-lay inspection, and fumigated crate packing.",
+  name: "Cut-to-Size Marble Slabs & Architectural Fabrication",
+  description: "Direct manufacturer & exporter of premium cut-to-size marble slabs, architectural tiles, and custom components from Yunfu, China. Available in Calacatta, Carrara, Statuario, and Nero Marquina. Strict quality control, dry-lay inspection, and fumigated crate packing.",
   category: "Building Materials > Natural Stone > Marble Slabs & Tiles",
   material: "Natural Marble",
   brand: {
@@ -104,23 +104,23 @@ const marbleProcurementHowToJsonLd = {
 export default function MarbleMaterialsPage() {
   return (
     <CommercialLandingPage
-      eyebrow="Marble materials"
-      title="Marble material direction for considered project decisions."
-      description="Review marble character, application, finish, matching, and fabrication considerations with a project-focused stone supply team in Yunfu, China."
+      eyebrow="Cut-to-size marble"
+      title="Cut-to-size marble slabs and custom fabrication for project decisions."
+      description="Review cut-to-size marble character, application suitability, surface finishes, vein matching, and fabrication details with a project-focused stone supply team in Yunfu, China."
       image="/materials/hero/atelier-marble-luxury-hero.webp"
-      imageAlt="Natural marble slabs and cut-to-size tiles for commercial and luxury residential projects"
+      imageAlt="Cut-to-size marble slabs, tiles, and custom architectural components for commercial and luxury residential projects"
       bullets={[
-        "Start with material character, preferred tone, application, and reference images",
-        "Review thickness, finish, matching direction, cut-outs, and edge requirements",
-        "Suitable for countertops, vanity tops, hotel interiors, and custom components",
-        "Confirm current lot and project suitability before fabrication is approved"
+        "Cut-to-size marble components from project CAD drawings and BOQ schedules",
+        "Review thickness (18mm, 20mm, 30mm with ±1mm tolerance) and finish options",
+        "Suitable for countertops, vanity tops, hotel interiors, and feature walls",
+        "Confirm quarry lot, vein direction, and dry-lay matching before fabrication"
       ]}
-      details={["Marble countertops and islands", "Hotel vanity tops and bathroom packages", "Commercial interior wall and floor applications", "Custom cut-to-size stone components"]}
+      details={["Cut-to-size marble countertops and islands", "Hotel vanity tops and bathroom packages", "Commercial interior wall cladding and flooring", "Custom cut-to-size marble components"]}
       specificationGroups={[
         {
           title: "Material review",
           items: [
-            "Stone variety name (Calacatta, Carrara, Statuario, Nero Marquina), current lot, slab dimensions, 18mm/20mm/30mm thickness (±1mm tolerance), and available square meters",
+            "Cut-to-size marble varieties (Calacatta, Carrara, Statuario, Nero Marquina), current lot, slab dimensions, 18mm/20mm/30mm thickness (±1mm tolerance), and available square meters",
             "Surface finishes (polished, honed, leathered, acid-washed), exposed edges, face direction, bookmatch, or continuous vein-matching expectation",
             "Physical properties (ASTM C97 bulk density ~2.7 g/cm³, water absorption <0.2%, compressive strength >100 MPa), natural variation, and dry-lay photo approval"
           ]
@@ -143,7 +143,7 @@ export default function MarbleMaterialsPage() {
       ]}
       purchaseInfo={{
         materialOptions: "Natural marble (Calacatta, Carrara, Statuario, Nero Marquina). Bulk density ~2.7 g/cm³, water absorption <0.20%, ASTM compressive strength >100 MPa. Confirm the current lot, thickness, finish, veining, and matching across pieces before approval.",
-        customCapability: "One-piece custom or container-load wholesale. Review marble suitability for countertops, vanities, lobby surfaces, and repeat project components with fumigated wooden crate packing."
+        customCapability: "One-piece custom or container-load wholesale. Small MOQ mock-up reviews and full cut-to-size marble packages supported for countertops, vanities, lobby surfaces, and repeat project components with fumigated wooden crate packing."
       }}
       additionalJsonLd={[marbleProductJsonLd, marbleProcurementHowToJsonLd]}
       metadata={metadata}
