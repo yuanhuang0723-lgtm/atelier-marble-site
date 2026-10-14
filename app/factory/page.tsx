@@ -6,7 +6,8 @@ import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import ProjectProcurementInfo from "../../components/ProjectProcurementInfo";
 import WorkshopVideoCard from "../../components/WorkshopVideoCard";
-import { workshopVideos } from "../../data/workshop-videos";
+import { workshopVideos, workshopWalkthroughVideo } from "../../data/workshop-videos";
+import { workshopWalkthroughSchema } from "../../lib/workshop-video-schema";
 import { getAssets } from "../../lib/assets";
 import { getPublicImageEntries } from "../../lib/public-image-metadata";
 import { absoluteUrl, siteName } from "../../lib/seo";
@@ -113,6 +114,7 @@ export default function FactoryPage() {
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Factory Capability", path: "/factory" }]} />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <JsonLd data={factoryWorkflowHowToJsonLd} />
+        <JsonLd data={workshopWalkthroughSchema(workshopWalkthroughVideo)} />
         <PageHero
           eyebrow="Workshop video gallery"
           title="Stone fabrication factory in China."

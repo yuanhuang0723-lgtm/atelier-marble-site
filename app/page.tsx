@@ -3,10 +3,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
-import WorkshopVideoCard from "../components/WorkshopVideoCard";
+import WorkshopWalkthrough from "../components/WorkshopWalkthrough";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
-import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
+import { workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
 
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication from China | Atelier Marble",
@@ -159,40 +159,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section aria-labelledby="home-workshop-video-title" className="section-luxury home-workshop-section bg-stone">
-          <div className="home-workshop-grid grid items-center">
-            <div>
-              <p className="eyebrow-luxury">From the workshop</p>
-              <h2 id="home-workshop-video-title" className="heading-lg mt-4 text-left">
-                See a stone cutting operation in progress.
-              </h2>
-              <p className="body-luxury mt-5 max-w-xl">
-                A short, unedited clip gives a closer look at a stone workpiece being cut. Explore the full gallery for
-                more workshop and basin footage.
-              </p>
-              <Link className="text-cta-luxury mt-6 inline-flex" href="/factory#workshop-videos">
-                View all {workshopVideos.length} workshop videos
-              </Link>
-              <ol aria-label="Stone project workflow" className="mt-7 hidden grid-cols-3 divide-x divide-ink/15 border-y border-ink/15 py-4 sm:grid">
-                {[
-                  "Drawing review",
-                  "Cut-to-size parts",
-                  "Export coordination"
-                ].map((step, index) => (
-                  <li key={step} className="flex min-w-0 flex-col gap-1 px-3 first:pl-0 last:pr-0">
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-title text-xs font-medium uppercase leading-snug tracking-[0.04em] text-ink">
-                      {step}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <WorkshopVideoCard video={featuredWorkshopVideo} featured />
-          </div>
-        </section>
+        <WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/" preview galleryCount={workshopVideos.length} />
 
         <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">
           <div className="container-luxury">

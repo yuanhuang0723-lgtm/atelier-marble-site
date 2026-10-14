@@ -29,7 +29,7 @@ test("homepage displays the requested fabrication and fulfillment capabilities",
 });
 
 test("homepage video CTA count stays synchronized with the gallery", () => {
-  assert.equal(workshopVideos.length, 16);
+  assert.equal(workshopVideos.length, 17);
   assert.ok(homepageHtml().includes(`View all ${workshopVideos.length} workshop videos`));
 });
 

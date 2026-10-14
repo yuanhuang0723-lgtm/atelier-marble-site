@@ -6,6 +6,20 @@ export type WorkshopVideo = {
   duration: string;
   src: string;
   poster: string;
+  orientation?: "landscape";
+  durationSeconds?: number;
+};
+
+export const workshopWalkthroughVideo: WorkshopVideo = {
+  id: "workshop-walkthrough",
+  title: "Workshop walkthrough",
+  description: "Workshop-wide views, workers handling stone, an operating work station, and wooden packing frames.",
+  group: "Workshop views",
+  duration: "0:18",
+  durationSeconds: 17.87,
+  orientation: "landscape",
+  src: "/videos/atelier-marble-workshop-walkthrough.mp4",
+  poster: "/videos/posters/atelier-marble-workshop-walkthrough.jpg"
 };
 
 const video = (index: number, title: string, description: string, group: string, duration: string): WorkshopVideo => {
@@ -37,7 +51,8 @@ export const workshopVideos: WorkshopVideo[] = [
   video(13, "Layout check on a stone surface", "A close view of a marked surface and a hand checking its layout.", "Cutting & surface work", "0:08"),
   video(14, "Integrated basin profile", "A close-up of a basin form cut into a stone vanity surface.", "Basin & vanity details", "0:06"),
   video(15, "Stone components in the workshop", "Stone components are staged on supports in a workshop area.", "Workshop views", "0:02"),
-  video(16, "Double-basin stone units staged in the workshop", "Rows of rectangular double-basin stone units are shown in the workshop.", "Basin & vanity details", "0:16")
+  video(16, "Double-basin stone units staged in the workshop", "Rows of rectangular double-basin stone units are shown in the workshop.", "Basin & vanity details", "0:16"),
+  workshopWalkthroughVideo
 ];
 
 export const featuredWorkshopVideo = workshopVideos[6];

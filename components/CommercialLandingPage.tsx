@@ -27,6 +27,7 @@ type CommercialLandingPageProps = {
   contentSections?: { heading: string; summary?: string; paragraphs: string[] }[];
   contentSectionLayout?: "cards" | "disclosure";
   visualOverview?: ReactNode;
+  afterHero?: ReactNode;
   overviewHeading?: string;
   overviewDescription?: string;
   scopeRows?: { component: string; inputs: string }[];
@@ -44,7 +45,7 @@ type CommercialLandingPageProps = {
 };
 
 export default function CommercialLandingPage({
-  eyebrow, title, description, image, heroBackgroundImage, heroBackgroundImageAlt, imageAlt, imageFit = "cover", imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, overviewHeading, overviewDescription, scopeRows, referencePlacement = "after-content", referenceSectionTitle, referenceSectionDescription, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, additionalJsonLd, metadata
+  eyebrow, title, description, image, heroBackgroundImage, heroBackgroundImageAlt, imageAlt, imageFit = "cover", imageCaption, contentSectionTitle, contentSectionLayout = "cards", visualOverview, afterHero, overviewHeading, overviewDescription, scopeRows, referencePlacement = "after-content", referenceSectionTitle, referenceSectionDescription, primaryCtaLabel, heroCtaLabel, bullets, details, faqs, faqTitle, relatedLink, relatedLinks, specificationGroups, contentSections, referenceImages, purchaseInfo, additionalJsonLd, metadata
 }: CommercialLandingPageProps) {
   const faqJsonLd = faqs?.length
     ? {
@@ -105,6 +106,7 @@ export default function CommercialLandingPage({
           backgroundImageAlt={heroBackgroundImageAlt || imageAlt}
           cta={resolvedHeroCtaLabel ? { href: contactHref, label: resolvedHeroCtaLabel, note: "Start with a short brief; drawings can follow when they are ready." } : undefined}
         />
+        {afterHero}
         {visualOverview || <section className="section-luxury bg-paper">
           <div className="container-luxury grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="card-luxury overflow-hidden bg-stone p-0">

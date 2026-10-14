@@ -17,6 +17,9 @@ export type ConversionEventPayload = {
   hasDestination?: boolean;
   hasQuantity?: boolean;
   landingPage?: string;
+  video_id?: string;
+  video_title?: string;
+  video_duration?: number;
 };
 
 declare global {

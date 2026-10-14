@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import CommercialLandingPage from "../../components/CommercialLandingPage";
+import WorkshopWalkthrough from "../../components/WorkshopWalkthrough";
+import { workshopWalkthroughVideo } from "../../data/workshop-videos";
+import { workshopWalkthroughSchema } from "../../lib/workshop-video-schema";
 import { absoluteUrl, siteName } from "../../lib/seo";
 import { fabricationHeroImage, fabricationDrawingImage, fabricationReferenceImages } from "../../data/fabrication-page-images";
 
@@ -182,6 +185,7 @@ const customFabricationHowToJsonLd = {
 export default function CustomStoneFabricationPage() {
   return (
     <CommercialLandingPage
+      afterHero={<WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/custom-stone-fabrication-china" />}
       eyebrow="Custom stone fabrication"
       heroCtaLabel="Request Custom Fabrication Pricing"
       primaryCtaLabel="Request Custom Fabrication Pricing"
@@ -245,7 +249,7 @@ export default function CustomStoneFabricationPage() {
         materialOptions: "Natural marble, granite, quartzite, and other approved stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa), subject to current lot, geometry, finish, and application.",
         customCapability: "One-piece custom prototypes and small MOQ project lots supported. CAD to stone production and natural stone OEM fabrication translate drawings into cut-to-size components, ±1mm edge work, repeat quantities, dry-lay inspection points, and fumigated crate packing groups."
       }}
-      additionalJsonLd={[customFabricationProductJsonLd, customFabricationHowToJsonLd]}
+      additionalJsonLd={[customFabricationProductJsonLd, customFabricationHowToJsonLd, workshopWalkthroughSchema(workshopWalkthroughVideo)]}
       metadata={metadata}
     />
   );

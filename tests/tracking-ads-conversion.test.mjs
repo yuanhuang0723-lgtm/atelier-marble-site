@@ -39,7 +39,7 @@ beforeEach(() => {
 });
 
 test("Google Ads counts only a completed generate_lead as a conversion", () => {
-  for (const eventName of ["whatsapp_inquiry_click", "file_upload_completed", "qualified_inquiry_submitted"]) {
+  for (const eventName of ["whatsapp_inquiry_click", "file_upload_completed", "qualified_inquiry_submitted", "video_start", "video_complete", "workshop_inquiry_click", "workshop_video_entry_click"]) {
     trackConversionEvent(eventName, { sourcePage: "/contact", projectType: "Hotel Projects" });
   }
   trackConversionEvent("generate_lead", { sourcePage: "/contact", projectType: "Hotel Projects" });
