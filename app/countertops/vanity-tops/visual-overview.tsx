@@ -27,6 +27,25 @@ export default function VanityTopVisualOverview({ contactHref }: { contactHref: 
           </div>
           <p className="mt-5 text-sm leading-6 text-ink/60">Product references from our image archive; no specific hotel order or installation is attributed to these photographs.</p>
 
+          <section aria-labelledby="vanity-material-selection-title" className="mt-10 rounded-lg border border-ink/15 bg-stone p-5 md:p-7">
+            <p className="eyebrow-luxury">Hotel vanity material selection</p>
+            <h3 id="vanity-material-selection-title" className="mt-3 scroll-mt-32 font-title text-2xl leading-tight md:text-3xl">Materials for marble vanity tops and hotel bathroom counters.</h3>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-ink/70">Compare the selected stone lot, finish, basin details, and housekeeping routine. A material name or photograph is a starting point; availability, matching, fabrication, and project suitability are confirmed before quotation.</p>
+            <div className="mt-5 overflow-x-auto">
+              <table className="w-full table-fixed text-left text-sm leading-6 text-ink/75">
+                <caption className="sr-only">Stone options and buyer checks for hotel vanity tops</caption>
+                <thead><tr className="border-b border-ink/20"><th scope="col" className="w-[24%] pb-3 pr-3 font-medium text-ink">Stone</th><th scope="col" className="pb-3 pr-3 font-medium text-ink">Review</th><th scope="col" className="pb-3 font-medium text-ink">Confirm</th></tr></thead>
+                <tbody>
+                  <tr className="border-b border-ink/10"><th scope="row" className="py-3 pr-3 align-top font-medium"><Link className="underline underline-offset-4" href="/materials/marble">Marble</Link></th><td className="py-3 pr-3 align-top">Veining, visible faces, and polished or honed appearance.</td><td className="py-3 align-top">Selected lot, finish sample, cleaning routine, and natural variation.</td></tr>
+                  <tr className="border-b border-ink/10"><th scope="row" className="py-3 pr-3 align-top font-medium"><Link className="underline underline-offset-4" href="/materials/granite">Granite</Link></th><td className="py-3 pr-3 align-top">Surface character, edge details, and basin opening geometry.</td><td className="py-3 align-top">Actual slab, thickness, finish, and application-specific requirements.</td></tr>
+                  <tr><th scope="row" className="py-3 pr-3 align-top font-medium"><Link className="underline underline-offset-4" href="/materials/quartzite">Quartzite</Link></th><td className="py-3 pr-3 align-top">Visual direction and the material identified for the project.</td><td className="py-3 align-top">Material classification, current lot, sample approval, and care.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-xs leading-6 text-ink/65">The <a className="underline underline-offset-4" href="https://www.naturalstoneinstitute.org/consumers/care/">Natural Stone Institute care guide</a> recommends neutral cleaners and explains that sealing can improve stain resistance without making stone stain-proof. Agree care instructions for the selected material.</p>
+            <div className="mt-5 flex flex-wrap items-center gap-4"><Link className="text-cta-luxury" href={contactHref}>Discuss Material Choices</Link><Link className="text-cta-luxury" href="/#home-workshop-walkthrough">Watch the Workshop Walkthrough</Link></div>
+          </section>
+
           <div className="mt-12 border-t border-ink/15 pt-9">
             <h3 className="font-title text-2xl md:text-3xl">Bathroom design directions</h3>
             <p className="mt-3 text-sm leading-6 text-ink/65">Illustrative interiors for comparing proportions, basin layouts, and surface direction.</p>
@@ -87,7 +106,7 @@ export default function VanityTopVisualOverview({ contactHref }: { contactHref: 
             </figure>
           </div>
           <div className="mt-7 flex flex-wrap gap-6">
-            <Link className="text-cta-luxury inline-flex" href="/projects/hotel-vanity-tops-fabrication-case">120-Room Hotel Vanity Tops Fabrication Case</Link>
+            <Link className="text-cta-luxury inline-flex" href="/projects/hotel-vanity-tops-fabrication-case">Hotel Vanity Top Drawing and Component Review</Link>
             <Link className="text-cta-luxury inline-flex" href="/projects/canada-shower-niches-2025">Drawing-led case reference</Link>
           </div>
         </div>

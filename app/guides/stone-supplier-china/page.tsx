@@ -141,7 +141,7 @@ const supplierHowToJsonLd = {
       "@type": "HowToStep",
       position: 2,
       name: "Confirm Technical Review & CAD Coordination Capability",
-      text: "Ensure the supplier reviews drawings, tolerances (±1mm), openings, and edge details thoroughly before issuing a fixed project quotation."
+      text: "Ensure the supplier reviews drawings, project-specific tolerances, openings, and edge details before preparing the project quotation."
     },
     {
       "@type": "HowToStep",

@@ -38,82 +38,6 @@ const materialFaqs = [
   }
 ];
 
-const materialsProductJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Natural Stone Materials & Slabs Collection Wholesale",
-  description: "Direct quarry sourcing and factory supply of architectural natural stone from Yunfu, China. Comprehensive collection of Calacatta, Carrara, Statuario, Nero Marquina, Luxury Quartzite, and commercial granite slabs with ASTM physical testing compliance, ±1mm calibration, and fumigated export crate packing.",
-  category: "Building Materials > Natural Stone > Stone Slabs & Materials",
-  material: "Natural Stone (Marble, Quartzite, Granite, Limestone)",
-  brand: {
-    "@type": "Brand",
-    name: "Atelier Marble"
-  },
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "Material Categories", value: "Natural Marble, Luxury Quartzite, Commercial Granite, Limestone" },
-    { "@type": "PropertyValue", name: "Standard Slab Thickness", value: "18mm, 20mm, 30mm (calibrated ±1mm tolerance)" },
-    { "@type": "PropertyValue", name: "Surface Finishes Available", value: "Polished, Honed, Leathered, Flamed, Acid-Washed, Bush-Hammered" },
-    { "@type": "PropertyValue", name: "Quality Assurance", value: "Dry-Lay Vein Matching, High-Res Slab Video, Pre-Shipment Inspection" },
-    { "@type": "PropertyValue", name: "Physical Properties", value: "ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa" },
-    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Bundles / Crates for 20GP Ocean Containers" }
-  ],
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    price: "0",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      priceType: "https://schema.org/InvoicePrice",
-      unitText: "Wholesale & Project RFQ Quotation Based on Material Lot & Volume"
-    },
-    availability: "https://schema.org/InStock",
-    seller: {
-      "@type": "Organization",
-      name: "Atelier Marble",
-      url: absoluteUrl("/")
-    }
-  }
-};
-
-const materialProcurementHowToJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Natural Stone Material Selection & Quarry Lot Sourcing Workflow",
-  description: "Standardized 5-step procurement procedure for sourcing, verifying, testing, and confirming natural marble, quartzite, and granite slab lots for architectural and hospitality projects.",
-  step: [
-    {
-      "@type": "HowToStep",
-      position: 1,
-      name: "Application & Aesthetic Review",
-      text: "Define the specific architectural application (countertops, interior wall cladding, high-traffic flooring, wet areas) to establish required stone density, porosity, and surface durability."
-    },
-    {
-      "@type": "HowToStep",
-      position: 2,
-      name: "Quarry Lot & Slab Bundle Selection",
-      text: "Review high-definition photos and 4K inspection videos of active quarry blocks and numbered slab bundles to confirm background color tone, vein direction, and natural movement."
-    },
-    {
-      "@type": "HowToStep",
-      position: 3,
-      name: "ASTM Physical Specification Verification",
-      text: "Confirm physical test compliance including bulk density (ASTM C97 ~2.7 g/cm³), water absorption (<0.20%), and compressive strength (ASTM C170 >100 MPa) to guarantee structural performance."
-    },
-    {
-      "@type": "HowToStep",
-      position: 4,
-      name: "Surface Finish & Edge Detail Approval",
-      text: "Specify and approve required surface treatments (polished, honed, leathered, acid-washed, or flamed) and calibrated thickness tolerances (18mm, 20mm, 30mm with ±1mm calibration)."
-    },
-    {
-      "@type": "HowToStep",
-      position: 5,
-      name: "Physical Sample Dispatch & Lot Reservation",
-      text: "Dispatch calibrated 10x10cm or 15x15cm physical stone samples via express courier for architectural sign-off, followed by reserving the approved slab bundles prior to CNC fabrication."
-    }
-  ]
-};
-
 export default function MaterialsPage() {
   const materials = getAssets("materials");
   const applicationRoutes = [
@@ -131,8 +55,8 @@ export default function MaterialsPage() {
           { "@type": "WebPage", name: "Quartzite Materials", url: absoluteUrl("/materials/quartzite") },
           { "@type": "WebPage", name: "Granite Materials", url: absoluteUrl("/materials/granite") }
         ] }} />
-        <JsonLd data={materialsProductJsonLd} />
-        <JsonLd data={materialProcurementHowToJsonLd} />
+
+
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: materialFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Material reference library"
@@ -226,7 +150,7 @@ export default function MaterialsPage() {
           </div>
         </section>
         <ProjectProcurementInfo
-          materialOptions="Natural marble, granite, and quartzite references (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm current lot, 18mm/20mm/30mm thickness (±1mm tolerance), finish, availability, and vein matching."
+          materialOptions="The library includes marble, granite, and quartzite references. Confirm the current lot, thickness, finish, availability, and matching before approval."
           customCapability="One-piece custom prototypes and multi-container wholesale project scopes supported. Material selection reviewed alongside countertop, vanity, hotel, architectural, and custom fabrication requirements."
         />
         <section className="section-luxury bg-stone">

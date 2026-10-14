@@ -75,112 +75,8 @@ const contentSections = [
       "Packing requirements depend on the part's shape, edges, openings, visible surfaces, and the way pieces will be handled after dispatch. State which surfaces need protection, whether fragile parts should travel with a set, how parts should be labeled, and whether packages should be grouped by room, floor, or installation sequence. If the buyer or forwarder has handling rules, share them before the scope is priced so the proposed packing can be checked against the actual route.",
       "Provide the destination, requested delivery term, receiving constraints, and any documents or labels the buyer expects. Confirm who arranges freight, insurance, customs clearance, unloading, and last-mile handling rather than assuming those services are included in fabrication. The final quotation should list its packing and delivery scope, open decisions, and any buyer-provided requirements. No fixed freight price or transit time can be inferred without the destination, shipment details, carrier, and agreed delivery terms."
     ]
-  },
-  {
-    heading: "CAD to stone production workflow and CNC machining",
-    summary: "Translate CAD shop drawings, DWG/DXF vectors, and cutting tickets into precision CNC fabrication.",
-    paragraphs: [
-      "CAD to stone production translates architectural CAD files, DWG/DXF drawings, and cutting schedules into machine-readable toolpaths. Our technical team verifies dimensions, sink and faucet cut-outs, edge details, and miters before generating shop tickets for 5-axis CNC bridge saws and waterjets. This digital review identifies drawing conflicts and reveals tolerances before cutting begins.",
-      "Providing clean vector CAD drawings accelerates production planning and minimizes dimensional discrepancy. When 3D step files or 2D CAD details are supplied alongside the bill of quantities, each stone component is assigned an explicit piece mark that follows the slab through CNC cutting, edge profiling, dry-lay verification, and crate packaging."
-    ]
-  },
-  {
-    heading: "Natural stone OEM fabrication for overseas stone contractors",
-    summary: "Contract machining, private labeling, and crate packing for overseas stone masonry shops.",
-    paragraphs: [
-      "Natural stone OEM fabrication supports overseas stone masonry shops, general contractors, and trade distributors who need dependable contract fabrication capacity in China. We operate as an offshore fabrication partner, executing cut-to-size parts according to your exact workshop standards, tolerances, and packaging guidelines.",
-      "Our OEM fabrication service handles full project scope or overflow production, from luxury residential vanities to commercial cladding. Finished components receive dry-lay photo inspections, protective corner guards, and private crate labeling so shipments arrive ready for immediate installation on your jobsite."
-    ]
   }
 ];
-
-const customFabricationProductJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Custom Stone Fabrication & Natural Stone OEM Fabrication Services",
-  description: "Drawing-led custom stone fabrication and natural stone OEM fabrication from Yunfu, China. CAD to stone production processing marble, quartzite, granite, and limestone with 5-axis CNC routing, waterjet cut-outs, calibrated ±1mm tolerances, bookmatched vein sequencing, and fumigated export crate packaging.",
-  category: "Building Materials > Natural Stone > Custom Stone Fabrication",
-  material: "Natural Stone (Marble, Quartzite, Granite, Limestone)",
-  brand: {
-    "@type": "Brand",
-    name: "Atelier Marble"
-  },
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Custom Stone Fabrication, CAD to Stone Production, Natural Stone OEM Machining" },
-    { "@type": "PropertyValue", name: "Machining Capability", value: "5-Axis CNC Milling, Automated Edge Profiling & High-Pressure Waterjet" },
-    { "@type": "PropertyValue", name: "Dimensional Tolerance", value: "Strict ±1mm Calibration on Sizing and Thickness" },
-    { "@type": "PropertyValue", name: "Inspection & Quality", value: "Pre-Assembly Dry-Lay Inspection, Vein Continuity & Full Photo Verification" },
-    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 bulk density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
-    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Film Spacers & Steel Strapping" }
-  ],
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    price: "0",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      priceType: "https://schema.org/InvoicePrice",
-      unitText: "Project RFQ Quotation Based on CAD Shop Drawings & BOQ"
-    },
-    availability: "https://schema.org/InStock",
-    seller: {
-      "@type": "Organization",
-      name: "Atelier Marble",
-      url: absoluteUrl("/")
-    }
-  }
-};
-
-const customFabricationHowToJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Bespoke Cut-to-Size Natural Stone Fabrication Protocol",
-  description: "A 7-stage architectural fabrication workflow for overseas stone buyers, translating CAD shop drawings and BOQ schedules into CNC-machined, quality-inspected, and crated stone components.",
-  step: [
-    {
-      "@type": "HowToStep",
-      position: 1,
-      name: "Drawing Package & BOQ Review",
-      text: "Link each component to its current architectural drawing revision, dimension units, piece marks, and bill of quantities."
-    },
-    {
-      "@type": "HowToStep",
-      position: 2,
-      name: "Geometry, Edge & Opening Coordination",
-      text: "Confirm finished component dimensions, CNC edge profiles (e.g. eased, mitered), sink/faucet cut-out templates, and joinery interfaces."
-    },
-    {
-      "@type": "HowToStep",
-      position: 3,
-      name: "Material Lot Selection & Surface Finishing",
-      text: "Select stone lots (marble, quartzite, granite) and specify finishes (polished, honed, leathered) with vein flow and matching guidelines."
-    },
-    {
-      "@type": "HowToStep",
-      position: 4,
-      name: "Repeat Component Scheduling & Markings",
-      text: "Group multi-unit components by room type or floor, applying consistent piece marks across drawings, schedules, and packing labels."
-    },
-    {
-      "@type": "HowToStep",
-      position: 5,
-      name: "Shop Drawing Approval & Inspection Sign-Off",
-      text: "Obtain formal sign-off on shop drawings, lot approval, and define workshop dry-lay photo/video inspection requirements prior to cutting."
-    },
-    {
-      "@type": "HowToStep",
-      position: 6,
-      name: "Interface Demarcation & Site Tolerances",
-      text: "Delineate factory fabrication tolerances (±1mm) from site measurement and installation responsibilities."
-    },
-    {
-      "@type": "HowToStep",
-      position: 7,
-      name: "Protective Export Packing & Logistics Hand-Off",
-      text: "Pack finished stone pieces into fumigated ISPM 15 wooden crates with foam cushioning and organize shipping documents and container loading."
-    }
-  ]
-};
 
 export default function CustomStoneFabricationPage() {
   return (
@@ -198,7 +94,7 @@ export default function CustomStoneFabricationPage() {
       imageFit="contain"
       imageCaption="Drawing-review example with identifying details removed. It illustrates drawing inputs and does not document a completed order."
       overviewHeading="Cut-to-size stone parts, scoped for your project."
-      overviewDescription="For stone importers, contractors, and overseas stone fabricators: review CAD to stone production workflows and natural stone OEM fabrication. From Yunfu, China, we combine our own processing with partner coordination for precision 5-axis CNC machining, waterjet cuts, and export crating."
+      overviewDescription="For importers, stone fabricators, contractors, and project buyers: review natural stone components from CAD, a BOQ, or a marked-up sketch. From Yunfu, China, we combine our own processing with partner coordination; the fabrication scope is confirmed in your quotation."
       scopeRows={[
         { component: "Countertops and vanity tops", inputs: "Finished sizes, basin or appliance templates, openings, exposed edges, and quantities." },
         { component: "Architectural stone parts", inputs: "Panel marks, elevations, thickness, joints, and the responsible party for fixing and support design." },
@@ -209,10 +105,10 @@ export default function CustomStoneFabricationPage() {
       referenceSectionTitle="Workshop and component references."
       referenceSectionDescription="Use these photographs to discuss component geometry and preparation. They do not identify a specific machine model, completed shipment, or inspection result."
       bullets={[
-        "CAD to stone production from DWG, DXF, shop drawings, or BOQ files",
-        "Natural stone OEM fabrication with CNC saw, waterjet, and edge profiling",
-        "Strict ±1mm cut-to-size tolerance, dry-lay inspection, and piece marks",
-        "Export crate packaging organized by room, level, or project phase"
+        "Start with drawings, BOQ files, dimensions, quantities, or reference imagery",
+        "Coordinate cutting, openings, edges, joints, visible faces, and surface finish",
+        "Keep piece labels, revisions, batches, inspection, and packing in one scope",
+        "Confirm material direction and project requirements before pricing"
       ]}
       details={[
         "Custom stone fabrication for countertops and architectural elements",
@@ -224,8 +120,8 @@ export default function CustomStoneFabricationPage() {
       contentSectionLayout="disclosure"
       contentSectionTitle="Drawing and fabrication details, when you need them."
       specificationGroups={[
-        { title: "Scope and documents", items: ["Application, CAD drawing (DWG/DXF/PDF) or BOQ reference, dimensions, units, quantities, and drawing revision", "Material reference, visible face, surface finish, edge profile, openings, joints, and support conditions", "Destination market, required timing, packing expectations, and quotation format"] },
-        { title: "Fabrication details", items: ["CAD to stone production: 5-axis CNC saw/waterjet programming, calibrated ±1mm cut-to-size tolerances", "Basin, faucet, service, fixing, or other openings marked with the correct digital template", "Natural stone OEM fabrication: contract piece numbering, room/area grouping, batching, and replacement spares"] },
+        { title: "Scope and documents", items: ["Application, drawing or BOQ reference, dimensions, units, quantities, and drawing revision", "Material reference, visible face, surface finish, edge profile, openings, joints, and support conditions", "Destination market, required timing, packing expectations, and quotation format"] },
+        { title: "Fabrication details", items: ["Cut-to-size dimensions and tolerances to be confirmed against the project drawings", "Basin, faucet, service, fixing, or other openings marked with the correct template", "Piece numbers, room or area grouping, batch information, and replacement requirements"] },
         { title: "Review and approval", items: ["Confirm material availability, natural variation, sample or lot approval, and finish direction", "Review dimensions, edges, openings, visible surfaces, labels, and quantities before packing", "Keep open decisions visible rather than treating an estimate as a production approval"] },
         { title: "Export preparation", items: ["Confirm protective packing, grouping, labels, loading requirements, and destination", "Share the latest approved documents with the inquiry", "Final pricing depends on confirmed scope, material, dimensions, quantity, and delivery requirements"] }
       ]}
@@ -238,18 +134,14 @@ export default function CustomStoneFabricationPage() {
       ]}
       faqTitle="Custom fabrication details, answered clearly."
       faqs={[
-        { question: "What can be made from drawings or a BOQ?", answer: "The review can cover custom stone fabrication for cut-to-size countertops, architectural stone parts, furniture, tables, sculptural forms, and other components when the scope and dimensions are clear." },
-        { question: "How does the CAD to stone production workflow work?", answer: "CAD to stone production converts architectural CAD drawings (DWG, DXF, PDF) and BOQ cut lists into machine toolpaths for 5-axis CNC bridge saws and waterjets, verifying cutouts and edge profiles before fabrication starts." },
-        { question: "Does Atelier Marble provide natural stone OEM fabrication?", answer: "Yes. We provide natural stone OEM fabrication and contract processing for overseas stone fabricators, contractors, and distributors, handling cut-to-size machining, dry-lay inspection, and export crating under strict specifications." },
-        { question: "Are tolerances and lead times fixed?", answer: "They depend on the confirmed material, component, drawing, quantity, production path, and delivery requirements. Calibrated ±1mm tolerance is verified against project shop drawings." },
+        { question: "What can be made from drawings or a BOQ?", answer: "The review can cover cut-to-size countertops, architectural stone parts, furniture, tables, sculptural forms, and other components when the scope and dimensions are clear." },
+        { question: "What does cut-to-size stone fabrication require?", answer: "A practical review usually needs dimensions, units, quantities, material direction, finish, edges, openings, drawings or marked-up references, and the destination." },
+        { question: "Are tolerances and lead times fixed?", answer: "They depend on the confirmed material, component, drawing, quantity, production path, and delivery requirements. They should be agreed in the project quotation rather than assumed." },
         { question: "Does fabrication include site measuring and installation?", answer: "Those responsibilities are not assumed. Identify the local installer and who supplies final site measurements before the scope is priced." },
         { question: "How should repeated project parts be scheduled?", answer: "Group the parts by room, area, or floor and use consistent piece marks across the current drawing revision, BOQ, approvals, and packing labels." }
       ]}
-      purchaseInfo={{
-        materialOptions: "Natural marble, granite, quartzite, and other approved stone (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa), subject to current lot, geometry, finish, and application.",
-        customCapability: "One-piece custom prototypes and small MOQ project lots supported. CAD to stone production and natural stone OEM fabrication translate drawings into cut-to-size components, ±1mm edge work, repeat quantities, dry-lay inspection points, and fumigated crate packing groups."
-      }}
-      additionalJsonLd={[customFabricationProductJsonLd, customFabricationHowToJsonLd, workshopWalkthroughSchema(workshopWalkthroughVideo)]}
+      purchaseInfo={{ materialOptions: "Marble, granite, quartzite, and other approved stone, subject to current lot, geometry, finish, and application.", customCapability: "Translate CAD or BOQ details into cut-to-size components, edge work, repeat quantities, inspection points, and packing groups." }}
+      additionalJsonLd={[workshopWalkthroughSchema(workshopWalkthroughVideo)]}
       metadata={metadata}
     />
   );

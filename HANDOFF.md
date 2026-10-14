@@ -226,3 +226,11 @@
 ## 2026-10-14 首页视频原地播放修正
 
 用户明确要求在首页直接播放，覆盖此前首页封面跳转设计。首页现用原生播放器，点击播放保持首页，首屏Watch Workshop Videos按钮改为首页内锚点；询价来源仍为/。保留16:9、不自动播放、默认静音、preload=none和已有播放诊断事件。媒体文件与其他服务页面未改。13项针对性检查通过；发布后核验实际首页URL不变及播放结果。
+
+## 2026-10-15 低曝光 SEO 修复
+
+- 本轮依据实时 GSC：选中7天实际为10月5—11日，106曝光、1点击、CTR 0.9%、平均排名18.1；vanity独立页面汇总88曝光、0点击。不能把查询表和页面表拼成关联数据，也不能据此确认每天只有5—6曝光。
+- Vanity和fabrication已索引、canonical正确，但所见已索引版本抓取停在9月10日；countertops最近抓取10月10日，Product snippets报告AggregateOffer缺lowPrice，sitemap栏显示临时处理错误。
+- 清理报价分类页中的13个额外Product和14个HowTo对象、无依据价格/库存/固定规格；不虚构价格补错。Vanity增加材料选择表与真实照片、既有询价关联；120间酒店页改为图纸与构件参考，URL保留。真实变更路由更新lastmod。Title/Description仍保持到10月24日，但本轮正文变更需记入实验混杂因素。
+- 19项针对性测试、333页构建、202资产审计、30页本地SEO审计通过；390px/1440px显示已核验。修改在托管工作树 `C:\Users\86580\.codex\worktrees\factory-workshop-video\Atelier-Marble-Site`，F盘旧树资料未覆盖。发布后以正确SHA的Ready状态和生产页面验收，不用部署或索引申请宣称排名改善。
+- 详细基线、资料依据和验收边界：`docs/seo-ranking-repair-2026-10-15.md`。本地原始证据在 `F:\Atelier-Marble-Site\outputs\seo-ranking-repair-20261014`，不提交账户界面快照。不启动或扩大外联。

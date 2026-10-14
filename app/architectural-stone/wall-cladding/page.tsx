@@ -82,103 +82,6 @@ const faqs = [
   { question: "Is wall cladding suitable for hotel projects?", answer: "Hotel lobbies, reception areas, corridors, and other feature surfaces can be reviewed case by case with material, fabrication, quality, and export coordination considered together." }
 ];
 
-const wallCladdingProductJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Custom Architectural Stone Wall Cladding Panels",
-  description: "Precision-fabricated natural stone wall cladding panels from Yunfu, China for commercial facades, hotel lobbies, and luxury interiors. Available in marble, granite, travertine, and limestone with dry-hung anchor kerfs, ±1mm thickness tolerances, ASTM physical testing compliance, and fumigated crate packaging.",
-  category: "Building Materials > Natural Stone > Wall Cladding Panels",
-  material: "Natural Stone (Marble, Granite, Limestone)",
-  brand: {
-    "@type": "Brand",
-    name: "Atelier Marble"
-  },
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "Fabrication Scope", value: "Cut-to-Size CNC Panel Sizing, Kerf Cutting & Anchor Slots" },
-    { "@type": "PropertyValue", name: "Standard Panel Thickness", value: "20mm, 25mm, 30mm (calibrated ±1mm tolerance)" },
-    { "@type": "PropertyValue", name: "Available Finishes", value: "Honed, Polished, Brushed, Sandblasted, Flamed" },
-    { "@type": "PropertyValue", name: "Vein Matching", value: "Bookmatched Elevations, Continuous Flow, Dry-Lay Inspection" },
-    { "@type": "PropertyValue", name: "Anchorage Testing Standard", value: "ASTM C1354 Strength of Individual Stone Anchorages for dry-hung systems" },
-    { "@type": "PropertyValue", name: "Wind Load Safety Factor", value: "Engineered safety factor (3:1 to 4:1) per Natural Stone Institute guidelines" },
-    { "@type": "PropertyValue", name: "Kerf Slot Tolerances", value: "Precision CNC continuous or clip kerf cutting (±0.5mm) for split-tail / Z-clip anchors" },
-    { "@type": "PropertyValue", name: "Physical Properties", value: "Bulk density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa" },
-    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates with Protective Foam Spacers" }
-  ],
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    price: "0",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      priceType: "https://schema.org/InvoicePrice",
-      unitText: "Project RFQ Quotation Based on Elevation Drawings & BOQ"
-    },
-    availability: "https://schema.org/InStock",
-    seller: {
-      "@type": "Organization",
-      name: "Atelier Marble",
-      url: absoluteUrl("/")
-    }
-  }
-};
-
-const wallCladdingPlanningHowToJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Architectural Stone Wall Cladding Specification & Fabrication Workflow",
-  description: "An 8-stage engineering methodology for architects, facade consultants, and general contractors coordinating panelized natural stone wall cladding from elevation drawings to container crating.",
-  step: [
-    {
-      "@type": "HowToStep",
-      position: 1,
-      name: "Elevation Drawings & Panel Schedule Traceability",
-      text: "Link each architectural elevation to a tagged panel schedule referencing openings, reveals, returns, and feature zones."
-    },
-    {
-      "@type": "HowToStep",
-      position: 2,
-      name: "Openings, Corners & Return Coordination",
-      text: "Detail door/window reveals, service penetrations, corner miter joints, and returns on coordinated section drawings."
-    },
-    {
-      "@type": "HowToStep",
-      position: 3,
-      name: "Panel Modules & Joint Line Planning",
-      text: "Establish panel widths, heights, joint spacing (6mm-10mm), bookmatching relationships, and datum alignments."
-    },
-    {
-      "@type": "HowToStep",
-      position: 4,
-      name: "Substrate & Mechanical Fixing Demarcation",
-      text: "Coordinate anchor slots, kerf cuts, and structural load allowances with the facade engineer and installation contractor."
-    },
-    {
-      "@type": "HowToStep",
-      position: 5,
-      name: "Material Lot Selection & Elevation Finish",
-      text: "Select stone lots, specify surface finishes (honed, polished, sandblasted), and approve vein continuity across walls."
-    },
-    {
-      "@type": "HowToStep",
-      position: 6,
-      name: "Repeat Panels & Schedule Standardization",
-      text: "Standardize repeat panels, corner pieces, and spare units across multi-floor hotel and commercial programs."
-    },
-    {
-      "@type": "HowToStep",
-      position: 7,
-      name: "Drawing Revisions & Factory Dry-Lay Inspection",
-      text: "Conduct full-scale workshop dry-lay inspections, high-resolution photography, and verify anchor kerf tolerances."
-    },
-    {
-      "@type": "HowToStep",
-      position: 8,
-      name: "Phased Elevation Packing & Export Crating",
-      text: "Pack panels sorted by elevation and floor into fumigated ISPM 15 wooden crates with protective foam interleaving."
-    }
-  ]
-};
-
 export default function ArchitecturalWallCladdingPage() {
   return (
     <CommercialLandingPage
@@ -200,11 +103,8 @@ export default function ArchitecturalWallCladdingPage() {
       faqs={faqs}
       faqTitle="Questions buyers ask before specifying wall cladding."
       relatedLink={{ label: "Review commercial stone projects", href: "/projects/commercial-stone" }}
-      purchaseInfo={{
-        materialOptions: "Natural marble, limestone, granite, or travertine (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Confirm the current lot, finish, panel matching, and 20mm/25mm/30mm thickness (±1mm tolerance) for each elevation.",
-        customCapability: "One-piece custom panels and small MOQ project scopes supported. Review panel layouts, kerf anchor slots, openings, edge conditions, finish, dry-lay inspection, and fumigated crate packing from approved elevations or CAD."
-      }}
-      additionalJsonLd={[wallCladdingProductJsonLd, wallCladdingPlanningHowToJsonLd]}
+      purchaseInfo={{ materialOptions: "Marble and other approved stone can be reviewed. Confirm the current lot, finish, panel matching, and thickness for each elevation.", customCapability: "Review panel layouts, openings, edge conditions, finish, and cut lists from approved elevations or CAD." }}
+
       metadata={metadata}
     />
   );

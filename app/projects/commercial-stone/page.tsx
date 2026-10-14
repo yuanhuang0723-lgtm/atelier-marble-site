@@ -91,100 +91,6 @@ const faqs = [
   }
 ];
 
-const commercialStoneProductJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Commercial Interior Stone Fabrication & Project Supply Packages",
-  description: "Comprehensive commercial stone fabrication packages from Yunfu, China for hotels, retail flagships, office reception hubs, and public spaces. Cut-to-size countertops, feature cladding, and flooring modules with CNC precision edge profiling, ASTM physical testing compliance, dry-lay inspection, and phased crate packing.",
-  category: "Building Materials > Natural Stone > Commercial Stone Packages",
-  material: "Natural Stone (Marble, Granite, Quartzite, Limestone)",
-  brand: {
-    "@type": "Brand",
-    name: "Atelier Marble"
-  },
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "Commercial Scope", value: "Reception Counters, Retail Displays, Office Pantries, Public Wall & Floor Stone" },
-    { "@type": "PropertyValue", name: "Fabrication Accuracy", value: "CNC Bridge Saw & Waterjet Cutting, Calibrated ±1mm Tolerances, Mitered Returns" },
-    { "@type": "PropertyValue", name: "Package Management", value: "Zone & Phase Scheduling, Drawing Revision Control, BOQ Cross-Referencing" },
-    { "@type": "PropertyValue", name: "Vein Matching & QC", value: "Continuous Vein Flow, Elevation Dry-Lay Inspection & Photo Approval" },
-    { "@type": "PropertyValue", name: "Physical Standards", value: "ASTM C97 density ~2.7 g/cm³, ASTM C170 compressive strength >100 MPa" },
-    { "@type": "PropertyValue", name: "Export Packaging", value: "Fumigated Sturdy Wooden Crates Grouped by Site Zone with Corner Protection" }
-  ],
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    price: "0",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      priceType: "https://schema.org/InvoicePrice",
-      unitText: "Project RFQ Quotation Based on Architectural BOQ & CAD Drawings"
-    },
-    availability: "https://schema.org/InStock",
-    seller: {
-      "@type": "Organization",
-      name: "Atelier Marble",
-      url: absoluteUrl("/")
-    }
-  }
-};
-
-const commercialStoneHowToJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Commercial Interior Stone Fabrication & Procurement Protocol",
-  description: "An 8-stage technical workflow for commercial contractors and architectural procurement teams specifying stone reception desks, feature walls, flooring, and retail surfaces.",
-  step: [
-    {
-      "@type": "HowToStep",
-      position: 1,
-      name: "Site & Operational Phase Package Grouping",
-      text: "Structure commercial stone scopes by building, floor, zone, and project phase tied directly to BOQ line items."
-    },
-    {
-      "@type": "HowToStep",
-      position: 2,
-      name: "Front-of-House vs Back-of-House Differentiation",
-      text: "Distinguish high-visibility reception desks and bar counters from utilitarian pantry and back-of-house worktops."
-    },
-    {
-      "@type": "HowToStep",
-      position: 3,
-      name: "Reception, Retail & Public-Area Coordination",
-      text: "Coordinate feature cladding, reception countertops, and flooring transitions across public commercial zones."
-    },
-    {
-      "@type": "HowToStep",
-      position: 4,
-      name: "Openings, Joints & Trade Interfaces",
-      text: "Provide coordinated CAD locations for sink cut-outs, electrical cable grommets, expansion joints, and steel supports."
-    },
-    {
-      "@type": "HowToStep",
-      position: 5,
-      name: "Material Lot Selection & Surface Finishes",
-      text: "Select durable natural stone varieties and specify appropriate finishes (polished, honed, brushed) for traffic demands."
-    },
-    {
-      "@type": "HowToStep",
-      position: 6,
-      name: "Repetition, Vein Matching & Revisions",
-      text: "Manage repeat elements, pair matched slabs for feature reception walls, and document all design revisions."
-    },
-    {
-      "@type": "HowToStep",
-      position: 7,
-      name: "Factory QC Inspection & Release Sign-Off",
-      text: "Verify dimensions, edge profiles, openings, and dry-lay appearance with photographic records prior to crating."
-    },
-    {
-      "@type": "HowToStep",
-      position: 8,
-      name: "Phased Packing, Container Logistics & Hand-Off",
-      text: "Pack finished stone components into fumigated wooden crates labeled by zone and coordinate ocean container freight."
-    }
-  ]
-};
-
 export default function CommercialStonePage() {
   return (
     <CommercialLandingPage
@@ -216,10 +122,10 @@ export default function CommercialStonePage() {
       faqTitle="Commercial stone project details, answered clearly."
       faqs={faqs}
       purchaseInfo={{
-        materialOptions: "Choose marble, quartzite, granite, or limestone by application (ASTM C97 density ~2.7 g/cm³, absorption <0.20%, ASTM C170 compressive strength >100 MPa). Verify current lot, finish, 20mm/30mm calibrated thickness (±1mm tolerance), and repeat-unit matching.",
-        customCapability: "One-piece prototypes and full commercial interior packages supported. Review hospitality, retail, office, and public-space components from drawings, BOQs, dry-lay inspection, and phased fumigated crate packing schedules."
+        materialOptions: "Choose stone by application, then verify current lot, finish, dimensions, and repeat-unit matching.",
+        customCapability: "Review hospitality, retail, office, and public-space components from drawings, BOQs, and quantity schedules."
       }}
-      additionalJsonLd={[commercialStoneProductJsonLd, commercialStoneHowToJsonLd]}
+
       metadata={metadata}
     />
   );
