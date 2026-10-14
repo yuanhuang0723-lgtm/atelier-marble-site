@@ -20,11 +20,13 @@ test("the walkthrough keeps landscape framing and user-initiated playback", () =
   assert.match(html, /projectType=Commercial%20Stone%20Projects/);
 });
 
-test("the home entry renders only a poster and links to the actual player", () => {
-  const html = renderToStaticMarkup(createElement(Walkthrough, { video: workshopWalkthroughVideo, sourcePage: "/", preview: true }));
-  assert.doesNotMatch(html, /<video\b|<source\b/);
-  assert.match(html, /href="\/custom-stone-fabrication-china#workshop-walkthrough"/);
-  assert.match(html, /width="1280" height="720" loading="lazy"/);
+test("the homepage plays inline without a fabrication-page redirect and retains homepage inquiry attribution", () => {
+  const html = renderToStaticMarkup(createElement(Walkthrough, { video: workshopWalkthroughVideo, sourcePage: "/", home: true }));
+  assert.match(html, /<video\b/);
+  assert.match(html, /preload="none"/);
+  assert.doesNotMatch(html, /href="\/custom-stone-fabrication-china#workshop-walkthrough"/);
+  assert.match(html, /sourcePage=%2F&amp;projectType=Commercial%20Stone%20Projects/);
+  assert.equal(workshopWalkthroughSchema(workshopWalkthroughVideo, "/#home-workshop-walkthrough").url, "https://ateliermarblestone.com/#home-workshop-walkthrough");
 });
 
 test("the public video schema refers to the actual reviewed media and the existing gallery is retained", () => {

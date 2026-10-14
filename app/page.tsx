@@ -7,6 +7,7 @@ import WorkshopWalkthrough from "../components/WorkshopWalkthrough";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
 import { workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
+import { workshopWalkthroughSchema } from "../lib/workshop-video-schema";
 
 export const metadata: Metadata = {
   title: "Custom Stone Fabrication from China | Atelier Marble",
@@ -136,7 +137,7 @@ export default function HomePage() {
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href={homeInquiryHref}>
                   Upload CAD / BOQ for Quote
                 </Link>
-                <Link className="btn-luxury-inverse" href="/factory#workshop-videos">
+                <Link className="btn-luxury-inverse" href="#home-workshop-walkthrough">
                   Watch Workshop Videos
                 </Link>
               </div>
@@ -159,7 +160,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/" preview galleryCount={workshopVideos.length} />
+        <JsonLd data={workshopWalkthroughSchema(workshopWalkthroughVideo, "/#home-workshop-walkthrough")} />
+        <WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/" home galleryCount={workshopVideos.length} />
 
         <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">
           <div className="container-luxury">

@@ -26,6 +26,7 @@ test("homepage displays the requested fabrication and fulfillment capabilities",
   }
   assert.doesNotMatch(html, /dependable lead times|reliable lead times|stable quality|consistent quality|export-ready delivery|keep project timing under control|safer international delivery/i);
   assert.match(html, /Watch Workshop Videos/);
+  assert.match(html, /href="#home-workshop-walkthrough"[^>]*>Watch Workshop Videos<\/a>/);
 });
 
 test("homepage video CTA count stays synchronized with the gallery", () => {

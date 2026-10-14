@@ -36,3 +36,7 @@ This work starts from remote main `045a35c`, preserving the changes made on the 
 ## Evidence boundary
 
 The imported October 13 upstream page already contains statements about five-axis equipment, fixed dimensional tolerances and ASTM values. This video does not verify those claims; no new model, capacity, test result, delivery guarantee or equipment-ownership claim was added by this task. Those existing statements require a separate source review. No new ranking, click or inquiry improvement is claimed.
+
+## Homepage inline playback correction — 2026-10-14
+
+The owner requested playback directly on the homepage. This later revision supersedes the original c6ac30d poster-link homepage behavior described above. Home now renders the same native player with preload=none and default mute. Its play button does not navigate. The hero Watch Workshop Videos link scrolls to #home-workshop-walkthrough on the same page. The nearby quote retains sourcePage=/, and the homepage VideoObject uses the homepage watch URL. The factory gallery remains a separately labeled navigation link. Media files are unchanged. Thirteen targeted checks passed; actual homepage playback and production acceptance are verified after this revision's build/deployment.
