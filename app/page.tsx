@@ -162,8 +162,12 @@ export default function HomePage() {
         </section>
 
         <JsonLd data={workshopWalkthroughSchema(featuredWorkshopVideo, "/#home-workshop-walkthrough")} />
-        <WorkshopWalkthrough video={featuredWorkshopVideo} sourcePage="/" home galleryCount={workshopVideos.length} />
-        <TechnicalProposalCase sourcePage="/" inquiryHref={homeInquiryHref} />
+        <section id="home-project-evidence" aria-label="Workshop video and engineering proposal" className="section-luxury bg-stone">
+          <div className="container-luxury grid min-w-0 items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+            <WorkshopWalkthrough video={featuredWorkshopVideo} sourcePage="/" home galleryCount={workshopVideos.length} embedded />
+            <TechnicalProposalCase sourcePage="/" inquiryHref={homeInquiryHref} embedded />
+          </div>
+        </section>
 
         <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">
           <div className="container-luxury">
