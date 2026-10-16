@@ -366,6 +366,49 @@ video {
     @apply flex min-w-0 flex-col gap-3 px-2 py-5 text-left;
   }
 
+  .project-detail-gallery {
+    column-count: 1;
+    column-gap: 1.5rem;
+  }
+
+  .project-detail-gallery__item {
+    @apply card-luxury;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 1.5rem;
+    vertical-align: top;
+    break-inside: avoid;
+  }
+
+  .project-detail-gallery__item > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .project-detail-gallery__caption {
+    padding: 0.75rem 1rem;
+    color: var(--color-accent);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.65;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  @media (min-width: 768px) {
+    .project-detail-gallery {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .project-detail-gallery {
+      column-count: 3;
+    }
+  }
+
   .project-card--layered .project-card__body {
     align-items: center !important;
     text-align: center !important;

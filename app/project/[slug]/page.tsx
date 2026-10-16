@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { join } from "node:path";
 import { notFound } from "next/navigation";
+import sharp from "sharp";
 import JsonLd from "../../../components/JsonLd";
 import PageShell from "../../../components/PageShell";
 import { cleanDisplayTitle, getAssetBySlug, getCaseStudyForAsset, getProjectAssets, slugFromAsset } from "../../../lib/assets";
@@ -57,6 +59,11 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
     intent: "Request similar project quote",
     projectType: caseStudy.label
   };
+  const gallery = await Promise.all(caseStudy.gallery.map(async (item) => {
+    // Reserve each original image's proportions before lazy loading in the columns.
+    const { width, height } = await sharp(join(process.cwd(), "public", item.src.slice(1))).metadata();
+    return { ...item, width, height };
+  }));
 
   return (
     <PageShell>
@@ -106,19 +113,17 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
           </div>
         </section>
 
-        <section className="section-luxury bg-stone">
+        <section id="project-reference-gallery" className="section-luxury scroll-mt-24 bg-stone">
           <div className="container-luxury">
             <div className="mb-10 max-w-3xl">
               <h2 className="heading-lg">Gallery</h2>
             </div>
-            <div className="grid auto-rows-fr gap-7 md:grid-cols-2 xl:grid-cols-3">
-              {caseStudy.gallery.map((item) => (
-                <figure key={`${item.category}-${item.filename}`} className="project-card">
-                  <div className="project-card__media">
-                    <img className="h-full w-full object-cover" src={item.src} alt={item.alt} loading="lazy" />
-                  </div>
-                  <figcaption className="project-card__body">
-                    <p className="eyebrow-luxury">{asset.categoryLabel || caseStudy.label}</p>
+            <div className="project-detail-gallery">
+              {gallery.map((item) => (
+                <figure key={`${item.category}-${item.filename}`} className="project-detail-gallery__item">
+                  <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" />
+                  <figcaption className="project-detail-gallery__caption">
+                    {asset.categoryLabel || caseStudy.label}
                   </figcaption>
                 </figure>
               ))}
