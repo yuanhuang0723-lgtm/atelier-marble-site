@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { join } from "node:path";
 import { notFound } from "next/navigation";
-import sharp from "sharp";
+import galleryImageDimensions from "../../../data/project-gallery-image-dimensions.json";
 import JsonLd from "../../../components/JsonLd";
 import PageShell from "../../../components/PageShell";
 import { cleanDisplayTitle, getAssetBySlug, getCaseStudyForAsset, getProjectAssets, slugFromAsset } from "../../../lib/assets";
@@ -11,6 +10,8 @@ import { absoluteUrl, projectPath } from "../../../lib/seo";
 type ProjectDetailProps = {
   params: Promise<{ slug: string }>;
 };
+
+const imageDimensions: Record<string, { width: number; height: number }> = galleryImageDimensions;
 
 export async function generateStaticParams() {
   return getProjectAssets("all").map((asset) => ({ slug: slugFromAsset(asset) }));
@@ -59,11 +60,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
     intent: "Request similar project quote",
     projectType: caseStudy.label
   };
-  const gallery = await Promise.all(caseStudy.gallery.map(async (item) => {
-    // Reserve each original image's proportions before lazy loading in the columns.
-    const { width, height } = await sharp(join(process.cwd(), "public", item.src.slice(1))).metadata();
-    return { ...item, width, height };
-  }));
+  // Build-time dimensions reserve proportions without bundling source images into server functions.
+  const gallery = caseStudy.gallery.map((item) => ({ ...item, ...imageDimensions[item.src] }));
 
   return (
     <PageShell>

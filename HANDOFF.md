@@ -261,3 +261,4 @@
 - 原图完整显示、不裁切；静态渲染读取原有图片宽高，为懒加载预留比例。30张雕刻图库照片和所有既有URL、alt、参考定位文案保留。全体详情页共用修正；首页左右视频/案例布局、列表卡片和vanity摘要不改。
 - 202资产审计、5项既有静态检查、333页构建/TypeScript和30页SEO审计通过。1440px/390px实际浏览器：无横向溢出，无多余卡片空白（2px边框），图片比例正确。证据 `F:\Atelier-Marble-Site\outputs\gallery-layout-20261017`，记录 `docs/project-detail-gallery-layout-2026-10-17.md`。
 - 生产发布仍按实际SHA、Vercel Ready及主域名浏览器验收确认，不用视觉修正宣称排名或点击增长。
+- 首次发布293b620因路由读取图片尺寸导致Vercel服务函数打包394MB而被拒。已将尺寸读取移至prebuild脚本，仅向页面导入小型JSON清单，避免图片进入函数包；后续新增图库图运行prepare:gallery-images（build自动执行）。不能用提高函数大小限制掩盖此问题。

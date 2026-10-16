@@ -8,7 +8,7 @@ The user reported excessive blank space below differently proportioned images on
 
 - Apply a dedicated gallery style in `app/project/[slug]/page.tsx`, separate from homepage and project listing cards.
 - Use natural-height columns: one below 768px, two from 768px, three from 1280px. Keep figures intact across column breaks and use consistent 24px gaps.
-- Display the complete original image at full card width and automatic height, with intrinsic dimensions read from the existing local asset during static rendering. This reserves its proportions before lazy loading.
+- Display the complete original image at full card width and automatic height. A prebuild step reads the original dimensions into a small JSON inventory; the page imports only this inventory to reserve proportions before lazy loading.
 - Use a compact caption with 12px vertical padding. Preserve every image, image URL, alt text, existing reference wording, detail route and inquiry link.
 - Add `#project-reference-gallery` for direct navigation and verification.
 
@@ -26,5 +26,7 @@ The user reported excessive blank space below differently proportioned images on
 Local evidence: `F:\Atelier-Marble-Site\outputs\gallery-layout-20261017\` (desktop/mobile metrics, screenshots, local SEO audit). Build and static-check logs use the adjacent `gallery-layout-20261017-*.log` paths.
 
 Publish through the existing Git/Vercel production integration after rechecking remote main. Confirm the deployed commit is Ready and verify the primary-domain gallery in the browser. Production evidence is stored in the same local evidence folder.
+
+The first deployment (`293b620`) passed its build but failed upload: reading image metadata inside the route caused source assets to enter the traced server function (394MB, above Vercel's 250MB limit). Dimensions are now prepared exclusively by `scripts/build-gallery-image-dimensions.ts`, automatically invoked by `prebuild`; no source-image filesystem reader or Sharp import remains in the route. Preserve this separation when updating the gallery.
 
 This is a visual layout correction. It does not establish any change in rankings, clicks or inquiry delivery.

@@ -1,0 +1,602 @@
+{
+  "/materials/carving-decor/ai-generated-floral-stone-sculpture-b39cdea93f.webp": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-216a04714b.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-29353f6423.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-2a0373b289.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-34c6d490ec.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-374c17c7e9.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-40987af3c4.webp": {
+    "width": 1800,
+    "height": 1012
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-45f2a89c1b.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-46dc820a7e.webp": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-493d11f3f3.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-511cde87bc.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-52cc680783.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-62fe9f73c9.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-6a8055aad2.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-746265edc6.webp": {
+    "width": 1350,
+    "height": 1800
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-77b3d87f2e.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-886ae49d34.webp": {
+    "width": 1080,
+    "height": 1280
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-937d1c4416.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-940afe85a5.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-951562cf16.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-bdfc121d1d.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-c75b02660b.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-dd741560d3.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-e93285a351.webp": {
+    "width": 1350,
+    "height": 1800
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-e9e9a307d2.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/carving-decor/decorative-stone-carving-reference-fdee3d8f99.webp": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/materials/carving-decor/illustrative-loop-stone-sculpture-04a7ceebd1.webp": {
+    "width": 1800,
+    "height": 870
+  },
+  "/materials/carving-decor/illustrative-stone-garden-lantern-5aaa47ffdc.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/carving-decor/illustrative-stone-interior-concept-a65b60ac20.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/carving-decor/illustrative-stone-vanity-interior-f3cfbfa189.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/coffee-table/stone-supply-overview-graphic-837bef2497.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/coffee-table/stone-tile-layout-reference-f2791ad368.webp": {
+    "width": 1601,
+    "height": 1200
+  },
+  "/materials/hotel-project/illustrative-hotel-stone-interior-38710e1ab9.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/hotel-project/stone-components-workshop-stands-dad9b01df1.webp": {
+    "width": 1118,
+    "height": 1011
+  },
+  "/materials/hotel-project/stone-workpiece-handling-10cc176aa4.webp": {
+    "width": 900,
+    "height": 1200
+  },
+  "/materials/kitchen-countertop/illustrative-stone-dining-table-978ca878b4.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/kitchen-countertop/round-stone-tabletop-reference-df5b5c47ef.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-0eb120c767.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-119d67a04e.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-12421355f0.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-159c13aa5e.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-164a54171f.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-2383d0a93a.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-242c8d906d.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-2b0fcda7c5.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-2c1b327528.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-3199e6ac44.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-32a2ef3e67.webp": {
+    "width": 1080,
+    "height": 1308
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-342f6048b5.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-39c1ebafc5.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-407bc5cece.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-45fc8b4a72.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-46bcd56dbf.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-47078058c2.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-474a46f244.webp": {
+    "width": 1800,
+    "height": 1013
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-496679fa70.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-4c60bc8174.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-4ed2d87966.webp": {
+    "width": 832,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-501d1019fe.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-547f527eb9.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-5c335ebcbd.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-5e5b462f17.webp": {
+    "width": 831,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-5fe002c705.webp": {
+    "width": 1080,
+    "height": 1308
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-6127967b5d.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-63ec6af00d.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-6504d4dbdc.webp": {
+    "width": 1080,
+    "height": 1286
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-65152c5352.webp": {
+    "width": 846,
+    "height": 1506
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-6533f9c642.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-6b07fb5c9a.webp": {
+    "width": 1080,
+    "height": 1286
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-7d3abf7030.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-88db149711.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-8bba3d45f6.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-8f001c7161.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-90096eede4.webp": {
+    "width": 1080,
+    "height": 1308
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-9eb7c3d4ea.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-a1d6f60cae.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-a7a639a0d3.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-bbf5874726.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-bd054c6856.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-c0d7fd9a14.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-c586b783a3.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-ce1a6172fd.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-d1c993f03d.webp": {
+    "width": 1080,
+    "height": 1286
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-d8e856b29f.webp": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-ded620911e.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-e03ca7a2c7.webp": {
+    "width": 1012,
+    "height": 1800
+  },
+  "/materials/kitchen-countertop/stone-countertop-table-reference-fa8e10778a.webp": {
+    "width": 1080,
+    "height": 1440
+  },
+  "/materials/projects/ai-generated-stone-interior-concept-38c1d8c9cb.webp": {
+    "width": 1402,
+    "height": 1122
+  },
+  "/materials/projects/ai-generated-stone-interior-concept-d166a14f85.webp": {
+    "width": 1800,
+    "height": 771
+  },
+  "/materials/projects/ai-generated-stone-kitchen-concept-334b1a90dd.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-loop-stone-sculpture-e122911ff1.webp": {
+    "width": 1800,
+    "height": 870
+  },
+  "/materials/projects/illustrative-stone-coffee-table-cc57711e62.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-furniture-concept-ad1157c283.webp": {
+    "width": 1672,
+    "height": 941
+  },
+  "/materials/projects/illustrative-stone-project-concept-03938c68d8.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-16245fc7a2.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-18dd5968d8.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-1d78ba2908.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-1dd95e91c3.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-28a91d3885.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-2dce7b3dcb.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-3adb0d7aaa.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-3cdf8134ae.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-40b8a10616.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-436d72bbaf.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-43714e32e8.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-43e7d193a5.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-4970085ca1.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-4c253d65f2.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-4fef6affeb.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-53ceb6c2d3.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-542d2cb638.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-5b601daae6.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-5fbfedacf8.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-69f7224556.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-6cdcf869e4.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-6fccbfeed6.webp": {
+    "width": 1535,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-7191f1d95f.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-78d23d37c5.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-82fcf43a8d.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-85b27f4198.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-9363c10203.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-9a007cb889.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-9c01bc95c7.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-9c01d9a566.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-9c70d806f6.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-9d368acdd0.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-9fd77e9193.webp": {
+    "width": 1024,
+    "height": 1536
+  },
+  "/materials/projects/illustrative-stone-project-concept-b3e0a3b606.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-b4e32e87c1.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-b8806ab11f.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-be5e0dc6da.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-c3c3b08ace.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-c67add5a9b.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-c73b39904f.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-cd75ef5a1b.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-d2ac833e8e.webp": {
+    "width": 1535,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-d84b39b2c7.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-d94f302ee8.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-df5872d896.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-project-concept-e6cc19d08d.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-e73a914857.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-e96a005788.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/illustrative-stone-project-concept-eee1ad3d36.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-f3c53b5889.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/illustrative-stone-project-concept-fa5eaf96b2.webp": {
+    "width": 1448,
+    "height": 1086
+  },
+  "/materials/projects/illustrative-stone-vanity-f3ae4c5704.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/stone-component-layout-graphic-c7a6a8a222.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/materials/projects/stone-components-workshop-stands-dad9b01df1.webp": {
+    "width": 1118,
+    "height": 1011
+  },
+  "/materials/projects/stone-fabrication-overview-graphic-092951b212.webp": {
+    "width": 1122,
+    "height": 1402
+  },
+  "/materials/projects/stone-workpiece-handling-10cc176aa4.webp": {
+    "width": 900,
+    "height": 1200
+  }
+}
