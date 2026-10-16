@@ -208,14 +208,15 @@ const factoryIllustrationDefaults = {
 
 const factoryIllustrationOverrides = new Map([
   ["车间封面|ChatGPT Image 2026年6月16日 00_11_52.png", {
-    label: "AI-Generated Workshop Illustration",
-    titleBase: "AI-Generated Stone Workshop Concept",
-    industryTerm: "AI-generated stone workshop concept",
+    label: "Workshop Layout Reference",
+    titleBase: "Stone Workshop Layout Reference",
+    industryTerm: "illustrative stone workshop concept",
     description:
-      "AI-generated workshop concept illustration. It does not document a real facility, equipment, production process, inspection, packing, or shipment.",
-    imageTitle: "AI-Generated Stone Workshop Concept Illustration",
+      "Illustrative workshop concept illustration. It does not document a real facility, equipment, production process, inspection, packing, or shipment.",
+    imageTitle: "Stone Workshop Layout Reference",
+    publicFilenameBase: "ai-generated-stone-workshop-concept-illustration",
     imageAlt:
-      "AI-generated concept illustration of a stone workshop; it does not depict a verified factory, equipment, production process, inspection, or shipment."
+      "Illustrative concept illustration of a stone workshop; it does not depict a verified factory, equipment, production process, inspection, or shipment."
   }],
   ["车间|AQSL9670.JPG", {
     label: "Illustrative Stone Basin Concept",
@@ -288,12 +289,12 @@ const visualReferenceFolders = {
     uniqueTitleToken: true
   },
   "新建文件夹 (2)": {
-    label: "AI-Generated Stone Interior Concept",
-    titleBase: "AI-Generated Stone Interior Concept",
-    industryTerm: "AI-generated stone kitchen interior concept",
-    description: "AI-generated kitchen and stone interior concept. It does not document a completed customer project or installed product.",
-    imageTitle: "AI-Generated Stone Kitchen Concept",
-    imageAlt: "AI-generated stone kitchen and island concept; not a photograph of a completed project.",
+    label: "Stone Interior Design Reference",
+    titleBase: "Stone Interior Design Reference",
+    industryTerm: "illustrative stone kitchen interior concept",
+    description: "Illustrative stone kitchen concept for reviewing island proportions, surface character, and layout.",
+    imageTitle: "Stone Kitchen Design Reference",
+    imageAlt: "Illustrative stone kitchen and island concept; not a photograph of a completed project.",
     publicFilenameBase: "ai-generated-stone-kitchen-concept",
     isIllustrative: true,
     uniqueTitleToken: true
@@ -426,12 +427,12 @@ const visualReferenceFolders = {
     isIllustrative: true
   },
   "雕刻封面": {
-    label: "AI-Generated Stone Sculpture Concept",
-    titleBase: "AI-Generated Stone Sculpture Concept",
-    industryTerm: "AI-generated decorative stone sculpture concept",
-    description: "AI-generated decorative stone sculpture concept; not a photograph of a completed product or production process.",
-    imageTitle: "AI-Generated Stone Sculpture Concept",
-    imageAlt: "AI-generated decorative stone sculpture concept; not a documentary product photograph.",
+    label: "Stone Sculpture Design Reference",
+    titleBase: "Stone Sculpture Design Reference",
+    industryTerm: "illustrative decorative stone sculpture concept",
+    description: "Illustrative stone sculpture design reference for discussing form, material direction, and carved details.",
+    imageTitle: "Stone Sculpture Design Reference",
+    imageAlt: "Illustrative decorative stone sculpture concept; not a documentary product photograph.",
     publicFilenameBase: "ai-generated-stone-sculpture-concept",
     isIllustrative: true
   },
@@ -465,15 +466,15 @@ const visualReferenceAssetOverrides = new Map([
     imageAlt: "Stone fabrication overview graphic with service and product imagery; not a process record.", publicFilenameBase: "stone-fabrication-overview-graphic"
   }],
   ["__root__|ChatGPT Image 2026年6月15日 22_33_19.png", {
-    label: "AI-Generated Stone Interior Concept", titleBase: "AI-Generated Stone Interior Concept", industryTerm: "AI-generated stone interior and furniture concept",
-    description: "AI-generated stone interior concept; not a photograph of a completed customer project.",
-    imageTitle: "AI-Generated Stone Interior Concept", imageAlt: "AI-generated stone interior and furniture concept; not a completed project photograph.",
+    label: "Stone Interior Design Reference", titleBase: "Stone Interior Design Reference", industryTerm: "illustrative stone interior and furniture concept",
+    description: "Illustrative stone interior concept for reviewing composition, surfaces, and furniture proportions.",
+    imageTitle: "Stone Interior Design Reference", imageAlt: "Illustrative stone interior and furniture concept; not a completed project photograph.",
     publicFilenameBase: "ai-generated-stone-interior-concept", isIllustrative: true
   }],
   ["__root__|ChatGPT Image 2026年6月15日 23_16_08.png", {
-    label: "AI-Generated Stone Interior Concept", titleBase: "AI-Generated Stone Interior Concept", industryTerm: "AI-generated stone interior and furniture concept",
-    description: "AI-generated stone interior concept; not a photograph of a completed customer project.",
-    imageTitle: "AI-Generated Stone Interior Concept", imageAlt: "AI-generated stone interior and furniture concept; not a completed project photograph.",
+    label: "Stone Interior Design Reference", titleBase: "Stone Interior Design Reference", industryTerm: "illustrative stone interior and furniture concept",
+    description: "Illustrative stone interior concept for reviewing composition, surfaces, and furniture proportions.",
+    imageTitle: "Stone Interior Design Reference", imageAlt: "Illustrative stone interior and furniture concept; not a completed project photograph.",
     publicFilenameBase: "ai-generated-stone-interior-concept", isIllustrative: true
   }],
   ["卡片封面|stone-carving.png", {
@@ -521,9 +522,9 @@ const visualReferenceAssetOverrides = new Map([
     imageAlt: "Stone supply overview graphic with product imagery and service information; not a shipment record.", publicFilenameBase: "stone-supply-overview-graphic"
   }],
   ["雕刻封面|ChatGPT Image 2026年6月16日 00_16_16.png", {
-    label: "AI-Generated Stone Sculpture Concept", titleBase: "AI-Generated Stone Sculpture Concept", industryTerm: "AI-generated floral stone sculpture concept",
-    description: "AI-generated floral stone sculpture concept; not a photograph of a completed product or production process.",
-    imageTitle: "AI-Generated Floral Stone Sculpture", imageAlt: "AI-generated floral stone sculpture concept; not a documentary product photograph.",
+    label: "Stone Sculpture Design Reference", titleBase: "Stone Sculpture Design Reference", industryTerm: "illustrative floral stone sculpture concept",
+    description: "Floral stone sculpture concept reference for discussing composition, material direction, and carved details.",
+    imageTitle: "Floral Stone Sculpture Design Reference", imageAlt: "Illustrative floral stone sculpture with clustered blossoms and leaves on a dark display base.",
     publicFilenameBase: "ai-generated-floral-stone-sculpture", isIllustrative: true
   }],
   ["雕刻封面1|ig_0f563028d97ee588016a2fb8349afc819b91ce142528fc1811.png", {

@@ -12,9 +12,9 @@ test("factory concept assets are described as illustrations, not production evid
   const alt = Naming.altFor(info, "image");
   const asset = AssetModule.assets.find((item) => item.category === "factory" && item.sourceName === "ChatGPT Image 2026年6月16日 00_11_52.png");
 
-  assert.equal(info.label, "AI-Generated Workshop Illustration");
-  assert.match(title, /AI-Generated Stone Workshop Concept/);
-  assert.match(alt, /AI-generated concept illustration/i);
+  assert.equal(info.label, "Workshop Layout Reference");
+  assert.match(title, /Stone Workshop Layout Reference/);
+  assert.match(alt, /Illustrative.*stone workshop/i);
   assert.ok(asset, "the source image should remain addressable in the manifest");
   assert.equal(asset.title, title);
   assert.equal(asset.alt, alt);
