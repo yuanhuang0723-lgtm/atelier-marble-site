@@ -1,10 +1,11 @@
 # Atelier Marble 独立站出海获客与技术 SEO 全域交接文档 (HANDOFF)
 
-> **更新时间**：2026-10-13 02:30 (Asia/Shanghai)  
+> **更新时间**：2026-10-16 16:30 (Asia/Shanghai)  
 > **面向对象**：完全没有前序会话上下文的新 AI 会话 / 开发者接手人员  
 > **生产站点**：[https://ateliermarblestone.com](https://ateliermarblestone.com)  
 > **代码仓库**：`d:\独立站\Atelier-Marble-Site`  
 > **Git 远端**：`https://github.com/yuanhuang0723-lgtm/atelier-marble-site.git` (分支: `main`)  
+> **最新动态 (2026-10-16)**：上线“结构化挂装工法与技术深化案例卡片”(`components/TechnicalProposalCase.tsx`)，内置高精度 Lightbox 放大模态弹窗与 Action Bar，图纸资源与 WebP 对齐站点地图。
 > **企业主体**：Atelier Marble Ltd.（中国云浮与水头深加工基地，主营全球工装石材/酒店台面/大理石 cut-to-size 离岸数控加工配套）
 > **当前实盘成就**：已累计成功送达 **417 家** 真实海外工装石材承包商（整体投递成功率 **96.3%**，4 节点稳态外发）
 
