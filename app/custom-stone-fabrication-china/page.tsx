@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CommercialLandingPage from "../../components/CommercialLandingPage";
 import WorkshopWalkthrough from "../../components/WorkshopWalkthrough";
+import CadProposalEvidence from "../../components/CadProposalEvidence";
 import { workshopWalkthroughVideo } from "../../data/workshop-videos";
 import { workshopWalkthroughSchema } from "../../lib/workshop-video-schema";
 import { absoluteUrl, siteName } from "../../lib/seo";
@@ -81,7 +82,7 @@ const contentSections = [
 export default function CustomStoneFabricationPage() {
   return (
     <CommercialLandingPage
-      afterHero={<WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/custom-stone-fabrication-china" />}
+      afterHero={<><WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/custom-stone-fabrication-china" /><CadProposalEvidence sourcePage="/custom-stone-fabrication-china" /></>}
       eyebrow="Custom stone fabrication"
       heroCtaLabel="Request Custom Fabrication Pricing"
       primaryCtaLabel="Request Custom Fabrication Pricing"

@@ -234,3 +234,10 @@
 - 清理报价分类页中的13个额外Product和14个HowTo对象、无依据价格/库存/固定规格；不虚构价格补错。Vanity增加材料选择表与真实照片、既有询价关联；120间酒店页改为图纸与构件参考，URL保留。真实变更路由更新lastmod。Title/Description仍保持到10月24日，但本轮正文变更需记入实验混杂因素。
 - 19项针对性测试、333页构建、202资产审计、30页本地SEO审计通过；390px/1440px显示已核验。修改在托管工作树 `C:\Users\86580\.codex\worktrees\factory-workshop-video\Atelier-Marble-Site`，F盘旧树资料未覆盖。发布后以正确SHA的Ready状态和生产页面验收，不用部署或索引申请宣称排名改善。
 - 详细基线、资料依据和验收边界：`docs/seo-ranking-repair-2026-10-15.md`。本地原始证据在 `F:\Atelier-Marble-Site\outputs\seo-ranking-repair-20261014`，不提交账户界面快照。不启动或扩大外联。
+
+## 2026-10-16 CAD拆图与客户反馈图
+
+- 用户授权将技术提案截图及客户回复合成一张并发布；后来明确更正：只遮公司名、项目名称，尺寸/数量/面积/加工说明/图纸编号/价格等全部保留。最终图以原截图像素制作，三处不透明名称遮盖之外逐像素差异为0；PNG和无损WebP解码一致。初版大范围遮盖稿已废弃。
+- 单张合成图1800×1620，公开路径 `/assets/project-evidence/redacted-cad-takeoff-client-feedback.webp`，另提供同图PNG放大。原始附件、隐私报告和草稿只在F盘outputs证据目录，不提交Git；不要把生成模型重绘的CAD当作原始技术证据。
+- 首页 `/#home-cad-case` 和加工页 `/custom-stone-fabrication-china#cad-proposal-case` 复用案例模块，显示真实客户原话、完整图和询价入口；保留原页来源归因。原提案含岩板标注，使用石材CAD技术提案定位，不标为纯天然大理石成交案例。反馈是客户认可技术工作和愿意下一步，不能作为已下单、生产或安装证明，不加评分/Review结构化数据。
+- 13项相关检查通过；图片sitemap为24页249关联，资产202项。构建、手机/桌面及生产验收以本轮实际结果为准。说明 `docs/cad-proposal-evidence-release-2026-10-16.md`；最终本地证据 `F:\Atelier-Marble-Site\outputs\cad-client-recognition-20261015`，执行用v2脚本。vanity摘要观察窗口保持不变。
