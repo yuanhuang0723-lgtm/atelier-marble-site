@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import test from "node:test";
 import fs from "node:fs";
 import * as WalkthroughModule from "../components/WorkshopWalkthrough";
-import { workshopVideos, workshopWalkthroughVideo } from "../data/workshop-videos";
+import { featuredWorkshopVideo, workshopVideos, workshopWalkthroughVideo } from "../data/workshop-videos";
 import { workshopWalkthroughSchema } from "../lib/workshop-video-schema";
 
 const Walkthrough = typeof WalkthroughModule.default === "function" ? WalkthroughModule.default : (WalkthroughModule.default as any).default;
@@ -38,4 +38,13 @@ test("the public video schema refers to the actual reviewed media and the existi
   for (const media of [workshopWalkthroughVideo.src, workshopWalkthroughVideo.poster]) assert.ok(fs.existsSync(`public${media}`));
   assert.equal(new Set(workshopVideos.map((video) => video.id)).size, workshopVideos.length);
   assert.ok(workshopVideos.some((video) => video.id === "07"));
+});
+
+test("the featured stone cutting video renders properly on homepage with valid schema and video element", () => {
+  const html = renderToStaticMarkup(createElement(Walkthrough, { video: featuredWorkshopVideo, sourcePage: "/", home: true }));
+  assert.match(html, /<video\b/);
+  assert.match(html, /atelier-marble-workshop-clip-07\.mp4/);
+  assert.match(html, /atelier-marble-workshop-clip-07\.jpg/);
+  assert.match(html, /Stone cutting in progress/);
+  assert.equal(workshopWalkthroughSchema(featuredWorkshopVideo, "/#home-workshop-walkthrough").duration, "PT13S");
 });

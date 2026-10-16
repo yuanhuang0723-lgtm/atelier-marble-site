@@ -7,7 +7,7 @@ import WorkshopWalkthrough from "../components/WorkshopWalkthrough";
 import TechnicalProposalCase from "../components/TechnicalProposalCase";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
-import { workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
+import { featuredWorkshopVideo, workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
 import { workshopWalkthroughSchema } from "../lib/workshop-video-schema";
 
 export const metadata: Metadata = {
@@ -161,8 +161,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <JsonLd data={workshopWalkthroughSchema(workshopWalkthroughVideo, "/#home-workshop-walkthrough")} />
-        <WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/" home galleryCount={workshopVideos.length} />
+        <JsonLd data={workshopWalkthroughSchema(featuredWorkshopVideo, "/#home-workshop-walkthrough")} />
+        <WorkshopWalkthrough video={featuredWorkshopVideo} sourcePage="/" home galleryCount={workshopVideos.length} />
         <TechnicalProposalCase sourcePage="/" inquiryHref={homeInquiryHref} />
 
         <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">

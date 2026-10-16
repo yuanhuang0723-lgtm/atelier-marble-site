@@ -24,12 +24,14 @@ export const workshopWalkthroughVideo: WorkshopVideo = {
 
 const video = (index: number, title: string, description: string, group: string, duration: string): WorkshopVideo => {
   const id = String(index).padStart(2, "0");
+  const parsedSeconds = duration ? parseInt(duration.split(":")[0], 10) * 60 + parseFloat(duration.split(":")[1]) : undefined;
   return {
     id,
     title,
     description,
     group,
     duration,
+    durationSeconds: parsedSeconds,
     src: `/videos/atelier-marble-workshop-clip-${id}.mp4`,
     poster: `/videos/posters/atelier-marble-workshop-clip-${id}.jpg`
   };
