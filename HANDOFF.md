@@ -237,7 +237,4 @@
 
 ## 2026-10-16 CAD拆图与客户反馈图
 
-- 用户授权将技术提案截图及客户回复合成一张并发布；后来明确更正：只遮公司名、项目名称，尺寸/数量/面积/加工说明/图纸编号/价格等全部保留。最终图以原截图像素制作，三处不透明名称遮盖之外逐像素差异为0；PNG和无损WebP解码一致。初版大范围遮盖稿已废弃。
-- 单张合成图1800×1620，公开路径 `/assets/project-evidence/redacted-cad-takeoff-client-feedback.webp`，另提供同图PNG放大。原始附件、隐私报告和草稿只在F盘outputs证据目录，不提交Git；不要把生成模型重绘的CAD当作原始技术证据。
-- 首页 `/#home-cad-case` 和加工页 `/custom-stone-fabrication-china#cad-proposal-case` 复用案例模块，显示真实客户原话、完整图和询价入口；保留原页来源归因。原提案含岩板标注，使用石材CAD技术提案定位，不标为纯天然大理石成交案例。反馈是客户认可技术工作和愿意下一步，不能作为已下单、生产或安装证明，不加评分/Review结构化数据。
-- 13项相关检查通过；图片sitemap为24页249关联，资产202项。构建、手机/桌面及生产验收以本轮实际结果为准。说明 `docs/cad-proposal-evidence-release-2026-10-16.md`；最终本地证据 `F:\Atelier-Marble-Site\outputs\cad-client-recognition-20261015`，执行用v2脚本。vanity摘要观察窗口保持不变。
+- 用户要求“马上把网站上的这个图片下架”：已全量下架 `/assets/project-evidence/redacted-cad-takeoff-client-feedback.webp` 与对应 PNG 放大图。从首页及定制加工页彻底移除 CAD Take-off 与客户反馈图片模块，同步更新图片站点地图、移除对应测试套件，并通过生产构建与部署立即生效。vanity 观察窗口保持不变。

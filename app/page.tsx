@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import JsonLd from "../components/JsonLd";
 import PageShell from "../components/PageShell";
 import WorkshopWalkthrough from "../components/WorkshopWalkthrough";
-import CadProposalEvidence from "../components/CadProposalEvidence";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
 import { workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
@@ -163,8 +162,6 @@ export default function HomePage() {
 
         <JsonLd data={workshopWalkthroughSchema(workshopWalkthroughVideo, "/#home-workshop-walkthrough")} />
         <WorkshopWalkthrough video={workshopWalkthroughVideo} sourcePage="/" home galleryCount={workshopVideos.length} />
-
-        <CadProposalEvidence sourcePage="/" />
 
         <section id="buyer-pathways" aria-labelledby="buyer-pathways-title" className="section-luxury bg-paper">
           <div className="container-luxury">
