@@ -192,6 +192,18 @@ export default function ArchitecturalStonePage() {
             </div>
           </div>
         </section>
+        <section className="section-luxury-compact bg-stone border-t border-ink/10">
+          <div className="container-luxury">
+            <p className="eyebrow-luxury mb-4 text-center">Related architectural stone guides & project cases</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-ink/75">
+              <Link className="hover:text-ink hover:underline" href="/architectural-stone/wall-cladding">Wall Cladding Fabrication &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/architectural-stone/flooring">Architectural Flooring Systems &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/projects/commercial-stone">Commercial Stone References &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/guides/hotel-lobby-case-study">Hotel Lobby Planning Guide &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/projects/canada-shower-niches-2025">Canada Shower Niches Case &rarr;</Link>
+            </div>
+          </div>
+        </section>
         <section className="section-luxury-compact bg-stone text-center">
           <p className="eyebrow-luxury">Project review</p>
           <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a scope to coordinate?</h2>

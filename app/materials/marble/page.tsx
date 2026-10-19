@@ -43,6 +43,10 @@ export default function MarbleMaterialsPage() {
       faqTitle="Questions buyers ask before specifying marble."
       relatedLink={{ label: "See marble countertop applications", href: "/countertops/marble-countertops" }}
       relatedLinks={[
+        { label: "Browse full natural stone materials catalog", href: "/materials" },
+        { label: "Review marble countertop fabrication & cutouts", href: "/countertops/marble-countertops" },
+        { label: "Explore quartzite slabs for high-durability projects", href: "/materials/quartzite" },
+        { label: "Review granite materials for commercial applications", href: "/materials/granite" },
         { label: "Review luxury hotel vanity top materials & packages", href: "/countertops/vanity-tops" },
         { label: "Review custom cut-to-size stone fabrication", href: "/custom-stone-fabrication-china" }
       ]}

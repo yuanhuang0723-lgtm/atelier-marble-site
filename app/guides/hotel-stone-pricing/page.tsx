@@ -171,9 +171,24 @@ export default function HotelStonePricingPage() {
                       {item.title}
                     </h2>
                     <p className="mt-3 text-sm leading-7 text-ink/70">{item.copy}</p>
+                    {item.title === "Lobby and reception" ? (
+                      <Link className="mt-4 inline-flex text-cta-luxury" href="/guides/hotel-lobby-case-study">
+                        Read hotel lobby stone planning guide &rarr;
+                      </Link>
+                    ) : null}
                     {item.title === "Bathrooms" ? (
-                      <Link className="mt-4 inline-flex text-cta-luxury" href="/countertops/vanity-tops">
-                        Review hotel bathroom countertops & vanity tops
+                      <div className="mt-4 flex flex-col gap-1.5">
+                        <Link className="text-cta-luxury" href="/countertops/vanity-tops">
+                          Review hotel bathroom vanity tops &rarr;
+                        </Link>
+                        <Link className="text-cta-luxury" href="/countertops/integrated-stone-sinks">
+                          Explore integrated stone sinks &rarr;
+                        </Link>
+                      </div>
+                    ) : null}
+                    {item.title === "Public areas" ? (
+                      <Link className="mt-4 inline-flex text-cta-luxury" href="/custom-stone-fabrication-china">
+                        Custom stone fabrication capabilities &rarr;
                       </Link>
                     ) : null}
                   </div>
@@ -273,7 +288,17 @@ export default function HotelStonePricingPage() {
                 </div>
               ))}
             </div>
-            <RelatedProjectLinks links={[{ label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" }, { label: "Hotel Bathroom Vanity Tops", href: "/countertops/vanity-tops" }, { label: "Commercial Stone", href: "/projects/commercial-stone" }, { label: "Request Pricing", href: "/contact" }]} />
+            <RelatedProjectLinks
+              links={[
+                { label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" },
+                { label: "Hotel Bathroom Vanity Tops", href: "/countertops/vanity-tops" },
+                { label: "Custom Stone Fabrication", href: "/custom-stone-fabrication-china" },
+                { label: "Integrated Stone Sinks", href: "/countertops/integrated-stone-sinks" },
+                { label: "Hotel Lobby Planning Guide", href: "/guides/hotel-lobby-case-study" },
+                { label: "Commercial Stone", href: "/projects/commercial-stone" },
+                { label: "Request Pricing", href: "/contact" }
+              ]}
+            />
           </div>
         </section>
       </main>

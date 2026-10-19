@@ -178,6 +178,44 @@ export default function HotelLobbyCaseStudyPage() {
               </div>
 
               <div className="card-luxury px-6 py-6 md:px-8">
+                <p className="eyebrow-luxury mb-3">Procurement protocol</p>
+                <h2 className="font-title text-[1.12rem] font-semibold uppercase tracking-[0.04em] text-ink mb-4">
+                  {hotelLobbyHowToJsonLd.name}
+                </h2>
+                <p className="body-luxury mb-6">
+                  {hotelLobbyHowToJsonLd.description}
+                </p>
+                <div className="grid gap-5">
+                  {hotelLobbyHowToJsonLd.step.map((s) => (
+                    <div key={s.position} className="rounded-xl border border-ink/10 bg-white/70 p-4 md:p-5">
+                      <div className="flex items-center gap-2.5">
+                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-ink text-[11px] font-semibold text-paper">
+                          {s.position}
+                        </span>
+                        <h3 className="font-title text-[1.02rem] font-semibold text-ink">
+                          {s.name}
+                        </h3>
+                      </div>
+                      <p className="mt-2.5 text-sm leading-7 text-ink/70">
+                        {s.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-4 border-t border-ink/10 pt-4 text-xs font-semibold uppercase tracking-[0.14em]">
+                  <Link className="text-[var(--color-accent)] hover:underline" href="/countertops/vanity-tops">
+                    Hotel Bathroom Vanity Tops &rarr;
+                  </Link>
+                  <Link className="text-[var(--color-accent)] hover:underline" href="/custom-stone-fabrication-china">
+                    Custom Stone Fabrication &rarr;
+                  </Link>
+                  <Link className="text-[var(--color-accent)] hover:underline" href="/countertops/integrated-stone-sinks">
+                    Integrated Stone Sinks &rarr;
+                  </Link>
+                </div>
+              </div>
+
+              <div className="card-luxury px-6 py-6 md:px-8">
                 <h2 className="font-title text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-ink">
                   What this guide helps buyers review
                 </h2>
@@ -270,7 +308,16 @@ export default function HotelLobbyCaseStudyPage() {
                 </div>
               ))}
             </div>
-            <RelatedProjectLinks links={[{ label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" }, { label: "Factory Capability", href: "/factory" }, { label: "Request Pricing", href: "/contact" }]} />
+            <RelatedProjectLinks
+              links={[
+                { label: "Hotel Stone Supply", href: "/projects/hotel-stone-supply" },
+                { label: "Hotel Bathroom Vanity Tops", href: "/countertops/vanity-tops" },
+                { label: "Custom Stone Fabrication", href: "/custom-stone-fabrication-china" },
+                { label: "Integrated Stone Sinks", href: "/countertops/integrated-stone-sinks" },
+                { label: "Hotel Stone Pricing Guide", href: "/guides/hotel-stone-pricing" },
+                { label: "Factory Capability", href: "/factory" }
+              ]}
+            />
           </div>
         </section>
       </main>

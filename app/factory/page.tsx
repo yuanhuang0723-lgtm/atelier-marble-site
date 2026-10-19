@@ -187,9 +187,13 @@ export default function FactoryPage() {
                 <Link className="text-cta-luxury mt-4 inline-flex" href="/projects/canada-shower-niches-2025">View the drawing-led case reference</Link>
               </article>
               <article className="card-luxury bg-stone p-6">
-                <p className="eyebrow-luxury">QC checkpoints</p>
+                <p className="eyebrow-luxury">QC checkpoints & guides</p>
                 <h3 className="mt-3 font-title text-[1.1rem] font-semibold uppercase text-ink">Agree the checks for each order</h3>
                 <p className="mt-3 text-sm leading-7 text-ink/68">Confirm dimensions, openings, edge and finish, visible surfaces, labels, packing, and which inspection records are required before production.</p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <Link className="text-cta-luxury inline-flex" href="/resources">Explore stone buyer resources & guides &rarr;</Link>
+                  <Link className="text-cta-luxury inline-flex" href="/projects/hotel-vanity-tops-fabrication-case">Review hotel vanity fabrication case &rarr;</Link>
+                </div>
               </article>
               <article className="card-luxury bg-stone p-6">
                 <p className="eyebrow-luxury">Machine details</p>

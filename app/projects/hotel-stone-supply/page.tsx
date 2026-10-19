@@ -131,6 +131,9 @@ export default function HotelStoneSupplyPage() {
       relatedLinks={[
         { label: "View Canada shower niches reference", href: "/projects/canada-shower-niches-2025" },
         { label: "Review hotel stone pricing", href: "/guides/hotel-stone-pricing" },
+        { label: "Hotel lobby stone planning guide", href: "/guides/hotel-lobby-case-study" },
+        { label: "Custom stone fabrication in China", href: "/custom-stone-fabrication-china" },
+        { label: "Integrated stone sink solutions", href: "/countertops/integrated-stone-sinks" },
         { label: "Review export packing standards", href: "/guides/export-packing-standards" }
       ]}
       faqTitle="Hotel stone supply details, answered clearly."

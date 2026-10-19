@@ -11,6 +11,8 @@ export function proxy(request: NextRequest) {
 
   const url = request.nextUrl.clone();
   url.hostname = "ateliermarblestone.com";
+  url.protocol = "https:";
+  url.port = "";
   return NextResponse.redirect(url, 308);
 }
 

@@ -318,10 +318,22 @@ export default function HomePage() {
                   </Link>
                 </div>
                 <nav aria-label="Core project resources" className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/55">
-                  <Link className="transition-colors hover:text-ink" href="/materials">Materials</Link>
+                  <Link className="transition-colors hover:text-ink" href="/materials">Materials Catalog</Link>
+                  <Link className="transition-colors hover:text-ink" href="/materials/quartzite">Quartzite</Link>
+                  <Link className="transition-colors hover:text-ink" href="/materials/granite">Granite</Link>
                   <Link className="transition-colors hover:text-ink" href="/countertops">Countertops &amp; Vanity</Link>
                   <Link className="transition-colors hover:text-ink" href="/countertops/vanity-tops">Hotel Vanity Tops</Link>
+                  <Link className="transition-colors hover:text-ink" href="/countertops/marble-countertops">Marble Countertops</Link>
+                  <Link className="transition-colors hover:text-ink" href="/countertops/integrated-stone-sinks">Integrated Stone Sinks</Link>
+                  <Link className="transition-colors hover:text-ink" href="/custom-stone-fabrication-china">Custom Stone Fabrication</Link>
+                  <Link className="transition-colors hover:text-ink" href="/architectural-stone/wall-cladding">Wall Cladding</Link>
+                  <Link className="transition-colors hover:text-ink" href="/architectural-stone/flooring">Flooring</Link>
                   <Link className="transition-colors hover:text-ink" href="/projects/hotel-stone-supply">Hotel Stone Supply</Link>
+                  <Link className="transition-colors hover:text-ink" href="/projects/commercial-stone">Commercial Stone</Link>
+                  <Link className="transition-colors hover:text-ink" href="/projects/canada-shower-niches-2025">Shower Niches Case</Link>
+                  <Link className="transition-colors hover:text-ink" href="/projects/hotel-vanity-tops-fabrication-case">Vanity Case</Link>
+                  <Link className="transition-colors hover:text-ink" href="/guides/hotel-lobby-case-study">Hotel Lobby Guide</Link>
+                  <Link className="transition-colors hover:text-ink" href="/guides/hotel-stone-pricing">Hotel Stone Pricing</Link>
                   <Link className="transition-colors hover:text-ink" href="/factory">Factory &amp; QC</Link>
                 </nav>
               </div>

@@ -17,6 +17,18 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.ateliermarblestone.com" }],
+        destination: "https://ateliermarblestone.com/:path*",
+        permanent: true
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "atelier-marble-site.vercel.app" }],
+        destination: "https://ateliermarblestone.com/:path*",
+        permanent: true
+      },
       { source: "/hotel-hospitality-projects", destination: "/projects/hotel-stone-supply", permanent: true },
       { source: "/hotel-projects", destination: "/projects/hotel-stone-supply", permanent: true },
       { source: "/kitchen-countertops", destination: "/countertops", permanent: true },

@@ -127,7 +127,11 @@ export default function CountertopsPage() {
       ]}
       relatedLink={{ label: "Explore marble countertop fabrication", href: "/countertops/marble-countertops" }}
       relatedLinks={[
+        { label: "Explore marble countertop fabrication", href: "/countertops/marble-countertops" },
         { label: "Explore hotel bathroom vanity tops", href: "/countertops/vanity-tops" },
+        { label: "Review hotel vanity top fabrication case", href: "/projects/hotel-vanity-tops-fabrication-case" },
+        { label: "Explore quartzite slab and countertop materials", href: "/materials/quartzite" },
+        { label: "Review granite for commercial countertops", href: "/materials/granite" },
         { label: "Review cut-to-size stone fabrication in China", href: "/custom-stone-fabrication-china" },
         { label: "Review workshop and packing references", href: "/factory#factory-evidence" }
       ]}
