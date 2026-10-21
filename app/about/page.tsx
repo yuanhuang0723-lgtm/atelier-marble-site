@@ -40,6 +40,11 @@ export default function AboutPage() {
           eyebrow="Company profile"
           title="Natural stone project supply from Yunfu, China."
           description="Our own processing and partner coordination support drawing-based stone components for trade and project buyers. Share drawings, quantities, material direction, and destination details."
+          cta={{
+            href: "/contact?sourcePage=%2Fabout&projectType=Commercial%20Stone%20Projects",
+            label: "Upload CAD / BOQ for Quote",
+            note: "Start with a short brief; drawings can follow when they are ready."
+          }}
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury grid gap-12">
