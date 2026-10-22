@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import WhatsAppButton from "./WhatsAppButton";
 
-export default function PageShell({ children }: { children: React.ReactNode }) {
+export default function PageShell({ children, showFloatingWhatsApp = true }: { children: React.ReactNode; showFloatingWhatsApp?: boolean }) {
   return (
     <>
       <Suspense fallback={null}>
@@ -16,7 +16,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       <FooterVisibilityTracker />
       <Nav />
       {children}
-      <WhatsAppButton />
+      {showFloatingWhatsApp && <WhatsAppButton />}
       <Footer />
     </>
   );

@@ -18,3 +18,4 @@ data/outbox-eml/
 !.dev.vars.example
 
 !.env.example
+.vercel

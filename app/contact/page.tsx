@@ -3,7 +3,6 @@ import Link from "next/link";
 import InquiryForm from "../../components/InquiryForm";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import JsonLd from "../../components/JsonLd";
-import PageHero from "../../components/PageHero";
 import PageShell from "../../components/PageShell";
 import { contact, inquiryProjectTypes } from "../../lib/assets";
 import { buildMailtoUrl, buildWhatsAppUrl } from "../../lib/conversion";
@@ -54,102 +53,44 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
   };
 
   return (
-    <PageShell>
+    <PageShell showFloatingWhatsApp={false}>
       <main>
         <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Project Consultation", path: "/contact" }]} />
         <JsonLd data={contactJsonLd} />
-        <PageHero
-          eyebrow="Project inquiry system"
-          title="Request a quotation for hotel stone, slabs, and custom fabrication."
-          description="Atelier Marble uses a structured consultation flow for hotel projects, stone slab supply, kitchens, interiors, and custom stone work so buyers can move toward accurate pricing faster."
-        />
-        <section className="section-luxury bg-paper">
-          <div className="container-luxury grid gap-12 lg:grid-cols-[1.1fr_0.72fr] lg:items-start">
-            <InquiryForm
-              context={context}
-              defaultProjectType={context.projectType}
-              projectOptions={[...inquiryProjectTypes]}
-            />
-            <aside className="space-y-7">
-              <div className="space-y-4 rounded-[28px] border border-ink/10 bg-stone p-8 md:p-10">
-                <p className="eyebrow-luxury">Before you submit</p>
-                <h2 className="heading-lg">Help us quote the right solution.</h2>
-                <p className="body-luxury">
-                  The more clearly you describe scope, timeline, budget, and drawings, the faster we can return a
-                  practical project path and pricing range.
-                </p>
-                <div className="grid gap-4 pt-2 text-sm leading-7 text-ink/70">
-                  <p>Project type: hotel, kitchen, commercial interior, or sculpture</p>
-                  <p>Budget range: helps us match fabrication scale</p>
-                  <p>Timeline: keeps procurement and production aligned</p>
-                  <p>Drawings: useful for technical review and quote preparation</p>
-                </div>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <a className="btn-luxury" href={buildWhatsAppUrl(context)}>
-                    Discuss Project Requirements
+        <section className="bg-paper px-5 pb-16 pt-28 md:px-12 md:pb-24 md:pt-32">
+          <div className="container-luxury">
+            <header className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
+              <p className="eyebrow-luxury mb-3">Contact Atelier Marble</p>
+              <h1 className="font-title text-[clamp(30px,4vw,48px)] font-medium leading-[1.1] tracking-[0.02em] text-ink">
+                Tell us about your stone project.
+              </h1>
+              <p className="mx-auto mt-4 max-w-xl text-[15px] leading-7 text-ink/65">
+                Your email and a short note are enough. Drawings and other details can follow by email.
+              </p>
+            </header>
+            <div className="mx-auto grid max-w-5xl min-w-0 gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.8fr)] lg:items-start lg:gap-8">
+              <InquiryForm context={context} defaultProjectType={context.projectType} projectOptions={[...inquiryProjectTypes]} simple />
+              <aside className="min-w-0 rounded-[20px] border border-ink/10 bg-stone p-6 md:p-8">
+                <h2 className="font-title text-2xl font-medium leading-tight text-ink">Prefer to talk directly?</h2>
+                <p className="mt-3 text-sm leading-7 text-ink/65">Send a message or share drawings through WhatsApp or email.</p>
+                <a className="btn-luxury mt-5 flex w-full justify-center" href={buildWhatsAppUrl(context)} target="_blank" rel="noreferrer">
+                  Chat on WhatsApp
+                </a>
+                <div className="mt-6 border-t border-ink/10 pt-5">
+                  <p className="text-xs uppercase tracking-[0.12em] text-ink/55">Email</p>
+                  <a className="mt-2 inline-block break-all text-sm font-medium text-ink underline decoration-ink/25 underline-offset-4" href={emailUrl}>
+                    {contact.emails[0]}
                   </a>
-                  <a className="text-cta-luxury self-center" href={emailUrl}>
-                    Email Project Details
-                  </a>
+                  <p className="mt-2 text-xs leading-6 text-ink/55">Opens your email app. You can also copy this address.</p>
                 </div>
-              </div>
-              <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
-                <p className="eyebrow-luxury mb-4">What a strong inquiry includes</p>
-                <div className="grid gap-4">
-                  {[
-                    "Project scope: hotel, villa, residence, or commercial interior",
-                    "Material direction: marble, slab selection, finished product, or sculpture",
-                    "Scale: rough dimensions, quantities, and destination market",
-                    "Files: drawings, inspiration references, or BOQ"
-                  ].map((item) => (
-                    <p key={item} className="text-sm leading-7 text-ink/70">
-                      {item}
-                    </p>
-                  ))}
+                <div className="mt-5 text-sm leading-7 text-ink/65">
+                  <p>{contact.companyName}</p>
+                  <p>{contact.location}</p>
+                  <p>{contact.whatsapp}</p>
                 </div>
-              </div>
-              <div className="rounded-[28px] border border-ink/10 bg-paper p-8 text-sm font-light leading-8 text-ink/60">
-                <p>{contact.companyName}</p>
-                <p>{contact.address}</p>
-                <p>{contact.location}</p>
-                <p>{contact.whatsapp}</p>
-                {contact.emails.map((email) => (
-                  <p key={email}>{email}</p>
-                ))}
-              </div>
-              <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
-                <p className="eyebrow-luxury mb-4">Stone sample consultation</p>
-                <p className="text-sm leading-7 text-ink/70">
-                  Stone swatches (100×100mm or 150×150mm) and custom edge mock-ups are available to evaluate color tone, veining, and surface finish before cutting full slabs.
-                </p>
-                <p className="mt-3 text-xs leading-6 text-ink/55">
-                  Sample availability, custom preparation fees, quantities, and international courier express shipping terms (via DHL / FedEx) are reviewed and confirmed per project scope rather than offered as unconditional free shipping.
-                </p>
-                <Link
-                  className="btn-luxury mt-5 inline-block text-xs"
-                  href="/contact?sourcePage=%2Fcontact&projectType=Stone%20Sample%20Consultation%20%26%20Material%20Review"
-                >
-                  Request Stone Samples
-                </Link>
-              </div>
-              <div className="rounded-[28px] border border-ink/10 bg-paper p-8">
-                <p className="eyebrow-luxury mb-4">Review before inquiry</p>
-                <div className="flex flex-col gap-4">
-                  <Link className="text-cta-luxury" href="/projects">
-                    Review Project References
-                  </Link>
-                  <Link className="text-cta-luxury" href="/how-we-work">
-                    See How We Work
-                  </Link>
-                  <Link className="text-cta-luxury" href="/materials">
-                    Compare Material Options
-                  </Link>
-                  <Link className="text-cta-luxury" href="/projects/hotel-stone-supply">
-                    Check Hotel Project Fit
-                  </Link>
-                </div>
-              </div>
-            </aside>
+                <Link className="mt-6 inline-block text-sm text-ink/65 underline underline-offset-4" href="/how-we-work">How we work</Link>
+              </aside>
+            </div>
           </div>
         </section>
       </main>

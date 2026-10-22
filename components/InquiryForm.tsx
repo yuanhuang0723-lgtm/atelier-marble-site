@@ -10,9 +10,10 @@ type InquiryFormProps = {
   context: InquiryContext;
   projectOptions?: string[];
   defaultProjectType?: string;
+  simple?: boolean;
 };
 
-export default function InquiryForm({ context, projectOptions, defaultProjectType }: InquiryFormProps) {
+export default function InquiryForm({ context, projectOptions, defaultProjectType, simple = false }: InquiryFormProps) {
   const [projectType, setProjectType] = useState(defaultProjectType || context.projectType || "Stone project");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -274,16 +275,17 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
 
   return (
     <form
-      className="card-luxury mx-auto grid w-full max-w-[44rem] gap-4 p-5 md:max-w-[48rem] md:gap-4 md:p-6"
+      id={simple ? "inquiry-form" : undefined}
+      className="card-luxury mx-auto grid w-full min-w-0 max-w-[44rem] gap-4 p-4 sm:p-5 md:max-w-[48rem] md:gap-4 md:p-6"
       data-qualified-inquiry-form="true"
       onSubmit={handleSubmit}
       onFocusCapture={handleFormStart}
     >
-      <div className="rounded-[18px] border border-ink/10 bg-stone/40 px-5 py-4">
-        <p className="eyebrow-luxury mb-2">Request a quotation</p>
-        <p className="text-sm leading-7 text-ink/68">
+      <div className={simple ? "" : "rounded-[18px] border border-ink/10 bg-stone/40 px-4 py-4 sm:px-5"}>
+        <p className="eyebrow-luxury mb-2">{simple ? "Quick inquiry" : "Request a quotation"}</p>
+        {!simple && <p className="text-sm leading-7 text-ink/68">
           Only your email and a short project note are required. Everything else, including CAD or BOQ files, is optional for a first inquiry. Extra project details help us review material, fabrication, and packing needs.
-        </p>
+        </p>}
       </div>
       <label className="grid min-w-0 gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink/62">
         Email
@@ -310,6 +312,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           onChange={(event) => setMessage(event.target.value)}
         />
       </label>
+      {!simple && <>
       <details className="rounded-[16px] border border-ink/10 bg-paper px-4 md:px-5">
         <summary className="cursor-pointer py-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/70">
           Add project details (optional)
@@ -405,21 +408,24 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           </div>
         </div>
       </details>
-      <div className="flex flex-wrap gap-3 pt-1">
-        <button disabled={submitting} className="btn-luxury-fill h-12 justify-center px-6 text-[13px] tracking-[0.08em] disabled:cursor-wait disabled:opacity-60 md:h-[54px] md:text-[14px]" type="submit">
-          {submitting ? "Sending..." : "Request Project Pricing"}
+      </>}
+      <div className={simple ? "grid gap-3 pt-1" : "flex flex-wrap gap-3 pt-1"}>
+        <button disabled={submitting} className="btn-luxury-fill h-12 justify-center px-4 sm:px-6 text-[13px] tracking-[0.08em] disabled:cursor-wait disabled:opacity-60 md:h-[54px] md:text-[14px]" type="submit">
+          {submitting ? "Sending..." : simple ? "Send inquiry" : "Request Project Pricing"}
         </button>
-        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={(event) => track("email", event)}>
+        {!simple && <>
+        <a className="btn-luxury h-12 justify-center px-4 sm:px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={mailtoUrl} onClick={(event) => track("email", event)}>
           Email Project Details
         </a>
-        <a className="btn-luxury h-12 justify-center px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={(event) => track("whatsapp", event)}>
+        <a className="btn-luxury h-12 justify-center px-4 sm:px-6 text-[13px] tracking-[0.08em] md:h-[54px] md:text-[14px]" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={(event) => track("whatsapp", event)}>
           Discuss on WhatsApp
         </a>
+        </>}
       </div>
       <input aria-label="Website" className="absolute -left-[9999px] h-px w-px opacity-0" tabIndex={-1} autoComplete="off" name="website" />
       {status ? <p role="alert" className="text-sm leading-6 text-red-700">{status}</p> : null}
       <p className="text-[11px] leading-6 tracking-[0.08em] text-ink/52">
-        Best for architects, procurement teams, importers, and buyers comparing stone options for export projects.
+        {simple ? "We will reply to the email you provide." : "Best for architects, procurement teams, importers, and buyers comparing stone options for export projects."}
       </p>
     </form>
   );

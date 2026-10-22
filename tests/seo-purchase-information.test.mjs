@@ -204,7 +204,7 @@ test("marble countertop page explains material-specific review decisions", () =>
   assert.match(visibleText, /maintenance expectations/i);
 });
 
-test("contact shortcuts preserve one project context and explain optional fields", async () => {
+test("simple contact form preserves the project context in direct contact shortcuts", async () => {
   const renderContact = async (searchParams) => renderToStaticMarkup(await component(ContactPage)({ searchParams: Promise.resolve(searchParams) }));
   const decode = (value) => decodeURIComponent(value.replace(/&amp;/g, "&"));
   for (const { searchParams, projectType, sourcePage } of [
@@ -213,8 +213,9 @@ test("contact shortcuts preserve one project context and explain optional fields
     { searchParams: { sourcePage: "/projects/hotel-stone-supply", projectType: "Hotel & Hospitality Projects" }, projectType: "Hotel & Hospitality Projects", sourcePage: "/projects/hotel-stone-supply" }
   ]) {
     const html = await renderContact(searchParams);
-    const whatsappHref = html.match(/<a\b[^>]*href="([^"]+)"[^>]*>\s*Discuss Project Requirements/i)?.[1];
-    const emailHref = html.match(/<a\b[^>]*href="([^"]+)"[^>]*>\s*Email Project Details/i)?.[1];
+    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
+    const whatsappHref = main.match(/<a\b[^>]*href="(https:\/\/wa\.me\/[^\"]+)"/i)?.[1];
+    const emailHref = main.match(/<a\b[^>]*href="(mailto:[^\"]+)"/i)?.[1];
 
     assert.ok(whatsappHref, "contact page should provide its WhatsApp inquiry shortcut");
     assert.ok(emailHref, "contact page should provide its email inquiry shortcut");
@@ -222,8 +223,8 @@ test("contact shortcuts preserve one project context and explain optional fields
     assert.ok(decode(whatsappHref).includes(`Source page: ${sourcePage}`));
     assert.ok(decode(emailHref).includes(`subject=${projectType} Project Consultation`));
     assert.ok(decode(emailHref).includes(`Source page: ${sourcePage}`));
-    assert.match(html, /Only your email and a short project note are required/i);
-    assert.match(html, /Everything else.*optional/i);
+    assert.match(html, /Your email and a short note are enough/i);
+    assert.match(html, /Drawings and other details can follow by email/i);
   }
 });
 

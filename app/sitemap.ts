@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/materials/quartzite": "2026-10-19",
     "/materials/granite": "2026-10-19",
     "/factory": "2026-10-15",
-    "/contact": "2026-10-19",
+    "/contact": "2026-10-22",
     "/countertops": "2026-10-15",
     "/countertops/marble-countertops": "2026-10-19",
     "/countertops/vanity-tops": "2026-10-19",

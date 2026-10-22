@@ -262,3 +262,10 @@
 - 202资产审计、5项既有静态检查、333页构建/TypeScript和30页SEO审计通过。1440px/390px实际浏览器：无横向溢出，无多余卡片空白（2px边框），图片比例正确。证据 `F:\Atelier-Marble-Site\outputs\gallery-layout-20261017`，记录 `docs/project-detail-gallery-layout-2026-10-17.md`。
 - 生产发布仍按实际SHA、Vercel Ready及主域名浏览器验收确认，不用视觉修正宣称排名或点击增长。
 - 首次发布293b620因路由读取图片尺寸导致Vercel服务函数打包394MB而被拒。已将尺寸读取移至prebuild脚本，仅向页面导入小型JSON清单，避免图片进入函数包；后续新增图库图运行prepare:gallery-images（build自动执行）。不能用提高函数大小限制掩盖此问题。
+
+## 2026-10-22 咨询页简化与文字询盘恢复
+
+- 用户报告/contact咨询失效且信息太多。线上已有失败提示，Supabase配置域名DNS不存在；生产SMTP已配置，但无附件备用投递开关原为false。已开启既有`INQUIRY_DEGRADED_NO_FILE_FALLBACK`生产配置，新部署后生效。未改密码，不将此操作称为数据库或附件服务恢复。
+- /contact只展示邮箱、需求说明和Send inquiry按钮，图纸可后续通过邮件/WhatsApp补充。压缩顶部与联系说明，咨询页隐藏遮挡按钮的悬浮WhatsApp，保留页面内直接联系入口。来源、项目类型、防重复、API校验与感谢页统计沿用；其他商业页详细表单维持已发布版本。
+- 在独立托管树`C:\Users\86580\.codex\worktrees\contact-simplify\Atelier-Marble-Site`、`codex/contact-simplify`基于292fb8f实施。之前factory-workshop-video树的未提交草稿及未发布about提交未覆盖、未混入发布。
+- 验收说明`docs/contact-simplification-2026-10-22.md`，证据`F:\Atelier-Marble-Site\outputs\contact-simplify-20261022`。生产结果以实际Ready部署与带内部标记提交为准。SMTP服务器接收与实际收件箱到达须区分；数据库故障时备用防重复缓存仅对单进程有效。
