@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from "r
 import { X } from "lucide-react";
 import { buildMailtoUrl, buildWhatsAppUrl, InquiryContext } from "../lib/conversion";
 import { isAllowedInquiryFile } from "../lib/inquiry-files";
+import { isInquiryReference } from "../lib/inquiry-reference";
 import { appendLandingPathToContactUrl, getStoredLandingPage, getStoredLandingPath, getStoredReferrerHost, readStoredCampaign, trackConversionEvent } from "../lib/tracking";
 
 type InquiryFormProps = {
@@ -207,6 +208,7 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
         ok?: boolean;
         message?: string;
         code?: string;
+        reference?: string;
         browserFallback?: { endpoint: string; payload: string };
       };
       if (!response.ok || !result.ok) {
@@ -248,7 +250,9 @@ export default function InquiryForm({ context, projectOptions, defaultProjectTyp
           // Tracking remains best-effort after the accepted inquiry.
         }
       }
-      window.location.assign("/contact/thank-you");
+      window.location.assign(isInquiryReference(result.reference)
+        ? `/contact/thank-you?ref=${encodeURIComponent(result.reference)}`
+        : "/contact/thank-you");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "The inquiry could not be sent yet.");
       setSubmitting(false);

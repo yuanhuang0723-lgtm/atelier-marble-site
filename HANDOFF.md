@@ -269,3 +269,9 @@
 - /contact只展示邮箱、需求说明和Send inquiry按钮，图纸可后续通过邮件/WhatsApp补充。压缩顶部与联系说明，咨询页隐藏遮挡按钮的悬浮WhatsApp，保留页面内直接联系入口。来源、项目类型、防重复、API校验与感谢页统计沿用；其他商业页详细表单维持已发布版本。
 - 在独立托管树`C:\Users\86580\.codex\worktrees\contact-simplify\Atelier-Marble-Site`、`codex/contact-simplify`基于292fb8f实施。之前factory-workshop-video树的未提交草稿及未发布about提交未覆盖、未混入发布。
 - 验收说明`docs/contact-simplification-2026-10-22.md`，证据`F:\Atelier-Marble-Site\outputs\contact-simplify-20261022`。生产结果以实际Ready部署与带内部标记提交为准。SMTP服务器接收与实际收件箱到达须区分；数据库故障时备用防重复缓存仅对单进程有效。
+
+## 2026-10-22 用户自行提交的收件差异追踪
+
+- 站主先确认收到内部测试，随后明确报告自己另一条提交虽到感谢页，但ding企业邮箱没收到。不能用前一封内部测试代替后一封收件验收。生产日志11:55:11、12:02:34两次POST均200，均启用无附件备用投递，未记录SMTP失败；未证明实际收件位置。
+- 原同项目类型的全部邮件共用同一主题，可能被会话合并，尚未证实。已请站主搜索旧主题并展开查找自己的内容；企业邮箱网页登录框空白，未读取其收件箱或垃圾箱。
+- 新增稳定咨询编号、唯一主题/Message-ID、隐私受限的SMTP接受及队列记录、感谢页编号显示。保留两字段、回复地址、收件人、提交锁、防重复和既有跟踪。记录`docs/inquiry-delivery-trace-2026-10-22.md`；证据`F:\Atelier-Marble-Site\outputs\contact-delivery-debug-20261022`。须用外部Reply-To的内部测试与实际收件确认继续验收，不得将部署或SMTP250当成最终到达证明。

@@ -35,6 +35,18 @@ type InquiryFile = { key: string; name: string; type: string; size: number; rece
 type InquiryRequestBody = Record<string, unknown> & { files?: InquiryFile[]; campaign?: Record<string, string> };
 type IdempotencyRow = { request_hash: string; status: "processing" | "sent" | "pending" | "failed"; response_message: string | null };
 
+function inquiryReference(body: InquiryRequestBody) {
+  return `AM-${createHash("sha256").update(String(body.idempotencyKey)).digest("hex").slice(0, 12).toUpperCase()}`;
+}
+
+function inquirySubject(body: InquiryRequestBody) {
+  return `Website inquiry [${inquiryReference(body)}] - ${String(body.projectType).replace(/[\r\n]/g, " ")}`;
+}
+
+function inquirySuccess(body: InquiryRequestBody, message: string) {
+  return NextResponse.json({ ok: true, message, reference: inquiryReference(body) });
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -178,7 +190,7 @@ async function buildFileLinks(body: InquiryRequestBody, supabase: NonNullable<Re
 function buildMessage(body: InquiryRequestBody, fileLinks: string[]) {
   const campaign = isRecord(body.campaign) ? Object.entries(body.campaign).filter(([key]) => CAMPAIGN_KEYS.has(key)).map(([key, value]) => `${key}: ${String(value)}`) : [];
   return [
-    "Hello Atelier Marble,", "", "I would like to discuss a project consultation.",
+    "Hello Atelier Marble,", `Inquiry reference: ${inquiryReference(body)}`, "", "I would like to discuss a project consultation.",
     body.projectType ? `Project type: ${body.projectType}` : "", body.intent ? `Inquiry intent: ${body.intent}` : "", body.sourcePage ? `Source page: ${body.sourcePage}` : "", body.landingPage ? `Landing page: ${body.landingPage}` : "",
     body.company ? `Company: ${body.company}` : "", body.country ? `Country: ${body.country}` : "", body.destinationPort ? `Destination port: ${body.destinationPort}` : "",
     body.stoneScope ? `Product / stone scope: ${body.stoneScope}` : "", body.quantity ? `Approximate quantity: ${body.quantity}` : "", body.deliveryDate ? `Required delivery date: ${body.deliveryDate}` : "",
@@ -209,16 +221,25 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
         from: process.env.SMTP_FROM || smtpUser,
         to: recipient,
         replyTo: String(body.contact),
-        subject: `${String(body.projectType)} Project Consultation`,
+        subject: inquirySubject(body),
+        messageId: `<website-inquiry.${inquiryReference(body)}@ateliermarblestone.com>`,
         text: `${buildMessage(body, fileLinks)}${fileLinks.length ? `\n\nPrivate file links (expire in 7 days):\n${fileLinks.join("\n")}` : ""}`
       });
       if (!info.accepted.length || info.rejected.length) {
         console.error("[inquiry] SMTP server did not accept every recipient", { acceptedCount: info.accepted.length, rejectedCount: info.rejected.length });
         return { kind: "failed" as const, message: "The email server did not accept the inquiry. Please try email or WhatsApp instead." };
       }
+      console.info("[inquiry] SMTP accepted", {
+        reference: inquiryReference(body),
+        messageId: info.messageId,
+        acceptedRecipientCount: info.accepted.length,
+        recipientMatchesBusinessInbox: recipient.trim().toLowerCase() === contact.inquiryRecipient.toLowerCase(),
+        queueResponse: String(info.response || "").slice(0, 160)
+      });
       return { kind: "sent" as const, message: "Inquiry accepted by the email server." };
     } catch (error) {
       console.error("[inquiry] SMTP delivery failed", {
+        reference: inquiryReference(body),
         name: error instanceof Error ? error.name : "unknown",
         code: error && typeof error === "object" && "code" in error ? String(error.code).slice(0, 40) : "unknown",
         message: error instanceof Error ? error.message.slice(0, 160) : String(error).slice(0, 160)
@@ -231,7 +252,7 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
 
   const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ateliermarblestone.com").replace(/\/+$/, "");
   const payload = new URLSearchParams({
-    _subject: `${String(body.projectType)} Project Consultation`, _template: "table", _captcha: "false", _replyto: String(body.contact),
+    _subject: inquirySubject(body), _template: "table", _captcha: "false", _replyto: String(body.contact),
     name: String(body.name || ""), email: String(body.contact), contact: String(body.contact), budgetRange: String(body.budgetRange || ""), timeline: String(body.timeline || ""), message: String(body.message),
     projectType: String(body.projectType), intent: String(body.intent || ""), sourcePage: String(body.sourcePage || ""), landingPage: String(body.landingPage || ""), company: String(body.company || ""), country: String(body.country || ""),
     destinationPort: String(body.destinationPort || ""), stoneScope: String(body.stoneScope || ""), quantity: String(body.quantity || ""), deliveryDate: String(body.deliveryDate || ""),
@@ -294,7 +315,7 @@ async function sendInquiryEmail(body: InquiryRequestBody, fileLinks: string[]) {
 function getBrowserEmailFallback(body: InquiryRequestBody) {
   const recipient = process.env.INQUIRY_RECIPIENT || contact.inquiryRecipient;
   const payload = new URLSearchParams({
-    _subject: `${String(body.projectType)} Project Consultation`,
+    _subject: inquirySubject(body),
     _template: "table",
     _captcha: "false",
     _replyto: String(body.contact),
@@ -325,7 +346,7 @@ function getBrowserEmailFallback(body: InquiryRequestBody) {
 
 function browserFallbackResponse(message: string, body: InquiryRequestBody) {
   if (body.files?.length) return NextResponse.json({ ok: false, message }, { status: 502 });
-  return NextResponse.json({ ok: false, code: "browser_email_fallback", message, browserFallback: getBrowserEmailFallback(body) }, { status: 502 });
+  return NextResponse.json({ ok: false, code: "browser_email_fallback", message, reference: inquiryReference(body), browserFallback: getBrowserEmailFallback(body) }, { status: 502 });
 }
 
 export async function POST(request: Request) {
@@ -355,7 +376,7 @@ export async function POST(request: Request) {
 
     const fallbackClaim = claimFallbackIdempotency(idempotencyKey, buildRequestHash(body));
     if (fallbackClaim.kind === "conflict") return NextResponse.json({ ok: false, message: "This submission key was already used for different data." }, { status: 409 });
-    if (fallbackClaim.kind === "sent") return NextResponse.json({ ok: true, message: fallbackClaim.message || "Inquiry already sent." });
+    if (fallbackClaim.kind === "sent") return inquirySuccess(body, fallbackClaim.message || "Inquiry already sent.");
     if (fallbackClaim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });
     if (fallbackClaim.kind === "pending") return NextResponse.json({ ok: false, message: fallbackClaim.message || "The inquiry delivery could not be confirmed. Please contact us through WhatsApp." }, { status: 502 });
     if (fallbackClaim.kind === "failed") {
@@ -367,13 +388,13 @@ export async function POST(request: Request) {
     const email = await sendInquiryEmail(body, []);
     setFallbackIdempotencyStatus(idempotencyKey, email.kind, email.kind === "failed" && "idempotencyMessage" in email ? email.idempotencyMessage || email.message : email.message);
     if (email.kind !== "sent") {
-      if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, browserFallback: email.browserFallback }, { status: 502 });
+      if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, reference: inquiryReference(body), browserFallback: email.browserFallback }, { status: 502 });
       return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
     }
-    return NextResponse.json({ ok: true, message: email.message });
+    return inquirySuccess(body, email.message);
   }
   if (claim.kind === "conflict") return NextResponse.json({ ok: false, message: "This submission key was already used for different data." }, { status: 409 });
-  if (claim.kind === "sent") return NextResponse.json({ ok: true, message: claim.message || "Inquiry already sent." });
+  if (claim.kind === "sent") return inquirySuccess(body, claim.message || "Inquiry already sent.");
   if (claim.kind === "processing") return NextResponse.json({ ok: false, message: "This inquiry is already being processed. Please wait before trying again." }, { status: 409 });
   if (claim.kind === "pending") return NextResponse.json({ ok: false, message: claim.message || "The inquiry delivery could not be confirmed. Please contact us through WhatsApp." }, { status: 502 });
   if (claim.kind === "failed") {
@@ -389,10 +410,10 @@ export async function POST(request: Request) {
   const email = await sendInquiryEmail(body, fileResult.links || []);
   await setIdempotencyStatus(supabase, idempotencyKey, email.kind, email.kind === "failed" && "idempotencyMessage" in email ? email.idempotencyMessage || email.message : email.message);
   if (email.kind !== "sent") {
-    if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, browserFallback: email.browserFallback }, { status: 502 });
+    if (email.kind === "failed" && "browserFallback" in email && !body.files?.length) return NextResponse.json({ ok: false, code: "browser_email_fallback", message: email.message, reference: inquiryReference(body), browserFallback: email.browserFallback }, { status: 502 });
     return NextResponse.json({ ok: false, message: email.message }, { status: 502 });
   }
-  return NextResponse.json({ ok: true, message: email.message });
+  return inquirySuccess(body, email.message);
 }
 
 export function GET() {

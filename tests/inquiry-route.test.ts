@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test, { afterEach, beforeEach } from "node:test";
+import nodemailer, { type SendMailOptions } from "nodemailer";
 
 import { createUploadReceipt } from "../lib/inquiry-receipts";
 
@@ -142,6 +143,69 @@ test("degraded no-file fallback does not accept attachments", async () => {
   assert.equal(result.status, 503);
   assert.equal((await result.json()).ok, false);
   assert.equal(emailCalls, 0);
+});
+
+test("separate inquiries have unique email references and a retry retains its reference", async () => {
+  const { POST } = await import("../app/api/inquiry/route");
+  idempotencyMode = "unavailable";
+  const firstBody = validBody({ idempotencyKey: "123e4567-e89b-12d3-a456-426614174031" });
+  const secondBody = validBody({ idempotencyKey: "123e4567-e89b-12d3-a456-426614174032" });
+  const submit = (body: ReturnType<typeof validBody>, ip: string) => POST(new Request("https://site.test/api/inquiry", {
+    method: "POST", headers: { "x-forwarded-for": ip }, body: JSON.stringify(body)
+  }));
+  const first = await submit(firstBody, "10.0.0.31");
+  const firstResult = await first.json();
+  const firstSubject = new URLSearchParams(lastEmailPayload).get("_subject") || "";
+  assert.equal(first.status, 200);
+  assert.match(firstResult.reference, /^AM-[A-F0-9]{12}$/);
+  assert.ok(firstSubject.includes(firstResult.reference));
+  assert.ok(new URLSearchParams(lastEmailPayload).get("body")?.includes(firstResult.reference));
+
+  const second = await submit(secondBody, "10.0.0.32");
+  const secondResult = await second.json();
+  const secondSubject = new URLSearchParams(lastEmailPayload).get("_subject") || "";
+  assert.notEqual(firstResult.reference, secondResult.reference);
+  assert.notEqual(firstSubject, secondSubject);
+  const retry = await submit(firstBody, "10.0.0.33");
+  assert.equal((await retry.json()).reference, firstResult.reference);
+  assert.equal(emailCalls, 2, "a retry must not send another email");
+});
+
+test("SMTP keeps the buyer as Reply-To and logs a traceable acceptance without buyer details", async (t) => {
+  const oldPassword = process.env.SMTP_PASS;
+  process.env.SMTP_PASS = "local-smtp-test-only";
+  t.after(() => {
+    if (oldPassword === undefined) delete process.env.SMTP_PASS;
+    else process.env.SMTP_PASS = oldPassword;
+  });
+  let sent: SendMailOptions | undefined;
+  const logs: Array<{ message: string; detail: unknown }> = [];
+  t.mock.method(console, "info", (message: string, detail: unknown) => logs.push({ message, detail }));
+  t.mock.method(nodemailer, "createTransport", () => ({
+    sendMail: async (mail: SendMailOptions) => {
+      sent = mail;
+      return { accepted: ["ding@atelier-marble.ltd"], rejected: [], messageId: mail.messageId, response: "250 queued as local-trace-test" };
+    },
+    close: () => {}
+  }) as never);
+  const { POST } = await import("../app/api/inquiry/route");
+  idempotencyMode = "unavailable";
+  const result = await POST(new Request("https://site.test/api/inquiry", {
+    method: "POST", headers: { "x-forwarded-for": "10.0.0.34" },
+    body: JSON.stringify(validBody({ idempotencyKey: "123e4567-e89b-12d3-a456-426614174034" }))
+  }));
+  const { reference } = await result.json();
+  assert.equal(result.status, 200);
+  assert.equal(sent?.to, "ding@atelier-marble.ltd");
+  assert.equal(sent?.replyTo, "buyer@example.com");
+  assert.ok(String(sent?.subject).includes(reference));
+  assert.ok(String(sent?.messageId).includes(reference));
+  assert.ok(String(sent?.text).includes(reference));
+  const logText = JSON.stringify(logs);
+  assert.match(logText, /SMTP accepted/);
+  assert.ok(logText.includes(reference));
+  assert.match(logText, /recipientMatchesBusinessInbox.*true/);
+  assert.doesNotMatch(logText, /buyer@example\.com|Need a quotation/);
 });
 
 test("inquiry email retains the first landing path separately from the source page", async () => {
