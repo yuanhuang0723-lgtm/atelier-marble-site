@@ -136,7 +136,7 @@ export default function HomePage() {
               </ul>
               <div className="hero-architectural__actions !justify-start">
                 <Link className="btn-luxury-inverse border-white bg-white text-ink hover:bg-transparent hover:text-white" href={homeInquiryHref}>
-                  Upload CAD / BOQ for Quote
+                  Send a Project Inquiry
                 </Link>
                 <Link className="btn-luxury-inverse" href="#home-workshop-walkthrough">
                   Watch Workshop Videos

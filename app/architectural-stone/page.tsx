@@ -208,7 +208,7 @@ export default function ArchitecturalStonePage() {
           <p className="eyebrow-luxury">Project review</p>
           <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a scope to coordinate?</h2>
           <p className="body-luxury mx-auto mt-4 max-w-2xl">Share what you already have. We can begin with the application, approximate quantity, material direction, and destination.</p>
-          <Link className="btn-luxury-fill mt-7" href="/contact">Upload CAD / BOQ for Quote</Link>
+          <Link className="btn-luxury-fill mt-7" href="/contact">Send a Project Inquiry</Link>
         </section>
       </main>
     </PageShell>

@@ -94,7 +94,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex flex-wrap gap-4 border-t border-ink/10 pt-8">
-              <Link className="btn-luxury-fill" href="/contact">Upload CAD / BOQ for Quote</Link>
+              <Link className="btn-luxury-fill" href="/contact">Send a Project Inquiry</Link>
               <Link className="btn-luxury" href="/factory">Review Workshop Capability</Link>
               <a className="btn-luxury" href="/atelier-marble-supplier-profile.pdf" download>Download Supplier Profile (PDF)</a>
               <Link className="text-cta-luxury self-center" href="/custom-stone-fabrication-china">Review cut-to-size fabrication scope</Link>
