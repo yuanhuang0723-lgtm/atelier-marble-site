@@ -103,9 +103,9 @@ export default function HomePage() {
       <main>
         <section className="hero-architectural hero-architectural--home relative min-h-[calc(100svh-4rem)]">
           <Image
-            className="object-cover object-center"
-            src="/assets/factory/factory-hero-workshop.webp"
-            alt="Interior of a stone fabrication workshop with machines and workers."
+            className="object-cover object-[35%_center] md:object-center"
+            src="/assets/factory/home-workshop-panorama-20261024.webp"
+            alt="Stone processing workshop with machinery, overhead cranes, and stone slabs."
             title="Stone fabrication workshop"
             fill
             preload
