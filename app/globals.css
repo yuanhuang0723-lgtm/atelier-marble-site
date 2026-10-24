@@ -4,13 +4,13 @@
 
 :root {
   color-scheme: light;
-  --color-paper: #f7f1e8;
-  --color-surface: #fbf7f1;
+  --color-paper: #ffffff;
+  --color-surface: #ffffff;
   --color-ink: #1f1b18;
   --color-muted: rgba(31, 27, 24, 0.66);
   --color-accent: #a46d33;
   --color-accent-soft: rgba(164, 109, 51, 0.16);
-  --color-border: rgba(31, 27, 24, 0.1);
+  --color-border: rgba(31, 31, 31, 0.12);
   --shadow-card: 0 18px 48px rgba(31, 27, 24, 0.08);
 }
 
@@ -93,7 +93,7 @@ video {
 
 @layer components {
   .site-nav {
-    @apply border-b border-[rgba(255,255,255,0.12)] bg-[rgba(247,241,232,0.84)] backdrop-blur-2xl;
+    @apply border-b border-[rgba(31,31,31,0.08)] bg-white backdrop-blur-2xl;
   }
 
   .site-nav__inner {

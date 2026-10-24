@@ -7,8 +7,8 @@ const config: Config = {
       colors: {
         ink: "#1d1b18",
         charcoal: "#24211e",
-        paper: "#f8f5ee",
-        stone: "#eee8dd",
+        paper: "#ffffff",
+        stone: "#ffffff",
         bronze: "#8a6849"
       },
       fontFamily: {
