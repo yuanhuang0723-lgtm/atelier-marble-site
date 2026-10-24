@@ -23,6 +23,30 @@ export const metadata: Metadata = {
   }
 };
 
+const materialComparisonRows = [
+  {
+    family: "Natural Marble",
+    href: "/materials/marble",
+    applications: "Hotel bathroom vanity tops, bookmatched feature walls, lobby flooring, integrated basins, and custom furniture.",
+    finishAndCare: "Polished, honed, or brushed. Calcium-carbonate stone sensitive to acids (etching); match finish and sealer schedule to the room's cleaning plan.",
+    quotationInputs: "Variety or reference photo, vein-cut vs cross-cut or bookmatch layout direction, room schedule, cut-out templates, and thickness."
+  },
+  {
+    family: "Natural Granite",
+    href: "/materials/granite",
+    applications: "High-traffic commercial flooring, exterior paving and steps, food-service counters, reception tops, and repeatable hospitality packages.",
+    finishAndCare: "Polished, honed, leathered, flamed, or bush-hammered. Select textured finishes where wet or exterior zones require added surface grip.",
+    quotationInputs: "Grain and shade reference, finish by zone, module sizes or counter dimensions, stair nosing details, and multi-crate batch requirements."
+  },
+  {
+    family: "Natural Quartzite",
+    href: "/materials/quartzite",
+    applications: "Kitchen countertops, waterfall islands, bar tops, hotel vanity surfaces, and statement architectural panels.",
+    finishAndCare: "Polished, honed, or leathered natural metamorphic stone (distinct from resin-bound engineered quartz). Confirm lot hardness and cutting details.",
+    quotationInputs: "Confirmed slab lot, countertop plan, sink and cooktop templates, mitered or profiled edges, and vein alignment across seams."
+  }
+];
+
 const materialFaqs = [
   {
     question: "What natural stone materials can be reviewed?",
@@ -40,6 +64,7 @@ const materialFaqs = [
 
 export default function MaterialsPage() {
   const materials = getAssets("materials");
+  const contactHref = "/contact?sourcePage=%2Fmaterials&projectType=Commercial%20Stone%20Projects";
   const applicationRoutes = [
     { title: "Countertops & Vanity", href: "/countertops", image: "/materials/featured-covers/kitchen-countertop.webp", alt: "Stone countertop and vanity application reference image" },
     { title: "Hotel & Hospitality", href: "/projects/hotel-stone-supply", image: "/materials/categories/hotel-projects.webp", alt: "Illustrative hotel interior with stone flooring and wall panels" },
@@ -55,13 +80,16 @@ export default function MaterialsPage() {
           { "@type": "WebPage", name: "Quartzite Materials", url: absoluteUrl("/materials/quartzite") },
           { "@type": "WebPage", name: "Granite Materials", url: absoluteUrl("/materials/granite") }
         ] }} />
-
-
         <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: materialFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }} />
         <PageHero
           eyebrow="Material reference library"
           title="Natural stone materials for hotel and commercial projects."
           description="Browse the current material reference archive by slab character, visual tone, and intended application. Share a reference image with your project brief so the fabrication review starts from the same visual direction."
+          cta={{
+            href: contactHref,
+            label: "Send a Project Inquiry",
+            note: "Start with a short brief or reference photo; CAD drawings and BOQ schedules can follow."
+          }}
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
@@ -69,7 +97,8 @@ export default function MaterialsPage() {
               <h2 className="heading-lg section-intro__title">Material references for project decisions.</h2>
               <p className="body-luxury section-intro__copy">
                 The archive is a visual starting point, not a promise of stock or a substitute for a current slab
-                check. Ask us to confirm availability, thickness, finish, matching, and fabrication suitability.
+                check. From Yunfu, China, our own processing and partner coordination support lot verification,
+                thickness and finish review, dry-lay matching, and cut-to-size fabrication.
               </p>
             </div>
             <div className="mb-12 grid gap-4 md:grid-cols-3">
@@ -98,6 +127,39 @@ export default function MaterialsPage() {
                 </Link>
               ))}
             </div>
+            <div className="mb-12 rounded-[14px] border border-ink/10 bg-stone p-6 md:p-8">
+              <p className="eyebrow-luxury">Specification comparison</p>
+              <h2 className="mt-3 font-title text-2xl text-ink md:text-3xl">Compare marble, granite, and quartzite by project scope.</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-ink/70">
+                Each natural stone family carries different veining, surface finish options, and maintenance considerations. Confirm the actual slab lot and project drawings before approving production.
+              </p>
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-7">
+                  <thead>
+                    <tr className="border-b border-ink/20">
+                      <th scope="col" className="w-[18%] py-3 pr-4 font-medium text-ink">Stone family</th>
+                      <th scope="col" className="w-[28%] py-3 pr-4 font-medium text-ink">Common project scopes</th>
+                      <th scope="col" className="w-[27%] py-3 pr-4 font-medium text-ink">Finish &amp; care notes</th>
+                      <th scope="col" className="w-[27%] py-3 font-medium text-ink">What to send for quotation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {materialComparisonRows.map((row) => (
+                      <tr key={row.family} className="border-b border-ink/10 last:border-0">
+                        <th scope="row" className="py-4 pr-4 align-top font-medium text-ink">
+                          <Link className="underline decoration-ink/30 underline-offset-4 hover:decoration-ink" href={row.href}>
+                            {row.family}
+                          </Link>
+                        </th>
+                        <td className="py-4 pr-4 align-top text-ink/70">{row.applications}</td>
+                        <td className="py-4 pr-4 align-top text-ink/70">{row.finishAndCare}</td>
+                        <td className="py-4 align-top text-ink/70">{row.quotationInputs}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
             <div className="mb-12 grid gap-5 md:grid-cols-3">
               {applicationRoutes.map((route) => (
                 <Link key={route.href} href={route.href} className="group overflow-hidden rounded-[14px] border border-ink/10 bg-stone p-2">
@@ -118,7 +180,7 @@ export default function MaterialsPage() {
                     <p className="eyebrow-luxury mb-3">Slab reference {String(index + 1).padStart(2, "0")}</p>
                     <h3 className="heading-md card-title">{displayTitle}</h3>
                     <p className="mt-4 text-sm font-light leading-7 text-ink/60">Visual reference for tone, movement, and surface character. Confirm the current material name and technical details before production.</p>
-                    <Link className="text-cta-luxury mt-5" href="/contact">Request material review</Link>
+                    <Link className="text-cta-luxury mt-5" href={contactHref}>Request material review</Link>
                   </div>
                 </article>
                 );
@@ -126,17 +188,26 @@ export default function MaterialsPage() {
             </div>
           </div>
           <div className="container-luxury mt-16 flex flex-wrap gap-x-8 gap-y-3">
-            <Link className="text-cta-luxury" href="/contact">
+            <Link className="text-cta-luxury" href={contactHref}>
               Get Material Suggestion
             </Link>
             <Link className="text-cta-luxury" href="/countertops/vanity-tops">
               Hotel Vanity Top Slabs
             </Link>
+            <Link className="text-cta-luxury" href="/countertops/marble-countertops">
+              Marble Countertop Fabrication
+            </Link>
+            <Link className="text-cta-luxury" href="/architectural-stone/flooring">
+              Architectural Stone Flooring
+            </Link>
             <Link className="text-cta-luxury" href="/custom-stone-fabrication-china">
               Cut-to-Size Fabrication
             </Link>
-            <Link className="text-cta-luxury" href="/projects">
-              See Stone Project Uses
+            <Link className="text-cta-luxury" href="/projects/hotel-vanity-tops-fabrication-case">
+              Vanity Component Review Case
+            </Link>
+            <Link className="text-cta-luxury" href="/projects/canada-shower-niches-2025">
+              Canada Shower Niches Case
             </Link>
             <Link className="text-cta-luxury" href="/materials/marble">
               Review Marble Materials
@@ -146,6 +217,9 @@ export default function MaterialsPage() {
             </Link>
             <Link className="text-cta-luxury" href="/materials/granite">
               Review Granite Materials
+            </Link>
+            <Link className="text-cta-luxury" href="/resources">
+              Stone Buyer Guides
             </Link>
           </div>
         </section>
