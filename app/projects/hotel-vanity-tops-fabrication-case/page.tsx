@@ -16,6 +16,49 @@ export const metadata: Metadata = {
   }
 };
 
+const vanityReviewSections = [
+  {
+    heading: "Link guestroom schedules to individual vanity drawing revisions",
+    summary: "Keep room types, mirrored bathroom layouts, and spare units tied to one controlled drawing list.",
+    paragraphs: [
+      "A hotel bathroom countertop package rarely consists of a single uniform top. Standard king, double queen, accessible (ADA), and suite bathrooms each carry distinct lengths, splash heights, and basin offsets, often paired with left-hand and right-hand mirrored configurations across the corridor.",
+      "Before releasing a quotation for fabrication, list every vanity type by piece mark, drawing number, revision date, measurement unit, and quantity. Separating confirmed room types from provisional layouts prevents a late plumbing or cabinetry adjustment in one room category from disrupting the rest of the schedule."
+    ]
+  },
+  {
+    heading: "Verify basin cut-outs, faucet holes, and undermount support details",
+    summary: "Match physical sink templates or CAD outlines to centerlines and cabinet clearance.",
+    paragraphs: [
+      "Workshop component references show how rectangular or oval undermount cut-outs, deck-mounted faucet holes, and front apron returns are prepared on individual tops. For actual production, a photograph cannot replace a physical basin template or a dimensioned CAD file from the sanitaryware supplier.",
+      "Confirm the distance from the front finished edge to the basin centerline, the faucet spread, the reveal style (positive, zero, or slight overhang), and where mounting clips or support rails sit relative to the vanity frame. Record who signs off on the first-piece template check before repeat cutting begins."
+    ]
+  },
+  {
+    heading: "Coordinate backsplashes, side splashes, and mitered front aprons",
+    summary: "Define which edges are polished or mitered and how wall returns meet bathroom tile.",
+    paragraphs: [
+      "Hotel vanity scopes frequently combine the main horizontal counter with a rear upstand, one or two side splashes, a mitered front drop apron, and an under-counter pipe shield or shelf. Show the thickness and finished edge treatment for each sub-piece on the section drawing rather than assuming a single profile applies to all edges.",
+      "Clarify whether splashes are shipped loose for site fitting after wall tiling is complete, and note which faces remain visible at open vanity ends versus alcoves bounded by two walls."
+    ]
+  },
+  {
+    heading: "Align stone lot selection, finish expectations, and bathroom care",
+    summary: "Confirm slab lot shade range, surface finish, and housekeeping compatibility before approval.",
+    paragraphs: [
+      "Natural marble, quartzite, and granite vary in background shade, veining, and chemical sensitivity. If guestroom vanities must stay within a specific tone or movement range across a floor or phase, agree on the approved control sample or current slab lot photos before cutting.",
+      "Discuss whether a polished or honed finish suits the hotel operator's housekeeping protocol, and review sealing and acid-etching considerations for calcium-carbonate stones such as marble prior to final specification sign-off."
+    ]
+  },
+  {
+    heading: "Set pre-packing inspection points and room-grouped crate labels",
+    summary: "Agree dimensional checks, dry-lay photo records, and crate markings matched to site unloading.",
+    paragraphs: [
+      "Pre-shipment verification can cover overall length and depth, cut-out placement, edge polishing, apron joints, surface finish, and piece-mark labels as specified in the written quotation. Define which photo records or measurement sheets are required before crates are sealed.",
+      "Group vanity tops, splashes, and matching hardware spaces by floor, wing, or room-type sequence on the packing list. Clear exterior crate markings help site contractors move heavy stone bundles directly to the designated staging floor."
+    ]
+  }
+];
+
 export default function HotelVanityFabricationCasePage() {
   return (
     <CommercialLandingPage
@@ -29,7 +72,7 @@ export default function HotelVanityFabricationCasePage() {
       imageFit="contain"
       imageCaption="Image-archive product reference. Confirm material, dimensions, and project-specific evidence separately."
       overviewHeading="From a component reference to a reviewable project brief."
-      overviewDescription="Match each vanity type to its drawing revision, dimensions, quantity, basin template, and selected material. Project-specific approvals and inspection records should be agreed before production is released."
+      overviewDescription="From Yunfu, China, our own processing and partner coordination support hotel vanity packages. Match each vanity type to its drawing revision, dimensions, quantity, basin template, and selected material. Project-specific approvals and inspection records should be agreed before production is released."
       bullets={[
         "Finished length, depth, thickness, units, and exposed edges",
         "Basin and faucet templates with opening locations and support details",
@@ -55,9 +98,20 @@ export default function HotelVanityFabricationCasePage() {
         { component: "Material and finish", inputs: "Selected lot or sample, requested thickness, visible faces, matching expectations, and care requirements." },
         { component: "Inspection and packing", inputs: "Agreed checks, approval responsibilities, piece labels, protective packing, and receiving destination." }
       ]}
+      contentSectionTitle="Checklist for reviewing hotel vanity shop drawings and components."
+      contentSectionLayout="disclosure"
+      contentSections={vanityReviewSections}
+      purchaseInfo={{
+        materialOptions: "Marble, granite, quartzite, and other approved natural stones. Confirm the selected lot, thickness, finish, and matching range before approval.",
+        customCapability: "Coordinate single-piece mock-up tops and multi-room hotel vanity schedules with basin cut-outs, mitered aprons, splashes, and room-labeled export crates."
+      }}
+      relatedLink={{ label: "Hotel bathroom countertops and vanity tops", href: "/countertops/vanity-tops" }}
       relatedLinks={[
-        { label: "Hotel bathroom countertops and vanity tops", href: "/countertops/vanity-tops" },
-        { label: "Review marble material choices", href: "/materials/marble" },
+        { label: "Review marble countertop fabrication & cutouts", href: "/countertops/marble-countertops" },
+        { label: "Review cut-to-size marble material selection", href: "/materials/marble" },
+        { label: "Review granite materials for commercial projects", href: "/materials/granite" },
+        { label: "Review quartzite countertop fabrication", href: "/materials/quartzite" },
+        { label: "See Canada custom stone shower niches reference", href: "/projects/canada-shower-niches-2025" },
         { label: "Watch the workshop walkthrough", href: "/#home-workshop-walkthrough" }
       ]}
       faqs={[
