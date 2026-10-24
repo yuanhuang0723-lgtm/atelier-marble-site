@@ -241,7 +241,7 @@ video {
   }
 
   .home-side-drawer__summary {
-    @apply list-none cursor-pointer select-none rounded-full border border-[rgba(31,27,24,0.12)] bg-[rgba(250,245,236,0.98)] px-4 py-3 font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-ink)] shadow-[0_14px_30px_rgba(31,27,24,0.12)] transition hover:bg-[var(--color-paper)];
+    @apply list-none cursor-pointer select-none rounded-full border border-[rgba(31,27,24,0.12)] bg-[rgba(255,255,255,0.98)] px-4 py-3 font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-ink)] shadow-[0_14px_30px_rgba(31,27,24,0.12)] transition hover:bg-[var(--color-paper)];
     min-width: 9.5rem;
   }
 
@@ -455,7 +455,7 @@ video {
   }
 
   .gallery-fit-contain .project-card__media {
-    background: #f7f2ea;
+    background: #ffffff;
   }
 
   .gallery-fit-contain .project-card__media > img {
@@ -607,7 +607,7 @@ video {
   .guide-card__media,
   .guide-side-card__media {
     overflow: hidden;
-    background: #f4efe6;
+    background: #ffffff;
   }
 
   .guide-hero-card__media {
@@ -703,7 +703,7 @@ video {
   }
 
   .guide-card--soft {
-    background: #f6f1e7;
+    background: #ffffff;
   }
 
   .guide-side-card {
@@ -744,7 +744,7 @@ video {
     overflow: hidden;
     border-radius: 999px;
     flex-shrink: 0;
-    background: #efe8dd;
+    background: #ffffff;
   }
 
   @media (max-width: 1023px) {
@@ -1336,7 +1336,7 @@ video {
     padding: 0;
     aspect-ratio: auto;
     min-height: clamp(24rem, 34vw, 44rem);
-    background: #f3ede4;
+    background: #ffffff;
   }
 
   .why-choose-us__media > img {

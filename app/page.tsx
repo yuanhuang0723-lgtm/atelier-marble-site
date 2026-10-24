@@ -211,7 +211,7 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-              <div className="card-luxury why-choose-us__media overflow-hidden bg-[#f3ede4] p-0">
+              <div className="card-luxury why-choose-us__media overflow-hidden bg-white p-0">
                 <img
                   className="block h-full w-full object-cover object-center"
                   src="/assets/why-choose-us/why-choose-us.webp"
