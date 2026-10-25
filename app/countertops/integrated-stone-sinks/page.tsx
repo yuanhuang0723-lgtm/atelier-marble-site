@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 const contentSections = [
   {
     heading: "Define what integrated means for this project",
+    summary: "Clarify whether the bowl is carved into the top, miter-assembled, or site-joined.",
     paragraphs: [
       "For an integrated stone sink, the vanity top and bowl cannot be priced as unrelated pieces. Their shared dimensions, usable deck, drain position, edge, wall return, and cabinet support determine how the set fits together. Put these items on the same plan and section view, or mark them on coordinated drawings, before comparing quotations.",
       "The word integrated can describe different product concepts. State whether you expect a bowl formed within the stone top, a basin joined to a separate counter, or a sink-and-counter package assembled on site. Do not assume the word defines one construction method. The supplier, designer, cabinet maker, and plumber should agree which party provides each component."
@@ -25,6 +26,7 @@ const contentSections = [
   },
   {
     heading: "Dimension the basin and the surrounding deck",
+    summary: "Show inner bowl width, length, depth, and faucet centerlines on coordinated plan and section drawings.",
     paragraphs: [
       "Show the outside countertop size, finished bowl opening, interior bowl width and length, depth, corner radii, wall clearance, and position relative to the front edge. Indicate whether dimensions are finished sizes or cabinet-opening sizes. A plan view helps establish location; a section view is needed to show depth, wall thickness, deck height, and any change in level.",
       "For paired basins or repeated vanities, add centerlines and dimensions from a fixed datum such as a wall or cabinet end. Mark the distance between bowls, faucet centerlines, and usable counter space. If the design must align with mirror lights, drawers, doors, or tile joints, include those references instead of asking the fabricator to infer them from a room photograph."
@@ -32,6 +34,7 @@ const contentSections = [
   },
   {
     heading: "Coordinate the drain, faucet, and plumbing envelope",
+    summary: "Confirm waste fitting templates, drain pitch, and under-cabinet plumbing clearance.",
     paragraphs: [
       "Identify the drain opening, waste fitting, overflow requirement if any, faucet holes, tap type, and the location of the plumbing behind or below the cabinet. Provide the fitting template or manufacturer drawing when it is available. The sink cut-out alone does not show whether the trap, supply lines, drawer boxes, or cabinet rails will occupy the same space.",
       "Confirm the intended bowl slope and the relationship between the low point and drain with the project designer or plumbing professional. Show the direction of water flow on the section drawing. Do not rely on a rendered image to establish slope, drainage performance, or code compliance; these depend on the approved geometry, fitting, installation, and local requirements."
@@ -39,6 +42,7 @@ const contentSections = [
   },
   {
     heading: "Select material and finish for the intended use",
+    summary: "Review marble, granite, or quartzite lot character, finish, and wet-area care requirements.",
     paragraphs: [
       "Name the preferred stone or provide a reference sample, then confirm the current lot, thickness, visible face, veining direction, and finish before the final scope is accepted. Natural stone varies from piece to piece. If multiple basins or rooms need a coordinated appearance, describe which surfaces must be reviewed together and who approves the selected material.",
       "A bathroom surface is exposed to water, cleaning products, cosmetics, and daily handling. Discuss the proposed finish and maintenance expectations with the stone supplier and project team. Do not assume every stone, surface treatment, or bowl geometry is suitable for every wet-area use. Record any care limitations and confirm that the selected material meets the project specification."
@@ -46,6 +50,7 @@ const contentSections = [
   },
   {
     heading: "Resolve the countertop, cabinet, and wall interface",
+    summary: "Define support brackets, wall returns, backsplashes, and site measurement hand-offs.",
     paragraphs: [
       "Show the cabinet width, support rails, finished wall position, backsplash or upstand, side returns, overhang, and any joint or seam. Mark the exposed edges and state which ones are finished. If the top is supported by a frame or brackets, the responsible designer or installer should provide the support plan and confirm that the proposed stone dimensions and loads are compatible.",
       "Separate fabrication dimensions from site conditions that still need measurement. Walls may not be square, cabinets may vary, and field tolerances can affect the final fit. Agree which dimensions are fixed, who checks the site, how deviations are reported, and whether the final production drawing needs an approval before the stone is cut."
@@ -53,6 +58,7 @@ const contentSections = [
   },
   {
     heading: "Plan hotel and multi-unit packages by room type",
+    summary: "Group standard, mirrored, and exception bathroom units by room type and floor.",
     paragraphs: [
       "For hospitality work, group the schedule by room type, floor, bathroom layout, or other stable project identifier. List each top and basin separately when sizes, faucet positions, or finishes differ. Repeated units benefit from a common datum, consistent drawing revisions, and a clear count of standard pieces, mirrored pieces, and exceptions.",
       "If the project uses several production batches, define how material selection, visible face, finish, and labeling are to remain consistent across them. Identify any approved spare units and where they belong in the schedule. These are coordination requirements to confirm with the project team; a page or rendering alone cannot establish batch capacity or guarantee a match between natural-stone pieces."
@@ -60,6 +66,7 @@ const contentSections = [
   },
   {
     heading: "Prepare a quote package that can be reviewed",
+    summary: "Include plans, sections, fixture templates, quantities, and destination in the initial brief.",
     paragraphs: [
       "A useful request includes a plan and section, finished dimensions, quantities, material direction, finish, basin and drain details, faucet template, edge profile, backsplash, support condition, and destination. Add a room schedule or BOQ for repeat work. Identify the drawing revision and list any open decisions so a preliminary estimate is not confused with production approval.",
       "If a complete drawing is not ready, start with approximate dimensions, a reference image, intended application, and target quantity. Label what is confirmed and what remains provisional. The first review can identify missing information, but a usable production quotation depends on the final material, geometry, finish, quantity, packing scope, and delivery terms being agreed."
@@ -67,6 +74,7 @@ const contentSections = [
   },
   {
     heading: "Agree approvals and inspection evidence before production",
+    summary: "Specify first-piece review, dimensional checks, and photo documentation before packing.",
     paragraphs: [
       "Before an order is released, identify who approves the final drawing, material lot, visible surfaces, edge details, openings, and finish. Record the approved revision and how later changes will be handled. If a sample, mock-up, or first-piece review is required, state that in the project documents and confirm whether it is feasible, who pays for it, and what decision it is intended to resolve.",
       "Define the checks that matter for the order, such as overall dimensions, basin position, drain opening, edge completion, finish, visible stone character, and piece identification. Ask which checks can be documented and at what stage. Do not assume a certification, machine capability, inspection record, or pass result unless it is supplied for the actual project."
@@ -74,6 +82,7 @@ const contentSections = [
   },
   {
     heading: "Specify packing and delivery responsibilities",
+    summary: "Protect finished basin edges and group crates by room or floor for destination receiving.",
     paragraphs: [
       "Stone basins and tops have edges, openings, and finished surfaces that need protection during handling. List the pieces that must travel together, how they should be identified, which faces need protection, and whether the packing must follow room or floor groupings. Ask the supplier to state what packing is included in the quotation and what must be arranged by the buyer or forwarder.",
       "Confirm destination, delivery term, hand-off point, labeling language, and any carrier or site restrictions before pricing is finalized. If photographs or packing records are required, agree on the timing and expected contents in advance. The page does not establish a specific crate design, route, freight cost, or delivery time; these are project details to confirm in writing."
@@ -85,13 +94,18 @@ export default function IntegratedStoneSinksPage() {
   return (
     <CommercialLandingPage
       eyebrow="Integrated stone sinks"
+      heroCtaLabel="Send a Project Inquiry"
+      primaryCtaLabel="Send a Project Inquiry"
       title="Integrated stone sinks and vanity basins."
       description="For buyers who need the basin, countertop, cut-outs, edges, and surrounding stone details reviewed together before fabrication and packing."
+      overviewHeading="Coordinate integrated basin geometry, drainage, and countertop dimensions."
+      overviewDescription="Our own processing and partner coordination in Yunfu, China support custom stone basins and vanity tops. Start with a plan, section, or rough dimensions; drain fittings, slab lot selection, and crate protection are agreed before fabrication."
       image="/assets/vanity-cabinet/hero.webp"
       heroBackgroundImage={null}
       imageAlt="Illustrative 3D bathroom vanity rendering with a stone countertop and basin; not a completed project photograph."
       imageCaption="Illustrative design rendering only. It does not document a specific Atelier Marble sink, factory process, or completed project. Confirm actual basin geometry and finish against approved drawings."
       contentSectionTitle="Plan the basin and work surface as one project scope."
+      contentSectionLayout="disclosure"
       bullets={[
         "Coordinate basin dimensions with the surrounding vanity top",
         "Review edge, drainage, surface, and installation details together",
@@ -112,6 +126,14 @@ export default function IntegratedStoneSinksPage() {
         { title: "Repeat units", items: ["Room type, floor, quantity, mirrored pieces, and exceptions", "Drawing revision and approval owner for each unit group", "Batch identification, spares, and packing labels if required"] },
         { title: "Quote and delivery", items: ["Drawings or provisional dimensions, BOQ, and quantity schedule", "Destination, delivery term, packing scope, and site restrictions", "Target timing and any required sample or first-piece review"] }
       ]}
+      relatedLink={{ label: "Review hotel bathroom countertops and vanity tops", href: "/countertops/vanity-tops" }}
+      relatedLinks={[
+        { label: "Review marble countertop fabrication", href: "/countertops/marble-countertops" },
+        { label: "Review hotel vanity top drawing & component case", href: "/projects/hotel-vanity-tops-fabrication-case" },
+        { label: "Review cut-to-size marble materials", href: "/materials/marble" },
+        { label: "Review commercial granite materials", href: "/materials/granite" },
+        { label: "Review quartzite countertop materials", href: "/materials/quartzite" }
+      ]}
       faqs={[
         { question: "Can the basin and vanity top be reviewed together?", answer: "Yes. Provide the basin dimensions, countertop outline, cut-outs, edges, drain and faucet details, support condition, and wall interface as one scope for review." },
         { question: "What does integrated mean in a quotation?", answer: "It can refer to different construction arrangements. Specify whether the bowl is formed in the top, joined to a separate counter, or assembled on site, then confirm responsibility with the project team." },
@@ -124,7 +146,6 @@ export default function IntegratedStoneSinksPage() {
         materialOptions: "Stone choice depends on basin geometry and intended use. Confirm lot, thickness, surface finish, and maintenance needs.",
         customCapability: "Plan basin geometry, drain, faucet openings, edges, finish, and the countertop interface from drawings."
       }}
-
       metadata={metadata}
     />
   );

@@ -110,6 +110,8 @@ const faqs = [
 ];
 
 export default function ArchitecturalStonePage() {
+  const contactHref = "/contact?sourcePage=%2Farchitectural-stone&projectType=Commercial%20Stone%20Projects";
+
   return (
     <PageShell>
       <main>
@@ -120,6 +122,11 @@ export default function ArchitecturalStonePage() {
           description="For buyers comparing architectural stone suppliers, review applications by project use, then send your drawings, BOQ, dimensions, or reference images for a practical fabrication and quotation review."
           backgroundImage="/materials/categories/hotel-projects.webp"
           backgroundImageAlt="Illustrative hotel interior concept with stone flooring, wall panels, and lounge seating"
+          cta={{
+            href: contactHref,
+            label: "Send a Project Inquiry",
+            note: "Start with elevations, floor plans, or a short project brief; detailed schedules can follow."
+          }}
         />
         <section className="section-luxury bg-paper">
           <div className="container-luxury">
@@ -194,11 +201,13 @@ export default function ArchitecturalStonePage() {
         </section>
         <section className="section-luxury-compact bg-stone border-t border-ink/10">
           <div className="container-luxury">
-            <p className="eyebrow-luxury mb-4 text-center">Related architectural stone guides & project cases</p>
+            <p className="eyebrow-luxury mb-4 text-center">Related architectural stone guides &amp; project cases</p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-ink/75">
               <Link className="hover:text-ink hover:underline" href="/architectural-stone/wall-cladding">Wall Cladding Fabrication &rarr;</Link>
               <Link className="hover:text-ink hover:underline" href="/architectural-stone/flooring">Architectural Flooring Systems &rarr;</Link>
               <Link className="hover:text-ink hover:underline" href="/projects/commercial-stone">Commercial Stone References &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/materials/marble">Cut-to-Size Marble Materials &rarr;</Link>
+              <Link className="hover:text-ink hover:underline" href="/materials/granite">Commercial Granite Materials &rarr;</Link>
               <Link className="hover:text-ink hover:underline" href="/guides/hotel-lobby-case-study">Hotel Lobby Planning Guide &rarr;</Link>
               <Link className="hover:text-ink hover:underline" href="/projects/canada-shower-niches-2025">Canada Shower Niches Case &rarr;</Link>
             </div>
@@ -208,7 +217,7 @@ export default function ArchitecturalStonePage() {
           <p className="eyebrow-luxury">Project review</p>
           <h2 className="heading-lg mx-auto mt-4 max-w-3xl">Have a scope to coordinate?</h2>
           <p className="body-luxury mx-auto mt-4 max-w-2xl">Share what you already have. We can begin with the application, approximate quantity, material direction, and destination.</p>
-          <Link className="btn-luxury-fill mt-7" href="/contact">Send a Project Inquiry</Link>
+          <Link className="btn-luxury-fill mt-7" href={contactHref}>Send a Project Inquiry</Link>
         </section>
       </main>
     </PageShell>

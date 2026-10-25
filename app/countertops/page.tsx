@@ -84,6 +84,8 @@ export default function CountertopsPage() {
       primaryCtaLabel="Request Countertop Pricing"
       title="Custom stone countertops for kitchens, hotels, and commercial interiors."
       description="Coordinate natural stone countertops from dimensions or drawings, including islands, hotel vanity packages, commercial counters, cut-outs, finished edges, and export packing."
+      overviewHeading="Custom stone countertop scope for kitchens, hotels, and commercial spaces."
+      overviewDescription="Define worktop dimensions, sink and appliance cutouts, edge profiles, and crate schedules before production."
       contentSectionTitle="Countertop planning and fabrication guide."
       contentSectionLayout="disclosure"
       contentSections={countertopContentSections}
@@ -129,6 +131,8 @@ export default function CountertopsPage() {
       relatedLinks={[
         { label: "Explore marble countertop fabrication", href: "/countertops/marble-countertops" },
         { label: "Explore hotel bathroom vanity tops", href: "/countertops/vanity-tops" },
+        { label: "Explore integrated stone sink basins", href: "/countertops/integrated-stone-sinks" },
+        { label: "Explore marble materials for countertops", href: "/materials/marble" },
         { label: "Review hotel vanity top fabrication case", href: "/projects/hotel-vanity-tops-fabrication-case" },
         { label: "Explore quartzite slab and countertop materials", href: "/materials/quartzite" },
         { label: "Review granite for commercial countertops", href: "/materials/granite" },
