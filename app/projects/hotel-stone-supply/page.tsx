@@ -148,7 +148,8 @@ export default function HotelStoneSupplyPage() {
         { label: "Review hotel stone pricing", href: "/guides/hotel-stone-pricing" },
         { label: "Hotel lobby stone planning guide", href: "/guides/hotel-lobby-case-study" },
         { label: "Integrated stone sink solutions", href: "/countertops/integrated-stone-sinks" },
-        { label: "Review export packing standards", href: "/guides/export-packing-standards" }
+        { label: "Review export packing standards", href: "/guides/export-packing-standards" },
+        { label: "Review hotel bathroom countertops and vanity tops", href: "/countertops/vanity-tops" }
       ]}
       faqTitle="Hotel stone supply details, answered clearly."
       faqs={[

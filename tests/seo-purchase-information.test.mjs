@@ -66,7 +66,7 @@ test("hotel vanity page shows product references before optional project-plannin
     .replace(/\s+/g, " ")
     .trim();
   assert.ok(html.indexOf('id="vanity-products"') < html.indexOf("Project planning, when you need it."));
-  assert.equal((main.match(/<details\b/g) ?? []).length, 7);
+  assert.equal((main.match(/<details\b/g) ?? []).length, 8);
   assert.doesNotMatch(main, /<details\b[^>]*\bopen(?:\s|=|>)/);
   assert.match(html, /stone-vanity-basin-component-2bef9ce2df/);
   assert.match(html, /double-basin-vanity-scene-a24dccf5/);
