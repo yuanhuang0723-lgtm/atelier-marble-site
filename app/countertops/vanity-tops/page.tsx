@@ -19,18 +19,6 @@ export const metadata: Metadata = {
   }
 };
 
-const extendedVanityTopSections = [
-  ...vanityTopContentSections,
-  {
-    heading: "Compare marble, granite, and quartzite for hotel vanity tops",
-    summary: "Select hotel vanity top materials by water absorption, reinforcement needs, lot consistency, and physical sample approvals.",
-    paragraphs: [
-      "When specifying materials for hotel bathroom countertops, project teams should evaluate stone properties against daily guestroom use. Marble offers distinct veining for luxury guest suites, but its absorption rate requires appropriate penetrating sealer treatment confirmed by lot testing. Granite provides lower absorption and high scratch resistance suited for high-turnover guestrooms, while quartzite delivers dense structural performance with elegant aesthetic patterns. Because stone porosity varies between quarry blocks, technical data sheets and sealer compatibility must be verified against current lot reserves before finalizing orders.",
-      "Fabrication requirements also differ across hotel countertops depending on the chosen slab type. Natural fissures in marble may require fiberglass mesh backing or concealed steel rod reinforcement beneath undermount sink cutouts to prevent transit cracking during container shipping. For large-scale hospitality packages, natural shade variation across hundreds of guest bathrooms must be controlled through dry-lay photo inspections and approved reference range samples. Establishing physical sample approvals and defect boundaries early ensures that repeat vanity tops maintain visual harmony across room tiers without delaying scheduled production release."
-    ]
-  }
-];
-
 export default function VanityTopsPage() {
   return (
     <CommercialLandingPage
@@ -64,7 +52,7 @@ export default function VanityTopsPage() {
       }
       contentSectionLayout="disclosure"
       contentSectionTitle="Project planning, when you need it."
-      contentSections={extendedVanityTopSections}
+      contentSections={vanityTopContentSections}
       specificationGroups={[{ title: "Geometry and fabrication", items: ["Overall length, depth, thickness, units, room or type numbers, and drawing revision", "Basin model or template, basin cut-out, faucet holes, splash, upstand, edge profile, and corners", "Support, cabinet opening, joints, reveals, and any site tolerance to be confirmed before fabrication"] }, { title: "Material and finish", items: ["Stone name or approved reference, surface finish, exposed edges, and visible face direction", "Color and vein matching expectations across rooms, batches, and replacement pieces", "Sample approval, acceptable natural variation, care requirements, and application limitations"] }, { title: "Quantity and coordination", items: ["Room types, piece counts, labels, packing groups, spare pieces, and installation sequence", "CAD, BOQ, marked-up photos, and destination details supplied with the inquiry", "Final quotation depends on confirmed scope, material direction, dimensions, and delivery requirements"] }, { title: "Inspection and export", items: ["Inspection points for dimensions, cut-outs, edges, finish, visible surfaces, and piece identification", "Protective packing, crate grouping, loading information, and delivery term confirmed before shipment", "Send the latest drawings and any packaging or labeling instructions with the request"] }]}
       faqs={[
         { question: "Can bathroom vanity tops be made from drawings?", answer: "Yes. Drawings, dimensions, quantities, basin positions, edge details, and finish direction give the team a practical basis for review and quotation." },

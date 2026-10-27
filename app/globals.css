@@ -1148,15 +1148,6 @@ video {
       aspect-ratio: 16 / 11;
     }
 
-    .why-choose-us__media {
-      min-height: 0;
-      aspect-ratio: 4 / 5;
-    }
-
-    .why-choose-us__media > img {
-      object-fit: cover !important;
-    }
-
     .why-choose-us__title {
       max-width: 12ch;
     }
@@ -1330,20 +1321,16 @@ video {
   }
 
   .why-choose-us__media {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    margin: 0;
     padding: 0;
-    aspect-ratio: auto;
-    min-height: clamp(24rem, 34vw, 44rem);
     background: #ffffff;
   }
 
   .why-choose-us__media > img {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover !important;
-    object-position: center center;
+    height: auto;
   }
 
   .why-choose-us__title {

@@ -211,15 +211,19 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-              <div className="card-luxury why-choose-us__media overflow-hidden bg-white p-0">
+              <figure className="card-luxury why-choose-us__media overflow-hidden bg-white p-0">
                 <img
-                  className="block h-full w-full object-cover object-center"
-                  src="/assets/why-choose-us/why-choose-us.webp"
-                  alt="Stone supply overview graphic with product and workshop images; not documentary proof of facility or capacity"
-                  title="Stone supply overview graphic"
+                  className="block w-full"
+                  src={workshopWalkthroughVideo.poster}
+                  alt="Stone components and wooden frames along a workshop aisle"
+                  width={1280}
+                  height={720}
                   loading="lazy"
                 />
-              </div>
+                <figcaption className="px-5 py-4 text-sm leading-6 text-ink/65">
+                  Frame from the workshop walkthrough video showing stone components and wooden frames.
+                </figcaption>
+              </figure>
               <div className="grid gap-6">
                 <p className="body-luxury max-w-2xl">
                   Project scope, materials, inspection points, packing, and delivery requirements are reviewed against
