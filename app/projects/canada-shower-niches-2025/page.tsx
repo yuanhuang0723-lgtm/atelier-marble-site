@@ -123,7 +123,18 @@ export default function CanadaShowerNichesPage() {
           { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") }, { "@type": "ListItem", position: 2, name: "Projects", item: absoluteUrl("/projects") }, { "@type": "ListItem", position: 3, name: "Canada Shower Niches Reference", item: absoluteUrl("/projects/canada-shower-niches-2025") }] },
           {
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
+            "@type": "TechArticle",
+            headline: "Canada Custom Stone Shower Niches Project Reference",
+            author: {
+              "@type": "Organization",
+              name: siteName,
+              url: absoluteUrl("/")
+            },
+            publisher: {
+              "@type": "Organization",
+              name: siteName,
+              url: absoluteUrl("/")
+            },
             name: "Canada Custom Stone Shower Niches Project Reference",
             description: metadata.description,
             url: absoluteUrl("/projects/canada-shower-niches-2025"),

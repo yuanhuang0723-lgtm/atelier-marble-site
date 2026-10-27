@@ -35,7 +35,7 @@ const buyerPathways = [
     image: "/assets/vanity-cabinet/cover.webp",
     alt: "Illustrative stone vanity top and cabinet panels in a bathroom interior concept",
     copy: "Develop finish direction, component details, and room-ready vanity or countertop packages.",
-    cta: "Explore design project support"
+    cta: "Hotel Vanity Tops & Countertops"
   },
   {
     audience: "Architecture Firms",
@@ -44,7 +44,7 @@ const buyerPathways = [
     image: "/materials/categories/hotel-projects.webp",
     alt: "Illustrative hotel interior concept with stone flooring and wall panels",
     copy: "Review wall cladding, flooring, and custom stone components from drawings and schedules.",
-    cta: "View architectural stone"
+    cta: "Architectural Stone & Wall Cladding"
   },
   {
     audience: "Stone Importers",
@@ -53,7 +53,7 @@ const buyerPathways = [
     image: "/assets/home-top-cover.webp",
     alt: "Illustrative stone dining table in a dining-room concept",
     copy: "Scope quantities, material review, protective packing, and export planning together.",
-    cta: "Explore the supply workflow"
+    cta: "Stone Project Supply & Packing Workflow"
   },
   {
     audience: "Stone Fabricators",
@@ -62,7 +62,7 @@ const buyerPathways = [
     image: "/assets/carving-decor/cover.webp",
     alt: "Illustrative carved stone sculpture in a modern interior concept",
     copy: "Use shop drawings for custom stone parts when an external fabrication partner is useful.",
-    cta: "See custom fabrication"
+    cta: "Custom Cut-to-Size Fabrication in China"
   }
 ];
 
@@ -316,6 +316,9 @@ export default function HomePage() {
                   </Link>
                   <Link className="text-cta-luxury" href="/how-we-work">
                     See How We Work
+                  </Link>
+                  <Link className="text-cta-luxury" href="/countertops/integrated-stone-sinks">
+                    Integrated Stone Sinks
                   </Link>
                   <Link className="text-cta-luxury" href="/resources">
                     Buyer Resources

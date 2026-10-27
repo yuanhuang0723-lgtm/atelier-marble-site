@@ -15,12 +15,27 @@ export function projectPath(asset: Asset) {
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ManufacturingBusiness"],
     name: contact.companyName,
     url: siteUrl,
     logo: absoluteUrl("/icon.svg"),
     description:
       "Custom stone fabrication and project supply from Yunfu, China for hotel, commercial, countertop, vanity, and architectural stone projects.",
+    areaServed: [
+      "United States",
+      "Canada",
+      "Australia",
+      "United Kingdom",
+      "European Union"
+    ],
+    knowsAbout: [
+      "Custom Natural Stone Fabrication",
+      "Architectural Stone Cladding & Flooring",
+      "Hotel Bathroom Vanity Tops",
+      "Integrated Stone Sinks",
+      "Stone Dry-Lay Inspection & Vein Alignment",
+      "ISPM 15 Compliant Export Crating"
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.address,

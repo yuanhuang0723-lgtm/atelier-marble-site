@@ -121,6 +121,7 @@ export default function ArchitecturalWallCladdingPage() {
         { label: "Review cut-to-size marble materials", href: "/materials/marble" },
         { label: "Review commercial granite materials", href: "/materials/granite" },
         { label: "See Canada custom stone shower niches reference", href: "/projects/canada-shower-niches-2025" },
+        { label: "Review hotel vanity top drawing & component case", href: "/projects/hotel-vanity-tops-fabrication-case" },
         { label: "View workshop and packing references", href: "/factory#factory-evidence" }
       ]}
       purchaseInfo={{ materialOptions: "Marble and other approved stone can be reviewed. Confirm the current lot, finish, panel matching, and thickness for each elevation.", customCapability: "Review panel layouts, openings, edge conditions, finish, and cut lists from approved elevations or CAD." }}

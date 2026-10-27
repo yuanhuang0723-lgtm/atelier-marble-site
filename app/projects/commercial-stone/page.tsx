@@ -134,7 +134,9 @@ export default function CommercialStonePage() {
         { label: "Review hotel bathroom vanity tops", href: "/countertops/vanity-tops" },
         { label: "Coordinate architectural stone flooring", href: "/architectural-stone/flooring" },
         { label: "Review stone wall cladding panels", href: "/architectural-stone/wall-cladding" },
-        { label: "Review commercial granite materials", href: "/materials/granite" }
+        { label: "Review commercial granite materials", href: "/materials/granite" },
+        { label: "Review Canada prefabricated shower niches case", href: "/projects/canada-shower-niches-2025" },
+        { label: "Review hotel vanity top component case", href: "/projects/hotel-vanity-tops-fabrication-case" }
       ]}
       faqTitle="Commercial stone project details, answered clearly."
       faqs={faqs}

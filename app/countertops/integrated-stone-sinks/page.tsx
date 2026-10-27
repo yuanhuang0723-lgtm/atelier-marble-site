@@ -100,6 +100,24 @@ export default function IntegratedStoneSinksPage() {
       description="For buyers who need the basin, countertop, cut-outs, edges, and surrounding stone details reviewed together before fabrication and packing."
       overviewHeading="Coordinate integrated basin geometry, drainage, and countertop dimensions."
       overviewDescription="Our own processing and partner coordination in Yunfu, China support custom stone basins and vanity tops. Start with a plan, section, or rough dimensions; drain fittings, slab lot selection, and crate protection are agreed before fabrication."
+      scopeRows={[
+        {
+          component: "Basin Slope & Drainage Cavity",
+          inputs: "Engineered basin bottom slope toward concealed linear slot or standard drain cutout; removable stone access cover for cleanout."
+        },
+        {
+          component: "Structural Underside Reinforcement",
+          inputs: "Underside reinforcement options (rodding, fiberglass mesh backing, or bracket clearance) coordinated with vanity cabinet or wall-hung support structure."
+        },
+        {
+          component: "Mitered Edge & Apron Joints",
+          inputs: "45-degree mitered apron build-ups with continuous vein-flow alignment across front and return faces."
+        },
+        {
+          component: "Plumbing & Faucet Interface",
+          inputs: "Pre-drilled single or multi-hole faucet cutouts coordinated with confirmed sanitaryware templates and wall clearance."
+        }
+      ]}
       image="/assets/vanity-cabinet/hero.webp"
       heroBackgroundImage={null}
       imageAlt="Illustrative 3D bathroom vanity rendering with a stone countertop and basin; not a completed project photograph."

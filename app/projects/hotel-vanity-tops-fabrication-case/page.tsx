@@ -59,6 +59,16 @@ const vanityReviewSections = [
   }
 ];
 
+const hotelVanityTechArticleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: "Hotel Vanity Top Drawing & Component Review",
+  description: String(metadata.description),
+  url: absoluteUrl("/projects/hotel-vanity-tops-fabrication-case"),
+  author: { "@type": "Organization", name: siteName, url: absoluteUrl("/") },
+  publisher: { "@type": "Organization", name: siteName, url: absoluteUrl("/") }
+};
+
 export default function HotelVanityFabricationCasePage() {
   return (
     <CommercialLandingPage
@@ -119,6 +129,7 @@ export default function HotelVanityFabricationCasePage() {
         { question: "Can review start before the final drawings are ready?", answer: "Yes. An email and short project note can start the discussion. Rough dimensions, a room schedule, a basin reference, and the destination are useful; drawings can follow when available." },
         { question: "Are machine type, tolerances, and packing fixed?", answer: "They are confirmed against the material, geometry, drawings, production path, and destination. Request the relevant project specification and evidence before treating an estimate as a production approval." }
       ]}
+      additionalJsonLd={[hotelVanityTechArticleJsonLd]}
       metadata={metadata}
     />
   );
