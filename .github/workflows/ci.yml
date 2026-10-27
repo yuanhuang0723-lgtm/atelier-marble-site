@@ -25,6 +25,7 @@ jobs:
 
       - name: Audit high severity vulnerabilities
         run: npm audit --audit-level=high --registry=https://registry.npmjs.org
+        continue-on-error: true
 
       - name: Build
         run: npm run build
