@@ -15,7 +15,7 @@ export function projectPath(asset: Asset) {
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "ManufacturingBusiness"],
+    "@type": "Organization",
     name: contact.companyName,
     url: siteUrl,
     logo: absoluteUrl("/icon.svg"),
