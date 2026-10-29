@@ -214,14 +214,14 @@ export default function HomePage() {
               <figure className="card-luxury why-choose-us__media overflow-hidden bg-white p-0">
                 <img
                   className="block w-full"
-                  src="/materials/materials/stone-vanity-basin-component-ad8667ba07.webp"
-                  alt="Veined stone vanity top with basin opening on a workshop rack"
-                  width={1600}
-                  height={1200}
+                  src="/materials/materials/stone-vanity-basin-component-2bef9ce2df.webp"
+                  alt="Rows of stone vanity tops with basins in a workshop"
+                  width={1800}
+                  height={1012}
                   loading="lazy"
                 />
                 <figcaption className="px-5 py-4 text-sm leading-6 text-ink/65">
-                  Stone vanity top with basin opening — workshop reference.
+                  Stone vanity tops with basins — workshop reference.
                 </figcaption>
               </figure>
               <div className="grid gap-6">
