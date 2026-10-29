@@ -7,7 +7,7 @@ import WorkshopWalkthrough from "../components/WorkshopWalkthrough";
 import TechnicalProposalCase from "../components/TechnicalProposalCase";
 import { cleanCardCopy, cleanDisplayTitle, contact, getAssets, inquiryProjectTypes } from "../lib/assets";
 import { absoluteUrl, organizationJsonLd, siteName } from "../lib/seo";
-import { featuredWorkshopVideo, workshopWalkthroughVideo, workshopVideos } from "../data/workshop-videos";
+import { featuredWorkshopVideo, workshopVideos } from "../data/workshop-videos";
 import { workshopWalkthroughSchema } from "../lib/workshop-video-schema";
 
 export const metadata: Metadata = {
@@ -214,14 +214,14 @@ export default function HomePage() {
               <figure className="card-luxury why-choose-us__media overflow-hidden bg-white p-0">
                 <img
                   className="block w-full"
-                  src={workshopWalkthroughVideo.poster}
-                  alt="Stone components and wooden frames along a workshop aisle"
-                  width={1280}
-                  height={720}
+                  src="/materials/materials/stone-vanity-basin-component-ad8667ba07.webp"
+                  alt="Veined stone vanity top with basin opening on a workshop rack"
+                  width={1600}
+                  height={1200}
                   loading="lazy"
                 />
                 <figcaption className="px-5 py-4 text-sm leading-6 text-ink/65">
-                  Frame from the workshop walkthrough video showing stone components and wooden frames.
+                  Stone vanity top with basin opening — workshop reference.
                 </figcaption>
               </figure>
               <div className="grid gap-6">
